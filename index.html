@@ -1812,14 +1812,15 @@ function lex(src){
   while(i<src.length){ const c=src[i];
     if(/\s/.test(c)){ i++; continue; }
     if(c==="-"&&src[i+1]==="-"){ while(i<src.length&&src[i]!=="\n") i++; continue; }
-    if(c==="'"||c==="‘"||c==="’"||c==="„"||c==="“"||c==="”"||c==='"'&&false){ const q=c==="'"?"'":null; let j=i+1, v="";
-      while(j<src.length){ if(src[j]==="'"&&src[j+1]==="'"){ v+="'"; j+=2; continue; } if(src[j]==="'"||(!q&&/[‘’„“”]/.test(src[j]))) break; v+=src[j++]; }
+    /* Text: 'einfach' (SQL-Standard), "doppelt" (wie MySQL) und Handy-Anführungszeichen ‘ ’ „ “ ” */
+    if(c==="'"||c==='"'||c==="‘"||c==="’"||c==="„"||c==="“"||c==="”"){ const q=c==="'"||c==='"'?c:null; let j=i+1, v="";
+      while(j<src.length){ if(q&&src[j]===q&&src[j+1]===q){ v+=q; j+=2; continue; } if((q&&src[j]===q)||(!q&&/[‘’„“”"']/.test(src[j]))) break; v+=src[j++]; }
       if(j>=src.length) err("Ein Text in einfachen Anführungszeichen ' ' ist nicht geschlossen.");
       t.push({k:"str",v,p:i,e:j+1}); i=j+1; continue; }
     if(/\d/.test(c)||(c==="."&&/\d/.test(src[i+1]||""))){ let j=i; while(j<src.length&&/[\d.]/.test(src[j])) j++; t.push({k:"num",v:parseFloat(src.slice(i,j)),p:i,e:j}); i=j; continue; }
     if(/[A-Za-z_ÄÖÜäöüß]/.test(c)){ let j=i; while(j<src.length&&/[\wÄÖÜäöüß]/.test(src[j])) j++; const w=src.slice(i,j), u=w.toUpperCase();
       t.push(KW.has(u)?{k:"kw",v:u,p:i,e:j}:{k:"id",v:w,p:i,e:j}); i=j; continue; }
-    if(c==="`"||c==='"'){ const j=src.indexOf(c,i+1); if(j<0) err("Bezeichner nicht geschlossen."); t.push({k:"id",v:src.slice(i+1,j),p:i,e:j+1}); i=j+1; continue; }
+    if(c==="`"){ const j=src.indexOf(c,i+1); if(j<0) err("Bezeichner nicht geschlossen."); t.push({k:"id",v:src.slice(i+1,j),p:i,e:j+1}); i=j+1; continue; }
     const two=src.slice(i,i+2); if(["<=",">=","<>","!="].includes(two)){ t.push({k:"op",v:two,p:i,e:i+2}); i+=2; continue; }
     if("=<>*,().;+-/%".includes(c)){ t.push({k:"op",v:c,p:i,e:i+1}); i++; continue; }
     err(`Unerwartetes Zeichen „${c}“.`);
@@ -1870,7 +1871,7 @@ function parse(src){
   function select(){
     kw("SELECT"); const q={t:"select",distinct:false,cols:[],from:[],joins:[],where:null,group:[],having:null,order:[],limit:null};
     if(isKw("DISTINCT")){ i++; q.distinct=true; }
-    do{ if(isOp(",")) i++; const p0=T[i].p;
+    do{ if(isOp(",")) i++; if(isKw("FROM")) err("Vor FROM steht ein Komma zu viel. Das Komma trennt nur Spalten voneinander, z. B. SELECT a, b FROM …"); const p0=T[i].p;
       if(isOp("*")){ i++; q.cols.push({star:true}); continue; }
       const e=expr(); let alias=null; if(isKw("AS")){ i++; alias=T[i].k==="str"?nx().v:ident("ein Alias"); } else if(T[i].k==="id") alias=nx().v;
       q.cols.push(e.t==="star"?{star:true,tab:e.tab}:{e,alias,txt:src.slice(p0,T[i-1].e).trim()});
@@ -2156,7 +2157,9 @@ function sqSame(user,exp,s){
     if(ui<0) return `Lass die Spalte ${s.order} mit anzeigen, damit man die Sortierung sieht.`;
     if(exp.rows.some((r,i)=>n(r[ei])!==n(user.rows[i][ui]))) return "Die richtigen Zeilen – aber die Reihenfolge stimmt noch nicht. Denk an ORDER BY (und ASC/DESC)."; }
   const used=new Set();
-  for(const er of exp.rows){ const k=user.rows.findIndex((ur,i)=>!used.has(i)&&contains(ur,er)); if(k<0) return "Die Anzahl stimmt, aber die Inhalte passen noch nicht. Prüf Bedingungen und Spalten."; used.add(k); }
+  /* Bei Aufgaben ohne feste Spaltenauswahl reichen auch weniger Spalten (z. B. nur inventarnr statt *) */
+  const fits=(ur,er)=>contains(ur,er)||(!s.strict&&ur.length>0&&contains(er,ur));
+  for(const er of exp.rows){ const k=user.rows.findIndex((ur,i)=>!used.has(i)&&fits(ur,er)); if(k<0) return "Die Anzahl stimmt, aber die Inhalte passen noch nicht. Prüf Bedingungen und Spalten."; used.add(k); }
   return null; }
 function sqRun(){
   if(!sq||sq.done) return; const s=sq.m.steps[sq.step];
@@ -2173,10 +2176,11 @@ function sqRun(){
     else sqMsg("Hier ist eine Abfrage mit SELECT gefragt.","bad");
     return; }
   $("#sq-res").innerHTML=sqTable(r);
+  const spaceHint=/(['"‘„“])\s+[^'"’“”]*['"’“”]|(['"‘„“])[^'"’“”]*\s+['"’“”]/.test(src)?" Achtung: Zwischen den Anführungszeichen steht ein Leerzeichen am Anfang oder Ende – das gehört dann zum Text dazu.":"";
   if(s.t==="dml"){ sqMsg("Das war eine Abfrage. Gefragt ist hier eine Änderung (UPDATE, INSERT oder DELETE).",""); return; }
   const exp=SQ.exec(sq.db,s.sol); const diff=sqSame(r,exp,s);
   if(!diff){ sqMsg("✔ Treffer!","ok"); sqNext(); }
-  else { sq.tries++; sq.stepPts=Math.max(20,sq.stepPts-5); sqMsg("✘ "+esc(diff),"bad"); }
+  else { sq.tries++; sq.stepPts=Math.max(20,sq.stepPts-5); sqMsg("✘ "+esc(diff+spaceHint),"bad"); }
 }
 /* nach Zurücksetzen alle bisher erledigten Änderungen dieses Kapitels erneut anwenden */
 function sqReplay(){ sq.m.steps.slice(0,sq.step).forEach(s=>{ if(s.t==="dml") SQ.exec(sq.db,s.sol); }); }
