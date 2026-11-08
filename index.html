@@ -447,6 +447,12 @@ body.kb .stage{padding-bottom:45vh}
 .sn-way{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;font:500 13.5px/1.45 var(--mono);margin-top:8px;overflow-wrap:anywhere}
 .sn-way b{font:700 14px var(--display)}
 
+/* Lernstand sichern */
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ios-hint{display:flex;gap:10px;align-items:center;border:1px solid var(--accent);background:var(--accent-soft);border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.4}
+.ios-hint .iconbtn{flex:none;width:32px;height:32px}
+.bk-ta{width:100%;box-sizing:border-box;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px;font:12px/1.4 var(--mono);resize:vertical;word-break:break-all}
+
 /* Podcast */
 .pod-head{display:flex;gap:14px;align-items:center}
 .pod-head img{width:76px;height:76px;border-radius:18px;flex:none}
@@ -525,6 +531,7 @@ body.kb .stage{padding-bottom:45vh}
         <button class="chip deck-chip"><small>Fach</small><b class="deck-label">Alle Fächer</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
         <button class="metric primary" data-mode="due"><div><div class="num" id="m-due">0</div><div class="lbl">Heute fällig</div><div class="sub" id="m-due-sub">Jetzt wiederholen</div></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></button>
         <div class="today" id="today"></div>
+        <div class="ios-hint" id="ios-hint" hidden><span>📱 Tipp fürs iPhone: <b>Teilen → Zum Home-Bildschirm</b>. Dann bleibt dein Lernstand sicher gespeichert.</span><button class="iconbtn" id="ios-hint-x" aria-label="Hinweis schließen">✕</button></div>
         <div class="sec-h">Wissen & Spiele</div>
         <div class="actions">
           <button class="action" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>Wissen</button>
@@ -543,7 +550,8 @@ body.kb .stage{padding-bottom:45vh}
           <button class="action" data-go="neu"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>Neue Karte</button>
           <button class="action" data-go="verwalten"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>Karten verwalten</button>
         </div>
-        <button class="chip" id="remind-chip" style="box-shadow:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><small>Lernplan</small><b id="remind-label"></b></button>
+        <div class="chiprow"><button class="chip" id="remind-chip" style="box-shadow:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><small>Lernplan</small><b id="remind-label"></b></button>
+          <button class="chip" id="backup-chip" style="box-shadow:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><small>Lernstand</small><b>Sichern</b></button></div>
         <div class="sec-h">Mehr im Labor</div>
         <div class="areas">
           <button class="area" data-go="podcast"><span class="soon" id="pod-soon">Bald</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><b>Podcast</b><small>Folgen & Lernhäppchen</small></button>
@@ -1153,6 +1161,7 @@ function pills(id,vals,cur,fmt){ return `<div style="display:flex;flex-wrap:wrap
 function wirePills(root,id,on){ root.querySelectorAll(`#${id} button`).forEach(x=>x.onclick=()=>{ root.querySelectorAll(`#${id} button`).forEach(y=>y.className="btn "+(y===x?"primary":"ghost")); on(x.dataset.v); }); }
 function remPreview(){ const el=$("#rem-next"); if(!el) return; const r=rem.on?nextReminder():null;
   el.textContent=rem.on?(r?`Nächste Erinnerung: ${fmtWhen(r.at)}${r.n?` · ${r.n} Karte${r.n===1?"":"n"}`:""}`:"Gerade nichts geplant."):"Erinnerungen sind aus."; }
+$("#backup-chip").onclick=()=>openBackup();
 $("#remind-chip").onclick=()=>{
   const native=hasNative();
   openSheet("Lernplan",`<div class="panel">
@@ -2339,6 +2348,74 @@ document.addEventListener("keydown",e=>{ if(current!=="subnetz"||!sn||sn.done||e
   if(/^[0-9./]$/.test(e.key)) snKey(e.key); else if(e.key==="Backspace") snKey("⌫"); else if(e.key==="Enter") snKey(sn.answered?"next":"ok");
   else if(sn.cur&&sn.cur.kind==="yn"&&!sn.answered&&(e.key==="j"||e.key==="n")) snKey(e.key==="j"?"ja":"nein"); });
 
+/* ---------- Lernstand schützen und sichern ----------
+   1) Der Browser wird gebeten, die Daten dauerhaft zu behalten (navigator.storage.persist).
+      Auf dem iPhone kommt ein Hinweis „Zum Home-Bildschirm“, weil Safari Website-Daten sonst nach ca. 7 Tagen löscht.
+   2) Sicherung: Der komplette Lernstand als Code (zum Kopieren) oder als Datei, und das Wiederherstellen daraus.
+      Von den mitgelieferten Karten wird nur der Lernfortschritt gesichert, die Inhalte kommen beim Laden wieder aus der App. */
+const BK_SKIP=/^(pod_list\d*|introSeen)$/;
+const isWeb=()=>/^https?:$/.test(location.protocol)&&!hasNative();
+const isIOS=()=>/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+const isStandalone=()=>navigator.standalone===true||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches);
+async function bkPersist(){ try{ if(isWeb()&&navigator.storage&&navigator.storage.persist){ if(!(await navigator.storage.persisted())) await navigator.storage.persist(); } }catch(_){} }
+async function bkPersisted(){ try{ return !!(navigator.storage&&navigator.storage.persisted&&await navigator.storage.persisted()); }catch(_){ return false; } }
+function bkCollect(){
+  const data={};
+  for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(!BK_SKIP.test(k)) data[k]=localStorage.getItem(k); }
+  try{ const list=JSON.parse(data[KEY]||"[]"); data[KEY]=JSON.stringify(list.map(c=>/^ap\d{3}$/.test(c.id)?Object.fromEntries(Object.entries(c).filter(([k])=>!["q","a","deck","ex","mc","wrong","lvl"].includes(k))):c)); }catch(_){}
+  return {app:"dasLabor23",v:1,at:new Date().toISOString(),data};
+}
+const b64e=u8=>{ let s=""; for(let i=0;i<u8.length;i+=0x8000) s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000)); return btoa(s); };
+const b64d=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function bkEncode(obj){ const raw=new TextEncoder().encode(JSON.stringify(obj));
+  if(window.CompressionStream){ try{ const buf=await new Response(new Blob([raw]).stream().pipeThrough(new CompressionStream("gzip"))).arrayBuffer(); return "DL23Z:"+b64e(new Uint8Array(buf)); }catch(_){} }
+  return "DL23B:"+b64e(raw); }
+async function bkDecode(txt){ txt=String(txt||"").trim();
+  if(txt.startsWith("{")) return JSON.parse(txt);
+  const m=txt.replace(/\s+/g,"").match(/^DL23([ZB]):(.+)$/); if(!m) throw new Error("Das ist kein Sicherungscode von dasLabor23.");
+  let u8=b64d(m[2]);
+  if(m[1]==="Z"){ if(!window.DecompressionStream) throw new Error("Dieser Browser kann den Code nicht entpacken. Nimm bitte die Datei."); u8=new Uint8Array(await new Response(new Blob([u8]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer()); }
+  return JSON.parse(new TextDecoder().decode(u8)); }
+function bkRestore(obj){
+  if(!obj||obj.app!=="dasLabor23"||!obj.data||typeof obj.data!=="object") throw new Error("Die Sicherung ist unvollständig oder von einer anderen App.");
+  Object.keys(localStorage).filter(k=>!BK_SKIP.test(k)).forEach(k=>localStorage.removeItem(k));
+  Object.entries(obj.data).forEach(([k,v])=>{ if(typeof v==="string") localStorage.setItem(k,v); });
+  store.set("bk_last",obj.at||new Date().toISOString()); }
+function bkSummary(obj){ try{ const list=JSON.parse(obj.data[KEY]||"[]"); const learned=list.filter(c=>c.reps>0||c.due).length; return `${learned} gelernte Karten, gesichert am ${new Date(obj.at).toLocaleDateString("de-DE")}`; }catch(_){ return "Sicherung vom "+(obj.at||"?"); } }
+async function copyText(t){ try{ await navigator.clipboard.writeText(t); return true; }catch(_){}
+  try{ const ta=document.createElement("textarea"); ta.value=t; ta.style.cssText="position:fixed;opacity:0"; document.body.appendChild(ta); ta.select(); const ok=document.execCommand("copy"); ta.remove(); return ok; }catch(_){ return false; } }
+async function openBackup(){
+  const last=store.get("bk_last",""), web=isWeb(), prot=web?await bkPersisted():null;
+  openSheet("Lernstand sichern",`
+    <div class="panel"><span class="field-l">Status</span>
+      <p style="margin:0">${web?(prot?"✅ Der Browser behält deinen Lernstand dauerhaft.":"⚠️ Der Browser darf deinen Lernstand bei Platzmangel löschen."):"Dein Lernstand ist in dieser App gespeichert."}</p>
+      ${web&&isIOS()&&!isStandalone()?`<p class="hint" style="text-align:left;margin:6px 0 0">iPhone: Tippe in Safari auf <b>Teilen → Zum Home-Bildschirm</b>. Sonst löscht Safari die Daten, wenn du die Seite etwa 7 Tage nicht öffnest.</p>`:""}
+      <p class="hint" style="text-align:left;margin:6px 0 0">Letzte Sicherung: ${last?new Date(last).toLocaleDateString("de-DE"):"noch nie"}</p></div>
+    <div class="panel" style="margin-top:12px"><span class="field-l">Sichern</span>
+      <p class="hint" style="text-align:left;margin:0">Speichere den Code zum Beispiel in einer Notiz oder schick ihn dir selbst per WhatsApp. Damit holst du alles zurück, auch auf einem neuen Handy.</p>
+      <div class="grid2"><button class="btn primary" id="bk-code">Code kopieren</button>${web?`<button class="btn ghost" id="bk-file">Als Datei</button>`:`<button class="btn ghost" id="bk-show">Code anzeigen</button>`}</div>
+      <textarea id="bk-out" class="bk-ta" rows="4" readonly hidden></textarea></div>
+    <div class="panel" style="margin-top:12px"><span class="field-l">Wiederherstellen</span>
+      <textarea id="bk-in" class="bk-ta" rows="3" placeholder="Sicherungscode hier einfügen …" spellcheck="false" autocapitalize="off" autocorrect="off"></textarea>
+      <div class="grid2"><button class="btn primary" id="bk-restore">Wiederherstellen</button>${web?`<label class="btn ghost" style="text-align:center">Datei wählen<input type="file" id="bk-pick" accept=".json,.txt,application/json,text/plain" hidden></label>`:"<span></span>"}</div>
+      <p class="hint" style="text-align:left;margin:0">Achtung: Das ersetzt den Lernstand auf diesem Gerät.</p></div>`,()=>{
+    const mark=()=>store.set("bk_last",new Date().toISOString());
+    const getCode=async()=>{ const c=await bkEncode(bkCollect()); const o=$("#bk-out"); o.value=c; return c; };
+    $("#bk-code").onclick=async()=>{ const c=await getCode(); if(await copyText(c)){ mark(); toast("Code kopiert – jetzt z. B. in einer Notiz einfügen"); } else { $("#bk-out").hidden=false; $("#bk-out").select(); toast("Code markiert – bitte selbst kopieren"); } };
+    const sh=$("#bk-show"); if(sh) sh.onclick=async()=>{ await getCode(); const o=$("#bk-out"); o.hidden=false; o.select(); mark(); };
+    const fb=$("#bk-file"); if(fb) fb.onclick=()=>{ const blob=new Blob([JSON.stringify(bkCollect())],{type:"application/json"}); const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob); a.download=`dasLabor23-lernstand-${new Date().toISOString().slice(0,10)}.json`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); mark(); toast("Datei gespeichert"); };
+    const doRestore=async txt=>{ try{ const obj=await bkDecode(txt); if(!confirmRestore(obj)) return; bkRestore(obj); toast("Lernstand wiederhergestellt"); setTimeout(()=>location.reload(),600); }catch(e){ toast(e.message||"Das hat nicht geklappt"); } };
+    $("#bk-restore").onclick=()=>{ const t=$("#bk-in").value; if(!t.trim()) return toast("Erst den Code einfügen"); doRestore(t); };
+    const pk=$("#bk-pick"); if(pk) pk.onchange=async()=>{ const f=pk.files&&pk.files[0]; if(f) doRestore(await f.text()); };
+  });
+}
+/* Sicherheitsabfrage ohne Browser-Dialog: zweimal tippen bestätigt */
+let bkArm=0; function confirmRestore(obj){ if(Date.now()-bkArm<5000){ bkArm=0; return true; } bkArm=Date.now(); toast(`${bkSummary(obj)}. Nochmal tippen zum Ersetzen.`); return false; }
+function bkHint(){ const el=$("#ios-hint"); if(!el) return;
+  const show=isWeb()&&isIOS()&&!isStandalone()&&store.get("ios_hint_off","0")!=="1"; el.hidden=!show;
+  if(show){ $("#ios-hint-x").onclick=()=>{ store.set("ios_hint_off","1"); el.hidden=true; }; } }
+
 /* ---------- Podcast ----------
    Folgen kommen aus einem öffentlichen RSS-Feed (z. B. Spotify for Creators) – so hören alle App-Nutzer dieselben Folgen.
    Optional zusätzlich lokale Folgen aus podcast.json (in der App mitgeliefert). Feed-Adresse hier eintragen: */
@@ -2488,6 +2565,7 @@ function startAudio(e,src,isAlt){
   step("Start",()=>show(route()));
   step("Daten",()=>{ Promise.resolve(initData()).catch(e=>{ window.__errs.push("Daten: "+(e&&e.message||e)); window.__showErr(); }); });
   setTimeout(()=>{ try{ loadEpisodes(); }catch(e){} },1500);
+  try{ bkPersist(); bkHint(); }catch(e){}
 })();
 </script>
 <script>if("serviceWorker" in navigator&&location.protocol.startsWith("http")) addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
