@@ -1,0 +1,12 @@
+[
+ {
+  "nr": 1,
+  "id": "f01",
+  "title": "IP-Adressen und Subnetting einfach erklärt",
+  "file": "folge01.mp3",
+  "coverFile": "folge01.jpg",
+  "deck": "Netzwerktechnik::IP & Routing",
+  "date": "2026-11-05",
+  "desc": "Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing."
+ }
+]

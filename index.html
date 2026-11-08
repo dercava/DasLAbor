@@ -2343,18 +2343,19 @@ document.addEventListener("keydown",e=>{ if(current!=="subnetz"||!sn||sn.done||e
    Folgen kommen aus einem öffentlichen RSS-Feed (z. B. Spotify for Creators) – so hören alle App-Nutzer dieselben Folgen.
    Optional zusätzlich lokale Folgen aus podcast.json (in der App mitgeliefert). Feed-Adresse hier eintragen: */
 const PODCAST={ title:"Netzwerktechnik zum Mitnehmen", by:"Jens & Lisa · dasLabor23", feed:"", web:"",
-  /* Folgenliste in Google Drive (Ordner „Podcast“): neue Folgen dort eintragen, die App lädt sie beim Öffnen */
-  list:"https://drive.usercontent.google.com/download?id=1wY7jIqqBPPe9SGPgcjfjzbM0jKHFGTGM&export=download" };
+  /* Folgen liegen auf GitHub Pages (dercava/DasLAbor, Ordner podcast). Neue Folgen: MP3 + Cover dort ablegen und in podcast.json eintragen. */
+  base:"https://dercava.github.io/DasLAbor/podcast/",
+  get list(){ return this.base+"podcast.json"; } };
 /* Mitgelieferte Folgen: funktionieren auch, wenn die Liste gerade nicht geladen werden kann */
 const EPISODES_BUILTIN=[
-  {nr:1,title:"IP-Adressen und Subnetting einfach erklärt",drive:"1R3xGaRXye-oKmoivKGHU9hOT83ZqfA6_",cover:"1Q0TIuuPvVUlvxjvUC6KfRhcsliI7z_qC",
+  {nr:1,id:"f01",title:"IP-Adressen und Subnetting einfach erklärt",file:"folge01.mp3",coverFile:"folge01.jpg",
    deck:"Netzwerktechnik::IP & Routing",date:"2026-11-05",desc:"Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing."}
 ];
 const driveAudio=id=>`https://drive.usercontent.google.com/download?id=${encodeURIComponent(id)}&export=download`;
 const driveImg=id=>`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w600`;
-function normEp(e){ const id=e.id||e.drive||e.url;
+function normEp(e){ const id=e.id||e.file||e.drive||e.url;
   return {id, nr:e.nr||0, title:(e.nr?`Folge ${String(e.nr).padStart(2,"0")}: `:"")+(e.title||"Ohne Titel"), desc:e.desc||"",
-    url:e.url||(e.drive?driveAudio(e.drive):""), img:e.img||(e.cover?driveImg(e.cover):""), deck:e.deck?normDeck(e.deck):"",
+    url:e.url||(e.file?PODCAST.base+e.file:e.drive?driveAudio(e.drive):""), img:e.img||(e.coverFile?PODCAST.base+e.coverFile:e.cover?driveImg(e.cover):""), deck:e.deck?normDeck(e.deck):"",
     date:typeof e.date==="number"?e.date:(e.date?new Date(e.date).getTime():0), dur:e.dur||0}; }
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>', ICON_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
 let episodes=null, podLoading=false, audio=null, curEp=null, podFilter="";
@@ -2374,9 +2375,9 @@ function parseRss(xml){
 }
 async function loadEpisodes(){
   if(podLoading) return; podLoading=true; let list=EPISODES_BUILTIN.map(normEp);
-  const merge=arr=>{ arr.map(normEp).filter(e=>e.url).forEach(e=>{ const i=list.findIndex(x=>x.id===e.id); if(i>=0) list[i]=e; else list.push(e); }); };
-  if(PODCAST.list){ try{ const t=await getText(PODCAST.list); const arr=JSON.parse(t); if(Array.isArray(arr)){ store.set("pod_list",t); merge(arr); } }
-    catch(e){ try{ merge(JSON.parse(store.get("pod_list","[]"))); }catch(_){} } }
+  const merge=arr=>{ arr.map(normEp).filter(e=>e.url).forEach(e=>{ const i=list.findIndex(x=>x.id===e.id||(e.nr&&x.nr===e.nr)); if(i>=0) list[i]=e; else list.push(e); }); };
+  if(PODCAST.list){ try{ const t=await getText(PODCAST.list); const arr=JSON.parse(t); if(Array.isArray(arr)){ store.set("pod_list2",t); merge(arr); } }
+    catch(e){ try{ merge(JSON.parse(store.get("pod_list2","[]"))); }catch(_){} } }
   if(PODCAST.feed){ try{ const xml=await getText(PODCAST.feed); const feed=parseRss(xml); store.set("pod_cache",JSON.stringify(feed)); list=list.concat(feed); }
     catch(e){ try{ list=list.concat(JSON.parse(store.get("pod_cache","[]"))); }catch(_){} } }
   episodes=list.sort((a,b)=>(b.nr-a.nr)||((b.date||0)-(a.date||0))); podLoading=false;
@@ -2449,7 +2450,7 @@ function playEp(e){
   if(curEp&&curEp.id===e.id&&audio){ audio.paused?tryPlay():audio.pause(); return; }
   if(audio){ audio.pause(); audio=null; }
   curEp=e;
-  if(nativePod()&&/^https?:/.test(e.url)){
+  if(nativePod()&&/drive\.(usercontent\.)?google\.com/.test(e.url)){
     let local=""; try{ local=window.AndroidBridge.podCached(String(e.id)); }catch(_){}
     if(local){ startAudio(e,local); return; }
     if(!podDl[e.id]||podDl[e.id].fail){ podDl[e.id]={pct:0}; window.AndroidBridge.podDownload(String(e.id),e.url); }
