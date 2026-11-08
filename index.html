@@ -498,11 +498,14 @@ body.kb .stage{padding-bottom:45vh}
 .pod-head img{width:76px;height:76px;border-radius:18px;flex:none}
 .pod-head h2{font:700 20px/1.25 var(--display);margin:0}
 .pod-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.ep{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:14px;display:grid;grid-template-columns:44px 1fr;gap:12px;text-align:left;align-items:center;transition:transform .25s var(--spring),border-color .3s}
+.ep{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:12px;display:grid;grid-template-columns:60px 1fr;gap:12px;text-align:left;align-items:center;transition:transform .25s var(--spring),border-color .3s}
 .ep:active{transform:scale(.98)}
 .ep.on{border-color:var(--accent)}
-.ep .pl{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
-.ep .pl svg{width:18px;height:18px}
+.ep .pl{position:relative;width:60px;height:60px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.ep .pl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ep .pl i{position:relative;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff;font-style:normal}
+.ep .pl svg{width:16px;height:16px}
+.player .pod-cover{display:block;width:min(240px,70%);aspect-ratio:1;object-fit:cover;border-radius:16px;margin:0 auto 12px}
 .ep b{font-weight:700;display:block}
 .ep small{color:var(--muted);font:500 12px var(--mono)}
 .ep .bar{height:4px;margin-top:6px}
@@ -3473,7 +3476,7 @@ const driveImg=id=>`https://drive.google.com/thumbnail?id=${encodeURIComponent(i
 function normEp(e){ const id=e.id||e.drive||e.file||e.url;
   const gh=e.file?PODCAST.base+e.file:"";
   return {id, nr:e.nr||0, title:(e.nr?`Folge ${String(e.nr).padStart(2,"0")}: `:"")+(e.title||"Ohne Titel"), desc:e.desc||"",
-    url:e.url||(e.drive?driveAudio(e.drive):gh), alt:e.alt||(e.drive||e.url?gh:""), img:e.img||(e.cover?driveImg(e.cover):e.coverFile?PODCAST.base+e.coverFile:""), deck:e.deck?normDeck(e.deck):"",
+    url:e.url||(e.drive?driveAudio(e.drive):gh), alt:e.alt||(e.drive||e.url?gh:""), img:e.img||(e.cover?driveImg(e.cover):e.coverFile?PODCAST.base+e.coverFile:""), imgAlt:e.coverFile?PODCAST.base+e.coverFile:"", deck:e.deck?normDeck(e.deck):"",
     date:typeof e.date==="number"?e.date:(e.date?new Date(e.date).getTime():0), dur:e.dur||0}; }
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>', ICON_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
 let episodes=null, podLoading=false, audio=null, curEp=null, podFilter="";
@@ -3502,6 +3505,7 @@ async function loadEpisodes(){
   const ps=$("#pod-soon"); if(ps){ ps.textContent=episodes.length?"Neu":"Bald"; ps.hidden=!episodes.length&&false; }
   if(current==="podcast") renderPodcast();
 }
+const podImg=(e,cls)=>`<img class="${cls}" src="${esc(e.img)}" data-alt="${esc(e.imgAlt||"")}" alt="Cover ${esc(e.title)}" loading="lazy" onerror="if(this.dataset.alt&&this.src!==this.dataset.alt){this.src=this.dataset.alt}else{this.onerror=null;this.style.visibility='hidden'}">`;
 const posKey=id=>"pod_pos_"+String(id).slice(-60);
 function renderPodcast(){
   const root=$("#pod");
@@ -3518,11 +3522,11 @@ function renderPodcast(){
   const subjects=[...new Set(episodes.map(e=>split(e.deck).main).filter(Boolean))];
   if(podFilter&&!subjects.includes(podFilter)) podFilter="";
   const shown=episodes.filter(e=>!podFilter||split(e.deck).main===podFilter);
-  root.innerHTML=`<div class="pod-head"><img src="${esc(episodes[0].img)||$(".brand .logo").src}" alt=""><div><h2>${esc(PODCAST.title)}</h2><p>${esc(PODCAST.by)} · ${episodes.length} Folge${episodes.length===1?"":"n"}</p></div></div>
+  root.innerHTML=`<div class="pod-head"><img src="${$(".brand .logo").src}" alt=""><div><h2>${esc(PODCAST.title)}</h2><p>${esc(PODCAST.by)} · ${episodes.length} Folge${episodes.length===1?"":"n"}</p></div></div>
     ${PODCAST.web?`<a class="btn ghost block" style="text-align:center;text-decoration:none;margin-top:12px;display:block" href="${esc(PODCAST.web)}" target="_blank" rel="noopener">Auch auf Spotify hören</a>`:""}
     ${subjects.length>1?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px" id="pod-f">${["",...subjects].map(f=>`<button class="btn ${f===podFilter?"primary":"ghost"}" data-f="${esc(f)}" style="padding:8px 12px">${f?esc(f):"Alle"}</button>`).join("")}</div>`:""}
     <div class="eps" style="margin:16px 0">${shown.map(e=>{ const i=episodes.indexOf(e); const pos=+store.get(posKey(e.id),"0"), pct=e.dur?Math.min(100,pos/e.dur*100):0;
-      return `<button class="ep${curEp&&curEp.id===e.id?" on":""}" data-i="${i}"><span class="pl">${curEp&&curEp.id===e.id&&audio&&!audio.paused?ICON_PAUSE:ICON_PLAY}</span>
+      return `<button class="ep${curEp&&curEp.id===e.id?" on":""}" data-i="${i}"><span class="pl">${e.img?podImg(e,""):""}<i>${curEp&&curEp.id===e.id&&audio&&!audio.paused?ICON_PAUSE:ICON_PLAY}</i></span>
         <span><b>${esc(e.title)}</b><small>${e.deck?esc(deckLabel(e.deck))+" · ":""}${e.date?new Date(e.date).toLocaleDateString("de-DE"):""}${e.dur?" · "+fmtT(e.dur):""}${pct>95?" · gehört ✓":""}</small>
         ${pct>1&&pct<=95?`<span class="bar"><i style="width:${pct}%"></i></span>`:""}</span></button>`; }).join("")}</div>
     <div class="player" id="player" ${curEp?"":"hidden"}></div>`;
@@ -3534,14 +3538,14 @@ function renderPlayer(){
   const el=$("#player"); if(!el||!curEp) return; el.hidden=false;
   const sp=+store.get("pod_speed","1");
   if(!audio){ const p=podDl[curEp.id]||{};
-    el.innerHTML=`<div class="row1"><b>${esc(curEp.title)}</b></div>
+    el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b></div>
       ${p.fail?`<p class="hint" style="text-align:left;margin:0">Folge konnte nicht geladen werden (${esc(p.fail)}). Internet an?</p><button class="btn primary block" id="p-retry">Nochmal versuchen</button>`
         :`<p class="hint" style="text-align:left;margin:0">Folge wird aufs Handy geladen … ${p.pct>=0?p.pct+" %":p.mb?p.mb+" MB":""}<br><small>Nur einmal nötig, danach auch offline.</small></p>
       <div class="bar" style="display:block;height:6px;border-radius:3px;background:var(--line,#233);overflow:hidden"><i style="display:block;height:100%;width:${Math.max(3,p.pct||0)}%;background:var(--acc,#22c3e6)"></i></div>`}
       ${curEp.desc?`<p class="hint" style="text-align:left;margin:0">${esc(curEp.desc)}</p>`:""}`;
     const rt=$("#p-retry"); if(rt) rt.onclick=()=>{ const e=curEp; curEp=null; playEp(e); };
     return; }
-  el.innerHTML=`<div class="row1"><b>${esc(curEp.title)}</b><button class="speed" id="p-speed">${sp}×</button></div>
+  el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b><button class="speed" id="p-speed">${sp}×</button></div>
     <input type="range" id="p-seek" min="0" max="${Math.floor(audio.duration||curEp.dur||0)}" value="${Math.floor(audio.currentTime)}" aria-label="Position">
     <div class="times"><span id="p-cur">${fmtT(audio.currentTime)}</span><span>${fmtT(audio.duration||curEp.dur)}</span></div>
     <div class="ctl"><button class="iconbtn" id="p-back" aria-label="15 Sekunden zurück">−15</button>
@@ -3588,7 +3592,7 @@ function startAudio(e,src,isAlt){
     audio=null;
     if(!isAlt&&e.alt&&src!==e.alt){ console.warn("Quelle nicht abspielbar, nehme Ersatzquelle"); startAudio(e,e.alt,true); return; }
     podDl[e.id]={fail:"Datei nicht abspielbar",triedAlt:true}; if(current==="podcast") renderPodcast(); });
-  if("mediaSession" in navigator){ try{ navigator.mediaSession.metadata=new MediaMetadata({title:e.title,artist:PODCAST.title}); }catch(_){} }
+  if("mediaSession" in navigator){ try{ navigator.mediaSession.metadata=new MediaMetadata({title:e.title,artist:PODCAST.title,artwork:(e.imgAlt||e.img)?[{src:e.imgAlt||e.img,sizes:"600x600",type:"image/jpeg"}]:[]}); }catch(_){} }
   tryPlay(); if(current==="podcast") renderPodcast();
 }
 
