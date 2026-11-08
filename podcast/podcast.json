@@ -1,12 +1,68 @@
 [
  {
   "nr": 1,
-  "id": "f01",
   "title": "IP-Adressen und Subnetting einfach erklärt",
   "file": "folge01.mp3",
   "coverFile": "folge01.jpg",
   "deck": "Netzwerktechnik::IP & Routing",
   "date": "2026-11-05",
-  "desc": "Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing."
+  "desc": "Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing.",
+  "drive": "1R3xGaRXye-oKmoivKGHU9hOT83ZqfA6_",
+  "cover": "1Q0TIuuPvVUlvxjvUC6KfRhcsliI7z_qC"
+ },
+ {
+  "nr": 2,
+  "title": "Router, Routing-Tabelle und Default Route",
+  "drive": "1I2izlYcPTaA3ZCIz3saMsB8fQR7Qwbm-",
+  "cover": "16xbBAYjaGWVqkqH7N8wsSwR8MFV8Giv3",
+  "file": "folge02.mp3",
+  "coverFile": "folge02.jpg",
+  "deck": "Netzwerktechnik::IP & Routing",
+  "date": "2026-11-05",
+  "desc": "Wie kommt ein Paket vom einen Netz ins andere? Lisa und Jens klären, was Hub, Switch und Router wirklich machen, und bauen eine Routing-Tabelle Schritt für Schritt auf. Am Ende rechnet ihr zusammen mit der Slash 22, und du kannst gleich mitrechnen."
+ },
+ {
+  "nr": 3,
+  "title": "Wer darf wann reden? CSMA/CD und CSMA/CA",
+  "drive": "1na8duYll6_nEw0AX4PEGtRKxZtSXHHPg",
+  "cover": "1zHei9YNnBFmstO6nUjgfvyaEG5leQ-85",
+  "file": "folge03.mp3",
+  "coverFile": "folge03.jpg",
+  "deck": "Netzwerktechnik::Verkabelung & Schicht 1",
+  "date": "2026-11-05",
+  "desc": "Wer darf im Netz wann senden, und warum streiten sich Rechner beim Hub ständig um die Leitung? Jens und Lisa klären, wie Kollisionen entstehen, wie CSMA/CD und CSMA/CA damit umgehen und was Topologien damit zu tun haben. Dazu gibt's Vergleiche aus dem Alltag und ein kleines Quiz, bei dem du mitdenken kannst."
+ },
+ {
+  "nr": 4,
+  "title": "Schleifen und Spanning Tree im Netz",
+  "drive": "10P2mX8LO5JX1yi5cczv7iqIv2CZh5c7L",
+  "cover": "1H-BN29P9uv9Ts-qjroM0nSIL6XEj5OsT",
+  "file": "folge04.mp3",
+  "coverFile": "folge04.jpg",
+  "deck": "Netzwerktechnik::Schicht 2 & Switching",
+  "date": "2026-11-05",
+  "desc": "Dein Netz steht, obwohl nichts kaputt ist? Genau darum geht's in dieser Folge: Warum Broadcasts in einer Schleife ewig kreisen und wie das Spanning Tree Protocol dafür sorgt, dass alles geordnet bleibt. Außerdem klären wir, wer Root Bridge wird und warum ein blockierter Port trotzdem ein wichtiger Ersatzspieler ist."
+ },
+ {
+  "nr": 5,
+  "title": "IPv6 ohne Doppelpunkt-Panik",
+  "drive": "16XUvQ4h6_WegIyh9TKydS34onhWb0_qa",
+  "cover": "1qbHXnIwbXHYCcf0Fvv3QlCmkZroWK1m4",
+  "file": "folge05.mp3",
+  "coverFile": "folge05.jpg",
+  "deck": "Netzwerktechnik::IPv6",
+  "date": "2026-11-05",
+  "desc": "Diesmal wird's mit IPv6 richtig lang, aber auch richtig spannend. Lisa und Jens kürzen die Monster-Adressen, schauen sich Subnetting, Multicast und SLAAC an und räumen mit ein paar typischen Prüfungsfallen auf. Hol dir einen Kaffee, danach wirken die Doppelpunkte deutlich weniger bedrohlich."
+ },
+ {
+  "nr": 6,
+  "title": "Quiz-Duell: 14 Fragen zu Subnetting & Co.",
+  "drive": "1U0FO8aHz9wFHsXNbmVZM67hTVKIT9vGv",
+  "cover": "1B0EIhEdsGepcRHl2rq8Jrz1t2OFfvt35",
+  "file": "folge06.mp3",
+  "coverFile": "folge06.jpg",
+  "deck": "Netzwerktechnik::IP & Routing",
+  "date": "2026-11-05",
+  "desc": "Zettel raus und mitraten! Lisa und Jens spielen ein Quiz mit 14 Fragen zu Subnetting, Routing und IPv6. Wer holt die meisten Punkte, und wo schleichen sich typische Prüfungsfehler ein?"
  }
 ]
