@@ -1036,7 +1036,9 @@ function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.3";
+const APP_VER="3.2.4";
+const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
+const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
 function gcCount(){
@@ -1050,6 +1052,17 @@ function gcCount(){
     const img=new Image(); img.referrerPolicy="no-referrer"; img.src=GC_URL+"?"+q.toString();
   }catch(e){}
 }
+/* Bereichs-Nutzung als Ereignis: jeder Bereich höchstens einmal pro Start */
+function gcArea(r){
+  try{
+    if(!GC_AREAS[r]||gcSeen.has(r)||store.get("stats_off","0")==="1"||!navigator.onLine) return;
+    const app=!!window.AndroidBridge; if(location.protocol==="file:"&&!app) return;
+    const h=location.hostname; if(h==="localhost"||h==="127.0.0.1") return;
+    gcSeen.add(r);
+    const q=new URLSearchParams({p:"bereich-"+r,t:"Bereich: "+GC_AREAS[r],e:"true",rnd:Math.random().toString(36).slice(2)});
+    const img=new Image(); img.referrerPolicy="no-referrer"; img.src=GC_URL+"?"+q.toString();
+  }catch(e){}
+}
 function show(r){
   const id=ROUTES[r]; if(current===id) return;
   const back=id==="home"; const prev=current; current=id;
@@ -1057,6 +1070,7 @@ function show(r){
   const el=$("#s-"+id); el.classList.add("active"); if(prev) el.classList.add(back?"in-back":"in-fwd");
   $("#app").classList.toggle("home",back); $("#back").classList.toggle("hide",back);
   if(RESUME[r]) store.set("last_area",r);
+  gcArea(r);
   if(id==="home") renderHome(true);
   if(id==="wissen"){ wiSel=(history.state&&history.state.wi)||null; renderWissen(); }
   if(id!=="blitz"&&bz&&!bz.done) bz.done=true;
@@ -1118,7 +1132,7 @@ function renderResume(){
   el.innerHTML=`<button class="resume" data-go="${r}"><span class="ic">${ic?ic.innerHTML:""}</span><span class="tx"><small>Weiter, wo du warst</small><b>${RESUME[r]}</b></span><svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`;
   el.firstChild.onclick=()=>go(r);
 }
-function statsUI(){ const off=store.get("stats_off","0")==="1"; const t=$("#stats-tgl"); if(!t) return; t.classList.toggle("on",!off); $("#stats-label").textContent=off?"Aus – es wird nichts gezählt":"Zählt nur, wie oft die App gestartet wird – ohne Cookies oder persönliche Daten"; }
+function statsUI(){ const off=store.get("stats_off","0")==="1"; const t=$("#stats-tgl"); if(!t) return; t.classList.toggle("on",!off); $("#stats-label").textContent=off?"Aus – es wird nichts gezählt":"Zählt App-Starts und genutzte Bereiche – ohne Cookies oder persönliche Daten"; }
 function renderHome(anim){
   const now=Date.now(), list=cards.filter(inDeck);
   const tp=todayPlan(list,now); const due=tp.reviews.length+tp.fresh.length, nw=list.filter(isNew).length;
