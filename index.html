@@ -571,6 +571,34 @@ body.kb .stage{padding-bottom:45vh}
 .vk-row{display:grid;grid-template-columns:90px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
 .vk-row b{font:700 14px var(--mono);overflow-wrap:anywhere}.vk-row i{color:var(--muted)}
 .vk-ok{color:var(--easy)}
+.pl-grp{display:flex;flex-direction:column;gap:0;padding:12px 14px}
+.pl-gh{font:600 15px var(--display);margin-bottom:4px}
+.pl-row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
+.pl-row:first-of-type{border-top:0}
+.pl-port{font:700 17px var(--mono);color:var(--accent);padding-top:1px}
+.pl-info>span{color:var(--muted)}
+.pl-tip{color:var(--ink)!important;font-size:13px}
+.pl-t{font-size:10.5px;padding:1px 7px;vertical-align:1px}
+.pl-hide{border:1px dashed var(--accent);background:var(--accent-soft);color:var(--accent);border-radius:8px;font:700 14px var(--mono);padding:2px 12px;min-height:0}
+.pl-dots{display:inline-flex;gap:3px;vertical-align:middle}
+.pl-dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.pl-dots i.on{background:var(--good)}
+.pl-card{align-items:center;text-align:center;min-height:250px;justify-content:center;cursor:pointer;font:inherit;color:inherit}
+.pl-big{font:800 54px/1.1 var(--mono);color:var(--accent)}
+.pl-big.pl-name{font:800 34px/1.2 var(--display)}
+.pl-ans{font:800 28px var(--display);color:var(--good);margin:6px 0}
+.pl-meta{color:var(--muted);font-size:14px;line-height:1.5}
+.pl-card .pl-tip{margin-top:8px;font-size:14px;line-height:1.45;border-top:1px dashed var(--line);padding-top:8px}
+.pm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pm-c{position:relative;height:84px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);box-shadow:var(--shadow);font:inherit;color:var(--ink);padding:6px;transition:transform .25s var(--spring),background .2s,border-color .2s}
+.pm-c:active{transform:scale(.95)}
+.pm-c .pm-f{font:800 26px var(--display);color:var(--muted)}
+.pm-c .pm-b{display:none;font:700 14px/1.2 var(--display)}
+.pm-c .pm-b.num{font:800 22px var(--mono);color:var(--accent)}
+.pm-c.open,.pm-c.done{background:var(--accent-soft);border-color:var(--accent)}
+.pm-c.open .pm-f,.pm-c.done .pm-f{display:none}
+.pm-c.open .pm-b,.pm-c.done .pm-b{display:block}
+.pm-c.done{background:color-mix(in srgb,var(--good) 18%,var(--surface));border-color:var(--good)}
 .pj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .pj-grid .pillbtn{font:700 18px var(--mono);padding:12px 0;border-radius:12px}
 .sn-pad button.okk{background:var(--grad);color:#05222c;border:0}
@@ -708,7 +736,7 @@ body.kb .stage{padding-bottom:45vh}
       <div class="center hubscreen">
         <div class="hub-head"><h2 class="title">Spiele & Labore</h2><p>Spielerisch üben – und wie in der Prüfung selbst lösen.</p></div>
         <div class="sec-h">Quiz & Tempo</div>
-        <div class="hlist"><button class="hrow q" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="vokabeln"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><span class="tx"><b>Abkürzungs-Duell</b><small>DHCP, SLA, IaaS … in einem Satz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="ports"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="tx"><b>Port-Jäger</b><small>Ports, Dienste & Firewall-Fälle</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow q" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="vokabeln"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><span class="tx"><b>Abkürzungs-Duell</b><small>DHCP, SLA, IaaS … in einem Satz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="ports"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Praxis-Labore</div>
         <div class="hlist"><button class="hrow l" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
       </div>
@@ -1086,15 +1114,15 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const RESUME={challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",wissen:"Wissen",podcast:"Podcast"};
+const RESUME={challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",wissen:"Wissen",podcast:"Podcast"};
 const ROUTES={start:"home",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.9";
-const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
+const APP_VER="3.3";
+const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -4253,15 +4281,6 @@ let pj=null;
 const pjScores=()=>{ try{ return JSON.parse(store.get("pj_scores","[]")); }catch(e){ return []; } };
 function pjTable(){ return `<details class="sq-schema"><summary>📋 Spickzettel: wichtige Ports</summary><div class="sq-scroll" style="border:0;margin:0 10px 10px"><table><thead><tr><th>Port</th><th>Dienst</th><th>TCP/UDP</th><th>Wofür?</th></tr></thead><tbody>${PORTS.map(p=>`<tr><td>${p.p}</td><td>${esc(p.d)}</td><td>${p.t}</td><td style="white-space:normal;min-width:180px">${esc(p.x)}</td></tr>`).join("")}</tbody></table>
   <p class="hint" style="text-align:left;margin:8px 0 0">Bereiche: 0–1023 Well-known Ports · 1024–49151 Registered Ports · 49152–65535 dynamische Ports</p></div></details>`; }
-function pjHome(){
-  $("#pj").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
-      <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div>
-      <h2>Port-Jäger</h2><p>Welcher Dienst lauscht auf welchem Port? Port raten, Dienst zuordnen, TCP oder UDP – und echte Firewall-Fälle lösen.</p></div>
-    <button class="btn primary block" id="pj-go">Runde starten (10 Fragen)</button>
-    ${pjTable()}
-    <div class="panel"><b style="font:600 15px var(--display)">Bestenliste</b>${hsTable(pjScores())}</div>`;
-  $("#pj-go").onclick=pjStart;
-}
 function pjMake(){
   const r=Math.random(), P=PORTS[Math.floor(Math.random()*PORTS.length)];
   if(r<.3){ const others=PORTS.filter(x=>x!==P).sort(()=>Math.random()-.5).slice(0,3);
@@ -4312,6 +4331,158 @@ function pjEnd(){
     sv.closest(".panel").innerHTML=`<b style="font:600 15px var(--display)">Bestenliste</b>${hsTable(list,at)}`; toast("Eingetragen"); };
   $("#pj-home").onclick=pjHome; $("#pj-again").onclick=pjStart; window.scrollTo({top:0});
 }
+
+/* ---------- Port-Labor: Lerntabelle · Karteikarten · Memory · Quiz ----------
+   Ergänzt den Port-Jäger. Lernstand je Port in Kästen 0–5 (Leitner): „Gewusst“ = Kasten +1, „Nicht gewusst“ = zurück auf 1.
+   Ab Kasten 3 gilt ein Port als „sicher“. Karteikarten nehmen zuerst die niedrigsten Kästen. */
+const PORT_GROUPS=[["web","🌐 Web"],["mail","✉️ E-Mail"],["remote","🖥️ Fernzugriff"],["files","📁 Dateien"],["net","🛰️ Netzdienste"],["dir","🗄️ Verzeichnis & Datenbank"],["voip","📞 Telefonie"]];
+const PORT_META={
+ "80":["web","Das Web: 80 normal – mit TLS wird daraus 443."],
+ "443":["web","HTTPS = HTTP + TLS. Das „S“ macht aus 80 die 443."],
+ "8080":["web","„80 doppelt“ – der Ausweich-Port für Webserver und Proxys."],
+ "25":["mail","Mail verschicken (Server zu Server). Mit TLS: 465, vom Mailprogramm aus: 587."],
+ "465":["mail","SMTP mit TLS. 4-6-5: der „sichere Versand“."],
+ "587":["mail","Submission: dein Mailprogramm gibt die Mail beim Server ab (mit STARTTLS)."],
+ "110":["mail","POP3 holt Mails ab und löscht sie meist vom Server. Mit TLS: 995."],
+ "995":["mail","POP3S – die sicheren Abrufe liegen bei 99x: 993 IMAPS, 995 POP3S."],
+ "143":["mail","IMAP lässt Mails auf dem Server (alle Geräte gleich). Mit TLS: 993."],
+ "993":["mail","IMAPS – die sicheren Abrufe liegen bei 99x: 993 IMAPS, 995 POP3S."],
+ "22":["remote","SSH = sicher. Direkt daneben liegt der unsichere Vorgänger Telnet (23)."],
+ "23":["remote","Telnet: eins nach SSH (22) – alles im Klartext, heute tabu."],
+ "3389":["remote","Remotedesktop: 33-89 – „Drei-drei, acht-neun, ich schalt mich rein“."],
+ "20/21":["files","FTP: 21 für die Befehle (Steuerung), 20 für die Daten. Unverschlüsselt!"],
+ "69":["files","TFTP = Trivial FTP: ohne Login, über UDP – z. B. Boot-Images für Switches."],
+ "445":["files","SMB – Windows-Freigaben. Liegt zwei neben HTTPS (443)."],
+ "53":["net","DNS – das Telefonbuch des Internets. Fällt es aus, gehen IPs, aber keine Namen."],
+ "67/68":["net","DHCP: der Server hat die kleinere Nummer (67), der Client die größere (68)."],
+ "123":["net","Uhrzeit: 1-2-3 – wie Sekunden zählen."],
+ "161":["net","SNMP – Netzwerkgeräte überwachen (Monitoring)."],
+ "389":["dir","LDAP – Verzeichnisdienst wie Active Directory. Mit TLS: 636."],
+ "636":["dir","LDAPS – LDAP mit TLS."],
+ "1433":["dir","Microsoft SQL Server: 14-33."],
+ "3306":["dir","MySQL/MariaDB: 33-06."],
+ "5060":["voip","SIP baut VoIP-Telefonate auf: 50-60."]};
+const plKey=P=>P.p;
+const plGroup=P=>(PORT_META[P.p]||["net"])[0];
+const plTip=P=>(PORT_META[P.p]||["",""])[1];
+function plBox(){ try{ return JSON.parse(store.get("pj_box","{}"))||{}; }catch(e){ return {}; } }
+function plSave(b){ store.set("pj_box",JSON.stringify(b)); }
+const plSure=b=>PORTS.filter(P=>(b[plKey(P)]||0)>=3).length;
+function plDots(n){ return `<span class="pl-dots" title="Kasten ${n} von 5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`; }
+
+/* Startseite des Port-Jägers: Lernstand + vier Wege */
+function pjHome(){
+  const b=plBox(), sure=plSure(b), n=PORTS.length;
+  const row=(id,ic,t,sub,c)=>`<button class="hrow ${c}" data-pl="${id}"><span class="ic" style="font-size:20px">${ic}</span><span class="tx"><b>${t}</b><small>${sub}</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`;
+  $("#pj").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <h2>Port-Labor</h2><p>Erst mit Tabelle und Karteikarten lernen, dann im Memory festigen und im Quiz prüfen.</p>
+      <span class="pill">${sure} von ${n} Ports sicher</span>
+      <div class="bar" style="width:100%;height:6px;border-radius:3px;background:var(--line);overflow:hidden"><i style="display:block;height:100%;width:${sure/n*100}%;background:var(--grad)"></i></div></div>
+    <div class="sec-h">Lernen</div>
+    <div class="hlist">${row("tab","📋","Lerntabelle","Nach Themen sortiert, mit Merkhilfen – Spalten zum Abfragen abdecken","")}
+      ${row("cards","🃏","Port-Karteikarten",`10 Karten pro Runde · zuerst, was du noch nicht kannst`,"l")}</div>
+    <div class="sec-h">Spielen & Prüfen</div>
+    <div class="hlist">${row("mem","🧠","Port-Memory","Port und Dienst als Paar finden – gegen die Uhr","q")}
+      ${row("quiz","🎯","Port-Jäger-Quiz","10 gemischte Fragen inkl. Firewall-Fälle · Bestenliste","q")}</div>
+    <div class="panel"><b style="font:600 15px var(--display)">Bestenliste Quiz</b>${hsTable(pjScores())}</div>
+    <button class="btn ghost block" id="pl-reset" style="font-size:13px">Lernstand der Ports zurücksetzen</button>`;
+  $$("#pj [data-pl]").forEach(x=>x.onclick=()=>({tab:plTable,cards:plCardsStart,mem:plMemStart,quiz:pjStart})[x.dataset.pl]());
+  $("#pl-reset").onclick=()=>{ if(confirm("Lernstand aller Ports zurücksetzen?")){ plSave({}); pjHome(); } };
+  window.scrollTo({top:0});
+}
+function plBack(){ return `<button class="btn ghost block" id="pl-home">← Port-Labor</button>`; }
+function plWireBack(){ const h=$("#pl-home"); if(h) h.onclick=pjHome; }
+
+/* 📋 Lerntabelle mit Abdecken-Modus */
+function plTable(){
+  const cover=store.get("pl_cover","none"), b=plBox();
+  const cell=(txt,hide)=>hide?`<button type="button" class="pl-hide">?</button><span class="pl-sol" hidden>${txt}</span>`:txt;
+  $("#pj").innerHTML=`<div class="hub-head"><h2 class="title">Lerntabelle</h2><p>Lies dir eine Gruppe durch, dann deck eine Spalte ab und frag dich selbst ab.</p></div>
+    <div class="chips-wrap" style="justify-content:center">${[["none","Alles zeigen"],["port","Ports abdecken"],["dienst","Dienste abdecken"]].map(([k,t])=>`<button class="pillbtn" data-cv="${k}" aria-pressed="${cover===k}">${t}</button>`).join("")}</div>
+    ${PORT_GROUPS.map(([g,name])=>{ const list=PORTS.filter(P=>plGroup(P)===g); if(!list.length) return "";
+      return `<div class="panel pl-grp"><b class="pl-gh">${name}</b>${list.map(P=>`<div class="pl-row">
+        <div class="pl-port">${cell(P.p,cover==="port")}</div>
+        <div class="pl-info"><b>${cell(esc(P.d),cover==="dienst")}</b> <span class="pill pl-t">${P.t}</span> ${plDots(b[plKey(P)]||0)}<br><span>${esc(P.x)}</span><br><span class="pl-tip"${cover!=="none"?" hidden":""}>💡 ${esc(plTip(P))}</span></div></div>`).join("")}</div>`; }).join("")}
+    <p class="hint" style="text-align:left">Port-Bereiche: 0–1023 Well-known · 1024–49151 Registered · 49152–65535 dynamisch/privat</p>
+    ${plBack()}`;
+  $$("#pj [data-cv]").forEach(x=>x.onclick=()=>{ store.set("pl_cover",x.dataset.cv); plTable(); });
+  $$("#pj .pl-hide").forEach(x=>x.onclick=()=>{ x.hidden=true; x.nextElementSibling.hidden=false; const t=x.closest(".pl-row").querySelector(".pl-tip"); if(t) t.hidden=false; });
+  plWireBack(); window.scrollTo({top:0});
+}
+
+/* 🃏 Karteikarten (Leitner) */
+let pc=null;
+function plCardsStart(){
+  const b=plBox(), dir=store.get("pl_dir","mix");
+  const order=PORTS.slice().sort(()=>Math.random()-.5).sort((x,y)=>(b[plKey(x)]||0)-(b[plKey(y)]||0)).slice(0,10);
+  pc={list:order.map(P=>({P,d:dir==="mix"?(Math.random()<.5?"pd":"dp"):dir})),i:0,ok:0,flipped:false,wrong:[]};
+  plCardShow();
+}
+function plCardShow(){
+  if(pc.i>=pc.list.length) return plCardsEnd();
+  const {P,d}=pc.list[pc.i], b=plBox(), box=b[plKey(P)]||0, dir=store.get("pl_dir","mix"), g=PORT_GROUPS.find(x=>x[0]===plGroup(P));
+  const front=d==="pd"?`<small class="hint">Welcher Dienst?</small><div class="pl-big">${P.p}</div>`:`<small class="hint">Welcher Port?</small><div class="pl-big pl-name">${esc(P.d)}</div>`;
+  $("#pj").innerHTML=`<div class="mt-top"><span class="score">${pc.ok} / ${pc.list.length}</span><span class="pill">Karte ${pc.i+1}</span>${plDots(box)}</div>
+    <div class="timer"><i style="transform:scaleX(${pc.i/pc.list.length})"></i></div>
+    <div class="chips-wrap" style="justify-content:center">${[["mix","Gemischt"],["pd","Port → Dienst"],["dp","Dienst → Port"]].map(([k,t])=>`<button class="pillbtn" data-dir="${k}" aria-pressed="${dir===k}">${t}</button>`).join("")}</div>
+    <button type="button" class="bz-card in pl-card" id="pl-card"><span class="pill" style="align-self:center">${g?g[1]:""}</span>${front}
+      <div id="pl-back" hidden><div class="pl-ans">${d==="pd"?esc(P.d):P.p}</div><div class="pl-meta"><b>${esc(P.d)}</b> · Port ${P.p} · ${P.t}<br>${esc(P.x)}</div><div class="pl-tip">💡 ${esc(plTip(P))}</div></div>
+      <small class="hint" id="pl-tap">Antippen zum Umdrehen</small></button>
+    <div class="grid2" id="pl-rate" hidden><button class="btn ghost" data-r="0">✗ Nicht gewusst</button><button class="btn primary" data-r="1">✓ Gewusst</button></div>
+    ${plBack()}`;
+  $$("#pj [data-dir]").forEach(x=>x.onclick=()=>{ store.set("pl_dir",x.dataset.dir); plCardsStart(); });
+  $("#pl-card").onclick=()=>{ if(pc.flipped) return; pc.flipped=true; $("#pl-back").hidden=false; $("#pl-tap").hidden=true; $("#pl-rate").hidden=false; };
+  $$("#pl-rate [data-r]").forEach(x=>x.onclick=()=>{ const b2=plBox(), k=plKey(P), ok=x.dataset.r==="1";
+    b2[k]=ok?Math.min(5,(b2[k]||0)+1):1; plSave(b2); if(ok) pc.ok++; else pc.wrong.push(P); pc.i++; pc.flipped=false; plCardShow(); });
+  plWireBack();
+}
+function plCardsEnd(){
+  const b=plBox();
+  $("#pj").innerHTML=`<div class="done"><p class="hint">Runde geschafft</p><div class="big-score">${pc.ok}/${pc.list.length}</div><p class="hint">Insgesamt sicher: ${plSure(b)} von ${PORTS.length} Ports</p></div>
+    ${pc.wrong.length?`<div class="panel"><b style="font:600 15px var(--display)">Nochmal anschauen</b>${pc.wrong.map(P=>`<div class="vk-row"><b>${P.p}</b><span><i>${esc(P.d)}</i> · ${P.t}<br>💡 ${esc(plTip(P))}</span></div>`).join("")}</div>`:""}
+    <div class="grid2"><button class="btn ghost" id="pl-home">← Port-Labor</button><button class="btn primary" id="pl-again">Nächste Runde</button></div>`;
+  plWireBack(); $("#pl-again").onclick=plCardsStart; window.scrollTo({top:0});
+}
+
+/* 🧠 Port-Memory: 6 Paare (Port-Nummer + Dienst) */
+let pm=null;
+function plMemStart(){
+  const pick=PORTS.slice().sort(()=>Math.random()-.5).slice(0,6);
+  const cards=pick.flatMap(P=>[{k:plKey(P),t:P.p,num:true},{k:plKey(P),t:P.d,num:false}]).sort(()=>Math.random()-.5);
+  pm={cards,open:[],found:new Set(),moves:0,t0:performance.now(),lock:false,pick};
+  plMemShow();
+}
+function plMemShow(){
+  const best=+store.get("pm_best","0")||0;
+  $("#pj").innerHTML=`<div class="mt-top"><span class="score" id="pm-m">${pm.moves} Züge</span><span class="pill" id="pm-t">0 s</span><span class="pill">Rekord ${best?best+" Züge":"–"}</span></div>
+    <p class="hint" style="margin:0">Finde zu jedem Port den passenden Dienst.</p>
+    <div class="pm-grid">${pm.cards.map((c,i)=>`<button type="button" class="pm-c" data-i="${i}"><span class="pm-f">?</span><span class="pm-b ${c.num?"num":""}">${esc(c.t)}</span></button>`).join("")}</div>
+    <div id="pm-fb"></div>${plBack()}`;
+  $$("#pj .pm-c").forEach(x=>x.onclick=()=>plMemFlip(+x.dataset.i));
+  plWireBack(); plMemTick();
+}
+function plMemTick(){ if(!pm||pm.done) return; const el=$("#pm-t"); if(!el) return; el.textContent=Math.floor((performance.now()-pm.t0)/1000)+" s"; setTimeout(plMemTick,500); }
+function plMemFlip(i){
+  if(pm.lock||pm.open.includes(i)||pm.found.has(pm.cards[i].k)) return;
+  const el=$(`#pj .pm-c[data-i="${i}"]`); el.classList.add("open"); pm.open.push(i);
+  if(pm.open.length<2) return;
+  pm.moves++; $("#pm-m").textContent=pm.moves+" Züge";
+  const [a,c]=pm.open.map(x=>pm.cards[x]);
+  if(a.k===c.k&&a.num!==c.num){ pm.found.add(a.k); pm.open.forEach(x=>$(`#pj .pm-c[data-i="${x}"]`).classList.add("done"));
+    const P=PORTS.find(p=>plKey(p)===a.k); $("#pm-fb").innerHTML=`<div class="vk-card ok"><b>${P.p} = ${esc(P.d)}</b> · ${P.t}<br>💡 ${esc(plTip(P))}</div>`; pm.open=[];
+    if(pm.found.size===pm.pick.length) setTimeout(plMemEnd,700); }
+  else { pm.lock=true; setTimeout(()=>{ pm.open.forEach(x=>$(`#pj .pm-c[data-i="${x}"]`).classList.remove("open")); pm.open=[]; pm.lock=false; },900); }
+}
+function plMemEnd(){
+  pm.done=true; const secs=Math.round((performance.now()-pm.t0)/1000), best=+store.get("pm_best","0")||0, rec=!best||pm.moves<best;
+  if(rec) store.set("pm_best",String(pm.moves));
+  $("#pj").innerHTML=`<div class="done"><p class="hint">Alle Paare gefunden · ${secs} s</p><div class="big-score">${pm.moves} Züge</div><p class="hint">${rec?"🏆 Neuer Rekord!":`Rekord: ${best} Züge`} · 6 Züge wären perfekt</p></div>
+    <div class="panel"><b style="font:600 15px var(--display)">Die Paare dieser Runde</b>${pm.pick.map(P=>`<div class="vk-row"><b>${P.p}</b><span><i>${esc(P.d)}</i> · ${P.t}</span></div>`).join("")}</div>
+    <div class="grid2"><button class="btn ghost" id="pl-home">← Port-Labor</button><button class="btn primary" id="pl-again">Nochmal</button></div>`;
+  plWireBack(); $("#pl-again").onclick=plMemStart; window.scrollTo({top:0});
+}
+
 
 /* ---------- Podcast ----------
    Folgen kommen aus einem öffentlichen RSS-Feed (z. B. Spotify for Creators) – so hören alle App-Nutzer dieselben Folgen.
