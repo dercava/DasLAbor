@@ -571,6 +571,39 @@ body.kb .stage{padding-bottom:45vh}
 .vk-row{display:grid;grid-template-columns:90px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
 .vk-row b{font:700 14px var(--mono);overflow-wrap:anywhere}.vk-row i{color:var(--muted)}
 .vk-ok{color:var(--easy)}
+.sp-in{padding:0 14px 12px;display:flex;flex-direction:column;gap:8px}
+.sp-in p{margin:0;line-height:1.55;font-size:14.5px}
+.sp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sp-tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:12px;border:1px solid var(--line);background:var(--surface);border-radius:14px;box-shadow:var(--shadow);font:inherit;color:inherit;min-width:0}
+.sp-tile:active{transform:scale(.97)}
+.sp-ic{font-size:24px}
+.sp-tile b{font:650 15px var(--display)}
+.sp-tile small{color:var(--muted);font-size:12px;line-height:1.35}
+.sp-card{display:flex;flex-direction:column;gap:8px}
+.sp-tag{margin:0;font:600 15px/1.4 var(--display)}
+.sp-row{display:grid;grid-template-columns:92px 1fr;gap:8px;font-size:14px;line-height:1.45;border-top:1px solid var(--line);padding-top:6px}
+.sp-pm{display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.45}
+.sp-pm .ok{color:var(--good)} .sp-pm .bad{color:var(--again)}
+.vb-az{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.vb-az a{font:700 12px var(--mono);color:var(--accent);text-decoration:none;padding:4px 6px;border-radius:6px;background:var(--accent-soft)}
+.vb-grp{padding:10px 14px}
+.vb-letter{font:800 20px var(--display);color:var(--accent)}
+.vb-row{display:grid;grid-template-columns:82px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
+.vb-k{font:700 15px var(--mono);overflow-wrap:anywhere}
+.vb-x{color:var(--muted)}
+.vb-cat{font-size:10px;padding:1px 7px;margin-top:4px;display:inline-block}
+.vb-sent{font:600 17px/1.45 var(--display)}
+.vz-slots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}
+.vz-slot{min-width:54px;min-height:30px;padding:4px 8px;border-radius:8px;border:1.5px dashed var(--line);font:600 14px var(--display);display:inline-flex;align-items:center;justify-content:center}
+.vz-slot.on{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 15%,transparent)}
+.vz-tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.vz-t{padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font:600 15px var(--display);color:var(--ink);box-shadow:var(--shadow)}
+.vz-t.ok{opacity:.35}
+.vz-t.bad{border-color:var(--again);background:color-mix(in srgb,var(--again) 18%,var(--surface));animation:shake .4s}
+.vr-kb{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.vr-kb button{padding:10px 0;border-radius:8px;border:1px solid var(--line);background:var(--surface);font:700 14px var(--mono);color:var(--ink)}
+.vr-kb button.wide{grid-column:span 2}
+.shake{animation:shake .4s}
 .pl-grp{display:flex;flex-direction:column;gap:0;padding:12px 14px}
 .pl-gh{font:600 15px var(--display);margin-bottom:4px}
 .pl-row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.45}
@@ -726,7 +759,7 @@ body.kb .stage{padding-bottom:45vh}
     <section class="screen" id="s-bibliothek">
       <div class="center hubscreen">
         <div class="hub-head"><h2 class="title">Wissen</h2><p>Nachschlagen statt auswendig lernen.</p></div>
-        <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="sprachen"><span class="ic" style="font-size:19px">💻</span><span class="tx"><b>Programmiersprachen</b><small>Python, Java, C# & Co. · Compiler, Typisierung, Paradigmen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Mehr im Labor</div>
         <div class="hlist"><button class="hrow" data-go="druck"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span><span class="tx"><b>3D-Druck</b><small>Modelle & Projekte</small></span> <span class="soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
       </div>
@@ -736,7 +769,7 @@ body.kb .stage{padding-bottom:45vh}
       <div class="center hubscreen">
         <div class="hub-head"><h2 class="title">Spiele & Labore</h2><p>Spielerisch üben – und wie in der Prüfung selbst lösen.</p></div>
         <div class="sec-h">Quiz & Tempo</div>
-        <div class="hlist"><button class="hrow q" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="vokabeln"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><span class="tx"><b>Abkürzungs-Duell</b><small>DHCP, SLA, IaaS … in einem Satz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="ports"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow q" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="vokabeln"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span><span class="tx"><b>Abkürzungs-Labor</b><small>318 Begriffe · Tabelle, Karteikarten, Puzzle, Rennen, Duell</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow q" data-go="ports"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Praxis-Labore</div>
         <div class="hlist"><button class="hrow l" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow l" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
       </div>
@@ -800,6 +833,7 @@ body.kb .stage{padding-bottom:45vh}
     <section class="screen" id="s-subnetz"><div class="center" id="sn"></div></section>
     <section class="screen" id="s-sql"><div class="center" id="sq"></div></section>
     <section class="screen" id="s-erd"><div class="center" id="er"></div></section>
+    <section class="screen" id="s-sprachen"><div class="center" id="sp"></div></section>
     <section class="screen" id="s-terminal"><div class="center" id="tm"></div></section>
     <section class="screen" id="s-blitz"><div class="center" id="bz"></div></section>
     <section class="screen" id="s-wissen"><div class="center wi" id="wi"></div></section>
@@ -1114,15 +1148,15 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const RESUME={challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",wissen:"Wissen",podcast:"Podcast"};
-const ROUTES={start:"home",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd"};
+const RESUME={challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",sprachen:"Programmiersprachen",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",wissen:"Wissen",podcast:"Podcast"};
+const ROUTES={start:"home",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.3";
-const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
+const APP_VER="3.4";
+const GC_AREAS={sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -1166,6 +1200,7 @@ function show(r){
   if(id==="sql") sqHome();
   if(id!=="erd"&&er&&!er.done) er.done=true;
   if(id==="erd") erHome();
+  if(id==="sprachen") spHome();
   if(id!=="subnetz"&&sn&&!sn.done) sn.done=true;
   if(id==="subnetz") snHome();
   if(id==="vokabeln") vkHome();
@@ -3692,6 +3727,144 @@ function erEnd(){
   $("#er-home").onclick=erHome; const n=$("#er-nx"); if(n) n.onclick=()=>erStart(next.id); const a=$("#er-again"); if(a) a.onclick=()=>erStart(c.id); window.scrollTo({top:0});
 }
 
+/* ---------- Programmiersprachen: Grundlagen, Steckbriefe, Vergleich, Code-Detektiv ---------- */
+const LANG_BASICS=[
+ {t:"Compiler, Interpreter, Bytecode",x:"Ein Compiler übersetzt den ganzen Quelltext vorher in Maschinencode (z. B. C, C++, Go, Rust) – das Programm läuft danach schnell und ohne Compiler. Ein Interpreter liest den Quelltext beim Ausführen Zeile für Zeile (z. B. Bash, früher JavaScript). Dazwischen liegt Bytecode: Java und C# werden in einen Zwischencode übersetzt, den eine virtuelle Maschine (JVM bzw. .NET-CLR) ausführt – oft mit JIT-Compiler, der häufig genutzte Teile zur Laufzeit in Maschinencode übersetzt.",m:"Compiler = vorher alles übersetzen. Interpreter = beim Ausführen übersetzen. Bytecode = Zwischenschritt für eine virtuelle Maschine."},
+ {t:"Statische und dynamische Typisierung",x:"Statisch typisiert (Java, C, C#, Go) heißt: Der Datentyp jeder Variablen steht beim Übersetzen fest, Fehler wie „Text + Zahl“ fallen schon vor dem Start auf. Dynamisch typisiert (Python, JavaScript, PHP) heißt: Der Typ ergibt sich erst zur Laufzeit – schneller geschrieben, Fehler zeigen sich aber erst beim Ausführen. Stark typisiert (Python, Java) wandelt Typen nicht heimlich um, schwach typisiert (JavaScript, PHP) schon: In JavaScript ergibt \"5\" + 1 den Text \"51\".",m:"Statisch/dynamisch = WANN steht der Typ fest. Stark/schwach = wie STRENG wird umgewandelt."},
+ {t:"Paradigmen: Wie wird programmiert?",x:"Imperativ/prozedural: Schritt-für-Schritt-Anweisungen, gegliedert in Funktionen (C). Objektorientiert (OOP): Daten und Methoden werden in Klassen und Objekten gebündelt – mit Kapselung, Vererbung und Polymorphie (Java, C#, C++). Funktional: Programme bestehen aus Funktionen ohne Seiteneffekte (Haskell, teils Python/JavaScript). Deklarativ: Man beschreibt WAS man will, nicht WIE (SQL, HTML).",m:"Imperativ = WIE (Schritte). Deklarativ = WAS (Ergebnis)."},
+ {t:"Sprachgenerationen 1GL – 4GL",x:"1GL: Maschinensprache aus Nullen und Einsen, direkt für den Prozessor. 2GL: Assembler – Maschinenbefehle als Kürzel (MOV, ADD), prozessorabhängig. 3GL: höhere Programmiersprachen wie C, Java, Python – unabhängig vom Prozessor, werden übersetzt. 4GL: problemorientierte Sprachen wie SQL, bei denen man das Ergebnis beschreibt.",m:"1 = Bits, 2 = Assembler, 3 = Hochsprache, 4 = SQL & Co."},
+ {t:"Programmier-, Skript-, Auszeichnungs- und Abfragesprache",x:"Programmiersprachen haben Variablen, Bedingungen und Schleifen und können jede Berechnung ausdrücken (Java, C). Skriptsprachen sind Programmiersprachen, die meist interpretiert werden und Abläufe automatisieren (Bash, PowerShell, Python). Auszeichnungssprachen beschreiben Struktur und Aussehen von Inhalten und sind KEINE Programmiersprachen (HTML, XML, Markdown; CSS ist eine Stylesheet-Sprache). Abfragesprachen holen und ändern Daten in Datenbanken (SQL).",m:"HTML ist keine Programmiersprache – es hat keine Schleifen und keine Bedingungen."}
+];
+const LANGS=[
+ {id:"python",n:"Python",ic:"🐍",y:"1991 · Guido van Rossum",tag:"Allrounder für Skripte, Automatisierung, Daten und KI",run:"Interpreter (Bytecode)",typ:"dynamisch, stark",par:"imperativ, objektorientiert, funktional",
+  use:"Automatisierung von Admin-Aufgaben, Datenanalyse, KI/Machine Learning, Webserver (Django, Flask), Einstieg ins Programmieren",
+  plus:"Sehr gut lesbar, riesige Bibliotheksauswahl, schnell geschrieben",minus:"Langsamer als kompilierte Sprachen, Fehler zeigen sich oft erst zur Laufzeit",
+  fisi:"Für Admins ideal: Netzwerkgeräte konfigurieren, Logdateien auswerten, Backups automatisieren.",m:"Blöcke entstehen durch Einrückung – keine geschweiften Klammern.",
+  code:`print("Hallo Welt")\nfor i in range(1, 4):\n    print(i)`},
+ {id:"java",n:"Java",ic:"☕",y:"1995 · Sun Microsystems (heute Oracle)",tag:"„Write once, run anywhere“ – läuft überall, wo eine JVM ist",run:"Compiler → Bytecode → JVM (mit JIT)",typ:"statisch, stark",par:"objektorientiert",
+  use:"Große Unternehmensanwendungen, Backend-Server, Android-Apps (neben Kotlin), Desktop-Programme",
+  plus:"Plattformunabhängig, sehr verbreitet, automatische Speicherbereinigung (Garbage Collector)",minus:"Viel Schreibarbeit, braucht eine installierte Laufzeitumgebung (JRE/JVM)",
+  fisi:"Viele Firmenprogramme brauchen eine Java-Laufzeitumgebung – die muss der Admin aktuell halten.",m:"Java ≠ JavaScript – die beiden haben nur den Namen gemeinsam.",
+  code:`public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hallo Welt");\n        for (int i = 1; i <= 3; i++) System.out.println(i);\n    }\n}`},
+ {id:"c",n:"C",ic:"⚙️",y:"1972 · Dennis Ritchie (Bell Labs)",tag:"Maschinennah und schnell – die Basis vieler Betriebssysteme",run:"Compiler → Maschinencode",typ:"statisch, eher schwach",par:"imperativ, prozedural",
+  use:"Betriebssystem-Kerne (Linux, Teile von Windows), Treiber, Embedded-Systeme, Router-Firmware",
+  plus:"Sehr schnell, wenig Speicherbedarf, direkter Hardwarezugriff",minus:"Speicher wird von Hand verwaltet (malloc/free) – Fehler führen zu Abstürzen und Sicherheitslücken",
+  fisi:"Firmware von Switches, Druckern und IoT-Geräten ist oft in C geschrieben – daher die vielen Sicherheits-Updates.",m:"C kennt keine Klassen – das kam erst mit C++.",
+  code:`#include <stdio.h>\n\nint main(void) {\n    printf("Hallo Welt\\n");\n    for (int i = 1; i <= 3; i++) printf("%d\\n", i);\n    return 0;\n}`},
+ {id:"cpp",n:"C++",ic:"🧩",y:"1985 · Bjarne Stroustrup",tag:"C mit Objektorientierung – für Leistung und große Systeme",run:"Compiler → Maschinencode",typ:"statisch, stark",par:"imperativ, objektorientiert, generisch",
+  use:"Spiele und Game-Engines, Browser, Grafik- und Audiosoftware, Hochleistungsanwendungen",
+  plus:"Sehr schnell, objektorientiert und trotzdem hardwarenah",minus:"Komplex und schwer zu lernen, manuelle Speicherverwaltung möglich",
+  fisi:"Viele Programme, die du installierst und patchst (Browser, Office-Teile), sind in C++ geschrieben.",m:"++ ist in C der Operator „um eins erhöhen“ – also „C, eine Stufe weiter“.",
+  code:`#include <iostream>\n\nint main() {\n    std::cout << "Hallo Welt\\n";\n    for (int i = 1; i <= 3; i++) std::cout << i << "\\n";\n}`},
+ {id:"csharp",n:"C#",ic:"🎯",y:"2000 · Microsoft",tag:"Microsofts Sprache für .NET – Windows, Web und Spiele",run:"Compiler → CIL-Bytecode → .NET-CLR (mit JIT)",typ:"statisch, stark",par:"objektorientiert, teils funktional",
+  use:"Windows-Anwendungen, Webanwendungen mit ASP.NET, Spiele mit Unity, Unternehmenssoftware",
+  plus:"Modern, gut mit Windows und Azure verzahnt, Garbage Collector",minus:"Am stärksten im Microsoft-Umfeld, braucht die .NET-Laufzeit",
+  fisi:".NET-Laufzeitumgebungen gehören auf vielen Windows-Clients zur Grundausstattung.",m:"C# spricht man „C sharp“ – wie das Kreuz # in der Musik.",
+  code:`Console.WriteLine("Hallo Welt");\nfor (int i = 1; i <= 3; i++)\n    Console.WriteLine(i);`},
+ {id:"js",n:"JavaScript",ic:"🟨",y:"1995 · Brendan Eich (Netscape)",tag:"Die Sprache des Browsers – macht Webseiten interaktiv",run:"Interpreter/JIT im Browser oder in Node.js",typ:"dynamisch, schwach",par:"imperativ, objektorientiert (Prototypen), funktional",
+  use:"Interaktive Webseiten (Frontend), Webserver mit Node.js, Apps mit Web-Technik",
+  plus:"Läuft in jedem Browser ohne Installation, riesiges Ökosystem (npm)",minus:"Schwache Typisierung führt zu Überraschungen (\"5\" + 1 = \"51\")",
+  fisi:"Auch diese App ist in HTML, CSS und JavaScript geschrieben.",m:"HTML = Struktur, CSS = Aussehen, JavaScript = Verhalten.",
+  code:`console.log("Hallo Welt");\nfor (let i = 1; i <= 3; i++) {\n    console.log(i);\n}`},
+ {id:"ts",n:"TypeScript",ic:"🔷",y:"2012 · Microsoft",tag:"JavaScript mit Datentypen",run:"Transpiler → JavaScript",typ:"statisch (optional), stark",par:"wie JavaScript",
+  use:"Große Webanwendungen (Angular, React-Projekte), wo Typfehler früh auffallen sollen",
+  plus:"Fehler werden vor dem Ausführen erkannt, bessere Unterstützung im Editor",minus:"Zusätzlicher Übersetzungsschritt nötig",
+  fisi:"Wird nie direkt ausgeführt – der Browser bekommt immer das daraus erzeugte JavaScript.",m:"Jedes JavaScript ist gültiges TypeScript, aber nicht umgekehrt.",
+  code:`const gruss: string = "Hallo Welt";\nconsole.log(gruss);\nfor (let i: number = 1; i <= 3; i++) console.log(i);`},
+ {id:"php",n:"PHP",ic:"🐘",y:"1995 · Rasmus Lerdorf",tag:"Serverseitige Skriptsprache für Webseiten",run:"Interpreter auf dem Webserver",typ:"dynamisch, schwach",par:"imperativ, objektorientiert",
+  use:"Dynamische Webseiten, Content-Management-Systeme wie WordPress, Shops",
+  plus:"Einfach zu hosten, fast jeder Webhoster unterstützt es",minus:"Ältere Versionen sind unsicher – Updates sind Pflicht",
+  fisi:"Auf Webservern (LAMP: Linux, Apache, MySQL, PHP) musst du PHP-Versionen und Module pflegen.",m:"PHP läuft auf dem Server – der Browser sieht nur das fertige HTML.",
+  code:`<?php\necho "Hallo Welt\\n";\nfor ($i = 1; $i <= 3; $i++) {\n    echo $i . "\\n";\n}`},
+ {id:"sql",n:"SQL",ic:"🗄️",y:"1974 · IBM (als SEQUEL)",tag:"Abfragesprache für relationale Datenbanken",run:"Wird vom Datenbanksystem ausgewertet",typ:"Spalten haben feste Datentypen",par:"deklarativ (4GL)",
+  use:"Daten abfragen, einfügen, ändern und löschen; Tabellen anlegen; Rechte vergeben",
+  plus:"Man beschreibt nur das Ergebnis – die Datenbank findet den Weg",minus:"Jedes Datenbanksystem hat eigene Erweiterungen (Dialekte)",
+  fisi:"DQL (SELECT), DML (INSERT, UPDATE, DELETE), DDL (CREATE, ALTER, DROP), DCL (GRANT, REVOKE).",m:"SQL ist deklarativ: Du sagst WAS du willst, nicht WIE.",
+  code:`SELECT name, ort\nFROM kunde\nWHERE ort = 'Berlin'\nORDER BY name;`},
+ {id:"bash",n:"Bash",ic:"🐚",y:"1989 · Brian Fox (GNU)",tag:"Shell und Skriptsprache unter Linux",run:"Interpreter (Shell)",typ:"untypisiert (alles ist Text)",par:"imperativ",
+  use:"Linux-Administration, Automatisierung mit Cronjobs, Installations- und Backup-Skripte",
+  plus:"Auf fast jedem Linux-Server vorhanden, ideal zum Verketten von Befehlen mit | (Pipe)",minus:"Fehleranfällig bei Leerzeichen und Sonderzeichen, für große Programme ungeeignet",
+  fisi:"Die erste Zeile #!/bin/bash (Shebang) sagt dem System, mit welchem Interpreter das Skript läuft.",m:"Ein Skript braucht Ausführungsrechte: chmod +x skript.sh",
+  code:`#!/bin/bash\necho "Hallo Welt"\nfor i in 1 2 3; do\n    echo "$i"\ndone`},
+ {id:"ps",n:"PowerShell",ic:"🟦",y:"2006 · Microsoft",tag:"Shell und Skriptsprache für Windows-Administration",run:"Interpreter (auf .NET)",typ:"dynamisch (arbeitet mit .NET-Objekten)",par:"imperativ, objektorientiert",
+  use:"Windows- und Active-Directory-Verwaltung, Microsoft 365 und Azure, Automatisierung",
+  plus:"Die Pipeline gibt Objekte statt Text weiter, einheitliche Befehle nach dem Muster Verb-Nomen",minus:"Ausführungsrichtlinie (Execution Policy) blockiert anfangs Skripte",
+  fisi:"Benutzer anlegen, Gruppen pflegen, Updates prüfen – alles per Skript für viele Rechner gleichzeitig.",m:"Cmdlets heißen Verb-Nomen: Get-Process, New-ADUser, Restart-Service.",
+  code:`Write-Output "Hallo Welt"\n1..3 | ForEach-Object {\n    Write-Output $_\n}`},
+ {id:"go",n:"Go",ic:"🐹",y:"2009 · Google",tag:"Einfache, schnelle Sprache für Server und Cloud-Werkzeuge",run:"Compiler → Maschinencode",typ:"statisch, stark",par:"imperativ, nebenläufig",
+  use:"Cloud- und Netzwerkdienste, Kommandozeilen-Tools – Docker und Kubernetes sind in Go geschrieben",
+  plus:"Schnell übersetzt, eine einzige ausführbare Datei, einfache Nebenläufigkeit (Goroutinen)",minus:"Bewusst wenige Sprachmittel, weniger Bibliotheken als Java oder Python",
+  fisi:"Viele moderne Admin-Werkzeuge (Docker, Terraform, Prometheus) sind Go-Programme.",m:"Go-Programme kommen als eine Datei ohne Abhängigkeiten – einfach zu verteilen.",
+  code:`package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hallo Welt")\n    for i := 1; i <= 3; i++ {\n        fmt.Println(i)\n    }\n}`},
+ {id:"kotlin",n:"Kotlin",ic:"🤖",y:"2011 · JetBrains",tag:"Moderne Sprache für Android und die JVM",run:"Compiler → Bytecode → JVM",typ:"statisch, stark",par:"objektorientiert, funktional",
+  use:"Android-Apps (von Google bevorzugt), Backend auf der JVM",
+  plus:"Kürzer und sicherer als Java (Schutz vor Null-Fehlern), mit Java kombinierbar",minus:"Kleinere Gemeinschaft als Java",
+  fisi:"Läuft wie Java auf der JVM – beide können im selben Projekt zusammenarbeiten.",m:"Kotlin = das moderne Java für Android.",
+  code:`fun main() {\n    println("Hallo Welt")\n    for (i in 1..3) println(i)\n}`},
+ {id:"swift",n:"Swift",ic:"🍏",y:"2014 · Apple",tag:"Apples Sprache für iPhone- und Mac-Apps",run:"Compiler → Maschinencode",typ:"statisch, stark",par:"objektorientiert, funktional",
+  use:"Apps für iOS, iPadOS, macOS und watchOS",
+  plus:"Sicher und schnell, moderne Syntax",minus:"Fast nur im Apple-Umfeld verbreitet",
+  fisi:"Apps für Firmen-iPhones werden in Swift entwickelt und per MDM verteilt.",m:"Swift hat Objective-C als Apple-Sprache abgelöst.",
+  code:`print("Hallo Welt")\nfor i in 1...3 {\n    print(i)\n}`},
+ {id:"rust",n:"Rust",ic:"🦀",y:"2015 · Mozilla (Version 1.0)",tag:"So schnell wie C, aber speichersicher",run:"Compiler → Maschinencode",typ:"statisch, stark",par:"imperativ, funktional",
+  use:"Systemprogrammierung, sicherheitskritische Software, Teile des Linux-Kernels und von Windows",
+  plus:"Verhindert typische Speicherfehler schon beim Übersetzen (Ownership-Prinzip), ohne Garbage Collector",minus:"Steile Lernkurve, strenger Compiler",
+  fisi:"Wird zunehmend eingesetzt, um Sicherheitslücken durch Speicherfehler zu vermeiden.",m:"Rust = Leistung von C plus Sicherheit.",
+  code:`fn main() {\n    println!("Hallo Welt");\n    for i in 1..=3 {\n        println!("{}", i);\n    }\n}`},
+ {id:"html",n:"HTML & CSS",ic:"🌐",y:"1993 / 1996 · W3C",tag:"Struktur und Aussehen von Webseiten – keine Programmiersprachen",run:"Wird vom Browser dargestellt",typ:"–",par:"deklarativ (Auszeichnung)",
+  use:"Aufbau (HTML) und Gestaltung (CSS) jeder Webseite und Web-App",
+  plus:"Einfach zu lernen, läuft in jedem Browser",minus:"Allein keine Logik möglich – dafür braucht es JavaScript oder eine Serversprache",
+  fisi:"HTML ist eine Auszeichnungssprache, CSS eine Stylesheet-Sprache – beliebte Prüfungsfalle!",m:"HTML hat keine Schleifen und keine Bedingungen – deshalb keine Programmiersprache.",
+  code:`<!-- HTML: Struktur -->\n<h1 class="titel">Hallo Welt</h1>\n\n/* CSS: Aussehen */\n.titel { color: teal; }`},
+ {id:"asm",n:"Assembler",ic:"🔩",y:"seit den 1950ern · prozessorabhängig",tag:"Maschinenbefehle als lesbare Kürzel (2GL)",run:"Assembler → Maschinencode",typ:"untypisiert",par:"imperativ",
+  use:"Bootloader, sehr hardwarenahe Teile von Treibern und Betriebssystemen, Analyse von Schadsoftware",
+  plus:"Maximale Kontrolle und Geschwindigkeit",minus:"Nur für einen Prozessortyp, schwer zu lesen und zu warten",
+  fisi:"Taucht in der Prüfung bei den Sprachgenerationen auf: 2GL.",m:"Assembler ist die Sprache, die einer Maschinensprache am nächsten ist – mit Kürzeln wie MOV und ADD.",
+  code:`mov eax, 1    ; Wert 1 in das Register eax\nadd eax, 2    ; 2 addieren → eax = 3`}
+];
+
+let sp=null;
+function spHome(){
+  $("#sp").innerHTML=`<div class="hub-head"><h2 class="title">Programmiersprachen</h2><p>Was ist was – und wofür wird es gebraucht?</p></div>
+    <div class="sec-h">Grundlagen</div>
+    ${LANG_BASICS.map((b,i)=>`<details class="sq-schema sp-basic"${i===0?" open":""}><summary>${esc(b.t)}</summary><div class="sp-in"><p>${esc(b.x)}</p><div class="why-sec why-mem"><b>Merksatz</b><p>${esc(b.m)}</p></div></div></details>`).join("")}
+    <div class="sec-h">Sprachen</div>
+    <div class="sp-grid">${LANGS.map(L=>`<button class="sp-tile" data-l="${L.id}"><span class="sp-ic">${L.ic}</span><b>${esc(L.n)}</b><small>${esc(L.tag)}</small></button>`).join("")}</div>
+    <details class="sq-schema"><summary>📊 Vergleichstabelle</summary><div class="sq-scroll" style="border:0;margin:0 10px 10px"><table><thead><tr><th>Sprache</th><th>Ausführung</th><th>Typisierung</th></tr></thead><tbody>${LANGS.map(L=>`<tr><td><b>${esc(L.n)}</b></td><td>${esc(L.run)}</td><td>${esc(L.typ)}</td></tr>`).join("")}</tbody></table></div></details>
+    <button class="btn primary block" id="sp-quiz">🔍 Code-Detektiv: Welche Sprache ist das?</button>`;
+  $$("#sp .sp-tile").forEach(b=>b.onclick=()=>spShow(b.dataset.l));
+  $("#sp-quiz").onclick=spQuizStart;
+}
+function spShow(id){ const L=LANGS.find(x=>x.id===id); if(!L) return;
+  const row=(k,v)=>`<div class="sp-row"><span class="field-l">${k}</span><span>${esc(v)}</span></div>`;
+  openSheet(`${L.ic} ${L.n}`,`<div class="panel sp-card"><p class="sp-tag">${esc(L.tag)}</p>
+    ${row("Entstanden",L.y)}${row("Ausführung",L.run)}${row("Typisierung",L.typ)}${row("Paradigma",L.par)}${row("Einsatz",L.use)}
+    <div class="sp-pm"><div><b class="ok">+</b> ${esc(L.plus)}</div><div><b class="bad">−</b> ${esc(L.minus)}</div></div>
+    <span class="field-l">Beispiel: „Hallo Welt“ und 1 bis 3 ausgeben</span><pre class="ex-code">${esc(L.code)}</pre>
+    <div class="why-sec why-ex"><b>Für dich als FISI</b><p>${esc(L.fisi)}</p></div>
+    <div class="why-sec why-mem"><b>Merksatz</b><p>${esc(L.m)}</p></div></div>`); }
+
+/* Code-Detektiv: 8 Code-Schnipsel, 4 Antworten */
+function spQuizStart(){ const pool=LANGS.slice().sort(()=>Math.random()-.5).slice(0,8); sp={pool,i:0,ok:0,wrong:[]}; spQuizShow(); }
+function spQuizShow(){
+  if(sp.i>=sp.pool.length) return spQuizEnd();
+  const L=sp.pool[sp.i], opts=[L,...LANGS.filter(x=>x!==L).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
+  $("#sp").innerHTML=`<div class="mt-top"><span class="score">${sp.ok} / ${sp.pool.length}</span><span class="pill">Code ${sp.i+1}</span></div>
+    <div class="timer"><i style="transform:scaleX(${sp.i/sp.pool.length})"></i></div>
+    <div class="bz-card in" style="min-height:0"><div class="bz-q">Welche Sprache ist das?</div><pre class="ex-code">${esc(L.code)}</pre></div>
+    <div class="opts" id="sp-opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}">${o.ic} ${esc(o.n)}</button>`).join("")}</div><div id="sp-fb"></div>`;
+  $$("#sp-opts .opt").forEach(b=>b.onclick=()=>{ if(sp.ans) return; sp.ans=true; const o=opts[+b.dataset.i], ok=o===L; if(ok) sp.ok++; else sp.wrong.push(L);
+    $$("#sp-opts .opt").forEach((x,i)=>{ x.disabled=true; if(opts[i]===L) x.classList.add("ok"); else if(x===b) x.classList.add("bad"); });
+    $("#sp-fb").innerHTML=`<div class="vk-card ${ok?"ok":"bad"}">${ok?"✔ Richtig!":"✘ Das war "+esc(L.n)+"."}<br><b>Erkennungszeichen:</b> ${esc(L.m)}</div><button class="btn primary block" id="sp-next">${sp.i+1>=sp.pool.length?"Ergebnis":"Weiter"}</button>`;
+    $("#sp-next").onclick=()=>{ sp.i++; sp.ans=false; spQuizShow(); }; });
+}
+function spQuizEnd(){
+  $("#sp").innerHTML=`<div class="done"><p class="hint">Code-Detektiv</p><div class="big-score">${sp.ok}/${sp.pool.length}</div></div>
+    ${sp.wrong.length?`<div class="panel"><b style="font:600 15px var(--display)">Nochmal anschauen</b>${sp.wrong.map(L=>`<div class="vk-row"><b>${L.ic} ${esc(L.n)}</b><span>${esc(L.m)}</span></div>`).join("")}</div>`:""}
+    <div class="grid2"><button class="btn ghost" id="sp-home">Übersicht</button><button class="btn primary" id="sp-again">Nochmal</button></div>`;
+  $("#sp-home").onclick=spHome; $("#sp-again").onclick=spQuizStart; window.scrollTo({top:0});
+}
+
 /* ---------- Subnetz-Profi ----------
    Konzept: Unendlich viele zufällige Subnetz-Aufgaben, sortiert nach Themen. Eingabe über ein eigenes Ziffernfeld
    (keine Handy-Tastatur, die etwas verdeckt). Nach jeder Antwort gibt es den Rechenweg mit der Blockgrößen-Methode.
@@ -4001,7 +4174,7 @@ function bkHint(){ const el=$("#ios-hint"); if(!el) return;
 /* ---------- Abkürzungen & Fachbegriffe (Vokabel-Spiel, A–Z-Liste) ----------
    Auswahl nach dem IHK-AP1-Prüfungskatalog und den gängigsten IT-Abkürzungen, Protokollen und Programmiersprachen.
    Format: [Kürzel, ausgeschrieben, ein Satz Erklärung, Kategorie] */
-const VOK_CATS={netz:"Netzwerk & Protokolle",hw:"Hardware",sich:"Sicherheit & Datenschutz",sw:"Software, Betrieb & Cloud",prog:"Programmierung & Sprachen",db:"Daten & Datenbanken",wirt:"Wirtschaft, Projekt & Recht"};
+const VOK_CATS={netz:"Netzwerk & Protokolle",hw:"Hardware",sich:"Sicherheit & Datenschutz",sw:"Software, Betrieb & Cloud",prog:"Programmierung & Sprachen",db:"Daten & Datenbanken",wirt:"Wirtschaft, Projekt & Recht",fach:"Fachbegriffe & Fremdwörter"};
 const VOKABELN=[
  ["DHCP","Dynamic Host Configuration Protocol","Vergibt Geräten im Netz automatisch IP-Adresse, Subnetzmaske, Gateway und DNS-Server.","netz"],
  ["DNS","Domain Name System","Übersetzt Namen wie www.ihk.de in IP-Adressen – wie ein Telefonbuch des Internets.","netz"],
@@ -4158,7 +4331,169 @@ const VOKABELN=[
  ["SMART","Spezifisch, Messbar, Attraktiv, Realistisch, Terminiert","Kriterien für gut formulierte Ziele.","wirt"],
  ["PSP","Projektstrukturplan","Zerlegt ein Projekt hierarchisch in Teilaufgaben und Arbeitspakete.","wirt"],
  ["B2B","Business to Business","Geschäfte zwischen Unternehmen.","wirt"],
- ["B2C","Business to Consumer","Geschäfte zwischen Unternehmen und Privatkunden.","wirt"]
+ ["B2C","Business to Consumer","Geschäfte zwischen Unternehmen und Privatkunden.","wirt"],
+ ["DSL", "Digital Subscriber Line", "Internetzugang über die normale Kupfer-Telefonleitung.", "netz"],
+ ["ADSL", "Asymmetric Digital Subscriber Line", "DSL mit schnellem Download und deutlich langsamerem Upload – typisch für Privatanschlüsse.", "netz"],
+ ["VDSL", "Very High Speed Digital Subscriber Line", "Schnelleres DSL (z. B. 250 Mbit/s), weil die Glasfaser bis zum Verteilerkasten reicht; ebenfalls asymmetrisch.", "netz"],
+ ["SDSL", "Symmetric Digital Subscriber Line", "DSL mit gleich schnellem Up- und Download – gut für Firmen mit eigenen Servern oder vielen Uploads.", "netz"],
+ ["ISDN", "Integrated Services Digital Network", "Altes digitales Telefonnetz mit 64-kbit/s-Kanälen; in Deutschland durch VoIP (All-IP) abgelöst.", "netz"],
+ ["BSSID", "Basic Service Set Identifier", "Die MAC-Adresse eines Access Points – unterscheidet mehrere Funkzellen mit derselben SSID.", "netz"],
+ ["WPA2", "Wi-Fi Protected Access 2", "WLAN-Verschlüsselung mit AES (CCMP); als WPA2-PSK mit gemeinsamem Kennwort, als WPA2-Enterprise mit RADIUS.", "netz"],
+ ["WPS", "Wi-Fi Protected Setup", "Verbindet Geräte per Knopfdruck oder PIN mit dem WLAN – bequem, aber ein Sicherheitsrisiko, deshalb besser abschalten.", "netz"],
+ ["CCMP", "Counter Mode with CBC-MAC Protocol", "Das AES-basierte Verschlüsselungsverfahren in WPA2 – Nachfolger des unsicheren TKIP.", "netz"],
+ ["EAP", "Extensible Authentication Protocol", "Rahmen für Anmeldeverfahren im Netz, z. B. bei WPA2-Enterprise und 802.1X mit RADIUS.", "netz"],
+ ["RADIUS", "Remote Authentication Dial-In User Service", "Zentraler Anmeldeserver: prüft Benutzer für WLAN (802.1X), VPN oder Switch-Ports.", "netz"],
+ ["MIMO", "Multiple Input Multiple Output", "Mehrere Antennen senden und empfangen gleichzeitig – erhöht den WLAN-Durchsatz.", "netz"],
+ ["IEEE", "Institute of Electrical and Electronics Engineers", "Normungsorganisation, z. B. IEEE 802.3 (Ethernet) und 802.11 (WLAN).", "netz"],
+ ["PAT", "Port Address Translation", "Viele interne Geräte teilen sich eine öffentliche IP; unterschieden werden sie über Portnummern (NAT-Overload).", "netz"],
+ ["OSPF", "Open Shortest Path First", "Dynamisches Routing-Protokoll (Link-State): Router berechnen den kürzesten Weg nach Kosten.", "netz"],
+ ["RIP", "Routing Information Protocol", "Einfaches dynamisches Routing-Protokoll (Distance-Vector), das nur die Hops zählt; maximal 15 Hops.", "netz"],
+ ["TFTP", "Trivial File Transfer Protocol", "Einfache Dateiübertragung ohne Anmeldung über UDP 69, z. B. für Firmware oder Netzwerk-Boot.", "netz"],
+ ["CNAME", "Canonical Name Record", "DNS-Eintrag, der einen Namen auf einen anderen Namen verweist (Alias), z. B. www → server1.", "netz"],
+ ["MX", "Mail Exchanger Record", "DNS-Eintrag, der angibt, welcher Server die E-Mails einer Domain annimmt.", "netz"],
+ ["SPF", "Sender Policy Framework", "DNS-Eintrag, der festlegt, welche Server Mails für eine Domain versenden dürfen – gegen gefälschte Absender.", "sich"],
+ ["DKIM", "DomainKeys Identified Mail", "Mails werden digital signiert; der Empfänger prüft die Signatur mit dem öffentlichen Schlüssel aus dem DNS.", "sich"],
+ ["GSM", "Global System for Mobile Communications", "Mobilfunk der 2. Generation (2G) für Telefonie und SMS.", "netz"],
+ ["UMTS", "Universal Mobile Telecommunications System", "Mobilfunk der 3. Generation (3G) – in Deutschland inzwischen abgeschaltet.", "netz"],
+ ["LTE", "Long Term Evolution", "Mobilfunk der 4. Generation (4G) mit hohen Datenraten, auch als Ersatz für DSL.", "netz"],
+ ["IPTV", "Internet Protocol Television", "Fernsehen über das IP-Netz, oft per Multicast verteilt.", "netz"],
+ ["RJ45", "Registered Jack 45", "Achtpoliger Stecker für Twisted-Pair-Netzwerkkabel (Ethernet).", "netz"],
+ ["TAE", "Telekommunikations-Anschluss-Einheit", "Die Telefondose in deutschen Wohnungen, an der auch der DSL-Router hängt.", "netz"],
+ ["NGFW", "Next Generation Firewall", "Firewall, die nicht nur Ports, sondern auch Anwendungen und Inhalte prüft (z. B. mit IPS und Virenscan).", "sich"],
+ ["PCI", "Peripheral Component Interconnect", "Alter paralleler Steckplatz für Erweiterungskarten; heute durch PCIe ersetzt.", "hw"],
+ ["AGP", "Accelerated Graphics Port", "Alter Steckplatz nur für Grafikkarten; heute durch PCIe abgelöst.", "hw"],
+ ["DIMM", "Dual Inline Memory Module", "Bauform von Arbeitsspeicher-Modulen für Desktop-PCs und Server; SO-DIMM ist die kleine Notebook-Variante.", "hw"],
+ ["SDRAM", "Synchronous Dynamic Random Access Memory", "Arbeitsspeicher, der im Takt des Systems arbeitet; DDR-SDRAM überträgt zweimal pro Takt.", "hw"],
+ ["ECC", "Error Correcting Code", "Arbeitsspeicher mit Fehlerkorrektur: erkennt und behebt einzelne kippende Bits – Pflicht in Servern.", "hw"],
+ ["CMOS", "Complementary Metal-Oxide-Semiconductor", "Kleiner batteriegepufferter Speicher für BIOS/UEFI-Einstellungen und Uhrzeit; leere Batterie = falsche Zeit.", "hw"],
+ ["CRT", "Cathode Ray Tube", "Alter Röhrenmonitor – groß, schwer, stromhungrig.", "hw"],
+ ["LCD", "Liquid Crystal Display", "Flachbildschirm mit Flüssigkristallen, die von hinten beleuchtet werden.", "hw"],
+ ["TFT", "Thin-Film Transistor", "Technik, bei der jeder Bildpunkt eines LCD einen eigenen Transistor hat; oft gleichbedeutend mit Flachbildschirm.", "hw"],
+ ["LED", "Light-Emitting Diode", "Leuchtdiode; bei Monitoren meist die Hintergrundbeleuchtung des LCD.", "hw"],
+ ["DVI", "Digital Visual Interface", "Älterer digitaler Monitoranschluss, ohne Ton.", "hw"],
+ ["VGA", "Video Graphics Array", "Alter analoger Monitoranschluss (blauer 15-poliger Stecker).", "hw"],
+ ["DP", "DisplayPort", "Digitaler Monitoranschluss mit Bild und Ton; erlaubt mehrere Monitore in Reihe (Daisy Chain).", "hw"],
+ ["SCSI", "Small Computer System Interface", "Alte Schnittstelle für Festplatten in Servern; Nachfolger ist SAS.", "hw"],
+ ["SAS", "Serial Attached SCSI", "Server-Schnittstelle für Festplatten: robuster und für Dauerbetrieb gebaut als SATA.", "hw"],
+ ["SSHD", "Solid State Hybrid Drive", "Festplatte mit eingebautem Flash-Cache für häufig genutzte Daten.", "hw"],
+ ["JBOD", "Just a Bunch of Disks", "Mehrere Platten werden einfach aneinandergehängt – ohne Ausfallsicherheit.", "hw"],
+ ["KVM", "Keyboard, Video, Mouse", "KVM-Switch: ein Satz Tastatur, Monitor und Maus für mehrere Rechner (z. B. im Serverraum).", "hw"],
+ ["RPM", "Revolutions per Minute", "Umdrehungen pro Minute einer Festplatte (z. B. 7.200) – mehr bedeutet kürzere Zugriffszeit.", "hw"],
+ ["RFID", "Radio-Frequency Identification", "Funketiketten, die kontaktlos ausgelesen werden – z. B. Zutrittskarten oder Inventarisierung.", "hw"],
+ ["UPS", "Uninterruptible Power Supply", "Englisch für USV: überbrückt Stromausfälle mit Akkus.", "hw"],
+ ["EMV", "Elektromagnetische Verträglichkeit", "Geräte dürfen andere nicht stören und müssen selbst störfest sein – Voraussetzung für das CE-Zeichen.", "hw"],
+ ["CE", "Conformité Européenne", "Kennzeichen, mit dem der Hersteller erklärt, dass ein Produkt die EU-Vorgaben (z. B. Sicherheit, EMV) erfüllt.", "wirt"],
+ ["MD5", "Message-Digest Algorithm 5", "Alte Hashfunktion (128 Bit) – für Passwörter und Signaturen nicht mehr sicher.", "sich"],
+ ["MFA", "Multi-Faktor-Authentifizierung", "Anmeldung mit mindestens zwei unterschiedlichen Faktoren: Wissen, Besitz und/oder Biometrie.", "sich"],
+ ["SSO", "Single Sign-On", "Einmal anmelden und danach ohne erneute Eingabe auf viele Dienste zugreifen.", "sich"],
+ ["BYOD", "Bring Your Own Device", "Mitarbeitende nutzen private Geräte für die Arbeit – braucht klare Regeln und MDM.", "sich"],
+ ["MDM", "Mobile Device Management", "Zentrale Verwaltung von Firmen-Smartphones und Tablets: Apps verteilen, Richtlinien, Fernlöschung.", "sw"],
+ ["WORM", "Write Once, Read Many", "Speicher, der einmal beschrieben und dann nicht mehr verändert werden kann – für revisionssichere Archive.", "sich"],
+ ["FAT", "File Allocation Table", "Einfaches Dateisystem (FAT32, exFAT) für USB-Sticks und Speicherkarten, ohne Rechteverwaltung.", "sw"],
+ ["IMAC", "Install, Move, Add, Change", "Alle Dienste rund um einen Arbeitsplatz-PC: aufstellen, umziehen, ergänzen, ändern (erweitert um Remove, Dispose).", "sw"],
+ ["CBT", "Computer Based Training", "Lernen am Computer mit Lernprogrammen – zeit- und ortsunabhängig.", "sw"],
+ ["KI", "Künstliche Intelligenz", "Programme, die Aufgaben lösen, für die man sonst menschliche Intelligenz braucht, z. B. Texte verstehen oder Muster erkennen.", "sw"],
+ ["CAD", "Computer-Aided Design", "Rechnergestütztes Konstruieren, z. B. technische Zeichnungen und 3D-Modelle; braucht starke Grafik.", "sw"],
+ ["JPEG", "Joint Photographic Experts Group", "Verlustbehaftetes Bildformat für Fotos – kleine Dateien, aber Qualitätsverlust beim Komprimieren.", "sw"],
+ ["RGB", "Rot, Grün, Blau", "Farbmodell für Bildschirme: Farben entstehen durch Mischen von Licht.", "hw"],
+ ["Unicode", "Unicode (universeller Zeichensatz)", "Ein Zeichensatz für alle Schriften der Welt; UTF-8 ist die übliche Kodierung davon.", "prog"],
+ ["SEO", "Search Engine Optimization", "Webseiten so gestalten, dass sie in Suchmaschinen weit oben erscheinen.", "wirt"],
+ ["EDV", "Elektronische Datenverarbeitung", "Älterer deutscher Begriff für die IT.", "wirt"],
+ ["EAN", "European Article Number", "Strichcode-Nummer auf Produkten (heute GTIN) – im Lager per Scanner erfasst.", "wirt"],
+ ["IBAN", "International Bank Account Number", "Internationale Kontonummer für Überweisungen im SEPA-Raum (in Deutschland 22 Stellen).", "wirt"],
+ ["BIC", "Business Identifier Code", "Internationale Bankleitzahl (SWIFT-Code) einer Bank.", "wirt"],
+ ["SEPA", "Single Euro Payments Area", "Einheitlicher Euro-Zahlungsraum: Überweisungen und Lastschriften wie im Inland.", "wirt"],
+ ["ESG", "Environmental, Social, Governance", "Kriterien für nachhaltiges Wirtschaften: Umwelt, Soziales und gute Unternehmensführung.", "wirt"],
+ ["HRB", "Handelsregister Abteilung B", "Teil des Handelsregisters für Kapitalgesellschaften wie GmbH und AG.", "wirt"],
+ ["OHG", "Offene Handelsgesellschaft", "Personengesellschaft, in der alle Gesellschafter unbeschränkt mit ihrem Privatvermögen haften.", "wirt"],
+ ["KG", "Kommanditgesellschaft", "Personengesellschaft mit mindestens einem voll haftenden Komplementär und beschränkt haftenden Kommanditisten.", "wirt"],
+ ["AG", "Aktiengesellschaft", "Kapitalgesellschaft mit Aktien; Mindestkapital 50.000 €, Organe Vorstand, Aufsichtsrat, Hauptversammlung.", "wirt"],
+ ["UG", "Unternehmergesellschaft (haftungsbeschränkt)", "„Mini-GmbH“: schon ab 1 € Stammkapital, haftet nur mit dem Firmenvermögen.", "wirt"],
+ ["BAB", "Betriebsabrechnungsbogen", "Tabelle der Kostenrechnung, die Gemeinkosten auf die Kostenstellen verteilt.", "wirt"],
+ ["DIN", "Deutsches Institut für Normung", "Deutsche Normungsorganisation, z. B. DIN EN ISO 9241 zur Ergonomie am Bildschirmarbeitsplatz.", "wirt"],
+ ["VDE", "Verband der Elektrotechnik Elektronik Informationstechnik", "Verband, der Sicherheitsnormen für Elektrotechnik herausgibt (z. B. Prüfung ortsveränderlicher Geräte).", "wirt"],
+ ["CIO", "Chief Information Officer", "IT-Leiter/in eines Unternehmens auf Geschäftsführungsebene.", "wirt"],
+ ["SGB", "Sozialgesetzbuch", "Gesetzbuch mit den Regeln zur Sozialversicherung (Kranken-, Renten-, Pflege-, Arbeitslosen-, Unfallversicherung).", "wirt"],
+ ["Backup", "Datensicherung", "Kopie von Daten, um sie nach Verlust wiederherzustellen (Restore) – nach der 3-2-1-Regel.", "fach"],
+ ["Patch", "Flicken / Korrektur", "Kleines Update, das Fehler oder Sicherheitslücken einer Software behebt.", "fach"],
+ ["Rollout", "Ausrollen / Verteilung", "Planmäßige Verteilung von Software, Updates oder Geräten auf viele Arbeitsplätze.", "fach"],
+ ["Deployment", "Bereitstellung", "Eine Software auf einem System installieren und in Betrieb nehmen.", "fach"],
+ ["Latenz", "Verzögerung", "Zeit, die ein Datenpaket vom Sender zum Empfänger braucht (in ms) – wichtig für VoIP und Spiele.", "fach"],
+ ["Durchsatz", "Throughput", "Tatsächlich übertragene Datenmenge pro Zeit – meist kleiner als die theoretische Bandbreite.", "fach"],
+ ["Bandbreite", "Bandwidth", "Maximal mögliche Datenrate einer Verbindung, z. B. 1 Gbit/s.", "fach"],
+ ["Failover", "Umschalten im Fehlerfall", "Fällt ein System aus, übernimmt automatisch ein Ersatzsystem.", "fach"],
+ ["Load Balancing", "Lastverteilung", "Anfragen werden auf mehrere Server verteilt, damit keiner überlastet ist.", "fach"],
+ ["Redundanz", "Mehrfach vorhanden", "Wichtige Komponenten doppelt auslegen (Netzteil, Leitung, Platte), damit ein Ausfall nicht alles stoppt.", "fach"],
+ ["Skalierbarkeit", "Erweiterbarkeit", "Ein System kann mit wachsender Last mitwachsen – durch stärkere Hardware (vertikal) oder mehr Server (horizontal).", "fach"],
+ ["Compliance", "Regelkonformität", "Einhaltung von Gesetzen, Normen und internen Richtlinien im Unternehmen.", "fach"],
+ ["Stakeholder", "Beteiligte / Interessengruppe", "Alle, die von einem Projekt betroffen sind oder Einfluss darauf haben.", "fach"],
+ ["Lastenheft", "Anforderungen des Kunden", "Beschreibt, WAS der Auftraggeber will – erstellt vom Auftraggeber.", "fach"],
+ ["Pflichtenheft", "Umsetzung des Auftragnehmers", "Beschreibt, WIE der Auftragnehmer das Lastenheft umsetzt – Grundlage für die Abnahme.", "fach"],
+ ["Monitoring", "Überwachung", "Laufende Überwachung von Systemen und Netzen (z. B. per SNMP), um Störungen früh zu erkennen.", "fach"],
+ ["Hypervisor", "Virtualisierungsschicht", "Software, die virtuelle Maschinen auf der Hardware verwaltet; Typ 1 direkt auf der Hardware, Typ 2 auf einem Betriebssystem.", "fach"],
+ ["Container", "Anwendungs-Behälter", "Leichtgewichtige Virtualisierung: Anwendungen laufen mit ihren Abhängigkeiten isoliert, teilen sich aber den Kernel (z. B. Docker).", "fach"],
+ ["Thin Client", "Schlanker Rechner", "Einfaches Endgerät ohne eigene Rechenleistung; die Programme laufen auf einem Server.", "fach"],
+ ["Phishing", "„Passwort-Fischen“", "Gefälschte Mails oder Webseiten sollen Zugangsdaten oder Zahlungsdaten abgreifen.", "fach"],
+ ["Ransomware", "Erpressungssoftware", "Schadsoftware verschlüsselt Daten und verlangt Lösegeld – Schutz: Backups offline aufbewahren.", "fach"],
+ ["Malware", "Schadsoftware", "Oberbegriff für Viren, Würmer, Trojaner, Spyware und Ransomware.", "fach"],
+ ["Trojaner", "Trojanisches Pferd", "Schadprogramm, das sich als nützliche Software tarnt und heimlich Schaden anrichtet.", "fach"],
+ ["Wurm", "Computerwurm", "Schadsoftware, die sich selbstständig über das Netz verbreitet, ohne Wirtsdatei.", "fach"],
+ ["Keylogger", "Tastenrekorder", "Zeichnet heimlich Tastatureingaben auf, um Passwörter zu stehlen.", "fach"],
+ ["Brute-Force", "Rohe Gewalt", "Angriff, der alle möglichen Passwörter durchprobiert – Schutz: lange Passwörter und Sperre nach Fehlversuchen.", "fach"],
+ ["Hashwert", "Prüfsumme / Fingerabdruck", "Fester Wert, den eine Hashfunktion aus Daten berechnet; schon eine kleine Änderung ergibt einen ganz anderen Wert.", "fach"],
+ ["Salt", "Salz (Zufallswert)", "Zufälliger Wert, der vor dem Hashen an ein Passwort gehängt wird – gleiche Passwörter ergeben so verschiedene Hashes.", "fach"],
+ ["Backdoor", "Hintertür", "Versteckter Zugang zu einem System an der normalen Anmeldung vorbei.", "fach"],
+ ["Man-in-the-Middle", "Mann in der Mitte", "Angreifer schaltet sich unbemerkt zwischen zwei Kommunikationspartner und liest oder verändert Daten.", "fach"],
+ ["Sniffing", "Schnüffeln", "Mitschneiden des Netzwerkverkehrs, z. B. mit Wireshark – gefährlich bei unverschlüsselten Protokollen.", "fach"],
+ ["Honeypot", "Honigtopf", "Absichtlich verwundbar wirkendes System, das Angreifer anlockt, um sie zu beobachten.", "fach"],
+ ["Broadcast", "Rundruf", "Nachricht an alle Geräte im Netz (z. B. ARP-Anfrage, DHCP-Discover).", "fach"],
+ ["Multicast", "Gruppenruf", "Nachricht an eine Gruppe von Empfängern, z. B. für IPTV.", "fach"],
+ ["Unicast", "Einzelruf", "Nachricht an genau einen Empfänger – der Normalfall.", "fach"],
+ ["Trunk", "Sammelleitung", "Switch-Port, der mehrere VLANs gleichzeitig mit Tags (802.1Q) überträgt.", "fach"],
+ ["Overhead", "Zusatzaufwand", "Daten, die nicht Nutzdaten sind, z. B. Header von Paketen – sie verringern den nutzbaren Durchsatz.", "fach"],
+ ["Snapshot", "Momentaufnahme", "Zustand einer VM oder eines Speichers zu einem Zeitpunkt – schnell zurücksetzbar, aber kein Ersatz für ein Backup.", "fach"],
+ ["Replikation", "Spiegelung über das Netz", "Daten werden laufend auf ein zweites System kopiert, z. B. an einen anderen Standort.", "fach"],
+ ["Deduplizierung", "Doppelte entfernen", "Gleiche Datenblöcke werden nur einmal gespeichert – spart viel Platz bei Backups.", "fach"],
+ ["Virtualisierung", "Nachbildung in Software", "Mehrere virtuelle Rechner laufen auf einer physischen Hardware – spart Geräte, Strom und Platz.", "fach"],
+ ["Cluster", "Rechnerverbund", "Mehrere Server arbeiten zusammen, für mehr Leistung oder Ausfallsicherheit.", "fach"],
+ ["Proxy", "Stellvertreter", "Server, der Anfragen im Auftrag der Clients ins Internet stellt – zum Filtern, Zwischenspeichern und Protokollieren.", "fach"],
+ ["Repeater", "Verstärker", "Gerät auf Schicht 1, das Signale auffrischt und so die Reichweite erhöht.", "fach"],
+ ["Mesh", "Maschennetz", "WLAN aus mehreren Knoten, die sich untereinander verbinden und eine große Fläche abdecken.", "fach"],
+ ["Roaming", "Umherwandern", "Ein Gerät wechselt unterbrechungsfrei von einem Access Point zum nächsten.", "fach"],
+ ["Port Forwarding", "Portweiterleitung", "Der Router leitet Anfragen von außen auf einem bestimmten Port an ein internes Gerät weiter.", "fach"],
+ ["Stateful", "Zustandsbehaftet", "Stateful-Firewall merkt sich Verbindungen und lässt Antworten auf erlaubte Anfragen automatisch durch.", "fach"],
+ ["Cache", "Zwischenspeicher", "Schneller Speicher für häufig gebrauchte Daten, damit der Zugriff schneller geht.", "fach"],
+ ["Thread", "Faden / Ausführungsstrang", "Teil eines Prozesses, der parallel zu anderen Teilen ausgeführt werden kann.", "fach"],
+ ["Treiber", "Driver", "Software, über die das Betriebssystem ein Gerät ansteuert.", "fach"],
+ ["Formatierung", "Formatting", "Einen Datenträger mit einem Dateisystem versehen; Schnellformatierung löscht Daten nicht sicher.", "fach"],
+ ["Green IT", "Grüne IT", "IT umweltfreundlich betreiben: Energie sparen, langlebige Geräte, fachgerechtes Recycling.", "fach"],
+ ["Groupware", "Gruppensoftware", "Software für Teamarbeit: gemeinsame Mails, Kalender, Kontakte und Aufgaben.", "fach"],
+ ["Workflow", "Arbeitsablauf", "Fest geregelte Folge von Arbeitsschritten, oft von Software gesteuert.", "fach"],
+ ["Business Intelligence", "Geschäftsanalyse", "Firmendaten sammeln und auswerten, um Entscheidungen zu unterstützen (Berichte, Dashboards).", "fach"],
+ ["Big Data", "Massendaten", "Sehr große, schnell wachsende und vielfältige Datenmengen, die klassische Datenbanken überfordern.", "fach"],
+ ["Outsourcing", "Auslagerung", "Aufgaben an externe Dienstleister abgeben, z. B. den IT-Support.", "fach"],
+ ["Make-or-Buy", "Selbst machen oder kaufen", "Entscheidung, ob eine Leistung selbst erstellt oder eingekauft wird – nach Kosten, Know-how und Abhängigkeit.", "fach"],
+ ["Leasing", "Mieten mit System", "Geräte werden gegen monatliche Raten gemietet statt gekauft – schont die Liquidität.", "fach"],
+ ["Skonto", "Nachlass bei schneller Zahlung", "Prozentualer Abzug, wenn innerhalb einer kurzen Frist gezahlt wird (z. B. 2 % bei Zahlung in 10 Tagen).", "fach"],
+ ["Liquidität", "Zahlungsfähigkeit", "Fähigkeit eines Unternehmens, seine Rechnungen fristgerecht zu bezahlen.", "fach"],
+ ["Rentabilität", "Verzinsung des Kapitals", "Verhältnis von Gewinn zum eingesetzten Kapital in Prozent.", "fach"],
+ ["Barrierefreiheit", "Accessibility", "Software und Webseiten sind auch für Menschen mit Einschränkungen nutzbar, z. B. mit Screenreader.", "fach"],
+ ["Frontend", "Benutzeroberfläche", "Der Teil einer Anwendung, den der Nutzer sieht und bedient.", "fach"],
+ ["Backend", "Serverseite", "Der Teil einer Anwendung, der im Hintergrund läuft: Logik, Datenbank, Schnittstellen.", "fach"],
+ ["Framework", "Programmiergerüst", "Vorgefertigtes Grundgerüst, in das man den eigenen Code einfügt (z. B. Angular, Spring).", "fach"],
+ ["Debugging", "Fehlersuche", "Fehler im Programm finden und beheben, z. B. mit Haltepunkten.", "fach"],
+ ["Open Source", "Offener Quellcode", "Software, deren Quellcode jeder einsehen, ändern und weitergeben darf (z. B. Linux).", "fach"],
+ ["Proprietär", "Herstellereigen", "Software, deren Quellcode geheim ist und nur nach Lizenz des Herstellers genutzt werden darf.", "fach"],
+ ["Copyleft", "„Umgekehrtes Copyright“", "Lizenzprinzip (z. B. GPL): Wer die Software verändert weitergibt, muss sie unter derselben freien Lizenz weitergeben.", "fach"],
+ ["Twisted Pair", "Verdrilltes Adernpaar", "Netzwerkkabel mit paarweise verdrillten Adern, die Störungen verringern (Cat 5e, 6, 7).", "fach"],
+ ["Vollduplex", "Gleichzeitig hin und zurück", "Senden und Empfangen gleichzeitig; Halbduplex nur abwechselnd.", "fach"],
+ ["Uplink", "Aufwärtsverbindung", "Verbindung eines Switches zum nächsthöheren Netzwerkgerät oder Richtung Internet.", "fach"],
+ ["Backbone", "Rückgrat", "Zentrale, besonders schnelle Hauptleitung eines Netzes, die die Teilnetze verbindet.", "fach"],
+ ["Rack", "Serverschrank", "19-Zoll-Schrank für Server, Switches und Patchfelder; Höhe in Höheneinheiten (HE/U).", "fach"],
+ ["Patchfeld", "Patch Panel", "Anschlussleiste im Schrank, an der die festen Kabel der Räume enden und mit Patchkabeln verbunden werden.", "fach"],
+ ["Telearbeit", "Arbeit außerhalb des Büros", "Arbeiten von zu Hause oder unterwegs, verbunden per VPN mit dem Firmennetz.", "fach"],
+ ["Industrie 4.0", "Vierte industrielle Revolution", "Vernetzung von Maschinen, Produkten und Menschen in der Produktion über das Internet der Dinge.", "fach"],
+ ["Chatbot", "Plauder-Roboter", "Programm, das in Textform Fragen beantwortet, z. B. im Kundenservice.", "fach"]
 ];
 /* ---------- Ports ---------- */
 const PORTS=[
@@ -4211,29 +4546,6 @@ const PORT_CASES=[
 let vk=null;
 const vkM=()=>{ try{ return JSON.parse(store.get("vok_m","{}"))||{}; }catch(e){ return {}; } };
 const vkSure=m=>VOKABELN.filter(v=>(m[v[0]]||0)>=2).length;
-function vkHome(){
-  const m=vkM(), cat=store.get("vok_cat","alle"), mode=store.get("vok_mode","mix");
-  const pool=VOKABELN.filter(v=>cat==="alle"||v[3]===cat), sure=pool.filter(v=>(m[v[0]]||0)>=2).length;
-  $("#vk").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
-      <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div>
-      <h2>Abkürzungs-Duell</h2><p>DHCP, SLA, IaaS … Lerne die wichtigsten Abkürzungen und Fachbegriffe – jeweils in einem Satz erklärt.</p>
-      <span class="pill">${sure} von ${pool.length} sicher</span>
-      <div class="bar" style="width:100%;height:6px;border-radius:3px;background:var(--line);overflow:hidden"><i style="display:block;height:100%;width:${pool.length?sure/pool.length*100:0}%;background:var(--grad)"></i></div></div>
-    <span class="field-l">Thema</span>
-    <div class="chips-wrap">${[["alle","Alle"],...Object.entries(VOK_CATS)].map(([k,n])=>`<button class="pillbtn" aria-pressed="${cat===k}" data-c="${k}">${esc(n)}</button>`).join("")}</div>
-    <span class="field-l">Fragen</span>
-    <div class="chips-wrap">${[["mix","Gemischt"],["bed","Was bedeutet …?"],["kurz","Welches Kürzel?"],["lang","Ausgeschrieben?"]].map(([k,n])=>`<button class="pillbtn" aria-pressed="${mode===k}" data-m="${k}">${n}</button>`).join("")}</div>
-    <button class="btn primary block" id="vk-go">Runde starten (10 Fragen)</button>
-    <details class="sq-schema" id="vk-list"><summary>📖 Alle Begriffe A–Z</summary><div style="padding:0 12px 12px;display:flex;flex-direction:column;gap:8px">
-      <input type="search" id="vk-q" placeholder="Suchen …" aria-label="Begriffe durchsuchen"><div id="vk-az"></div></div></details>`;
-  $$("#vk [data-c]").forEach(b=>b.onclick=()=>{ store.set("vok_cat",b.dataset.c); vkHome(); });
-  $$("#vk [data-m]").forEach(b=>b.onclick=()=>{ store.set("vok_mode",b.dataset.m); vkHome(); });
-  $("#vk-go").onclick=vkStart;
-  const az=()=>{ const q=($("#vk-q").value||"").trim().toLowerCase(), mm=vkM();
-    const list=VOKABELN.filter(v=>(cat==="alle"||v[3]===cat)&&(!q||v.slice(0,3).join(" ").toLowerCase().includes(q))).sort((a,b)=>a[0].localeCompare(b[0],"de",{sensitivity:"base"}));
-    $("#vk-az").innerHTML=list.map(v=>`<div class="vk-row"><b>${esc(v[0])}${(mm[v[0]]||0)>=2?' <span class="vk-ok">✓</span>':""}</b><span><i>${esc(v[1])}</i><br>${esc(v[2])}</span></div>`).join("")||`<p class="hint">Nichts gefunden.</p>`; };
-  $("#vk-q").oninput=az; $("#vk-list").addEventListener("toggle",()=>{ if($("#vk-list").open) az(); });
-}
 function vkStart(){
   const m=vkM(), cat=store.get("vok_cat","alle"), mode=store.get("vok_mode","mix");
   const pool=VOKABELN.filter(v=>cat==="alle"||v[3]===cat);
@@ -4273,6 +4585,176 @@ function vkEnd(){
     <div class="grid2"><button class="btn ghost" id="vk-home">Übersicht</button><button class="btn primary" id="vk-again">Nächste Runde</button></div>`;
   $("#vk-home").onclick=vkHome; $("#vk-again").onclick=vkStart; window.scrollTo({top:0});
 }
+
+/* ---------- Abkürzungs-Labor ----------
+   Lernen: A–Z-Lerntabelle (Buchstaben-Sprungleiste, Abdecken) · Karteikarten (Kästen 0–5).
+   Spielen (anders als im Port-Labor): Kürzel-Puzzle (Langform aus Wortkacheln bauen),
+   Kürzel-Rennen (Kürzel selbst eintippen, 90 Sekunden), Duell (Auswahl, bisheriges Spiel). */
+function vbBox(){ try{ return JSON.parse(store.get("vk_box","{}"))||{}; }catch(e){ return {}; } }
+function vbSave(b){ store.set("vk_box",JSON.stringify(b)); }
+const vbSureOf=(b,m,v)=>(b[v[0]]||0)>=3||(m[v[0]]||0)>=2;
+const vbPool=()=>{ const cat=store.get("vok_cat","alle"); return VOKABELN.filter(v=>cat==="alle"||v[3]===cat); };
+const vbIsAbbr=v=>v[3]!=="fach";
+const vbMaskQ=v=>v[2].replace(new RegExp("(^|[^\\wÄÖÜäöü])"+v[0].replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![\\wÄÖÜäöü])","gi"),"$1…");
+
+function vkHome(){
+  const m=vkM(), b=vbBox(), cat=store.get("vok_cat","alle"), pool=vbPool(), sure=pool.filter(v=>vbSureOf(b,m,v)).length;
+  const row=(id,ic,t,sub,c)=>`<button class="hrow ${c}" data-vb="${id}"><span class="ic" style="font-size:20px">${ic}</span><span class="tx"><b>${t}</b><small>${sub}</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`;
+  $("#vk").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div>
+      <h2>Abkürzungs-Labor</h2><p>${VOKABELN.length} Abkürzungen und Fachbegriffe aus den Prüfungen – lernen, abfragen, spielen.</p>
+      <span class="pill">${sure} von ${pool.length} sicher</span>
+      <div class="bar" style="width:100%;height:6px;border-radius:3px;background:var(--line);overflow:hidden"><i style="display:block;height:100%;width:${pool.length?sure/pool.length*100:0}%;background:var(--grad)"></i></div></div>
+    <span class="field-l">Thema</span>
+    <div class="chips-wrap">${[["alle","Alle"],...Object.entries(VOK_CATS)].map(([k,n])=>`<button class="pillbtn" aria-pressed="${cat===k}" data-c="${k}">${esc(n)}</button>`).join("")}</div>
+    <div class="sec-h">Lernen</div>
+    <div class="hlist">${row("tab","🔤","Lerntabelle A–Z","Mit Buchstaben-Sprung, Suche und Abdecken zum Selbsttest","")}
+      ${row("cards","🃏","Karteikarten","10 Karten · was du noch nicht kannst, kommt zuerst","l")}</div>
+    <div class="sec-h">Spielen</div>
+    <div class="hlist">${row("puzzle","🧩","Kürzel-Puzzle","Bau die Langform aus Wortkacheln – D·H·C·P wird zu …","q")}
+      ${row("race","⌨️","Kürzel-Rennen","90 Sekunden: Erklärung lesen, Kürzel selbst tippen","q")}
+      ${row("duel","⚔️","Abkürzungs-Duell","10 Fragen mit Auswahl – das Original","q")}</div>`;
+  $$("#vk [data-c]").forEach(x=>x.onclick=()=>{ store.set("vok_cat",x.dataset.c); vkHome(); });
+  $$("#vk [data-vb]").forEach(x=>x.onclick=()=>({tab:vbTable,cards:vbCardsStart,puzzle:vbPuzStart,race:vbRaceStart,duel:vkStart})[x.dataset.vb]());
+  window.scrollTo({top:0});
+}
+function vbBack(){ return `<button class="btn ghost block" id="vb-home">← Abkürzungs-Labor</button>`; }
+function vbWire(){ const h=$("#vb-home"); if(h) h.onclick=vkHome; }
+
+/* 🔤 Lerntabelle A–Z */
+function vbTable(){
+  const cover=store.get("vb_cover","none"), b=vbBox(), m=vkM();
+  const list=vbPool().slice().sort((x,y)=>x[0].localeCompare(y[0],"de",{sensitivity:"base"}));
+  const letter=v=>{ const c=v[0][0].toUpperCase(); return /[A-ZÄÖÜ]/.test(c)?c.replace("Ä","A").replace("Ö","O").replace("Ü","U"):"#"; };
+  const letters=[...new Set(list.map(letter))];
+  const hide=(t,on)=>on?`<button type="button" class="pl-hide">?</button><span class="pl-sol" hidden>${t}</span>`:t;
+  $("#vk").innerHTML=`<div class="hub-head"><h2 class="title">Lerntabelle A–Z</h2><p>${list.length} Begriffe${store.get("vok_cat","alle")!=="alle"?" · "+esc(VOK_CATS[store.get("vok_cat")]):""}</p></div>
+    <input type="search" id="vb-q" placeholder="Suchen …" aria-label="Begriffe durchsuchen">
+    <div class="chips-wrap" style="justify-content:center">${[["none","Alles zeigen"],["lang","Bedeutung abdecken"],["kurz","Kürzel abdecken"]].map(([k,t])=>`<button class="pillbtn" data-cv="${k}" aria-pressed="${cover===k}">${t}</button>`).join("")}</div>
+    <div class="vb-az">${letters.map(L=>`<a href="#" data-j="${L}">${L}</a>`).join("")}</div>
+    <div id="vb-list">${letters.map(L=>`<div class="panel vb-grp" id="vb-L-${L}"><b class="vb-letter">${L}</b>${list.filter(v=>letter(v)===L).map(v=>`<div class="vb-row" data-s="${esc((v[0]+" "+v[1]+" "+v[2]).toLowerCase())}">
+        <div class="vb-k">${hide(esc(v[0]),cover==="kurz")}</div>
+        <div><i>${hide(esc(v[1]),cover==="lang")}</i> ${vbSureOf(b,m,v)?'<span class="vk-ok">✓</span>':""}<br><span class="vb-x">${hide(esc(v[2]),cover!=="none")}</span><br><small class="pill vb-cat">${esc(VOK_CATS[v[3]])}</small></div></div>`).join("")}</div>`).join("")}</div>
+    ${vbBack()}`;
+  $$("#vk [data-cv]").forEach(x=>x.onclick=()=>{ store.set("vb_cover",x.dataset.cv); vbTable(); });
+  $$("#vk .pl-hide").forEach(x=>x.onclick=()=>{ x.closest(".vb-row").querySelectorAll(".pl-hide").forEach(h=>{ h.hidden=true; h.nextElementSibling.hidden=false; }); });
+  $$("#vk [data-j]").forEach(a=>a.onclick=e=>{ e.preventDefault(); const t=$("#vb-L-"+a.dataset.j); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); });
+  $("#vb-q").oninput=()=>{ const q=$("#vb-q").value.trim().toLowerCase();
+    $$("#vk .vb-row").forEach(r=>r.hidden=!!q&&!r.dataset.s.includes(q)); $$("#vk .vb-grp").forEach(g=>g.hidden=![...g.querySelectorAll(".vb-row")].some(r=>!r.hidden)); };
+  vbWire(); window.scrollTo({top:0});
+}
+
+/* 🃏 Karteikarten */
+let vc=null;
+function vbCardsStart(){
+  const b=vbBox(), dir=store.get("vb_dir","mix");
+  const list=vbPool().slice().sort(()=>Math.random()-.5).sort((x,y)=>(b[x[0]]||0)-(b[y[0]]||0)).slice(0,10);
+  vc={list:list.map(v=>({v,d:dir==="mix"?(Math.random()<.5?"kb":"bk"):dir})),i:0,ok:0,wrong:[],flipped:false}; vbCardShow();
+}
+function vbCardShow(){
+  if(vc.i>=vc.list.length) return vbCardsEnd();
+  const {v,d}=vc.list[vc.i], box=vbBox()[v[0]]||0, dir=store.get("vb_dir","mix");
+  const front=d==="kb"?`<small class="hint">Was bedeutet …?</small><div class="pl-big pl-name">${esc(v[0])}</div>`:`<small class="hint">Welcher Begriff ist gemeint?</small><div class="vb-sent">${esc(vbMaskQ(v))}</div>`;
+  $("#vk").innerHTML=`<div class="mt-top"><span class="score">${vc.ok} / ${vc.list.length}</span><span class="pill">Karte ${vc.i+1}</span>${plDots(box)}</div>
+    <div class="timer"><i style="transform:scaleX(${vc.i/vc.list.length})"></i></div>
+    <div class="chips-wrap" style="justify-content:center">${[["mix","Gemischt"],["kb","Begriff → Bedeutung"],["bk","Erklärung → Begriff"]].map(([k,t])=>`<button class="pillbtn" data-dir="${k}" aria-pressed="${dir===k}">${t}</button>`).join("")}</div>
+    <button type="button" class="bz-card in pl-card" id="vb-card"><span class="pill" style="align-self:center">${esc(VOK_CATS[v[3]])}</span>${front}
+      <div id="vb-back" hidden><div class="pl-ans">${esc(v[0])}</div><div class="pl-meta"><i>${esc(v[1])}</i><br>${esc(v[2])}</div></div>
+      <small class="hint" id="vb-tap">Antippen zum Umdrehen</small></button>
+    <div class="grid2" id="vb-rate" hidden><button class="btn ghost" data-r="0">✗ Nicht gewusst</button><button class="btn primary" data-r="1">✓ Gewusst</button></div>
+    ${vbBack()}`;
+  $$("#vk [data-dir]").forEach(x=>x.onclick=()=>{ store.set("vb_dir",x.dataset.dir); vbCardsStart(); });
+  $("#vb-card").onclick=()=>{ if(vc.flipped) return; vc.flipped=true; $("#vb-back").hidden=false; $("#vb-tap").hidden=true; $("#vb-rate").hidden=false; };
+  $$("#vb-rate [data-r]").forEach(x=>x.onclick=()=>{ const b=vbBox(), ok=x.dataset.r==="1"; b[v[0]]=ok?Math.min(5,(b[v[0]]||0)+1):1; vbSave(b);
+    if(ok) vc.ok++; else vc.wrong.push(v); vc.i++; vc.flipped=false; vbCardShow(); });
+  vbWire();
+}
+function vbCardsEnd(){
+  $("#vk").innerHTML=`<div class="done"><p class="hint">Runde geschafft</p><div class="big-score">${vc.ok}/${vc.list.length}</div></div>
+    ${vc.wrong.length?`<div class="panel"><b style="font:600 15px var(--display)">Nochmal anschauen</b>${vc.wrong.map(v=>`<div class="vk-row"><b>${esc(v[0])}</b><span><i>${esc(v[1])}</i><br>${esc(v[2])}</span></div>`).join("")}</div>`:""}
+    <div class="grid2"><button class="btn ghost" id="vb-home">← Labor</button><button class="btn primary" id="vb-again">Nächste Runde</button></div>`;
+  vbWire(); $("#vb-again").onclick=vbCardsStart; window.scrollTo({top:0});
+}
+
+/* 🧩 Kürzel-Puzzle: Langform aus Wortkacheln zusammensetzen (mit Ablenkwörtern), 3 Leben */
+let vz=null;
+const vbWords=v=>v[1].replace(/[()]/g,"").split(/\s+/).filter(Boolean);
+function vbPuzStart(){
+  const ok=vbPool().filter(v=>vbIsAbbr(v)&&vbWords(v).length>=2&&vbWords(v).length<=6&&v[0].length>=2);
+  const list=(ok.length>=8?ok:VOKABELN.filter(v=>vbIsAbbr(v)&&vbWords(v).length>=2&&vbWords(v).length<=6)).slice().sort(()=>Math.random()-.5).slice(0,8);
+  vz={list,i:0,lives:3,score:0,t0:performance.now(),solved:[]}; vbPuzShow();
+}
+function vbPuzShow(){
+  if(vz.i>=vz.list.length||vz.lives<=0) return vbPuzEnd();
+  const v=vz.list[vz.i], words=vbWords(v);
+  const others=VOKABELN.filter(x=>x!==v&&vbIsAbbr(x)).flatMap(vbWords).filter(w=>!words.includes(w)&&w.length>2);
+  const decoy=[...new Set(others.sort(()=>Math.random()-.5))].slice(0,Math.min(3,Math.max(2,6-words.length)));
+  const tiles=[...words.map((w,i)=>({w,i})),...decoy.map(w=>({w,i:-1}))].sort(()=>Math.random()-.5);
+  vz.cur={v,words,tiles,pos:0};
+  $("#vk").innerHTML=`<div class="mt-top"><span class="score">${vz.score} P.</span><span class="pill">Puzzle ${vz.i+1}/${vz.list.length}</span><span class="pill">${"❤️".repeat(vz.lives)}${"🤍".repeat(3-vz.lives)}</span></div>
+    <div class="timer"><i style="transform:scaleX(${vz.i/vz.list.length})"></i></div>
+    <div class="bz-card in" style="min-height:0;align-items:center;text-align:center"><small class="hint">Wofür steht …</small><div class="pl-big pl-name">${esc(v[0])}</div>
+      <div class="vz-slots" id="vz-slots">${words.map(()=>`<span class="vz-slot"></span>`).join("")}</div></div>
+    <p class="hint" style="margin:0">Tippe die Wörter in der richtigen Reihenfolge an. Achtung, Ablenkwörter!</p>
+    <div class="vz-tiles" id="vz-tiles">${tiles.map((t,k)=>`<button type="button" class="vz-t" data-k="${k}">${esc(t.w)}</button>`).join("")}</div>
+    <div id="vz-fb"></div>${vbBack()}`;
+  $$("#vz-tiles .vz-t").forEach(x=>x.onclick=()=>vbPuzTap(x,+x.dataset.k));
+  vbWire();
+}
+function vbPuzTap(btn,k){
+  const c=vz.cur; if(!c||c.done) return; const t=c.tiles[k], need=c.words[c.pos];
+  if(t.w===need){ btn.disabled=true; btn.classList.add("ok"); const s=$$("#vz-slots .vz-slot")[c.pos]; s.textContent=t.w; s.classList.add("on"); c.pos++;
+    if(c.pos===c.words.length){ c.done=true; vz.score+=100; vz.solved.push(c.v);
+      $("#vz-fb").innerHTML=`<div class="vk-card ok">✔ <b>${esc(c.v[0])}</b> – ${esc(c.v[1])}<br>${esc(c.v[2])}</div><button class="btn primary block" id="vz-next">${vz.i+1>=vz.list.length?"Ergebnis":"Weiter"}</button>`;
+      $("#vz-next").onclick=()=>{ vz.i++; vbPuzShow(); }; } }
+  else { btn.classList.add("bad"); setTimeout(()=>btn.classList.remove("bad"),500); vz.lives--; vz.score=Math.max(0,vz.score-20);
+    $(".mt-top .pill:last-child").textContent="❤️".repeat(Math.max(0,vz.lives))+"🤍".repeat(3-Math.max(0,vz.lives));
+    if(vz.lives<=0){ c.done=true; $("#vz-fb").innerHTML=`<div class="vk-card bad">✘ Keine Leben mehr. Richtig wäre: <b>${esc(c.v[1])}</b></div><button class="btn primary block" id="vz-next">Ergebnis</button>`; $("#vz-next").onclick=vbPuzEnd; } }
+}
+function vbPuzEnd(){
+  const best=+store.get("vz_best","0")||0, rec=vz.score>best; if(rec) store.set("vz_best",String(vz.score));
+  $("#vk").innerHTML=`<div class="done"><p class="hint">Kürzel-Puzzle · ${Math.round((performance.now()-vz.t0)/1000)} s</p><div class="big-score">${vz.score} P.</div><p class="hint">${vz.solved.length} von ${vz.list.length} gelöst · ${rec?"🏆 Neuer Rekord!":"Rekord: "+best+" P."}</p></div>
+    <div class="grid2"><button class="btn ghost" id="vb-home">← Labor</button><button class="btn primary" id="vb-again">Nochmal</button></div>`;
+  vbWire(); $("#vb-again").onclick=vbPuzStart; window.scrollTo({top:0});
+}
+
+/* ⌨️ Kürzel-Rennen: Erklärung lesen, Kürzel selbst tippen – 90 Sekunden */
+let vr=null;
+function vbRaceStart(){
+  const pool=vbPool().filter(v=>vbIsAbbr(v)&&/^[A-Za-z0-9#\-\/.]{2,8}$/.test(v[0]));
+  const list=(pool.length>=10?pool:VOKABELN.filter(v=>vbIsAbbr(v)&&/^[A-Za-z0-9#\-\/.]{2,8}$/.test(v[0]))).slice().sort(()=>Math.random()-.5);
+  vr={list,i:0,ok:0,skip:0,val:"",t0:performance.now(),dur:90,done:false,miss:[]}; vbRaceShow(); vbRaceTick();
+}
+function vbRaceShow(){
+  const v=vr.list[vr.i%vr.list.length];
+  const keys="QWERTZUIOPASDFGHJKLYXCVBNM1234567890".split("");
+  $("#vk").innerHTML=`<div class="mt-top"><span class="score">${vr.ok} ✔</span><span class="pill" id="vr-t">${vr.dur} s</span><span class="pill">${vr.skip} übersprungen</span></div>
+    <div class="timer"><i id="vr-bar" style="transform:scaleX(0)"></i></div>
+    <div class="bz-card in" style="min-height:0"><small class="hint">${esc(VOK_CATS[v[3]])} · Welches Kürzel?</small><div class="vb-sent">${esc(vbMaskQ(v))}</div><small class="hint">${v[0].length} Zeichen</small></div>
+    <div class="sn-in ${vr.val?"":"empty"}" id="vr-in"><span id="vr-val">${esc(vr.val)}</span><i class="caret"></i></div>
+    <div class="vr-kb">${keys.map(k=>`<button type="button" data-k="${k}">${k}</button>`).join("")}<button type="button" data-k="-">-</button><button type="button" data-k="⌫" class="wide">⌫</button></div>
+    <div class="grid2"><button class="btn ghost" id="vr-skip">Überspringen</button><button class="btn primary" id="vr-ok">Prüfen</button></div>`;
+  $$("#vk .vr-kb button").forEach(x=>x.onclick=()=>vbRaceKey(x.dataset.k));
+  $("#vr-skip").onclick=()=>{ vr.skip++; vr.miss.push(v); vr.val=""; vr.i++; vbRaceShow(); };
+  $("#vr-ok").onclick=()=>vbRaceCheck();
+}
+function vbRaceKey(k){ if(vr.done) return; if(k==="⌫") vr.val=vr.val.slice(0,-1); else if(vr.val.length<10) vr.val+=k;
+  $("#vr-val").textContent=vr.val; $("#vr-in").classList.toggle("empty",!vr.val);
+  const v=vr.list[vr.i%vr.list.length]; if(vr.val.toUpperCase()===v[0].toUpperCase()) vbRaceCheck(); }
+function vbRaceCheck(){ if(vr.done) return; const v=vr.list[vr.i%vr.list.length];
+  if(vr.val.toUpperCase()===v[0].toUpperCase()){ vr.ok++; vr.val=""; vr.i++; toast(`✔ ${v[0]} – ${v[1]}`); vbRaceShow(); }
+  else { const box=$("#vr-in"); box.classList.add("shake"); setTimeout(()=>box.classList.remove("shake"),400); } }
+function vbRaceTick(){ if(!vr||vr.done) return; const left=Math.max(0,vr.dur-Math.floor((performance.now()-vr.t0)/1000));
+  const t=$("#vr-t"), bar=$("#vr-bar"); if(!t){ vr.done=true; return; } t.textContent=left+" s"; if(bar) bar.style.transform=`scaleX(${1-left/vr.dur})`;
+  if(left<=0) return vbRaceEnd(); setTimeout(vbRaceTick,250); }
+function vbRaceEnd(){
+  vr.done=true; const best=+store.get("vr_best","0")||0, rec=vr.ok>best; if(rec) store.set("vr_best",String(vr.ok));
+  $("#vk").innerHTML=`<div class="done"><p class="hint">Kürzel-Rennen · 90 Sekunden</p><div class="big-score">${vr.ok}</div><p class="hint">Kürzel richtig getippt · ${rec?"🏆 Neuer Rekord!":"Rekord: "+best}</p></div>
+    ${vr.miss.length?`<div class="panel"><b style="font:600 15px var(--display)">Übersprungen – nochmal anschauen</b>${vr.miss.map(v=>`<div class="vk-row"><b>${esc(v[0])}</b><span><i>${esc(v[1])}</i><br>${esc(v[2])}</span></div>`).join("")}</div>`:""}
+    <div class="grid2"><button class="btn ghost" id="vb-home">← Labor</button><button class="btn primary" id="vb-again">Nochmal</button></div>`;
+  vbWire(); $("#vb-again").onclick=vbRaceStart; window.scrollTo({top:0});
+}
+
 
 /* ---------- Port-Jäger ----------
    Vier Fragearten: Port → Dienst (Auswahl), Dienst → Port (eigenes Ziffernfeld), TCP oder UDP?, Firewall-Fall (mehrere Ports antippen).
