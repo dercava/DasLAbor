@@ -447,8 +447,11 @@ textarea:focus,input:focus{border-color:var(--accent);outline:none}
 .tm-os{font:700 11px var(--mono);border-radius:8px;padding:6px 7px;background:#0b1117;color:#46d9a0}
 .tm-stars i{font-style:normal;color:var(--line);font-size:16px}.tm-stars i.on{color:var(--hard)}
 .tm-stars.big{text-align:center;margin:4px 0}.tm-stars.big i{font-size:34px}
-.tm-ticket{border-left:4px solid var(--hard);background:var(--surface);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
-.tm-ticket p{margin:0;color:var(--muted);font-size:14px}
+.tm-ticket{position:relative;overflow:hidden;border:1px solid color-mix(in srgb,var(--hard) 40%,var(--line));border-left:5px solid var(--hard);background:linear-gradient(135deg,color-mix(in srgb,var(--hard) 16%,var(--surface)) 0%,var(--surface) 75%);border-radius:16px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow)}
+.tm-ticket::after{content:attr(data-ic);position:absolute;right:12px;top:10px;font-size:30px;opacity:.9;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.tm-ticket .count{color:var(--hard);font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding-right:44px}
+.tm-ticket b{font:700 19px/1.25 var(--display);padding-right:44px}
+.tm-ticket p{margin:2px 0 0;color:var(--ink);font-size:15.5px;line-height:1.55}
 .tm-task{border:1px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-weight:600;line-height:1.4}
 .tm-task small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:4px}
 .tm-badge{font:700 10px var(--mono);text-transform:uppercase;background:var(--accent);color:#05222c;border-radius:6px;padding:2px 6px;margin-right:6px;vertical-align:2px}
@@ -1090,7 +1093,7 @@ function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.8";
+const APP_VER="3.2.9";
 const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2744,7 +2747,7 @@ function tmStart(i){
   tm={i,m,env,step:0,score:0,hints:0,errs:0,stepPts:100,hintLvl:0,hist:[],hi:0,done:false};
   const keys=m.os==="ios"?["show ","conf t","int ","vlan ","switchport ","ip address ","no shut","end","?"]:m.os==="linux"?["ls ","cd ","-l ","/","~","cat ","grep ","chmod ","clear"]:["dir ","cd ","\\","/","ipconfig ","ping ",".","cls"];
   const head=m.os==="ios"?`${m.dev} · Mission`:m.os==="linux"?"Linux-Server · Mission":"Windows-PC · Mission";
-  $("#tm").innerHTML=`<div class="tm-ticket"><small class="count">${head} ${TM_MISSIONS.filter(x=>x.group===m.group).indexOf(m)+1}/${TM_MISSIONS.filter(x=>x.group===m.group).length}</small><b>${esc(m.title)}</b><p>${esc(m.ticket)}</p></div>
+  $("#tm").innerHTML=`<div class="tm-ticket" data-ic="🎫"><small class="count">${head} ${TM_MISSIONS.filter(x=>x.group===m.group).indexOf(m)+1}/${TM_MISSIONS.filter(x=>x.group===m.group).length}</small><b>${esc(m.title)}</b><p>${esc(m.ticket)}</p></div>
     <div class="tm-task" id="tm-task"></div>
     <div class="tm-help"><button type="button" class="btn ghost" id="tm-hint">💡 Tipp</button><button type="button" class="btn ghost" id="tm-explain">📘 Erklärung</button></div>
     <div class="term" id="term"><div class="term-out" id="term-out"></div>
@@ -3314,10 +3317,10 @@ const SQ_KEYS=["SELECT","*","FROM","WHERE","=","'","AND","JOIN","ON","GROUP BY",
 function sqStart(i){
   const C=sqCase(), m=C.ch[i]; sq={i,m,C,db:C.db(),step:0,score:0,hints:0,tries:0,stepPts:100,hintLvl:0,done:false};
   const tabs=Object.keys(sq.db);
-  $("#sq").innerHTML=`<div class="tm-ticket"><small class="count">${esc(C.short)} · Kapitel ${i+1}/${C.ch.length}</small><b>${esc(m.title)}</b><p>${esc(m.story)}</p></div>
+  $("#sq").innerHTML=`<div class="tm-ticket" data-ic="🕵️"><small class="count">${esc(C.short)} · Kapitel ${i+1}/${C.ch.length}</small><b>${esc(m.title)}</b><p>${esc(m.story)}</p></div>
     <div class="tm-task" id="sq-task"></div>
     <details class="sq-schema"><summary>📋 Tabellen der Datenbank</summary><div class="sq-tabs">${tabs.map(t=>`<div class="sq-tab"><b data-t="${t}">${t}</b><span>${sq.db[t].cols.map(c=>`<i data-c="${c}"${c===sq.db[t].pk?' class="pk"':""}>${c}</i>`).join("")}</span></div>`).join("")}</div></details>
-    <div class="sq-ed" id="sq-ed"><textarea id="sq-in" rows="4" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="SELECT * FROM ${Object.keys(sq.db)[C.id==="f1"?2:0]};"></textarea>
+    <div class="sq-ed" id="sq-ed"><textarea id="sq-in" rows="4" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Deine SQL-Abfrage …"></textarea>
       <input id="sq-ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Deine Antwort …" hidden></div>
     <div class="tm-keys" id="sq-keys">${SQ_KEYS.map(k=>`<button type="button" data-k="${esc(k)}">${esc(k)}</button>`).join("")}</div>
     <div class="tm-help"><button class="btn ghost" id="sq-hint">💡 Tipp</button><button class="btn ghost" id="sq-explain">📘 Erklärung</button></div>
