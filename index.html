@@ -1090,7 +1090,7 @@ function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.6";
+const APP_VER="3.2.7";
 const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2813,13 +2813,19 @@ function tmHint(){ if(!tm||tm.done) return; const s=tm.m.steps[tm.step], lv=tmHi
 /* Erklärung: erklärt Thema, Schreibweise und Beispiel – löst aber nicht */
 /* verrät ein Text die Lösung? Dann nicht anzeigen bzw. im Fließtext nicht hervorheben */
 function tmSolParts(s){ return (s.sol||"").toLowerCase().split("  →  ").map(x=>x.trim()).filter(x=>x.length>2); }
-function tmGives(s,txt){ const t=String(txt).toLowerCase(); return tmSolParts(s).some(p=>t.includes(p)); }
-function tmMask(s,txt){ let t=String(txt); for(const p of tmSolParts(s)){ const re=new RegExp(p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"); t=t.replace(re,"…"); } return t; }
+function tmGives(s,txt){ return tmMask(s,txt)!==String(txt); }
+function tmMaskToks(s){ /* ganze Lösung + verräterische Teile: IPs, Zahlen, Schalter (/all, -c), Pfade, Ports wie fa0/5 */
+  const parts=tmSolParts(s), toks=new Set();
+  for(const p of parts) p.split(/\s+/).slice(1).forEach(t=>{ if(t.length>=2&&(/\d/.test(t)||/^[\/\-]/.test(t)||/[.\/]/.test(t))) toks.add(t); });
+  const de=new Set(["dir","man"]);   /* sind auch deutsche Wörter („zeigt dir“) – nicht maskieren */
+  return [...parts.filter(p=>!de.has(p)),...[...toks].sort((a,b)=>b.length-a.length)]; }
+function tmMask(s,txt){ let t=String(txt); for(const p of tmMaskToks(s)){ const re=new RegExp("(^|[^\\w.])"+p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![\\w])","gi"); t=t.replace(re,"$1…"); } return t; }
+function tmMaskTitle(s,title){ let m=tmMask(s,title); for(const p of tmSolParts(s)) if(new RegExp("^"+p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","i").test(m)) m=m.replace(new RegExp("^"+p.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i"),"…"); if(m===title) return title; const after=title.split(/\s+[–-]\s+/).slice(1).join(" – "); return after?after.charAt(0).toUpperCase()+after.slice(1):m; }
 function tmExplain(){ if(!tm) return; const s=tm.m.steps[tm.step]; const ks=(s.k||[]).filter(k=>TM_EXPLAIN[k]);
   const extra=tm.m.os==="ios"?["ios_modes"]:[]; const all=[...new Set([...ks,...extra.filter(x=>!ks.includes(x))])];
   openSheet("Erklärung",`<div class="panel"><span class="field-l">Deine Aufgabe</span><p style="margin:0">${esc(s.task)}</p></div>
     ${all.map(k=>{ const x=TM_EXPLAIN[k]; const syn=x.syn&&!tmGives(s,x.syn)?x.syn:"", ex=x.ex&&!tmGives(s,x.ex)?x.ex:"";
-      return `<div class="panel ex-card"><b>${esc(x.t)}</b><p>${esc(tmMask(s,x.x))}</p>${syn?`<span class="field-l">Schreibweise</span><pre class="ex-code">${esc(syn)}</pre>`:x.syn?`<p class="hint" style="text-align:left;margin:0">Die genaue Schreibweise wäre hier schon die Lösung – die verrät dir der Tipp.</p>`:""}${ex?`<span class="field-l">Beispiel (mit anderen Werten)</span><pre class="ex-code">${esc(ex)}</pre>`:""}</div>`; }).join("")||`<p class="hint">Zu diesem Schritt gibt es keine eigene Erklärung – probier den Tipp.</p>`}
+      return `<div class="panel ex-card"><b>${esc(tmMaskTitle(s,x.t))}</b><p>${esc(tmMask(s,x.x))}</p>${syn?`<span class="field-l">Schreibweise</span><pre class="ex-code">${esc(syn)}</pre>`:x.syn?`<p class="hint" style="text-align:left;margin:0">Die genaue Schreibweise wäre hier schon die Lösung – die verrät dir der Tipp.</p>`:""}${ex?`<span class="field-l">Beispiel (mit anderen Werten)</span><pre class="ex-code">${esc(ex)}</pre>`:""}</div>`; }).join("")||`<p class="hint">Zu diesem Schritt gibt es keine eigene Erklärung – probier den Tipp.</p>`}
     <p class="hint" style="text-align:left">Die Erklärung kostet keine Punkte. Die Lösung zeigt dir nur der Tipp.</p>`); }
 /* Antwort prüfen – großzügig: Groß/Klein, Umlaute, Satzzeichen, Füllwörter und kleine Tippfehler sind egal.
    Richtig ist auch ein Satz, der die richtige Antwort enthält („falsches Gateway“, „es sind 4“). */
