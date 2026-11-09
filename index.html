@@ -1090,7 +1090,7 @@ function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.7";
+const APP_VER="3.2.8";
 const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2859,10 +2859,14 @@ function tmEnter(v){
     if(ansOk(s.ok,v)){ tmPrint("✔ Richtig!","ok"); tmNext(); }
     else { tm.errs++; tm.stepPts=Math.max(Math.min(20,tm.stepPts),tm.stepPts-10); tmPrint("✘ Nicht ganz. Schau nochmal in die Ausgabe oben – oder nimm „💡 Tipp“ / „📘 Erklärung“.","bad"); }
     return; }
+  v=v.replace(/^\S+/,w=>w.toLowerCase());   /* Befehlswort immer klein (Handy schreibt „Ping“, „Cd“ …) */
   tmPrint(tmPrompt(tm.env)+" "+v,"cmd");
   const out=tmRun(v,tm.env); if(out) tmPrint(out);
   $("#term-pr").textContent=tmPrompt(tm.env);
-  if(s.t==="cmd"){ const hit=typeof s.goal==="function"?s.goal(v,tm.env):s.goal.test(v.trim());
+  if(s.t==="cmd"){ /* Groß-/Kleinschreibung: Handy-Tastaturen schreiben den ersten Buchstaben oft groß („Ping …“).
+     Windows und Cisco ignorieren Groß/Klein ohnehin; unter Linux nur den ersten Buchstaben angleichen. */
+    const vt=v.trim().replace(/\s+/g," "), vars=[vt, vt.charAt(0).toLowerCase()+vt.slice(1)]; if(tm.m.os!=="linux") vars.push(vt.toLowerCase());
+    const hit=vars.some(c=>typeof s.goal==="function"?s.goal(c,tm.env):s.goal.test(c));
     if(hit){ tmPrint("✔ Aufgabe erledigt","ok"); tmNext(); }
     else if(/nicht gefunden|falsch geschrieben|Unbekannter Schalter|Usage|Verwendung|Syntax|Invalid input|Incomplete/.test(out||"")){ tm.errs++; tm.stepPts=Math.max(Math.min(20,tm.stepPts),tm.stepPts-5); } }
 }
