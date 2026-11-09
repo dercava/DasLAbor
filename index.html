@@ -181,6 +181,10 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px soli
 .hrow .soon{position:static;flex:none}
 #s-karten .deck-chip{align-self:center}
 #resume:empty{display:none}
+.tgl{flex:none;width:44px;height:26px;border-radius:13px;background:var(--line);position:relative;transition:background .2s}
+.tgl::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .25s var(--spring)}
+.tgl.on{background:var(--accent)}
+.tgl.on::after{transform:translateX(18px)}
 .resume{display:flex;align-items:center;gap:12px;width:100%;border:1px dashed var(--line);background:var(--surface-2);border-radius:16px;padding:11px 14px;text-align:left}
 .resume .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--surface);color:var(--accent);flex:none}
 .resume .ic svg{width:18px;height:18px}
@@ -705,7 +709,7 @@ body.kb .stage{padding-bottom:45vh}
     <section class="screen" id="s-fortschritt">
       <div class="center hubscreen">
         <div class="hub-head"><h2 class="title">Fortschritt</h2><p>Sieh, wo du stehst – und sichere deinen Lernstand.</p></div>
-        <div class="hlist"><button class="hrow" data-go="statistik"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="tx"><b>Statistik</b><small>Lernstand je Fach, Spiele-Rekorde</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="remind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="tx"><b>Lernplan</b><small><span id="remind-label"></span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="backup-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><span class="tx"><b>Lernstand sichern</b><small>Exportieren & auf anderem Gerät laden</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow" data-go="statistik"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="tx"><b>Statistik</b><small>Lernstand je Fach, Spiele-Rekorde</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="remind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="tx"><b>Lernplan</b><small><span id="remind-label"></span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="backup-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><span class="tx"><b>Lernstand sichern</b><small>Exportieren & auf anderem Gerät laden</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="stats-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><span class="tx"><b>Anonyme Nutzungsstatistik</b><small id="stats-label"></small></span><span class="tgl" id="stats-tgl"></span></button></div>
       </div>
     </section>
 
@@ -1029,6 +1033,20 @@ const ROUTES={start:"home",karten:"karten",bibliothek:"bibliothek",spiele:"spiel
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
+/* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
+const GC_URL="https://dercava.goatcounter.com/count";
+let gcLast="";
+function gcCount(r){
+  try{
+    if(store.get("stats_off","0")==="1"||!navigator.onLine) return;
+    const h=location.hostname; if(location.protocol==="file:"&&!window.AndroidBridge) return;
+    if(h==="localhost"||h==="127.0.0.1") return;
+    const path=(window.AndroidBridge?"/app/":"/")+(r||"start");
+    if(path===gcLast) return; gcLast=path;
+    const q=new URLSearchParams({p:path,t:(window.AndroidBridge?"App":"Web")+" · "+(r||"start"),s:screen.width+","+screen.height+","+(window.devicePixelRatio||1),rnd:Math.random().toString(36).slice(2)});
+    const img=new Image(); img.referrerPolicy="no-referrer"; img.src=GC_URL+"?"+q.toString();
+  }catch(e){}
+}
 function show(r){
   const id=ROUTES[r]; if(current===id) return;
   const back=id==="home"; const prev=current; current=id;
@@ -1036,6 +1054,7 @@ function show(r){
   const el=$("#s-"+id); el.classList.add("active"); if(prev) el.classList.add(back?"in-back":"in-fwd");
   $("#app").classList.toggle("home",back); $("#back").classList.toggle("hide",back);
   if(RESUME[r]) store.set("last_area",r);
+  gcCount(r);
   if(id==="home") renderHome(true);
   if(id==="wissen"){ wiSel=(history.state&&history.state.wi)||null; renderWissen(); }
   if(id!=="blitz"&&bz&&!bz.done) bz.done=true;
@@ -1097,6 +1116,7 @@ function renderResume(){
   el.innerHTML=`<button class="resume" data-go="${r}"><span class="ic">${ic?ic.innerHTML:""}</span><span class="tx"><small>Weiter, wo du warst</small><b>${RESUME[r]}</b></span><svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`;
   el.firstChild.onclick=()=>go(r);
 }
+function statsUI(){ const off=store.get("stats_off","0")==="1"; const t=$("#stats-tgl"); if(!t) return; t.classList.toggle("on",!off); $("#stats-label").textContent=off?"Aus – es wird nichts gezählt":"Zählt nur Seitenaufrufe, ohne Cookies oder persönliche Daten"; }
 function renderHome(anim){
   const now=Date.now(), list=cards.filter(inDeck);
   const tp=todayPlan(list,now); const due=tp.reviews.length+tp.fresh.length, nw=list.filter(isNew).length;
@@ -1377,6 +1397,8 @@ function wirePills(root,id,on){ root.querySelectorAll(`#${id} button`).forEach(x
 function remPreview(){ const el=$("#rem-next"); if(!el) return; const r=rem.on?nextReminder():null;
   el.textContent=rem.on?(r?`Nächste Erinnerung: ${fmtWhen(r.at)}${r.n?` · ${r.n} Karte${r.n===1?"":"n"}`:""}`:"Gerade nichts geplant."):"Erinnerungen sind aus."; }
 $("#backup-chip").onclick=()=>openBackup();
+$("#stats-row").onclick=()=>{ const off=store.get("stats_off","0")==="1"; store.set("stats_off",off?"0":"1"); statsUI(); };
+statsUI();
 $("#remind-chip").onclick=()=>{
   const native=hasNative();
   openSheet("Lernplan",`<div class="panel">
