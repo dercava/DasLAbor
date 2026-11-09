@@ -545,6 +545,11 @@ body.kb .stage{padding-bottom:45vh}
 .sn-pad.hex{grid-template-columns:repeat(4,1fr)}
 .sn-pad.hex button.ok{grid-column:span 3}
 .sn-pad.bin button{font-size:26px}
+.magic-tab th{text-align:left;white-space:nowrap;font-weight:600}
+.magic-tab{font-size:12.5px}
+.magic-tab th,.magic-tab td{padding:6px 4px}
+.magic-tab td{text-align:center;font-family:var(--mono)}
+.magic-tab .mt-o td{color:var(--muted)}
 .zs-tab{width:100%;border-collapse:collapse;font:600 14px var(--mono);text-align:center}
 .zs-tab td,.zs-tab th{border:1px solid var(--line);padding:5px 2px}
 .zs-tab th{color:var(--muted);font-weight:500}
@@ -1085,7 +1090,7 @@ function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="3.2.5";
+const APP_VER="3.2.6";
 const GC_AREAS={lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Duell",ports:"Port-Jäger",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -3783,7 +3788,15 @@ function zsCheat(){ return `<details class="sq-schema"><summary>📋 Spickzettel
 let sn=null;
 function snBest(){ try{ return JSON.parse(store.get("sn_best","{}"))||{}; }catch(e){ return {}; } }
 function snScores(){ try{ return JSON.parse(store.get("sn_scores","[]")); }catch(e){ return []; } }
-function snCheat(){ return `<details class="sq-schema"><summary>📋 Spickzettel /24 – /30</summary><div class="sq-scroll" style="border:0;margin:0 10px 10px"><table><thead><tr><th>CIDR</th><th>Maske (4. Oktett)</th><th>Block</th><th>Hosts</th></tr></thead><tbody>${[24,25,26,27,28,29,30].map(p=>`<tr><td>/${p}</td><td>${SN.mask(p)[3]}</td><td>${256-SN.mask(p)[3]}</td><td>${SN.hosts(p)}</td></tr>`).join("")}</tbody></table><p class="hint" style="text-align:left;margin:8px 0 0">Stellenwerte: 128 · 64 · 32 · 16 · 8 · 4 · 2 · 1</p></div></details>`; }
+function snCheat(){ const B=[1,2,3,4,5,6,7,8], V=[128,64,32,16,8,4,2,1], M=[128,192,224,240,248,252,254,255];
+  return `<details class="sq-schema"><summary>🪄 Magic Table</summary><div class="sq-scroll" style="border:0;margin:0 10px 10px"><table class="magic-tab"><tbody>
+   <tr><th>Bit</th>${B.map(x=>`<td>${x}</td>`).join("")}</tr>
+   <tr><th>Magic</th>${V.map(x=>`<td><b>${x}</b></td>`).join("")}</tr>
+   <tr><th>Maske</th>${M.map(x=>`<td>${x}</td>`).join("")}</tr>
+   <tr class="mt-o"><th>2. Okt.</th>${B.map(x=>`<td>/${8+x}</td>`).join("")}</tr>
+   <tr class="mt-o"><th>3. Okt.</th>${B.map(x=>`<td>/${16+x}</td>`).join("")}</tr>
+   <tr class="mt-o"><th>4. Okt.</th>${B.map(x=>`<td>/${24+x}</td>`).join("")}</tr></tbody></table>
+   <p class="hint" style="text-align:left;margin:8px 0 0">So geht's: Präfix unten suchen. In derselben Spalte stehen oben die Magic Number (= Schrittweite der Netze in diesem Oktett) und der Maskenwert.<br>Hosts selbst rechnen: 2<sup>Hostbits</sup> − 2, Hostbits = 32 − Präfix.</p></div></details>`; }
 function snHome(){
   const best=snBest(), hard=store.get("sn_hard","0")==="1", A=snArea(), TT=A.topics;
   $("#sn").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
