@@ -115,12 +115,13 @@ $("#files").onchange=async e=>{ files=[...e.target.files].sort((a,b)=>a.name.loc
   const all=await dbAll(); for(const f of files) if(!all[f.name]) setRow(f.name,"","wartet");
   $("#start").disabled=!files.length; $("#status").textContent=`${files.length} Dateien ausgewählt, ${files.filter(f=>all[f.name]).length} davon schon fertig.`; };
 
-/* ---------- MP3 → 16 kHz Mono ---------- */
-async function decode(file){ const buf=await file.arrayBuffer(); const ctx=new AudioContext({sampleRate:16000});
-  const audio=await ctx.decodeAudioData(buf); await ctx.close();
+/* ---------- MP3 → 16 kHz Mono, in Stücken (lange Dateien passen sonst nicht in den Decoder) ---------- */
+let dctx=null;
+async function decodeBytes(buf){ if(!dctx) dctx=new AudioContext({sampleRate:16000});
+  const audio=await dctx.decodeAudioData(buf);
   if(audio.numberOfChannels===1) return audio.getChannelData(0);
   const a=audio.getChannelData(0), b=audio.getChannelData(1), m=new Float32Array(a.length); for(let i=0;i<a.length;i++) m[i]=(a[i]+b[i])/2; return m; }
-
+const SLICE=2400000;   /* ca. 5 Minuten bei 64 kbit/s */
 let asr=null, loadedModel="";
 async function getModel(id){ if(asr&&loadedModel===id) return asr;
   $("#status").textContent="Lade Sprachmodell … (beim ersten Mal ein paar Minuten)";
@@ -142,17 +143,22 @@ $("#start").onclick=async()=>{
   for(const f of todo){ if(stopFlag) break;
     setRow(f.name,"run","läuft …"); $("#status").textContent="Schreibe ab: "+f.name;
     try{
-      const pcm=await decode(f); const dur=pcm.length/16000; const SEG=16000*300; let text=[];
-      for(let s=0;s<pcm.length;s+=SEG){ if(stopFlag) break;
-        const part=pcm.subarray(s,Math.min(pcm.length,s+SEG));
-        const out=await asr(part,{language:"german",task:"transcribe",chunk_length_s:30,stride_length_s:5});
-        const mm=Math.floor(s/16000/60); text.push(`[${String(Math.floor(mm/60)).padStart(2,"0")}:${String(mm%60).padStart(2,"0")}] `+out.text.trim());
-        const fr=Math.min(1,(s+SEG)/pcm.length); $("#pFile").style.width=(fr*100)+"%";
+      let text=[], pos=0, broken=0, dur=0;
+      for(let off=0; off<f.size; off+=SLICE){ if(stopFlag) break;
+        let pcm;
+        try{ pcm=await decodeBytes(await f.slice(off,Math.min(f.size,off+SLICE)).arrayBuffer()); }
+        catch(e){ broken++; log(`Stück bei ${Math.round(off/1e6)} MB nicht lesbar – übersprungen`); continue; }
+        const out=await asr(pcm,{language:"german",task:"transcribe",chunk_length_s:30,stride_length_s:5});
+        const mm=Math.floor(pos/60); text.push(`[${String(Math.floor(mm/60)).padStart(2,"0")}:${String(mm%60).padStart(2,"0")}] `+out.text.trim());
+        pos+=pcm.length/16000; dur=pos;
+        const fr=Math.min(1,(off+SLICE)/f.size); $("#pFile").style.width=(fr*100)+"%";
         const el=(performance.now()-t0)/1000, prog=(doneBytes+f.size*fr)/totalBytes;
         $("#pAll").style.width=(prog*100)+"%";
-        $("#detail").textContent=`${f.name}: ${fmt(dur*fr)} von ${fmt(dur)} · gesamt ${Math.round(prog*100)} % · noch ca. ${fmt(el/prog-el)}`;
+        $("#detail").textContent=`${f.name}: ${Math.round(fr*100)} % · gesamt ${Math.round(prog*100)} % · noch ca. ${fmt(el/prog-el)}`;
       }
-      if(stopFlag&&text.length*300<dur-1){ setRow(f.name,"","angehalten"); break; }
+      if(stopFlag){ setRow(f.name,"","angehalten"); break; }
+      if(!text.length) throw new Error("Datei konnte gar nicht gelesen werden");
+      if(broken) log(`${f.name}: ${broken} Stück(e) übersprungen`);
       await dbPut(f.name,{name:f.name,dauer_s:Math.round(dur),modell:model,text:text.join("\n\n"),am:new Date().toISOString()});
       setRow(f.name,"done","fertig ✓"); log(`fertig: ${f.name} (${fmt(dur)})`); doneBytes+=f.size;
       $("#dlAll").disabled=$("#dlOne").disabled=false;
