@@ -28,8 +28,8 @@ window.__showErr=function(){
   d.querySelector("pre").textContent=window.__errs.slice(0,5).join("\n");
   (document.body||document.documentElement).appendChild(d);
   d.querySelector("#err-reload").onclick=function(){ location.reload(); };
-  d.querySelector("#err-fix").onclick=function(){ try{ var keep={"ap1kartei_v1":1,"stats":1,"ch_scores2":1,"ch_name":1,"theme":1,"plan_new":1,"rem_on":1,"rem_hour":1,"rem_mode":1};
-    Object.keys(localStorage).forEach(function(k){ if(!keep[k]) localStorage.removeItem(k); }); }catch(_){}
+  d.querySelector("#err-fix").onclick=function(){ try{ var keep={"ap1kartei_v1":1,"stats":1,"ch_scores2":1,"ch_name":1,"ch_seen":1,"ch_level":1,"theme":1,"plan_new":1,"plan_rev":1,"rem_on":1,"rem_hour":1,"rem_mode":1,"last_learn":1,"allrun":1,"tm_case":1,"sql_case":1,"erd_case":1,"pj_box":1,"vk_box":1,"inst_done":1,"bk_last":1,"stats_off":1};
+    Object.keys(localStorage).forEach(function(k){ if(!keep[k]&&!/_(best|scores)$/.test(k)) localStorage.removeItem(k); }); }catch(_){}
     location.replace(location.pathname); };
 };
 setTimeout(function(){ if(document.getElementById("splash")) window.__showErr(); },5000);
