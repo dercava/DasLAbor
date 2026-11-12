@@ -1238,7 +1238,7 @@ function whyHTML(c){ const ex=exOf(c); if(!ex||!(ex.w||ex.b||ex.m)) return "";
     <div class="why-body">${whyParts(ex,glossSeen())}${g}</div></details>`; }
 let lvlSel=+store.get("lvl","0"); /* 0 = alle Stufen */
 const inDeck=c=>(deckSel==="__all"||c.deck===deckSel||(c.deck||"").startsWith(deckSel+"::"))&&(!lvlSel||lvlOf(c)===lvlSel);
-const normDeck=d=>String(d||"Ohne Fach").replace(/^AP1\s+/,"");
+function normDeck(d){ return String(d||"Ohne Fach").replace(/^AP1\s+/,""); }
 const split=d=>{ d=normDeck(d); const p=(d||"Ohne Fach").split("::"); return {main:p[0], sub:p.slice(1).join(" › ")}; };
 function deckLabel(d){ if(d==="__all") return "Alle Fächer"; const s=split(d); return s.sub||s.main; }
 function fmtIvl(ms){ if(ms<60*MIN) return Math.max(1,Math.round(ms/MIN))+" Min"; if(ms<DAY) return Math.round(ms/36e5)+" Std"; const d=Math.round(ms/DAY); return d<31?d+(d===1?" Tag":" Tage"):Math.round(d/30)+" Mon"; }
@@ -1367,7 +1367,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",druck:"wissen",sprachen:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="4.1";
+const APP_VER="4.1.1";
 const GC_AREAS={sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik"};
 const gcSeen=new Set();
 let gcDone=false;
