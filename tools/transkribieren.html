@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unterricht abschreiben – Whisper im Browser</title>
+<style>
+  :root{--bg:#0b111c;--card:#121a29;--line:#22304a;--txt:#e6eefb;--mut:#93a4bd;--acc:#22d3a0;--acc2:#18b8ff;--err:#ff6a6a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:26px;margin:0 0 4px}
+  p.sub{color:var(--mut);margin:0 0 22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  select,button,input[type=file]{font:inherit;color:var(--txt)}
+  select{background:#0e1522;border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
+  input[type=file]{width:100%;padding:12px;border:2px dashed var(--line);border-radius:12px;background:#0e1522}
+  button{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--acc2),var(--acc));color:#04131a}
+  button.ghost{background:#0e1522;color:var(--txt);border:1px solid var(--line);font-weight:600;padding:8px 12px}
+  button:disabled{opacity:.45;cursor:default}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .bar{height:10px;background:#0e1522;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc2),var(--acc));transition:width .3s}
+  #status{font-weight:600;margin:10px 0 6px}
+  #detail{color:var(--mut);font-size:13px}
+  ul{list-style:none;margin:0;padding:0}
+  li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+  li .st{color:var(--mut);white-space:nowrap}
+  li.done .st{color:var(--acc)} li.err .st{color:var(--err)} li.run .st{color:var(--acc2)}
+  .hint{color:var(--mut);font-size:13px;margin-top:8px}
+  #log{white-space:pre-wrap;font:12px/1.4 Consolas,monospace;color:var(--mut);max-height:160px;overflow:auto}
+</style>
+</head>
+<body>
+<main>
+  <h1>Unterricht abschreiben</h1>
+  <p class="sub">Whisper läuft hier im Browser auf deinem PC. Nichts wird hochgeladen, es kostet nichts.</p>
+
+  <div class="card">
+    <label for="model">Genauigkeit</label>
+    <select id="model">
+      <option value="onnx-community/whisper-large-v3-turbo">Sehr gut – Whisper large-v3-turbo (ca. 1 GB Download, braucht Grafikkarte)</option>
+      <option value="onnx-community/whisper-small" selected>Gut – Whisper small (ca. 250 MB Download)</option>
+      <option value="onnx-community/whisper-base">Schnell – Whisper base (ca. 80 MB, ungenauer)</option>
+    </select>
+    <div class="hint" id="gpu"></div>
+  </div>
+
+  <div class="card">
+    <label for="files">MP3s auswählen</label>
+    <input type="file" id="files" accept="audio/*,.mp3" multiple>
+    <div class="hint">Im Fenster mit <b>Strg + A</b> alle MP3s markieren. Fertige Dateien merkt sich die Seite – bei einem Neustart macht sie dort weiter.</div>
+    <div class="row" style="margin-top:12px">
+      <button id="start" disabled>Abschreiben starten</button>
+      <button class="ghost" id="stop" disabled>Anhalten</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div id="status">Bereit.</div>
+    <div class="bar"><i id="pAll"></i></div>
+    <div id="detail" style="margin-top:6px"></div>
+    <div class="bar" style="margin-top:8px"><i id="pFile"></i></div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between;margin-bottom:8px">
+      <b>Dateien</b>
+      <div class="row">
+        <button class="ghost" id="dlAll" disabled>Alle Texte herunterladen</button>
+        <button class="ghost" id="dlOne" disabled>Alles in einer Datei</button>
+      </div>
+    </div>
+    <ul id="list"></ul>
+  </div>
+
+  <div class="card"><b>Protokoll</b><div id="log"></div></div>
+</main>
+
+<script type="module">
+const $=s=>document.querySelector(s);
+const log=m=>{const l=$("#log");l.textContent+=new Date().toLocaleTimeString()+"  "+m+"\n";l.scrollTop=l.scrollHeight;console.log("[whisper]",m);};
+const fmt=s=>{s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?`${h} h ${m} min`:`${m} min`;};
+
+/* ---------- Ergebnisse dauerhaft speichern (IndexedDB) ---------- */
+const DB=await new Promise((res,rej)=>{const r=indexedDB.open("unterricht-transkripte",1);r.onupgradeneeded=()=>r.result.createObjectStore("t");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});
+const dbGet=k=>new Promise(r=>{const q=DB.transaction("t").objectStore("t").get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r(undefined);});
+const dbPut=(k,v)=>new Promise(r=>{const t=DB.transaction("t","readwrite");t.objectStore("t").put(v,k);t.oncomplete=()=>r();});
+const dbAll=()=>new Promise(r=>{const out={};const q=DB.transaction("t").objectStore("t").openCursor();q.onsuccess=()=>{const c=q.result;if(c){out[c.key]=c.value;c.continue();}else r(out);};});
+window.__transkripte=dbAll;   // zum Auslesen
+
+/* ---------- Grafikkarte prüfen ---------- */
+let device="wasm";
+if(navigator.gpu){ try{ const a=await navigator.gpu.requestAdapter(); if(a){ device="webgpu"; } }catch(e){} }
+$("#gpu").textContent = device==="webgpu" ? "✅ Grafikkarte (WebGPU) gefunden – das geht schnell." : "⚠️ Keine Grafikkarte nutzbar – läuft über den Prozessor und ist deutlich langsamer. Nimm dann „Gut“ oder „Schnell“.";
+if(device!=="webgpu") $("#model").value="onnx-community/whisper-base";
+
+/* ---------- Bibliothek laden ---------- */
+const T = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3");
+T.env.allowLocalModels=false;
+log("Bibliothek geladen, Gerät: "+device);
+
+let files=[], stopFlag=false;
+const items=new Map();
+function row(name){ if(items.has(name)) return items.get(name);
+  const li=document.createElement("li"); li.innerHTML=`<span></span><span class="st">wartet</span>`; li.firstChild.textContent=name; $("#list").appendChild(li); items.set(name,li); return li; }
+function setRow(name,cls,txt){ const li=row(name); li.className=cls; li.lastChild.textContent=txt; }
+
+async function refreshDone(){ const all=await dbAll(); const n=Object.keys(all).length; $("#dlAll").disabled=$("#dlOne").disabled=!n;
+  for(const k of Object.keys(all)) setRow(k,"done","fertig ✓"); return all; }
+await refreshDone();
+
+$("#files").onchange=async e=>{ files=[...e.target.files].sort((a,b)=>a.name.localeCompare(b.name,"de",{numeric:true}));
+  const all=await dbAll(); for(const f of files) if(!all[f.name]) setRow(f.name,"","wartet");
+  $("#start").disabled=!files.length; $("#status").textContent=`${files.length} Dateien ausgewählt, ${files.filter(f=>all[f.name]).length} davon schon fertig.`; };
+
+/* ---------- MP3 → 16 kHz Mono ---------- */
+async function decode(file){ const buf=await file.arrayBuffer(); const ctx=new AudioContext({sampleRate:16000});
+  const audio=await ctx.decodeAudioData(buf); await ctx.close();
+  if(audio.numberOfChannels===1) return audio.getChannelData(0);
+  const a=audio.getChannelData(0), b=audio.getChannelData(1), m=new Float32Array(a.length); for(let i=0;i<a.length;i++) m[i]=(a[i]+b[i])/2; return m; }
+
+let asr=null, loadedModel="";
+async function getModel(id){ if(asr&&loadedModel===id) return asr;
+  $("#status").textContent="Lade Sprachmodell … (beim ersten Mal ein paar Minuten)";
+  const opts={device, progress_callback:p=>{ if(p.status==="progress"&&p.total){ $("#pFile").style.width=(p.loaded/p.total*100)+"%"; $("#detail").textContent=`Download ${p.file}: ${Math.round(p.loaded/1e6)} / ${Math.round(p.total/1e6)} MB`; } }};
+  if(device==="webgpu") opts.dtype={encoder_model: id.includes("turbo")?"fp16":"fp32", decoder_model_merged:"q4"};
+  else opts.dtype="q8";
+  asr=await T.pipeline("automatic-speech-recognition", id, opts); loadedModel=id; log("Modell bereit: "+id); return asr; }
+
+let wake=null; async function keepAwake(){ try{ wake=await navigator.wakeLock.request("screen"); }catch(e){} }
+
+$("#stop").onclick=()=>{ stopFlag=true; $("#stop").disabled=true; $("#status").textContent="Hält nach diesem Abschnitt an …"; };
+
+$("#start").onclick=async()=>{
+  stopFlag=false; $("#start").disabled=true; $("#stop").disabled=false; $("#files").disabled=true; await keepAwake();
+  const model=$("#model").value;
+  try{ await getModel(model); }catch(e){ log("Modell-Fehler: "+e.message); $("#status").textContent="Modell konnte nicht geladen werden: "+e.message; $("#start").disabled=false; $("#files").disabled=false; return; }
+  const all=await dbAll(); const todo=files.filter(f=>!all[f.name]);
+  const totalBytes=todo.reduce((s,f)=>s+f.size,0); let doneBytes=0; const t0=performance.now();
+  for(const f of todo){ if(stopFlag) break;
+    setRow(f.name,"run","läuft …"); $("#status").textContent="Schreibe ab: "+f.name;
+    try{
+      const pcm=await decode(f); const dur=pcm.length/16000; const SEG=16000*300; let text=[];
+      for(let s=0;s<pcm.length;s+=SEG){ if(stopFlag) break;
+        const part=pcm.subarray(s,Math.min(pcm.length,s+SEG));
+        const out=await asr(part,{language:"german",task:"transcribe",chunk_length_s:30,stride_length_s:5});
+        const mm=Math.floor(s/16000/60); text.push(`[${String(Math.floor(mm/60)).padStart(2,"0")}:${String(mm%60).padStart(2,"0")}] `+out.text.trim());
+        const fr=Math.min(1,(s+SEG)/pcm.length); $("#pFile").style.width=(fr*100)+"%";
+        const el=(performance.now()-t0)/1000, prog=(doneBytes+f.size*fr)/totalBytes;
+        $("#pAll").style.width=(prog*100)+"%";
+        $("#detail").textContent=`${f.name}: ${fmt(dur*fr)} von ${fmt(dur)} · gesamt ${Math.round(prog*100)} % · noch ca. ${fmt(el/prog-el)}`;
+      }
+      if(stopFlag&&text.length*300<dur-1){ setRow(f.name,"","angehalten"); break; }
+      await dbPut(f.name,{name:f.name,dauer_s:Math.round(dur),modell:model,text:text.join("\n\n"),am:new Date().toISOString()});
+      setRow(f.name,"done","fertig ✓"); log(`fertig: ${f.name} (${fmt(dur)})`); doneBytes+=f.size;
+      $("#dlAll").disabled=$("#dlOne").disabled=false;
+    }catch(e){ setRow(f.name,"err","Fehler"); log(`Fehler bei ${f.name}: ${e.message}`); doneBytes+=f.size; }
+  }
+  $("#status").textContent=stopFlag?"Angehalten. Mit „Abschreiben starten“ geht es weiter.":"FERTIG – alle Dateien abgeschrieben.";
+  $("#start").disabled=false; $("#stop").disabled=true; $("#files").disabled=false; if(wake) wake.release();
+};
+
+/* ---------- Herunterladen ---------- */
+function dl(name,text){ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"})); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),5000); }
+$("#dlAll").onclick=async()=>{ const all=await dbAll(); let i=0; for(const v of Object.values(all)){ setTimeout(()=>dl(v.name.replace(/\.[^.]+$/,"")+".txt",v.text),i++*400); } };
+$("#dlOne").onclick=async()=>{ const all=await dbAll(); const keys=Object.keys(all).sort((a,b)=>a.localeCompare(b,"de",{numeric:true}));
+  dl("Unterricht_alle_Transkripte.txt", keys.map(k=>`===== ${k} (${fmt(all[k].dauer_s)}) =====\n\n${all[k].text}`).join("\n\n\n")); };
+</script>
+</body>
+</html>
