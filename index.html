@@ -6533,11 +6533,11 @@ const EPISODES_BUILTIN=[
   {nr:1,title:"IP-Adressen und Subnetting einfach erklärt",drive:"1R3xGaRXye-oKmoivKGHU9hOT83ZqfA6_",cover:"1Q0TIuuPvVUlvxjvUC6KfRhcsliI7z_qC",file:"folge01.mp3",coverFile:"folge01.jpg",
    deck:"Netzwerktechnik::IP & Routing",date:"2026-11-05",desc:"Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing."},
   /* Feierabendfunk (Hörspiel, Jens & Mara) */
-  {serie:"ff",nr:1,title:"OSI-Modell und Netzwerkgeräte",drive:"15KBkI9xdMpTm6IhS1KWpJFiEylaMbXtp",cover:"1XkhJ3oIT7EnlRbsAGsrcTSlnkBBz5M0j",
+  {serie:"ff",nr:1,title:"OSI-Modell und Netzwerkgeräte",file:"ff01.mp3",coverFile:"ff01.jpg",drive:"15KBkI9xdMpTm6IhS1KWpJFiEylaMbXtp",cover:"1XkhJ3oIT7EnlRbsAGsrcTSlnkBBz5M0j",
    deck:"Netzwerktechnik::OSI-Modell",date:"2026-11-13",desc:"Erste Folge: Mara kommt in den Spätdienst und bringt eine Störung mit, die sich quer durch die Schichten zieht. Jens geht das OSI-Modell von unten nach oben durch und sortiert dabei Hub, Switch und Router nach der Schicht, auf der sie wirklich arbeiten."},
-  {serie:"ff",nr:2,title:"Topologien und Zugriffsverfahren",drive:"1dPDGeOKPHntnpAxSBxs1By6jRUoVBFoI",cover:"1hyhEokxLZEbVyOjTSmWCgoD3S_hsj3kv",
+  {serie:"ff",nr:2,title:"Topologien und Zugriffsverfahren",file:"ff02.mp3",coverFile:"ff02.jpg",drive:"1dPDGeOKPHntnpAxSBxs1By6jRUoVBFoI",cover:"1hyhEokxLZEbVyOjTSmWCgoD3S_hsj3kv",
    deck:"Netzwerktechnik::Verkabelung & Schicht 1",date:"2026-11-13",desc:"Stern, Bus, Ring und Masche: welche Topologie welchen Ausfall verkraftet. Danach die Frage, wer wann senden darf — CSMA/CD im Kabel, CSMA/CA im Funk, und warum die Hidden Station das eigentliche Problem ist."},
-  {serie:"ff",nr:3,title:"Ethernet-Frame, ARP und VLAN",drive:"1NlfLlgfStpsgq9tyR6OArK87xHR1JlTw",cover:"1tAKa3XzX2Fj9qzPaoaFdMBZn-CiMcZnL",
+  {serie:"ff",nr:3,title:"Ethernet-Frame, ARP und VLAN",file:"ff03.mp3",coverFile:"ff03.jpg",drive:"1NlfLlgfStpsgq9tyR6OArK87xHR1JlTw",cover:"1tAKa3XzX2Fj9qzPaoaFdMBZn-CiMcZnL",
    deck:"Netzwerktechnik::VLAN",date:"2026-11-13",desc:"Ein Frame Feld für Feld: MAC-Adressen, Typfeld, Nutzlast, Prüfsumme. Dazu ARP als Übersetzer zwischen IP und MAC und ein VLAN-Tag nach 802.1Q, inklusive Fehlersuche an einem falsch gesetzten Trunk."},
   {"nr": 2, "title": "Router, Routing-Tabelle und Default Route", "drive": "1I2izlYcPTaA3ZCIz3saMsB8fQR7Qwbm-", "cover": "16xbBAYjaGWVqkqH7N8wsSwR8MFV8Giv3", "file": "folge02.mp3", "coverFile": "folge02.jpg", "deck": "Netzwerktechnik::IP & Routing", "date": "2026-11-05", "desc": "Wie kommt ein Paket vom einen Netz ins andere? Lisa und Jens klären, was Hub, Switch und Router wirklich machen, und bauen eine Routing-Tabelle Schritt für Schritt auf. Am Ende rechnet ihr zusammen mit der Slash 22, und du kannst gleich mitrechnen."},
   {"nr": 3, "title": "Wer darf wann reden? CSMA/CD und CSMA/CA", "drive": "1na8duYll6_nEw0AX4PEGtRKxZtSXHHPg", "cover": "1zHei9YNnBFmstO6nUjgfvyaEG5leQ-85", "file": "folge03.mp3", "coverFile": "folge03.jpg", "deck": "Netzwerktechnik::Verkabelung & Schicht 1", "date": "2026-11-05", "desc": "Wer darf im Netz wann senden, und warum streiten sich Rechner beim Hub ständig um die Leitung? Jens und Lisa klären, wie Kollisionen entstehen, wie CSMA/CD und CSMA/CA damit umgehen und was Topologien damit zu tun haben. Dazu gibt's Vergleiche aus dem Alltag und ein kleines Quiz, bei dem du mitdenken kannst."},
@@ -6551,7 +6551,8 @@ const driveImg=id=>`https://drive.google.com/thumbnail?id=${encodeURIComponent(i
 function normEp(e){ const id=e.id||e.drive||e.file||e.url;
   const gh=e.file?PODCAST.base+e.file:"";
   return {id, nr:e.nr||0, serie:e.serie||"pod", title:(e.nr?`Folge ${String(e.nr).padStart(2,"0")}: `:"")+(e.title||"Ohne Titel"), desc:e.desc||"",
-    url:e.url||(e.drive?driveAudio(e.drive):gh), alt:e.alt||(e.drive||e.url?gh:""), img:e.img||(e.cover?driveImg(e.cover):e.coverFile?PODCAST.base+e.coverFile:""), imgAlt:e.coverFile?PODCAST.base+e.coverFile:"", deck:e.deck?normDeck(e.deck):"",
+    /* Erst die Kopie auf GitHub Pages (spielt überall direkt), Drive nur als Ersatz. */
+    url:e.url||gh||(e.drive?driveAudio(e.drive):""), alt:e.alt||(e.drive?driveAudio(e.drive):(e.url?gh:"")), img:e.img||(e.cover?driveImg(e.cover):e.coverFile?PODCAST.base+e.coverFile:""), imgAlt:e.coverFile?PODCAST.base+e.coverFile:"", deck:e.deck?normDeck(e.deck):"",
     date:typeof e.date==="number"?e.date:(e.date?new Date(e.date).getTime():0), dur:e.dur||0}; }
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>', ICON_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
 let episodes=null, podLoading=false, audio=null, curEp=null, podFilter="";
