@@ -1556,7 +1556,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.0.0";
+const APP_VER="5.1.0";
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -1939,6 +1939,12 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Fortschritt. */
 const WHATS_NEW=[
+  {v:"5.1.0",t:"Feierabendfunk offen",l:[
+    "Die ersten vier Hörspiel-Folgen sind da: unter Podcast → Feierabendfunk",
+    "Alle Folgen zum Nachlesen liegen unter Wissen → Feierabendfunk",
+    "Kein Code mehr nötig, der Bereich ist direkt da",
+    "Zu jeder Folge: Zusammenfassung, „Worauf es ankommt“ und ein Quiz",
+    "Die Texte sind überarbeitet und lesen sich jetzt wie ein Kapitel statt wie eine Mitschrift"]},
   {v:"5.0.0",t:"Arcade im Labor 23",l:[
     "Vier neue Spiele: Nachtschicht im Labor 23, Patchfeld-Blitz, Frame-Rallye und Broadcast-Sturm",
     "Jedes mit Bestenliste und Combo-Serie",
@@ -6509,6 +6515,14 @@ function plMemEnd(){
 /* ---------- Podcast ----------
    Folgen kommen aus einem öffentlichen RSS-Feed (z. B. Spotify for Creators) – so hören alle App-Nutzer dieselben Folgen.
    Optional zusätzlich lokale Folgen aus podcast.json (in der App mitgeliefert). Feed-Adresse hier eintragen: */
+/* Zwei Reihen in einer Liste: das Hörspiel „Feierabendfunk“ und die älteren Erklärfolgen.
+   Jede Folge trägt serie:"ff" oder serie:"pod" (ohne Angabe gilt "pod"). */
+const SERIEN=[
+  {id:"ff", title:"Feierabendfunk", by:"Jens & Mara · dasLabor23", desc:"Spätdienst im Labor 23: zwei Kollegen gehen ein Thema durch, bis es sitzt. Zum Nachlesen liegt jede Folge unter Wissen."},
+  {id:"pod", title:"Netzwerktechnik zum Mitnehmen", by:"Jens & Lisa · dasLabor23", desc:"Die früheren Erklärfolgen zu IP, Routing und Co."}
+];
+const serieInfo=id=>SERIEN.find(s=>s.id===id)||SERIEN[0];
+let podSerie=store.get("pod_serie","ff");
 const PODCAST={ title:"Netzwerktechnik zum Mitnehmen", by:"Jens & Lisa · dasLabor23", feed:"", web:"",
   /* Hauptquelle: Google Drive (Ordner „Podcast“). Neue Folgen: MP3 in Drive hochladen und in podcast.json (Drive) eintragen. */
   list:"https://drive.usercontent.google.com/download?id=140DXzZmSx4NmZbSz1uIcyLCgvqe_LLEK&export=download",
@@ -6518,6 +6532,15 @@ const PODCAST={ title:"Netzwerktechnik zum Mitnehmen", by:"Jens & Lisa · dasLab
 const EPISODES_BUILTIN=[
   {nr:1,title:"IP-Adressen und Subnetting einfach erklärt",drive:"1R3xGaRXye-oKmoivKGHU9hOT83ZqfA6_",cover:"1Q0TIuuPvVUlvxjvUC6KfRhcsliI7z_qC",file:"folge01.mp3",coverFile:"folge01.jpg",
    deck:"Netzwerktechnik::IP & Routing",date:"2026-11-05",desc:"Jens und Lisa stellen sich vor und erklären IP-Adressen, Subnetzmasken und Subnetting Schritt für Schritt. Ausblick auf Folge 2: Routing."},
+  /* Feierabendfunk (Hörspiel, Jens & Mara) */
+  {serie:"ff",nr:1,title:"OSI-Modell und Netzwerkgeräte",drive:"15KBkI9xdMpTm6IhS1KWpJFiEylaMbXtp",cover:"1XkhJ3oIT7EnlRbsAGsrcTSlnkBBz5M0j",
+   deck:"Netzwerktechnik::OSI-Modell",date:"2026-11-13",desc:"Erste Folge: Mara kommt in den Spätdienst und bringt eine Störung mit, die sich quer durch die Schichten zieht. Jens geht das OSI-Modell von unten nach oben durch und sortiert dabei Hub, Switch und Router nach der Schicht, auf der sie wirklich arbeiten."},
+  {serie:"ff",nr:2,title:"Topologien und Zugriffsverfahren",drive:"1dPDGeOKPHntnpAxSBxs1By6jRUoVBFoI",cover:"1hyhEokxLZEbVyOjTSmWCgoD3S_hsj3kv",
+   deck:"Netzwerktechnik::Verkabelung & Schicht 1",date:"2026-11-13",desc:"Stern, Bus, Ring und Masche: welche Topologie welchen Ausfall verkraftet. Danach die Frage, wer wann senden darf — CSMA/CD im Kabel, CSMA/CA im Funk, und warum die Hidden Station das eigentliche Problem ist."},
+  {serie:"ff",nr:3,title:"Ethernet-Frame, ARP und VLAN",drive:"1NlfLlgfStpsgq9tyR6OArK87xHR1JlTw",cover:"1tAKa3XzX2Fj9qzPaoaFdMBZn-CiMcZnL",
+   deck:"Netzwerktechnik::VLAN",date:"2026-11-13",desc:"Ein Frame Feld für Feld: MAC-Adressen, Typfeld, Nutzlast, Prüfsumme. Dazu ARP als Übersetzer zwischen IP und MAC und ein VLAN-Tag nach 802.1Q, inklusive Fehlersuche an einem falsch gesetzten Trunk."},
+  {serie:"ff",nr:4,title:"Subnetting und IPv4",drive:"1CVxpm4L_vvqqox_F2ZcEr9QWEMyztUsY",cover:"1c5sTKxpUJN9Wb8mb4zCJevY_wMpCaNhO",
+   deck:"Netzwerktechnik::IP & Routing",date:"2026-11-13",desc:"Netzanteil, Hostanteil, Subnetzmaske: Jens rechnet vor, Mara rechnet nach. Kurze Folge zum Aufwärmen, die längere Fassung kommt später."},
   {"nr": 2, "title": "Router, Routing-Tabelle und Default Route", "drive": "1I2izlYcPTaA3ZCIz3saMsB8fQR7Qwbm-", "cover": "16xbBAYjaGWVqkqH7N8wsSwR8MFV8Giv3", "file": "folge02.mp3", "coverFile": "folge02.jpg", "deck": "Netzwerktechnik::IP & Routing", "date": "2026-11-05", "desc": "Wie kommt ein Paket vom einen Netz ins andere? Lisa und Jens klären, was Hub, Switch und Router wirklich machen, und bauen eine Routing-Tabelle Schritt für Schritt auf. Am Ende rechnet ihr zusammen mit der Slash 22, und du kannst gleich mitrechnen."},
   {"nr": 3, "title": "Wer darf wann reden? CSMA/CD und CSMA/CA", "drive": "1na8duYll6_nEw0AX4PEGtRKxZtSXHHPg", "cover": "1zHei9YNnBFmstO6nUjgfvyaEG5leQ-85", "file": "folge03.mp3", "coverFile": "folge03.jpg", "deck": "Netzwerktechnik::Verkabelung & Schicht 1", "date": "2026-11-05", "desc": "Wer darf im Netz wann senden, und warum streiten sich Rechner beim Hub ständig um die Leitung? Jens und Lisa klären, wie Kollisionen entstehen, wie CSMA/CD und CSMA/CA damit umgehen und was Topologien damit zu tun haben. Dazu gibt's Vergleiche aus dem Alltag und ein kleines Quiz, bei dem du mitdenken kannst."},
   {"nr": 4, "title": "Schleifen und Spanning Tree im Netz", "drive": "10P2mX8LO5JX1yi5cczv7iqIv2CZh5c7L", "cover": "1H-BN29P9uv9Ts-qjroM0nSIL6XEj5OsT", "file": "folge04.mp3", "coverFile": "folge04.jpg", "deck": "Netzwerktechnik::Schicht 2 & Switching", "date": "2026-11-05", "desc": "Dein Netz steht, obwohl nichts kaputt ist? Genau darum geht's in dieser Folge: Warum Broadcasts in einer Schleife ewig kreisen und wie das Spanning Tree Protocol dafür sorgt, dass alles geordnet bleibt. Außerdem klären wir, wer Root Bridge wird und warum ein blockierter Port trotzdem ein wichtiger Ersatzspieler ist."},
@@ -6529,7 +6552,7 @@ const driveAudio=id=>`https://drive.usercontent.google.com/download?id=${encodeU
 const driveImg=id=>`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w600`;
 function normEp(e){ const id=e.id||e.drive||e.file||e.url;
   const gh=e.file?PODCAST.base+e.file:"";
-  return {id, nr:e.nr||0, title:(e.nr?`Folge ${String(e.nr).padStart(2,"0")}: `:"")+(e.title||"Ohne Titel"), desc:e.desc||"",
+  return {id, nr:e.nr||0, serie:e.serie||"pod", title:(e.nr?`Folge ${String(e.nr).padStart(2,"0")}: `:"")+(e.title||"Ohne Titel"), desc:e.desc||"",
     url:e.url||(e.drive?driveAudio(e.drive):gh), alt:e.alt||(e.drive||e.url?gh:""), img:e.img||(e.cover?driveImg(e.cover):e.coverFile?PODCAST.base+e.coverFile:""), imgAlt:e.coverFile?PODCAST.base+e.coverFile:"", deck:e.deck?normDeck(e.deck):"",
     date:typeof e.date==="number"?e.date:(e.date?new Date(e.date).getTime():0), dur:e.dur||0}; }
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>', ICON_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
@@ -6550,7 +6573,7 @@ function parseRss(xml){
 }
 async function loadEpisodes(){
   if(podLoading) return; podLoading=true; let list=EPISODES_BUILTIN.map(normEp);
-  const merge=arr=>{ arr.map(normEp).filter(e=>e.url).forEach(e=>{ const i=list.findIndex(x=>x.id===e.id||(e.nr&&x.nr===e.nr)); if(i>=0) list[i]=Object.assign({},list[i],e,{alt:e.alt||list[i].alt}); else list.push(e); }); };
+  const merge=arr=>{ arr.map(normEp).filter(e=>e.url).forEach(e=>{ const i=list.findIndex(x=>x.id===e.id||(e.nr&&x.nr===e.nr&&x.serie===e.serie)); if(i>=0) list[i]=Object.assign({},list[i],e,{alt:e.alt||list[i].alt}); else list.push(e); }); };
   if(PODCAST.list){ try{ const t=await getText(PODCAST.list); const arr=JSON.parse(t); if(Array.isArray(arr)){ store.set("pod_list3",t); merge(arr); } }
     catch(e){ try{ merge(JSON.parse(store.get("pod_list3","[]"))); }catch(_){} } }
   if(PODCAST.feed){ try{ const xml=await getText(PODCAST.feed); const feed=parseRss(xml); store.set("pod_cache",JSON.stringify(feed)); list=list.concat(feed); }
@@ -6573,10 +6596,15 @@ function renderPodcast(){
     const b=$("#pod-remind"); b.onclick=()=>{ store.set("remind_podcast","1"); b.textContent="Gemerkt ✓"; toast("Du siehst es hier als Erstes."); };
     return; }
   root.className="";
-  const subjects=[...new Set(episodes.map(e=>split(e.deck).main).filter(Boolean))];
+  const reihen=SERIEN.filter(s=>episodes.some(e=>e.serie===s.id));
+  if(!reihen.some(s=>s.id===podSerie)) podSerie=(reihen[0]||SERIEN[0]).id;
+  const serie=serieInfo(podSerie), inSerie=episodes.filter(e=>e.serie===podSerie);
+  const subjects=[...new Set(inSerie.map(e=>split(e.deck).main).filter(Boolean))];
   if(podFilter&&!subjects.includes(podFilter)) podFilter="";
-  const shown=episodes.filter(e=>!podFilter||split(e.deck).main===podFilter);
-  root.innerHTML=`<div class="pod-head"><img src="${$(".brand .logo").src}" alt=""><div><h2>${esc(PODCAST.title)}</h2><p>${esc(PODCAST.by)} · ${episodes.length} Folge${episodes.length===1?"":"n"}</p></div></div>
+  const shown=inSerie.filter(e=>!podFilter||split(e.deck).main===podFilter);
+  root.innerHTML=`<div class="pod-head"><img src="${$(".brand .logo").src}" alt=""><div><h2>${esc(serie.title)}</h2><p>${esc(serie.by)} · ${inSerie.length} Folge${inSerie.length===1?"":"n"}</p></div></div>
+    ${reihen.length>1?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px" id="pod-s">${reihen.map(s=>`<button class="btn ${s.id===podSerie?"primary":"ghost"}" data-s="${esc(s.id)}" style="padding:8px 12px">${esc(s.title)}</button>`).join("")}</div>`:""}
+    ${serie.desc?`<p class="hint" style="text-align:left;margin:10px 0 0">${esc(serie.desc)}</p>`:""}
     ${PODCAST.web?`<a class="btn ghost block" style="text-align:center;text-decoration:none;margin-top:12px;display:block" href="${esc(PODCAST.web)}" target="_blank" rel="noopener">Auch auf Spotify hören</a>`:""}
     ${subjects.length>1?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px" id="pod-f">${["",...subjects].map(f=>`<button class="btn ${f===podFilter?"primary":"ghost"}" data-f="${esc(f)}" style="padding:8px 12px">${f?esc(f):"Alle"}</button>`).join("")}</div>`:""}
     <div class="eps" style="margin:16px 0">${shown.map(e=>{ const i=episodes.indexOf(e); const pos=+store.get(posKey(e.id),"0"), pct=e.dur?Math.min(100,pos/e.dur*100):0;
@@ -6586,6 +6614,7 @@ function renderPodcast(){
     <div class="player" id="player" ${curEp?"":"hidden"}></div>`;
   root.querySelectorAll(".ep").forEach(b=>b.onclick=()=>playEp(episodes[+b.dataset.i]));
   root.querySelectorAll("#pod-f button").forEach(b=>b.onclick=()=>{ podFilter=b.dataset.f; renderPodcast(); });
+  root.querySelectorAll("#pod-s button").forEach(b=>b.onclick=()=>{ podSerie=b.dataset.s; store.set("pod_serie",podSerie); podFilter=""; renderPodcast(); });
   renderPlayer();
 }
 function renderPlayer(){
@@ -6646,7 +6675,7 @@ function startAudio(e,src,isAlt){
     audio=null;
     if(!isAlt&&e.alt&&src!==e.alt){ console.warn("Quelle nicht abspielbar, nehme Ersatzquelle"); startAudio(e,e.alt,true); return; }
     podDl[e.id]={fail:"Datei nicht abspielbar",triedAlt:true}; if(current==="podcast") renderPodcast(); });
-  if("mediaSession" in navigator){ try{ navigator.mediaSession.metadata=new MediaMetadata({title:e.title,artist:PODCAST.title,artwork:(e.imgAlt||e.img)?[{src:e.imgAlt||e.img,sizes:"600x600",type:"image/jpeg"}]:[]}); }catch(_){} }
+  if("mediaSession" in navigator){ try{ navigator.mediaSession.metadata=new MediaMetadata({title:e.title,artist:serieInfo(e.serie).title,artwork:(e.imgAlt||e.img)?[{src:e.imgAlt||e.img,sizes:"600x600",type:"image/jpeg"}]:[]}); }catch(_){} }
   tryPlay(); if(current==="podcast") renderPodcast();
 }
 
