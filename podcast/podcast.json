@@ -64,5 +64,14 @@
   "deck": "Netzwerktechnik::IP & Routing",
   "date": "2026-11-05",
   "desc": "Zettel raus und mitraten! Lisa und Jens spielen ein Quiz mit 14 Fragen zu Subnetting, Routing und IPv6. Wer holt die meisten Punkte, und wo schleichen sich typische Prüfungsfehler ein?"
+ },
+ {
+  "nr": 7,
+  "title": "Von der Mondrakete zur Tabelle",
+  "drive": "10NMJ3w6uDF1iuHKJgBsDmjkUZePEWEJ9",
+  "cover": "1_Zl7wvNna5lQiq9wTeB2GmY9bIDO_BR7",
+  "deck": "Datenbanken::Grundlagen & Modelle",
+  "date": "2026-11-13",
+  "desc": "Warum Excel-Listen und einzelne Dateien irgendwann nicht mehr reichen: Jens und Mara gehen vom hierarchischen Modell über das Netzwerkmodell bis zum relationalen Modell, klären Primär- und Fremdschlüssel und lösen eine n:m-Beziehung sauber mit einer Zwischentabelle auf. Außerdem verabschiedet sich Lisa, Mara übernimmt, und zum Schluss gibt es einen Blick auf NoSQL."
  }
 ]
