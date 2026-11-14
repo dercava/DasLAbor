@@ -1556,7 +1556,7 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm"};
+const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
@@ -1616,7 +1616,7 @@ const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
 const APP_VER="5.1.0";
-const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm"};
+const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -1654,10 +1654,11 @@ const PAGE_ENTER={
   sturm:()=>{ if(bs&&!bs.done) bs.done=true; bsHome(); },
   rallye:()=>{ if(fr&&!fr.done) fr.done=true; frHome(); },
   patch:()=>{ if(pb&&!pb.done) pb.done=true; pbHome(); },
+  netz:()=>{ if(nl&&!nl.done) nl.done=true; nlHome(); },
   nacht:()=>{ if(ns&&!ns.done) ns.done=true; nsHome(); }
 };
 /* Laufende Spiele je Seite. Verlässt man die Seite, wird das Spiel beendet: Timer stoppen, nichts läuft unsichtbar weiter. */
-const RUNNING={blitz:()=>[bz],terminal:()=>[tm],sql:()=>[sq],erd:()=>[er],subnetz:()=>[sn],ports:()=>[pj,pm],vokabeln:()=>[vr],challenge:()=>[ch],match:()=>[mt],unterricht:()=>[ut],leiter:()=>[ld],fangen:()=>[pf],nacht:()=>[ns],patch:()=>[pb],rallye:()=>[fr],sturm:()=>[bs]};
+const RUNNING={blitz:()=>[bz],terminal:()=>[tm],sql:()=>[sq],erd:()=>[er],subnetz:()=>[sn],ports:()=>[pj,pm],vokabeln:()=>[vr],challenge:()=>[ch],match:()=>[mt],unterricht:()=>[ut],leiter:()=>[ld],fangen:()=>[pf],nacht:()=>[ns],patch:()=>[pb],rallye:()=>[fr],sturm:()=>[bs],netz:()=>[nl]};
 function stopGamesExcept(id){ for(const page in RUNNING){ if(page!==id) RUNNING[page]().forEach(g=>{ if(g&&!g.done) g.done=true; }); } }
 function show(r){
   const id=ROUTES[r]; if(current===id) return;
