@@ -1700,7 +1700,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.2.0"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.2.1"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -1762,6 +1762,14 @@ function show(r){
 }
 window.addEventListener("hashchange",()=>show(route()));
 $("#back").onclick=()=>{ if(history.length>1&&current!=="home") history.back(); else go("start"); };
+/* Zurück-Taste des Handys (Android-App ruft das auf): true = erledigt, false = App darf schließen */
+window.appBack=()=>{
+  if($("#sheet").classList.contains("show")){ closeSheet(); return true; }
+  if(current==="wissen"&&history.state&&history.state.wi){ history.back(); return true; }
+  if(!TAB_OF[current]){ $("#back").click(); return true; }
+  if(current!=="home"){ go("start"); return true; }
+  return false;
+};
 $$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
 $$("[data-remind]").forEach(b=>b.onclick=()=>{ store.set("remind_"+b.dataset.remind,"1"); b.textContent="Gemerkt ✓"; b.disabled=true; toast("Du siehst es hier als Erstes, sobald es live ist."); });
 $$("[data-remind]").forEach(b=>{ if(store.get("remind_"+b.dataset.remind)){ b.textContent="Gemerkt ✓"; b.disabled=true; } });
@@ -2085,6 +2093,8 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Fortschritt. */
 const WHATS_NEW=[
+  {v:"5.2.1",t:"Zurück-Taste",l:[
+    "Android-App: Die Zurück-Taste des Handys schließt jetzt erst offene Fenster und geht Seiten zurück. Die App schließt nur noch auf dem Lernpfad"]},
   {v:"5.2.0",t:"Neue Labore & mehr Ordnung",l:[
     "Neues Praxis-Labor: Netz-Labor – zwölf Tickets vom ersten Kabel bis zur statischen Route, dazu ein freies Labor mit Vorlagen",
     "Neue Konsolen-Story „Außenstelle Nord“: eine Nacht lang DHCP, DNS und Firewall einrichten, das Panel erklärt jeden Befehl",
@@ -5007,7 +5017,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.2.0";
+const APK_URL="dasLabor23.apk", APK_VER="5.2.1";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
