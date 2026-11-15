@@ -1070,6 +1070,13 @@ body.kb .stage{padding-bottom:45vh}
 .nl-done{background:color-mix(in srgb,var(--easy) 14%,var(--surface));border:1.5px solid var(--easy);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px}
 .nl-done b{font:700 17px var(--display)}
 @media(min-width:700px){.nl-two{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;align-items:start}}
+.nl-dev .nl-nm,.nl-dev .nl-ip{text-anchor:start}
+.nl-tbl{width:100%;border-collapse:collapse;font:13px var(--mono);margin:8px 0}
+.nl-tbl th,.nl-tbl td{border:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+.nl-tbl th{font:600 12px var(--body);color:var(--muted)}
+.nl-cfg textarea{font:500 13.5px var(--mono);padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);resize:vertical}
+.nl-cfg textarea.err{border-color:var(--again)}
+.nl-log .step.reply i{background:color-mix(in srgb,var(--easy) 20%,transparent);color:var(--easy)}
 /* <<< game-css netz */
 
 /* ---------- Ruhigeres Layout: weniger Farbblöcke, mehr Typografie ----------
@@ -1150,9 +1157,9 @@ body.kb .stage{padding-bottom:45vh}
         <div class="hub-head"><span class="illu" data-illu="wissen"></span><h2 class="title">Wissen</h2><p>Nachschlagen statt auswendig lernen.</p></div>
         
         <div class="sec-h">Nachschlagen</div>
-        <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="vokabeln"><span class="ic" style="font-size:20px">📖</span><span class="tx"><b>Abkürzungs-Labor</b><small>318 Begriffe · Tabelle, Karteikarten, Puzzle, Rennen, Duell</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="ports"><span class="ic" style="font-size:20px">🔌</span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="sprachen"><span class="ic" style="font-size:19px">💻</span><span class="tx"><b>Programmiersprachen</b><small>Python, Java, C# & Co. · Compiler, Typisierung, Paradigmen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
-        <div class="sec-h">Hören & Lesen</div>
-        <div class="hlist"><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="unterricht"><span class="ic" style="font-size:20px">🎙️</span><span class="tx"><b>Feierabendfunk</b><small>Folgen nachlesen, Prüfungsstellen, Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="unterricht"><span class="ic" style="font-size:20px">🎙️</span><span class="tx"><b>Feierabendfunk</b><small>Folgen nachlesen, Prüfungsstellen, Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="vokabeln"><span class="ic" style="font-size:20px">📖</span><span class="tx"><b>Abkürzungs-Labor</b><small>318 Begriffe · Tabelle, Karteikarten, Puzzle, Rennen, Duell</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="ports"><span class="ic" style="font-size:20px">🔌</span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="sprachen"><span class="ic" style="font-size:19px">💻</span><span class="tx"><b>Programmiersprachen</b><small>Python, Java, C# & Co. · Compiler, Typisierung, Paradigmen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="sec-h">Hören</div>
+        <div class="hlist"><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Mehr im Labor</div>
         <div class="hlist"><button class="hrow" data-go="druck"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span><span class="tx"><b>3D-Druck</b><small>Modelle & Projekte</small></span> <span class="soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
       </div>
@@ -1249,13 +1256,17 @@ body.kb .stage{padding-bottom:45vh}
     <section class="screen" id="s-statistik"><div id="st" style="display:flex;flex-direction:column;gap:14px"></div></section>
 
     <section class="screen" id="s-druck">
-      <div class="center teaser">
-        <div class="big-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
-        <div class="layers"><i></i><i></i><i></i><i></i></div>
-        <span class="pill">Coming soon</span>
-        <h2>3D-Druck</h2>
-        <p>Bald findest du hier Modelle, Druckprofile und Projekte aus dem Labor.</p>
-        <button class="btn ghost" data-remind="druck">Erinner mich</button>
+      <div class="hubscreen" style="--area:var(--c-wissen)">
+        <div class="hub-head"><h2 class="title">3D-Druck</h2><p>Nachschlagewerke und Projekte aus dem Labor.</p><svg class="illu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
+        <div class="sec-h">Klipper-Dokumentation</div>
+        <div class="hlist">
+          <a class="hrow" href="https://www.klipper3d.org/de/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:20px">🇩🇪</span><span class="tx"><b>Klipper-Doku auf Deutsch</b><small>Offizielle Übersetzung: Installation, Konfigurationsreferenz, G-Codes, Fehlersuche</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
+          <a class="hrow" href="https://www.klipper3d.org/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:20px">🇬🇧</span><span class="tx"><b>Klipper Documentation (English)</b><small>Original – immer auf dem neuesten Stand, wenn die Übersetzung hinterherhinkt</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
+          <a class="hrow" href="https://www.klipper3d.org/de/Config_Reference.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:20px">⚙️</span><span class="tx"><b>Konfigurationsreferenz</b><small>Alle Abschnitte der printer.cfg erklärt – das Kapitel, das man am häufigsten braucht</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
+          <a class="hrow" href="https://www.klipper3d.org/de/G-Codes.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ic" style="font-size:20px">⌨️</span><span class="tx"><b>G-Code-Befehle</b><small>Was Klipper in der Konsole versteht, von PID_CALIBRATE bis SAVE_CONFIG</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="sec-h">Projekte</div>
+        <div class="hlist"><div class="hrow" style="opacity:.7"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Modelle &amp; Druckprofile</b><small>Kommt mit einem späteren Update</small></span><span class="pill soon">Bald</span></div></div>
       </div>
     </section>
   </main>
@@ -2024,7 +2035,9 @@ const WHATS_NEW=[
   {v:"5.1.0",t:"Feierabendfunk & neue Ordnung",l:[
     "Die ersten Hörspiel-Folgen sind da: Podcast → Feierabendfunk",
     "Zum Nachlesen liegt jede Folge unter Wissen – als Kapitel mit „Worauf es ankommt“ und Quiz",
-    "Neues Praxis-Labor: Netz-Labor – Geräte setzen, verkabeln, Adressen vergeben und zusehen, wie das Paket läuft",
+    "Neues Praxis-Labor: Netz-Labor – zwölf Tickets vom ersten Kabel bis zur statischen Route, dazu ein freies Labor mit Vorlagen",
+    "ERD-Architekt: zehn neue Fälle (Tierheim, Werkstatt, Hotel, Musikschule …)",
+    "3D-Druck: Klipper-Dokumentation auf Deutsch und Englisch verlinkt",
     "Aufgeräumt: Abkürzungen und Port-Labor stehen jetzt unter Wissen, die Spiele in Praxis-Labore, Quiz & Tempo und Arcade",
     "Unter Fortschritt → App installieren holst du dir dasLabor23 auf den Startbildschirm – läuft dann auch offline",
     "Die anonyme Nutzungsstatistik zählt nur, welche Bereiche genutzt werden, keine persönlichen Daten. Lass sie bitte an: Sie zeigt, wo die App besser werden muss"]},
@@ -4033,7 +4046,88 @@ const ERD_CASES=[
   attrQ:[{t:"Modus",ok:"R3",why:"Derselbe VLAN kann auf Switch A getaggt und auf Switch B ungetaggt sein. Der Modus hängt also an der Kombination."},{t:"Mgmt-IP",ok:"Switch",why:"Die Management-IP gehört zum Switch."},{t:"Firmenname",ok:"Kunde",why:"Der Firmenname gehört zum Kunden."},{t:"Adresse",ok:"Standort",why:"Die Adresse beschreibt den Standort."}],
   rels:[{id:"R1",a:0,b:1,verb:"hat",qa:"Wie viele Standorte kann EIN Kunde haben?",qb:"Zu wie vielen Kunden gehört EIN Standort?",ca:"n",cb:"1",cite:"„… hat einen oder mehrere Standorte. Ein Standort … gehört zu genau einem Kunden.“"},
         {id:"R2",a:1,b:2,verb:"beherbergt",qa:"Wie viele Switches stehen an EINEM Standort?",qb:"An wie vielen Standorten steht EIN Switch?",ca:"n",cb:"1",cite:"„An jedem Standort stehen viele Switches. Ein Switch … steht an genau einem Standort.“"},
-        {id:"R3",a:2,b:3,verb:"führt",qa:"Wie viele VLANs sind auf EINEM Switch eingerichtet?",qb:"Auf wie vielen Switches kann EIN VLAN eingerichtet sein?",ca:"n",cb:"n",cite:"„Auf jedem Switch sind mehrere VLANs eingerichtet, und ein VLAN kann auf vielen Switches eingerichtet sein.“",tab:"SwitchVLAN",ra:["Modus"]}]}
+        {id:"R3",a:2,b:3,verb:"führt",qa:"Wie viele VLANs sind auf EINEM Switch eingerichtet?",qb:"Auf wie vielen Switches kann EIN VLAN eingerichtet sein?",ca:"n",cb:"n",cite:"„Auf jedem Switch sind mehrere VLANs eingerichtet, und ein VLAN kann auf vielen Switches eingerichtet sein.“",tab:"SwitchVLAN",ra:["Modus"]}]},
+ /* ---- Fälle 6–15: Situationen aus der ERD100-Challenge (Heiko Mohr), Texte und Lösungen eigens dafür geschrieben ---- */
+ {id:"e6",title:"Fall 6: Tierheim",short:"Tierheim",
+  story:"Ein Tierheim möchte seine Tiere verwalten. Jedes Tier hat eine Tiernummer, einen Namen und ein Aufnahmedatum. Jedes Tier gehört zu genau einer Rasse, und von einer Rasse können viele Tiere im Heim sein. Eine Rasse hat eine Rassennummer, eine Bezeichnung und eine Tierart (z. B. Hund). Pfleger kümmern sich um Tiere: Ein Pfleger betreut mehrere Tiere, und ein Tier wird von mehreren Pflegern betreut. Für jede Betreuung wird festgehalten, seit wann sie läuft. Pfleger haben eine Personalnummer, einen Namen und ein Telefon. Jedes Tier steht in genau einem Gehege, in einem Gehege können mehrere Tiere sein. Ein Gehege hat eine Gehegenummer und eine Größe in Quadratmetern.",
+  ents:[{n:"Rasse",a:["RasseNr","Bezeichnung","Tierart"],pk:"RasseNr"},{n:"Tier",a:["TierNr","Name","Aufnahmedatum"],pk:"TierNr"},{n:"Pfleger",a:["PersNr","Name","Telefon"],pk:"PersNr"},{n:"Gehege",a:["GehegeNr","Größe"],pk:"GehegeNr"}],
+  chips:[["Rasse","e"],["Tier","e"],["Pfleger","e"],["Gehege","e"],["Tierart","a","Die Tierart (Hund, Katze) beschreibt die Rasse."],["Aufnahmedatum","a","Das Aufnahmedatum gehört zum einzelnen Tier."],["Seit wann","r","„Seit wann“ gibt es nur für die Kombination aus einem Pfleger und einem Tier – ein Beziehungsattribut."],["Tierheim","x","Das Tierheim betreibt die Datenbank, es ist keine Entität darin."]],
+  attrQ:[{t:"Tierart",ok:"Rasse",why:"Jede Rasse gehört zu genau einer Tierart – das Attribut hängt an der Rasse, nicht am einzelnen Tier."},{t:"Seit wann",ok:"R2",why:"Ein Pfleger betreut jedes Tier seit einem anderen Zeitpunkt. Der Wert hängt an der Kombination."},{t:"Größe",ok:"Gehege",why:"Die Quadratmeter beschreiben das Gehege."},{t:"Telefon",ok:"Pfleger",why:"Die Telefonnummer gehört zum Pfleger."}],
+  rels:[{id:"R1",a:0,b:1,verb:"gehört zu",qa:"Wie viele Tiere können zu EINER Rasse gehören?",qb:"Zu wie vielen Rassen gehört EIN Tier?",ca:"n",cb:"1",cite:"„Jedes Tier gehört zu genau einer Rasse, und von einer Rasse können viele Tiere im Heim sein.“"},
+        {id:"R2",a:1,b:2,verb:"wird betreut von",qa:"Von wie vielen Pflegern wird EIN Tier betreut?",qb:"Wie viele Tiere betreut EIN Pfleger?",ca:"n",cb:"n",cite:"„Ein Pfleger betreut mehrere Tiere, und ein Tier wird von mehreren Pflegern betreut.“",tab:"Betreuung",ra:["Seit wann"]},
+        {id:"R3",a:3,b:1,verb:"beherbergt",qa:"Wie viele Tiere können in EINEM Gehege sein?",qb:"In wie vielen Gehegen steht EIN Tier?",ca:"n",cb:"1",cite:"„Jedes Tier steht in genau einem Gehege, in einem Gehege können mehrere Tiere sein.“"}]},
+ {id:"e7",title:"Fall 7: Fitnessstudio",short:"Fitness",
+  story:"Ein Fitnessstudio plant seine Kursverwaltung. Mitglieder haben eine Mitgliedsnummer, einen Namen und ein Eintrittsdatum. Jedes Mitglied hat genau einen Tarif, ein Tarif gilt für viele Mitglieder. Ein Tarif hat eine Tarifnummer, eine Bezeichnung und einen Monatsbeitrag. Mitglieder buchen Kurse: Ein Mitglied kann viele Kurse buchen, ein Kurs hat viele Teilnehmer. Für jede Buchung wird das Buchungsdatum gespeichert. Ein Kurs hat eine Kursnummer, einen Namen und einen Wochentag und wird von genau einem Trainer geleitet. Ein Trainer hat eine Trainernummer, einen Namen und eine Lizenz und kann mehrere Kurse leiten.",
+  ents:[{n:"Tarif",a:["TarifNr","Bezeichnung","Monatsbeitrag"],pk:"TarifNr"},{n:"Mitglied",a:["MitgliedNr","Name","Eintrittsdatum"],pk:"MitgliedNr"},{n:"Kurs",a:["KursNr","Name","Wochentag"],pk:"KursNr"},{n:"Trainer",a:["TrainerNr","Name","Lizenz"],pk:"TrainerNr"}],
+  chips:[["Tarif","e"],["Mitglied","e"],["Kurs","e"],["Trainer","e"],["Monatsbeitrag","a","Der Beitrag gehört zum Tarif, nicht zum einzelnen Mitglied."],["Buchungsdatum","r","Das Buchungsdatum entsteht erst, wenn ein bestimmtes Mitglied einen bestimmten Kurs bucht."],["Lizenz","a","Die Lizenz beschreibt den Trainer."],["Fitnessstudio","x","Das Studio ist der Betreiber, keine Entität."]],
+  attrQ:[{t:"Monatsbeitrag",ok:"Tarif",why:"Alle Mitglieder mit demselben Tarif zahlen denselben Beitrag – er hängt am Tarif."},{t:"Buchungsdatum",ok:"R2",why:"Jede Buchung hat ihr eigenes Datum – Beziehungsattribut zwischen Mitglied und Kurs."},{t:"Wochentag",ok:"Kurs",why:"Der Wochentag beschreibt, wann der Kurs stattfindet."},{t:"Eintrittsdatum",ok:"Mitglied",why:"Das Eintrittsdatum gehört zum Mitglied."}],
+  rels:[{id:"R1",a:0,b:1,verb:"gilt für",qa:"Für wie viele Mitglieder gilt EIN Tarif?",qb:"Wie viele Tarife hat EIN Mitglied?",ca:"n",cb:"1",cite:"„Jedes Mitglied hat genau einen Tarif, ein Tarif gilt für viele Mitglieder.“"},
+        {id:"R2",a:1,b:2,verb:"bucht",qa:"Wie viele Kurse kann EIN Mitglied buchen?",qb:"Wie viele Teilnehmer hat EIN Kurs?",ca:"n",cb:"n",cite:"„Ein Mitglied kann viele Kurse buchen, ein Kurs hat viele Teilnehmer.“",tab:"Buchung",ra:["Buchungsdatum"]},
+        {id:"R3",a:3,b:2,verb:"leitet",qa:"Wie viele Kurse kann EIN Trainer leiten?",qb:"Von wie vielen Trainern wird EIN Kurs geleitet?",ca:"n",cb:"1",cite:"„… wird von genau einem Trainer geleitet. Ein Trainer … kann mehrere Kurse leiten.“"}]},
+ {id:"e8",title:"Fall 8: Arztpraxis",short:"Praxis",
+  story:"Eine Gemeinschaftspraxis will ihre Termine digital führen. Patienten haben eine Patientennummer, einen Namen und ein Geburtsdatum. Jeder Patient ist genau einer Krankenkasse zugeordnet, eine Kasse hat viele Patienten. Eine Krankenkasse hat eine Kassennummer und einen Namen. Patienten bekommen Termine: Ein Termin hat eine Terminnummer, ein Datum und eine Uhrzeit und gehört zu genau einem Patienten, ein Patient hat im Laufe der Zeit viele Termine. Jeder Termin findet bei genau einem Arzt statt, ein Arzt hat viele Termine. Ärzte haben eine Arztnummer, einen Namen und ein Fachgebiet.",
+  ents:[{n:"Krankenkasse",a:["KassenNr","Name"],pk:"KassenNr"},{n:"Patient",a:["PatientNr","Name","Geburtsdatum"],pk:"PatientNr"},{n:"Termin",a:["TerminNr","Datum","Uhrzeit"],pk:"TerminNr"},{n:"Arzt",a:["ArztNr","Name","Fachgebiet"],pk:"ArztNr"}],
+  chips:[["Krankenkasse","e"],["Patient","e"],["Termin","e"],["Arzt","e"],["Fachgebiet","a","Das Fachgebiet beschreibt den Arzt."],["Uhrzeit","a","Die Uhrzeit gehört zum Termin."],["Geburtsdatum","a","Das Geburtsdatum beschreibt den Patienten."],["Praxis","x","Die Praxis ist der Betreiber, keine Entität."]],
+  attrQ:[{t:"Fachgebiet",ok:"Arzt",why:"Jeder Arzt hat sein Fachgebiet – unabhängig von Terminen."},{t:"Uhrzeit",ok:"Termin",why:"Jeder Termin hat seine eigene Uhrzeit."},{t:"Geburtsdatum",ok:"Patient",why:"Gehört zur Person."},{t:"Name",ok:"Krankenkasse",why:"Hier war nach dem Namen der Kasse gefragt – auch Kassen haben einen Namen als Attribut."}],
+  rels:[{id:"R1",a:0,b:1,verb:"versichert",qa:"Wie viele Patienten hat EINE Krankenkasse?",qb:"Wie vielen Kassen ist EIN Patient zugeordnet?",ca:"n",cb:"1",cite:"„Jeder Patient ist genau einer Krankenkasse zugeordnet, eine Kasse hat viele Patienten.“"},
+        {id:"R2",a:1,b:2,verb:"hat",qa:"Wie viele Termine kann EIN Patient haben?",qb:"Zu wie vielen Patienten gehört EIN Termin?",ca:"n",cb:"1",cite:"„… gehört zu genau einem Patienten, ein Patient hat im Laufe der Zeit viele Termine.“"},
+        {id:"R3",a:3,b:2,verb:"führt durch",qa:"Wie viele Termine hat EIN Arzt?",qb:"Bei wie vielen Ärzten findet EIN Termin statt?",ca:"n",cb:"1",cite:"„Jeder Termin findet bei genau einem Arzt statt, ein Arzt hat viele Termine.“"}]},
+ {id:"e9",title:"Fall 9: Kfz-Werkstatt",short:"Werkstatt",
+  story:"Eine Kfz-Werkstatt verwaltet Reparaturaufträge. Kunden haben eine Kundennummer, einen Namen und eine Telefonnummer. Ein Kunde besitzt ein oder mehrere Fahrzeuge, jedes Fahrzeug gehört genau einem Kunden. Ein Fahrzeug hat ein Kennzeichen, eine Marke und einen Kilometerstand. Für ein Fahrzeug werden Reparaturaufträge angelegt: Ein Auftrag hat eine Auftragsnummer, ein Datum und eine Beschreibung und betrifft genau ein Fahrzeug; zu einem Fahrzeug gibt es viele Aufträge. In einem Auftrag werden Ersatzteile verbaut, und ein Ersatzteil kann in vielen Aufträgen vorkommen. Pro Auftrag und Teil wird die Stückzahl notiert. Ersatzteile haben eine Teilenummer, eine Bezeichnung und einen Stückpreis.",
+  ents:[{n:"Kunde",a:["KundeNr","Name","Telefon"],pk:"KundeNr"},{n:"Fahrzeug",a:["Kennzeichen","Marke","Kilometerstand"],pk:"Kennzeichen"},{n:"Auftrag",a:["AuftragNr","Datum","Beschreibung"],pk:"AuftragNr"},{n:"Ersatzteil",a:["TeileNr","Bezeichnung","Stückpreis"],pk:"TeileNr"}],
+  chips:[["Kunde","e"],["Fahrzeug","e"],["Auftrag","e"],["Ersatzteil","e"],["Stückzahl","r","Wie viele Stück eines Teils in einem bestimmten Auftrag verbaut wurden – Beziehungsattribut."],["Stückpreis","a","Der Stückpreis gehört zum Ersatzteil."],["Kilometerstand","a","Beschreibt das Fahrzeug."],["Werkstatt","x","Die Werkstatt betreibt die Datenbank."]],
+  attrQ:[{t:"Stückzahl",ok:"R3",why:"Dasselbe Teil kann in Auftrag A zweimal und in Auftrag B einmal verbaut sein – hängt an der Kombination."},{t:"Stückpreis",ok:"Ersatzteil",why:"Der Listenpreis gehört zum Teil."},{t:"Marke",ok:"Fahrzeug",why:"Die Marke beschreibt das Fahrzeug."},{t:"Beschreibung",ok:"Auftrag",why:"Was zu tun ist, steht im Auftrag."}],
+  rels:[{id:"R1",a:0,b:1,verb:"besitzt",qa:"Wie viele Fahrzeuge kann EIN Kunde besitzen?",qb:"Wie vielen Kunden gehört EIN Fahrzeug?",ca:"n",cb:"1",cite:"„Ein Kunde besitzt ein oder mehrere Fahrzeuge, jedes Fahrzeug gehört genau einem Kunden.“"},
+        {id:"R2",a:1,b:2,verb:"erhält",qa:"Wie viele Aufträge kann es zu EINEM Fahrzeug geben?",qb:"Wie viele Fahrzeuge betrifft EIN Auftrag?",ca:"n",cb:"1",cite:"„… betrifft genau ein Fahrzeug; zu einem Fahrzeug gibt es viele Aufträge.“"},
+        {id:"R3",a:2,b:3,verb:"verbaut",qa:"Wie viele Ersatzteile können in EINEM Auftrag verbaut werden?",qb:"In wie vielen Aufträgen kann EIN Ersatzteil vorkommen?",ca:"n",cb:"n",cite:"„In einem Auftrag werden Ersatzteile verbaut, und ein Ersatzteil kann in vielen Aufträgen vorkommen.“",tab:"Auftragsposition",ra:["Stückzahl"]}]},
+ {id:"e10",title:"Fall 10: Buchhandlung",short:"Buchhandlung",
+  story:"Eine Buchhandlung baut ihren Katalog auf. Ein Buch hat eine ISBN, einen Titel und einen Preis und erscheint bei genau einem Verlag; ein Verlag gibt viele Bücher heraus. Ein Verlag hat eine Verlagsnummer, einen Namen und einen Sitz. Bücher werden von Autoren geschrieben: Ein Buch kann mehrere Autoren haben, ein Autor schreibt mehrere Bücher. Autoren haben eine Autorennummer, einen Namen und ein Geburtsjahr. Jedes Buch gehört zu genau einem Genre, ein Genre umfasst viele Bücher. Ein Genre hat eine Genrenummer und eine Bezeichnung.",
+  ents:[{n:"Verlag",a:["VerlagNr","Name","Sitz"],pk:"VerlagNr"},{n:"Buch",a:["ISBN","Titel","Preis"],pk:"ISBN"},{n:"Autor",a:["AutorNr","Name","Geburtsjahr"],pk:"AutorNr"},{n:"Genre",a:["GenreNr","Bezeichnung"],pk:"GenreNr"}],
+  chips:[["Verlag","e"],["Buch","e"],["Autor","e"],["Genre","e"],["ISBN","a","Die ISBN ist ein Attribut des Buchs – und ein guter Primärschlüssel."],["Sitz","a","Der Sitz beschreibt den Verlag."],["Geburtsjahr","a","Das Geburtsjahr gehört zum Autor."],["Katalog","x","Der Katalog ist nur die Sammlung aller Bücher, keine eigene Entität."]],
+  attrQ:[{t:"Sitz",ok:"Verlag",why:"Der Firmensitz gehört zum Verlag."},{t:"Preis",ok:"Buch",why:"Jedes Buch hat seinen Preis."},{t:"Geburtsjahr",ok:"Autor",why:"Beschreibt die Person."},{t:"Bezeichnung",ok:"Genre",why:"Krimi, Sachbuch … – die Bezeichnung gehört zum Genre."}],
+  rels:[{id:"R1",a:0,b:1,verb:"gibt heraus",qa:"Wie viele Bücher gibt EIN Verlag heraus?",qb:"Bei wie vielen Verlagen erscheint EIN Buch?",ca:"n",cb:"1",cite:"„… erscheint bei genau einem Verlag; ein Verlag gibt viele Bücher heraus.“"},
+        {id:"R2",a:1,b:2,verb:"geschrieben von",qa:"Wie viele Autoren kann EIN Buch haben?",qb:"Wie viele Bücher schreibt EIN Autor?",ca:"n",cb:"n",cite:"„Ein Buch kann mehrere Autoren haben, ein Autor schreibt mehrere Bücher.“",tab:"Autorenschaft",ra:[]},
+        {id:"R3",a:3,b:1,verb:"umfasst",qa:"Wie viele Bücher umfasst EIN Genre?",qb:"Zu wie vielen Genres gehört EIN Buch?",ca:"n",cb:"1",cite:"„Jedes Buch gehört zu genau einem Genre, ein Genre umfasst viele Bücher.“"}]},
+ {id:"e11",title:"Fall 11: Fahrradverleih",short:"Fahrradverleih",
+  story:"Ein Fahrradverleih am Bahnhof will Ausleihen erfassen. Kunden haben eine Kundennummer, einen Namen und eine Ausweisnummer. Ein Fahrrad hat eine Rahmennummer, eine Rahmenhöhe und eine Farbe und gehört zu genau einem Fahrradtyp (Citybike, E-Bike …); von einem Typ gibt es viele Räder. Ein Fahrradtyp hat eine Typnummer, eine Bezeichnung und einen Tagespreis. Jede Ausleihe hat eine Ausleihnummer, ein Startdatum und ein Rückgabedatum, gehört zu genau einem Kunden und betrifft genau ein Fahrrad. Ein Kunde kann viele Ausleihen haben, ein Fahrrad wird im Laufe der Zeit oft ausgeliehen.",
+  ents:[{n:"Kunde",a:["KundeNr","Name","Ausweisnummer"],pk:"KundeNr"},{n:"Ausleihe",a:["AusleihNr","Startdatum","Rückgabedatum"],pk:"AusleihNr"},{n:"Fahrrad",a:["Rahmennummer","Rahmenhöhe","Farbe"],pk:"Rahmennummer"},{n:"Fahrradtyp",a:["TypNr","Bezeichnung","Tagespreis"],pk:"TypNr"}],
+  chips:[["Kunde","e"],["Ausleihe","e"],["Fahrrad","e"],["Fahrradtyp","e"],["Tagespreis","a","Der Tagespreis hängt am Fahrradtyp, nicht am einzelnen Rad."],["Rückgabedatum","a","Hier ist die Ausleihe eine eigene Entität mit Nummer – das Datum ist ihr Attribut."],["Farbe","a","Die Farbe beschreibt das einzelne Rad."],["Bahnhof","x","Der Standort des Verleihs spielt für die Daten keine Rolle."]],
+  attrQ:[{t:"Tagespreis",ok:"Fahrradtyp",why:"Alle E-Bikes kosten dasselbe pro Tag – der Preis hängt am Typ."},{t:"Rückgabedatum",ok:"Ausleihe",why:"Jede Ausleihe hat ihr eigenes Rückgabedatum. Da die Ausleihe hier eine eigene Entität ist, ist es ein normales Attribut."},{t:"Rahmenhöhe",ok:"Fahrrad",why:"Die Rahmenhöhe gehört zum einzelnen Rad."},{t:"Ausweisnummer",ok:"Kunde",why:"Gehört zur Person."}],
+  rels:[{id:"R1",a:0,b:1,verb:"tätigt",qa:"Wie viele Ausleihen kann EIN Kunde haben?",qb:"Zu wie vielen Kunden gehört EINE Ausleihe?",ca:"n",cb:"1",cite:"„… gehört zu genau einem Kunden … Ein Kunde kann viele Ausleihen haben.“"},
+        {id:"R2",a:2,b:1,verb:"wird ausgeliehen in",qa:"Wie oft kann EIN Fahrrad ausgeliehen werden?",qb:"Wie viele Fahrräder betrifft EINE Ausleihe?",ca:"n",cb:"1",cite:"„… betrifft genau ein Fahrrad … ein Fahrrad wird im Laufe der Zeit oft ausgeliehen.“"},
+        {id:"R3",a:3,b:2,verb:"klassifiziert",qa:"Wie viele Räder gibt es von EINEM Typ?",qb:"Zu wie vielen Typen gehört EIN Fahrrad?",ca:"n",cb:"1",cite:"„… gehört zu genau einem Fahrradtyp …; von einem Typ gibt es viele Räder.“"}]},
+ {id:"e12",title:"Fall 12: Hotelreservierung",short:"Hotel",
+  story:"Ein Hotel will Buchungen verwalten. Gäste haben eine Gästenummer, einen Namen und eine E-Mail. Zimmer haben eine Zimmernummer, eine Etage und gehören zu genau einer Zimmerkategorie (Einzel, Doppel, Suite); eine Kategorie umfasst viele Zimmer. Eine Zimmerkategorie hat eine Kategorienummer, eine Bezeichnung und einen Preis pro Nacht. Gäste buchen Zimmer: Ein Gast kann viele Zimmer buchen (auch mehrfach über die Jahre), ein Zimmer wird von vielen Gästen gebucht. Für jede Buchung werden Anreise- und Abreisedatum gespeichert. Das Hotel rechnet außerdem mit Saisons (Haupt-, Neben-, Zwischensaison): Eine Saison hat eine Saisonnummer, eine Bezeichnung und einen Zuschlag in Prozent. Jeder Zuschlag gilt für alle Kategorien, und jede Kategorie wird in jeder Saison angeboten.",
+  ents:[{n:"Gast",a:["GastNr","Name","E-Mail"],pk:"GastNr"},{n:"Zimmer",a:["ZimmerNr","Etage"],pk:"ZimmerNr"},{n:"Zimmerkategorie",a:["KategorieNr","Bezeichnung","Preis pro Nacht"],pk:"KategorieNr"},{n:"Saison",a:["SaisonNr","Bezeichnung","Zuschlag"],pk:"SaisonNr"}],
+  chips:[["Gast","e"],["Zimmer","e"],["Zimmerkategorie","e"],["Saison","e"],["Anreisedatum","r","Das Anreisedatum gibt es nur für eine konkrete Buchung – Gast + Zimmer."],["Preis pro Nacht","a","Der Grundpreis hängt an der Kategorie."],["Etage","a","Die Etage beschreibt das Zimmer."],["Rezeption","x","Die Rezeption ist ein Ort im Hotel, über sie werden keine Daten gespeichert."]],
+  attrQ:[{t:"Anreisedatum",ok:"R2",why:"Gehört zur Buchung, also zur Beziehung Gast–Zimmer."},{t:"Preis pro Nacht",ok:"Zimmerkategorie",why:"Alle Doppelzimmer kosten gleich – der Preis hängt an der Kategorie."},{t:"Etage",ok:"Zimmer",why:"Beschreibt das Zimmer."},{t:"Zuschlag",ok:"Saison",why:"Der Saisonzuschlag gehört zur Saison."}],
+  rels:[{id:"R1",a:2,b:1,verb:"umfasst",qa:"Wie viele Zimmer umfasst EINE Kategorie?",qb:"Zu wie vielen Kategorien gehört EIN Zimmer?",ca:"n",cb:"1",cite:"„… gehören zu genau einer Zimmerkategorie …; eine Kategorie umfasst viele Zimmer.“"},
+        {id:"R2",a:0,b:1,verb:"bucht",qa:"Wie viele Zimmer kann EIN Gast buchen?",qb:"Von wie vielen Gästen wird EIN Zimmer gebucht?",ca:"n",cb:"n",cite:"„Ein Gast kann viele Zimmer buchen …, ein Zimmer wird von vielen Gästen gebucht.“",tab:"Buchung",ra:["Anreisedatum","Abreisedatum"]},
+        {id:"R3",a:3,b:2,verb:"bepreist",qa:"Für wie viele Kategorien gilt EINE Saison?",qb:"In wie vielen Saisons wird EINE Kategorie angeboten?",ca:"n",cb:"n",cite:"„Jeder Zuschlag gilt für alle Kategorien, und jede Kategorie wird in jeder Saison angeboten.“",tab:"Saisonpreis",ra:[]}]},
+ {id:"e13",title:"Fall 13: Softwareentwicklung",short:"Software",
+  story:"Ein Entwicklungsteam will seine Tickets abbilden. Entwickler haben eine Personalnummer, einen Namen und ein Level (Junior, Senior). Projekte haben eine Projektnummer, einen Namen und einen Starttermin. Ein Ticket hat eine Ticketnummer, einen Titel und einen Status und gehört zu genau einem Projekt; ein Projekt hat viele Tickets. Ein Ticket wird genau einem Entwickler zugewiesen, ein Entwickler bearbeitet viele Tickets. Tickets werden in Releases ausgeliefert: Ein Release enthält viele Tickets, und ein Ticket kann – wenn es nachgebessert wird – in mehreren Releases auftauchen. Ein Release hat eine Versionsnummer, ein Datum und gehört zu genau einem Projekt.",
+  ents:[{n:"Projekt",a:["ProjektNr","Name","Starttermin"],pk:"ProjektNr"},{n:"Ticket",a:["TicketNr","Titel","Status"],pk:"TicketNr"},{n:"Entwickler",a:["PersNr","Name","Level"],pk:"PersNr"},{n:"Release",a:["Versionsnummer","Datum"],pk:"Versionsnummer"}],
+  chips:[["Projekt","e"],["Ticket","e"],["Entwickler","e"],["Release","e"],["Status","a","Der Status (offen, in Arbeit, erledigt) beschreibt das Ticket."],["Level","a","Junior oder Senior – eine Eigenschaft des Entwicklers."],["Versionsnummer","a","Die Versionsnummer kennzeichnet das Release."],["Team","x","Das Team ist der Betreiber der Datenbank."]],
+  attrQ:[{t:"Status",ok:"Ticket",why:"Jedes Ticket hat genau einen aktuellen Status."},{t:"Level",ok:"Entwickler",why:"Beschreibt die Person."},{t:"Starttermin",ok:"Projekt",why:"Gehört zum Projekt."},{t:"Datum",ok:"Release",why:"Das Auslieferungsdatum gehört zum Release."}],
+  rels:[{id:"R1",a:0,b:1,verb:"enthält",qa:"Wie viele Tickets hat EIN Projekt?",qb:"Zu wie vielen Projekten gehört EIN Ticket?",ca:"n",cb:"1",cite:"„… gehört zu genau einem Projekt; ein Projekt hat viele Tickets.“"},
+        {id:"R2",a:2,b:1,verb:"bearbeitet",qa:"Wie viele Tickets bearbeitet EIN Entwickler?",qb:"Wie vielen Entwicklern ist EIN Ticket zugewiesen?",ca:"n",cb:"1",cite:"„Ein Ticket wird genau einem Entwickler zugewiesen, ein Entwickler bearbeitet viele Tickets.“"},
+        {id:"R3",a:3,b:1,verb:"liefert aus",qa:"Wie viele Tickets enthält EIN Release?",qb:"In wie vielen Releases kann EIN Ticket auftauchen?",ca:"n",cb:"n",cite:"„Ein Release enthält viele Tickets, und ein Ticket kann … in mehreren Releases auftauchen.“",tab:"Release-Inhalt",ra:[]}]},
+ {id:"e14",title:"Fall 14: Immobilienverwaltung",short:"Immobilien",
+  story:"Eine Hausverwaltung modelliert ihre Objekte. Ein Gebäude hat eine Gebäudenummer, eine Adresse und ein Baujahr und enthält viele Wohnungen; jede Wohnung liegt in genau einem Gebäude. Eine Wohnung hat eine Wohnungsnummer, eine Fläche und eine Zimmerzahl. Mieter haben eine Mieternummer, einen Namen und eine Telefonnummer. Ein Mietvertrag hat eine Vertragsnummer, einen Beginn und eine Kaltmiete, gilt für genau eine Wohnung und wird mit genau einem Mieter geschlossen. Eine Wohnung hat im Laufe der Zeit viele Mietverträge, und ein Mieter kann nacheinander mehrere Verträge haben.",
+  ents:[{n:"Gebäude",a:["GebäudeNr","Adresse","Baujahr"],pk:"GebäudeNr"},{n:"Wohnung",a:["WohnungNr","Fläche","Zimmerzahl"],pk:"WohnungNr"},{n:"Mietvertrag",a:["VertragNr","Beginn","Kaltmiete"],pk:"VertragNr"},{n:"Mieter",a:["MieterNr","Name","Telefon"],pk:"MieterNr"}],
+  chips:[["Gebäude","e"],["Wohnung","e"],["Mietvertrag","e"],["Mieter","e"],["Kaltmiete","a","Die Kaltmiete steht im Vertrag – derselbe Mieter kann in einer anderen Wohnung eine andere zahlen, die Wohnung kann später teurer werden."],["Baujahr","a","Das Baujahr beschreibt das Gebäude."],["Fläche","a","Die Fläche gehört zur Wohnung."],["Hausverwaltung","x","Die Verwaltung ist der Betreiber."]],
+  attrQ:[{t:"Kaltmiete",ok:"Mietvertrag",why:"Die Miete wird pro Vertrag vereinbart. Weil der Vertrag eine eigene Entität ist, ist sie dort ein normales Attribut."},{t:"Baujahr",ok:"Gebäude",why:"Gehört zum Gebäude."},{t:"Zimmerzahl",ok:"Wohnung",why:"Beschreibt die Wohnung."},{t:"Telefon",ok:"Mieter",why:"Gehört zur Person."}],
+  rels:[{id:"R1",a:0,b:1,verb:"enthält",qa:"Wie viele Wohnungen enthält EIN Gebäude?",qb:"In wie vielen Gebäuden liegt EINE Wohnung?",ca:"n",cb:"1",cite:"„… enthält viele Wohnungen; jede Wohnung liegt in genau einem Gebäude.“"},
+        {id:"R2",a:1,b:2,verb:"ist Gegenstand von",qa:"Wie viele Mietverträge hat EINE Wohnung im Laufe der Zeit?",qb:"Für wie viele Wohnungen gilt EIN Mietvertrag?",ca:"n",cb:"1",cite:"„… gilt für genau eine Wohnung … Eine Wohnung hat im Laufe der Zeit viele Mietverträge.“"},
+        {id:"R3",a:3,b:2,verb:"schließt",qa:"Wie viele Verträge kann EIN Mieter haben?",qb:"Mit wie vielen Mietern wird EIN Vertrag geschlossen?",ca:"n",cb:"1",cite:"„… wird mit genau einem Mieter geschlossen … ein Mieter kann nacheinander mehrere Verträge haben.“"}]},
+ {id:"e15",title:"Fall 15: Musikschule",short:"Musikschule",
+  story:"Eine Musikschule verwaltet ihren Unterricht. Schüler haben eine Schülernummer, einen Namen und ein Geburtsdatum. Lehrer haben eine Lehrernummer, einen Namen und ein Hauptinstrument. Instrumente sind als Fächer angelegt: Ein Instrument hat eine Instrumentnummer und eine Bezeichnung. Ein Lehrer unterrichtet mehrere Instrumente, und ein Instrument wird von mehreren Lehrern unterrichtet. Jede Unterrichtsstunde hat eine Stundennummer, ein Datum und eine Dauer, wird von genau einem Lehrer gegeben und von genau einem Schüler besucht. Lehrer und Schüler haben viele Stunden.",
+  ents:[{n:"Schüler",a:["SchülerNr","Name","Geburtsdatum"],pk:"SchülerNr"},{n:"Unterrichtsstunde",a:["StundenNr","Datum","Dauer"],pk:"StundenNr"},{n:"Lehrer",a:["LehrerNr","Name","Hauptinstrument"],pk:"LehrerNr"},{n:"Instrument",a:["InstrumentNr","Bezeichnung"],pk:"InstrumentNr"}],
+  chips:[["Schüler","e"],["Unterrichtsstunde","e"],["Lehrer","e"],["Instrument","e"],["Dauer","a","Die Dauer gehört zur einzelnen Stunde."],["Hauptinstrument","a","Beschreibt den Lehrer – nicht zu verwechseln mit den Fächern, die er unterrichtet."],["Geburtsdatum","a","Gehört zum Schüler."],["Musikschule","x","Die Schule ist der Betreiber."]],
+  attrQ:[{t:"Dauer",ok:"Unterrichtsstunde",why:"Jede Stunde hat ihre eigene Dauer – die Stunde ist eine eigene Entität."},{t:"Hauptinstrument",ok:"Lehrer",why:"Eine Eigenschaft der Person, kein Fach."},{t:"Bezeichnung",ok:"Instrument",why:"Klavier, Gitarre … – gehört zum Instrument als Fach."},{t:"Geburtsdatum",ok:"Schüler",why:"Gehört zur Person."}],
+  rels:[{id:"R1",a:0,b:1,verb:"besucht",qa:"Wie viele Stunden besucht EIN Schüler?",qb:"Von wie vielen Schülern wird EINE Stunde besucht?",ca:"n",cb:"1",cite:"„… von genau einem Schüler besucht. Lehrer und Schüler haben viele Stunden.“"},
+        {id:"R2",a:2,b:1,verb:"gibt",qa:"Wie viele Stunden gibt EIN Lehrer?",qb:"Von wie vielen Lehrern wird EINE Stunde gegeben?",ca:"n",cb:"1",cite:"„… wird von genau einem Lehrer gegeben … Lehrer … haben viele Stunden.“"},
+        {id:"R3",a:2,b:3,verb:"unterrichtet",qa:"Wie viele Instrumente unterrichtet EIN Lehrer?",qb:"Von wie vielen Lehrern wird EIN Instrument unterrichtet?",ca:"n",cb:"n",cite:"„Ein Lehrer unterrichtet mehrere Instrumente, und ein Instrument wird von mehreren Lehrern unterrichtet.“",tab:"Lehrbefähigung",ra:[]}]}
 ];
 const ERD_EXPLAIN={
  ent:{t:"Entitäten finden",x:"Eine Entität ist ein Ding, eine Person oder ein Vorgang der realen Welt, über das man mehrere Informationen speichern will. Im Text sind das meist Substantive, zu denen eigene Eigenschaften genannt werden. Keine Entitäten sind: einzelne Eigenschaften (Attribute), Werte, die erst durch eine Beziehung entstehen, und das System oder die Firma, die die Datenbank betreibt.",ex:"Bibliothek: „Leser leihen Bücher aus. Ein Buch hat eine ISBN und einen Titel.“ → Entitäten Leser und Buch. Titel ist ein Attribut, die Bibliothek selbst keine Entität."},
@@ -4182,7 +4276,7 @@ function erRender(){
     $("#er-check").onclick=()=>{ if(er.solved) return; let ok=true;
       $$("#er-body .er-chip").forEach(b=>{ const t=b.dataset.t, on=er.sel.has(t), w=want.includes(t); b.classList.remove("ok","bad","miss"); if(on&&w) b.classList.add("ok"); else if(on){ b.classList.add("bad"); ok=false; } else if(w) ok=false; });
       const miss=want.filter(t=>!er.sel.has(t)).length;
-      if(ok) return erSolve(s.k==="jtcols"?`Richtig: ${esc(r.tab)}(↑${esc(A.pk)}, ↑${esc(Bn.pk)}, ${r.ra.map(esc).join(", ")}). Die beiden Fremdschlüssel verbinden die Tabellen, ${r.ra.map(esc).join(", ")} gehört zur Beziehung.`:`Richtig: (${esc(A.pk)}, ${esc(Bn.pk)}) zusammen. Jede Kombination darf nur einmal vorkommen.`,null,true);
+      if(ok) return erSolve(s.k==="jtcols"?`Richtig: ${esc(r.tab)}(↑${esc(A.pk)}, ↑${esc(Bn.pk)}${r.ra.length?", "+r.ra.map(esc).join(", "):""}). Die beiden Fremdschlüssel verbinden die Tabellen${r.ra.length?`, ${r.ra.map(esc).join(", ")} gehört zur Beziehung`:" – weitere Spalten braucht diese Beziehung nicht"}.`:`Richtig: (${esc(A.pk)}, ${esc(Bn.pk)}) zusammen. Jede Kombination darf nur einmal vorkommen.`,null,true);
       erWrong((miss&&!$$("#er-body .er-chip.bad").length?(miss===1?"Richtig bisher, aber es fehlt noch eine Spalte. ":`Richtig bisher, aber es fehlen noch ${miss} Spalten. `):"")+(s.k==="jtcols"?"Normale Attribute der Entitäten stehen schon in deren Tabellen. Was braucht man, um die beiden Tabellen zu verbinden, und was gehört zur Beziehung?":"Der Schlüssel muss jede Verbindung eindeutig machen, braucht aber keine Zusatzattribute.")); };
     return; }
   if(s.k==="count"){ const n=c.ents.length+c.rels.filter(r=>erType(r)==="n:m").length;
@@ -4206,7 +4300,7 @@ function erHintLevels(){ const s=er.sc[er.i], c=er.c;
     case "card": return ["Geh jeweils von EINEM Exemplar aus und frag: genau 1 oder viele?",`Im Text steht: ${s.r.cite}`,`Lösung: ${s.r.ca==="n"?"viele":"genau 1"} / ${s.r.cb==="n"?"viele":"genau 1"}`];
     case "pk": return ["Eindeutig, nie leer, ändert sich nicht. Namen und Adressen fallen raus.","Such nach Nummern und festen Kennungen.",`Lösung: ${c.ents.map(e=>e.pk).join(", ")}`];
     case "impl": { const t=erType(s.r), A=c.ents[s.r.a].n, Bn=c.ents[s.r.b].n; return [t==="n:m"?"Bei n:m hat jede Seite viele Partner.":t==="1:1"?"Bei 1:1 reicht ein Fremdschlüssel auf einer Seite.":"Bei 1:n wandert der Fremdschlüssel auf die n-Seite.",t==="1:n"?`Die n-Seite ist hier ${s.r.ca==="n"?Bn:A}.`:t==="n:m"?"Eine Spalte kann keine Liste aufnehmen.":`Beide Fremdschlüssel-Varianten sind möglich.`,`Lösung: ${t==="n:m"?"Zwischentabelle "+s.r.tab:t==="1:1"?`↑${c.ents[s.r.a].pk} in ${Bn} (oder umgekehrt)`:s.r.ca==="n"?`↑${c.ents[s.r.a].pk} in ${Bn}`:`↑${c.ents[s.r.b].pk} in ${A}`}`]; }
-    case "jtcols": return ["Was verbindet die beiden Tabellen? Und was gehört zur Beziehung selbst?",`Es sind ${2+s.r.ra.length} Spalten.`,`Lösung: ${c.ents[s.r.a].pk}, ${c.ents[s.r.b].pk}, ${s.r.ra.join(", ")}`];
+    case "jtcols": return ["Was verbindet die beiden Tabellen? Und was gehört zur Beziehung selbst?",`Es sind ${2+s.r.ra.length} Spalten.`,`Lösung: ${[c.ents[s.r.a].pk,c.ents[s.r.b].pk,...s.r.ra].join(", ")}`];
     case "jtpk": return ["Jede Verbindung darf nur einmal vorkommen.","Es sind die beiden Fremdschlüssel.",`Lösung: ${c.ents[s.r.a].pk} + ${c.ents[s.r.b].pk}`];
     case "count": { const n=c.ents.length+c.rels.filter(r=>erType(r)==="n:m").length; return ["Jede Entität wird eine Tabelle.","Dazu kommt für jede n:m-Beziehung eine Zwischentabelle.",`Lösung: ${n}`]; }
   } }
@@ -4220,7 +4314,7 @@ function erExplain(){ if(!er) return; const s=er.sc[er.i], x=ERD_EXPLAIN[s.k];
 function erSchema(c){ const fk={}; c.ents.forEach((e,i)=>fk[i]=[]);
   for(const r of c.rels){ const t=erType(r); if(t==="1:n"){ if(r.ca==="n") fk[r.b].push(c.ents[r.a].pk); else fk[r.a].push(c.ents[r.b].pk); } if(t==="1:1") fk[r.b].push(c.ents[r.a].pk); }
   const rows=c.ents.map((e,i)=>`<div class="er-rel"><b>${esc(e.n)}</b> (${e.a.map(a=>a===e.pk?`<u>${esc(a)}</u>`:esc(a)).concat(fk[i].map(f=>`↑${esc(f)}`)).join(", ")})</div>`);
-  for(const r of c.rels) if(erType(r)==="n:m") rows.push(`<div class="er-rel"><b>${esc(r.tab)}</b> (<u>↑${esc(c.ents[r.a].pk)}</u>, <u>↑${esc(c.ents[r.b].pk)}</u>, ${r.ra.map(esc).join(", ")})</div>`);
+  for(const r of c.rels) if(erType(r)==="n:m") rows.push(`<div class="er-rel"><b>${esc(r.tab)}</b> (<u>↑${esc(c.ents[r.a].pk)}</u>, <u>↑${esc(c.ents[r.b].pk)}</u>${r.ra.length?", "+r.ra.map(esc).join(", "):""})</div>`);
   return rows.join(""); }
 function erEnd(){
   er.done=true; const c=er.c, max=er.sc.length*100, stars=er.hints===0&&er.errs<=1?3:er.errs+er.hints<=5?2:1, best=erBest(), prev=best[c.id];
@@ -5915,13 +6009,14 @@ function bsEnd(){
    Kein Quiz: Geräte stehen auf dem Tisch, du verkabelst, vergibst Adressen und
    schickst einen Ping. Das Paket läuft sichtbar über die Leitung, und das
    Protokoll erklärt jeden Schritt – auch, wo und warum es hängen bleibt.
-   Aufgaben kommen aus NL_MISSIONS, das Prüfen übernimmt check(). */
+   Aufgaben kommen aus NL_MISSIONS, das Prüfen übernimmt check(). Router können
+   statische Routen haben, damit auch Netze hinter einem zweiten Router gehen. */
 let nl=null;
 const nlDone=()=>utJ("nl_done",[]);
-const NL_W=360, NL_H=260;
+const NL_W=360, NL_H=260, NL_BW=122;
 const NL_ICON={pc:"🖥️",sw:"🔀",rt:"📡"};
 const NL_NAME={pc:"PC",sw:"Switch",rt:"Router"};
-const NL_PORTS={pc:1,sw:8,rt:2};
+const NL_PORTS={pc:1,sw:8,rt:3};
 
 /* ---- Adressrechnen ---- */
 const nlIp2n=s=>{ const m=/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec((s||"").trim()); if(!m) return null;
@@ -5931,223 +6026,316 @@ function nlMask(s){ s=(s||"").trim(); const sl=/^\/?(\d{1,2})$/.exec(s); if(sl){
   const n=nlIp2n(s); if(n===null) return null; const inv=(~n)>>>0; if(((inv+1)&inv)!==0) return null; return n; }
 const nlCidr=m=>{ let c=0; for(let i=0;i<32;i++) if(m&(1<<(31-i))) c++; return c; };
 const nlSame=(a,b,m)=>((a&m)>>>0)===((b&m)>>>0);
+const nlNet=(ip,m)=>`${nlN2ip((ip&m)>>>0)}/${nlCidr(m)}`;
+/* Host-Anteil nur Nullen = Netzadresse, nur Einsen = Broadcast – beides keine gültige Geräteadresse */
+const nlHostBad=(ip,m)=>{ if(m>=0xfffffffe) return null; const h=(ip&~m)>>>0, all=(~m)>>>0; return h===0?"Netzadresse":h===all?"Broadcast-Adresse":null; };
 
 /* ---- Netzmodell ---- */
 function nlDev(id){ return nl.devs.find(d=>d.id===id); }
 function nlNewDev(type,x,y,name){ const n=nl.devs.filter(d=>d.type===type).length+1;
-  return {id:type+"_"+Date.now().toString(36)+n,type,x,y,name:name||(NL_NAME[type]+"-"+n),
+  return {id:type+"_"+Math.random().toString(36).slice(2,7),type,x,y,name:name||(NL_NAME[type]+"-"+n),routes:[],
     ifs:type==="sw"?[]:Array.from({length:NL_PORTS[type]},(_,i)=>({name:type==="rt"?"eth"+i:"eth0",ip:"",mask:type==="pc"?"255.255.255.0":"",gw:""}))}; }
+function nlLinked(id,port){ const d=nlDev(id); return nl.links.some(l=>(l.a.id===id&&(d.type==="sw"||l.a.port===port))||(l.b.id===id&&(d.type==="sw"||l.b.port===port))); }
 function nlFreePort(dev){ const used=nl.links.flatMap(l=>[l.a,l.b]).filter(e=>e.id===dev.id).map(e=>e.port); for(let i=0;i<NL_PORTS[dev.type];i++) if(!used.includes(i)) return i; return -1; }
 /* Jedes (Gerät,Port) bekommt einen Segment-Schlüssel: Switch = alle Ports ein Segment, Router = jeder Port für sich */
 function nlSegments(){
-  const parent={}; const key=(id,p)=>{ const d=nlDev(id); return d.type==="sw"?id:id+":"+p; };
+  const parent={}; const key=(id,p)=>nlDev(id).type==="sw"?id:id+":"+p;
   const find=k=>{ parent[k]=parent[k]||k; while(parent[k]!==k){ parent[k]=parent[parent[k]]; k=parent[k]; } return k; };
-  const union=(a,b)=>{ parent[find(a)]=find(b); };
-  nl.links.forEach(l=>union(key(l.a.id,l.a.port),key(l.b.id,l.b.port)));
-  return {of:(id,p)=>{ const d=nlDev(id); if(!nl.links.some(l=>(l.a.id===id&&(d.type==="sw"||l.a.port===p))||(l.b.id===id&&(d.type==="sw"||l.b.port===p)))) return null; return find(key(id,p)); }};
+  nl.links.forEach(l=>{ parent[find(key(l.a.id,l.a.port))]=find(key(l.b.id,l.b.port)); });
+  return {of:(id,p)=>nlLinked(id,p)?find(key(id,p)):null};
 }
-/* Alle Interfaces (Gerät+Port) mit IP in einem Segment */
-function nlInSeg(seg,segKey){ const out=[];
-  nl.devs.forEach(d=>d.ifs.forEach((f,i)=>{ if(!f.ip) return; if(seg.of(d.id,i)===segKey) out.push({dev:d,port:i,ifc:f}); }));
-  return out; }
+function nlInSeg(seg,segKey){ const out=[]; if(!segKey) return out;
+  nl.devs.forEach(d=>d.ifs.forEach((f,i)=>{ if(!f.ip) return; if(seg.of(d.id,i)===segKey) out.push({dev:d,port:i,ifc:f}); })); return out; }
 /* Weg durch Switches von (dev,port) zu Zielgerät – für die Animation */
 function nlPath(fromId,fromPort,toId){
   const adj={}; nl.links.forEach(l=>{ (adj[l.a.id]=adj[l.a.id]||[]).push({id:l.b.id,viaPort:l.a.port}); (adj[l.b.id]=adj[l.b.id]||[]).push({id:l.a.id,viaPort:l.b.port}); });
   const q=[[fromId]], seen=new Set([fromId]);
   while(q.length){ const p=q.shift(), last=p[p.length-1];
     for(const n of (adj[last]||[])){ if(last===fromId&&nlDev(fromId).type!=="sw"&&n.viaPort!==fromPort) continue;
-      if(seen.has(n.id)) continue; const d=nlDev(n.id);
-      if(n.id===toId) return p.concat(n.id); if(d.type!=="sw") continue; seen.add(n.id); q.push(p.concat(n.id)); } }
+      if(seen.has(n.id)) continue; if(n.id===toId) return p.concat(n.id); if(nlDev(n.id).type!=="sw") continue; seen.add(n.id); q.push(p.concat(n.id)); } }
   return null;
 }
 
-/* ---- Ping-Simulation: liefert Schritte mit Text und Laufweg ---- */
+/* ---- Weiterleitung: ein Paket von (Gerät, Interface) zur Ziel-IP, über beliebig viele Router ---- */
+function nlRoute(S,dev,port,dip,kind,ttl){
+  const seg=nlSegments(); const add=(t,path)=>S.push({t,path:path||null,kind,ok:true}); const fail=t=>{ S.push({t,fail:true}); return null; };
+  const f=dev.ifs[port], sip=nlIp2n(f.ip), m=nlMask(f.mask), isR=dev.type==="rt", who=isR?`${dev.name} (${f.name})`:dev.name;
+  if(ttl<=0) return fail(`TTL abgelaufen – das Paket kreist zwischen Routern. Irgendwo zeigt eine Route zurück.`);
+  if(sip===null||m===null) return fail(`${who} hat keine gültige Adresse oder Maske.`);
+  const segKey=seg.of(dev.id,port); if(!segKey) return fail(`${who} hängt an keinem Kabel.`);
+  let nextIp=null, viaText="";
+  if(nlSame(sip,dip,m)){ nextIp=dip; add(`${who}: ${nlN2ip(dip)} liegt im eigenen Netz ${nlNet(sip,m)} – direkt zustellen.`); }
+  else if(!isR){
+    const gw=nlIp2n(f.gw);
+    if(gw===null) return fail(`${dev.name}: ${nlN2ip(dip)} liegt nicht im eigenen Netz ${nlNet(sip,m)}, aber es ist kein Standardgateway eingetragen. Das Paket wird verworfen.`);
+    if(!nlSame(sip,gw,m)) return fail(`${dev.name}: Das Gateway ${f.gw} liegt nicht im eigenen Netz ${nlNet(sip,m)} – es ist unerreichbar.`);
+    nextIp=gw; viaText=` (Gateway ${f.gw})`; add(`${dev.name}: ${nlN2ip(dip)} liegt NICHT im eigenen Netz ${nlNet(sip,m)} – also an das Gateway ${f.gw}.`);
+  } else {
+    const o=dev.ifs.findIndex((x,i)=>i!==port&&nlIp2n(x.ip)!==null&&nlMask(x.mask)!==null&&nlSame(nlIp2n(x.ip),dip,nlMask(x.mask)));
+    if(o>=0){ add(`${dev.name}: Routing-Tabelle – ${nlNet(nlIp2n(dev.ifs[o].ip),nlMask(dev.ifs[o].mask))} ist direkt an ${dev.ifs[o].name} angeschlossen. TTL −1.`); return nlRoute(S,dev,o,dip,kind,ttl-1); }
+    const R=(dev.routes||[]).filter(r=>nlIp2n(r.net)!==null&&nlMask(r.mask)!==null&&nlSame(dip,nlIp2n(r.net),nlMask(r.mask))).sort((a,b)=>nlMask(b.mask)-nlMask(a.mask));
+    if(!R.length) return fail(`${dev.name}: Kein Interface und keine Route für ${nlN2ip(dip)}. Der Router antwortet „Destination unreachable“.`);
+    const rr=R[0], via=nlIp2n(rr.via);
+    const oi=dev.ifs.findIndex(x=>nlIp2n(x.ip)!==null&&nlMask(x.mask)!==null&&nlSame(nlIp2n(x.ip),via,nlMask(x.mask)));
+    if(oi<0) return fail(`${dev.name}: Route „${rr.net}/${nlCidr(nlMask(rr.mask))} via ${rr.via}“ gefunden, aber ${rr.via} liegt an keinem eigenen Interface. Der nächste Hop muss direkt erreichbar sein.`);
+    add(`${dev.name}: Routing-Tabelle – ${rr.net}/${nlCidr(nlMask(rr.mask))} via ${rr.via}, raus über ${dev.ifs[oi].name}. TTL −1.`);
+    return nlHop(S,dev,oi,via,dip,kind,ttl-1,seg,` (nächster Router ${rr.via})`);
+  }
+  return nlHop(S,dev,port,nextIp,dip,kind,ttl,seg,viaText);
+}
+/* ARP im Segment nach nextIp, Paket dorthin bringen; ist es das Ziel → fertig, ist es ein Router → weiter */
+function nlHop(S,dev,port,nextIp,dip,kind,ttl,seg,viaText){
+  const add=(t,path,k)=>S.push({t,path:path||null,kind:k||kind,ok:true}); const fail=t=>{ S.push({t,fail:true}); return null; };
+  const segKey=seg.of(dev.id,port); if(!segKey) return fail(`${dev.name} ${dev.ifs[port].name}: kein Kabel an diesem Interface.`);
+  add(`ARP (Broadcast): „Wer hat ${nlN2ip(nextIp)}?“${viaText} – ein Switch flutet das an alle Ports.`,null,"arp");
+  const hits=nlInSeg(seg,segKey).filter(h=>nlIp2n(h.ifc.ip)===nextIp&&h.dev.id!==dev.id);
+  if(!hits.length) return fail(`Niemand antwortet auf ARP nach ${nlN2ip(nextIp)}. Entweder hat kein Gerät in diesem Segment die Adresse, oder es hängt nicht an diesem Kabelstrang.`);
+  if(hits.length>1) return fail(`Zwei Geräte antworten auf ARP (${hits.map(h=>h.dev.name).join(", ")}): doppelte IP-Adresse ${nlN2ip(nextIp)}. Der Switch lernt die MAC mal hier, mal dort – die Verbindung flackert.`);
+  const h=hits[0];
+  if(nextIp===dip){ add(`${h.dev.name} antwortet mit seiner MAC. ${kind==="reply"?"Echo Reply":"Echo Request"} wird zugestellt.`,nlPath(dev.id,port,h.dev.id)); return h; }
+  if(h.dev.type!=="rt") return fail(`${nlN2ip(nextIp)} gehört ${h.dev.name} – das ist ein PC, kein Router. Der leitet nichts weiter.`);
+  add(`${h.dev.name} antwortet mit seiner MAC. Paket geht an den Router, Ziel-IP bleibt ${nlN2ip(dip)}.`,nlPath(dev.id,port,h.dev.id));
+  return nlRoute(S,h.dev,h.port,dip,kind,ttl);
+}
 function nlPing(srcId,dstIpStr){
-  const S=[], src=nlDev(srcId), seg=nlSegments();
-  const add=(t,path,kind,ok)=>S.push({t,path:path||null,kind:kind||"req",ok:ok!==false});
+  const S=[], src=nlDev(srcId), f0=src.ifs[0], sip=nlIp2n(f0.ip), m=nlMask(f0.mask), dip=nlIp2n(dstIpStr);
   const fail=t=>{ S.push({t,fail:true}); return {ok:false,steps:S}; };
-  const f0=src.ifs[0], sip=nlIp2n(f0.ip), smask=nlMask(f0.mask), dip=nlIp2n(dstIpStr);
   if(sip===null) return fail(`${src.name} hat keine gültige IP-Adresse. Ohne Absenderadresse kann kein Paket losgeschickt werden.`);
-  if(smask===null) return fail(`${src.name} hat keine gültige Subnetzmaske. Erst die Maske sagt dem PC, welche Adressen „im eigenen Netz“ liegen.`);
+  if(m===null) return fail(`${src.name} hat keine gültige Subnetzmaske. Erst die Maske sagt dem PC, welche Adressen „im eigenen Netz“ liegen.`);
+  const bad=nlHostBad(sip,m); if(bad) return fail(`${f0.ip} ist in ${nlNet(sip,m)} die ${bad} – die darf kein Gerät tragen. Der Netzwerkstack lehnt die Konfiguration ab.`);
   if(dip===null) return fail(`„${dstIpStr}“ ist keine gültige IPv4-Adresse.`);
   if(dip===sip) return fail(`Das ist die eigene Adresse – der Ping bleibt im PC (Loopback). Wähle ein anderes Gerät.`);
-  const mySeg=seg.of(src.id,0);
-  if(!mySeg) return fail(`${src.name} hängt an keinem Kabel. Ohne Schicht 1 passiert gar nichts.`);
-  /* Antwortweg: kommt der Echo Reply zurück? */
-  const back=(hop)=>{
-    const d=hop.dev, f=hop.ifc, dmask=nlMask(f.mask), dipn=nlIp2n(f.ip);
-    if(dmask===null) return fail(`${d.name} hat keine gültige Maske und weiß nicht, wohin mit der Antwort.`);
-    if(nlSame(dipn,sip,dmask)){
-      const found=nlInSeg(seg,seg.of(d.id,hop.port)).filter(h=>nlIp2n(h.ifc.ip)===sip);
-      if(!found.length) return fail(`${d.name} hält ${nlN2ip(sip)} für sein eigenes Netz (/${nlCidr(dmask)}), findet den Absender dort aber nicht. Die Masken passen nicht zusammen.`);
-      add(`Echo Reply: ${d.name} antwortet direkt an ${src.name}.`,nlPath(d.id,hop.port,src.id),"reply"); return {ok:true,steps:S}; }
-    if(d.type==="rt"){ const o=d.ifs.findIndex(x=>nlIp2n(x.ip)!==null&&nlMask(x.mask)!==null&&nlSame(nlIp2n(x.ip),sip,nlMask(x.mask)));
-      if(o<0) return fail(`${d.name} hat kein Interface im Netz von ${nlN2ip(sip)} – die Antwort findet keinen Weg zurück.`);
-      add(`Echo Reply: ${d.name} schickt die Antwort über ${d.ifs[o].name} zurück.`,nlPath(d.id,o,src.id),"reply"); return {ok:true,steps:S}; }
-    const gw=nlIp2n(f.gw);
-    if(gw===null) return fail(`Hinweg geschafft, Rückweg nicht: ${d.name} sieht ${nlN2ip(sip)} als fremdes Netz (eigene Maske /${nlCidr(dmask)}) und hat kein Gateway. Die Antwort wird verworfen.`);
-    const gwHop=nlInSeg(seg,seg.of(d.id,hop.port)).find(h=>nlIp2n(h.ifc.ip)===gw);
-    if(!gwHop||gwHop.dev.type!=="rt") return fail(`${d.name} will über Gateway ${f.gw} antworten, aber dort antwortet kein Router.`);
-    const o=gwHop.dev.ifs.findIndex(x=>nlIp2n(x.ip)!==null&&nlMask(x.mask)!==null&&nlSame(nlIp2n(x.ip),sip,nlMask(x.mask)));
-    if(o<0) return fail(`${gwHop.dev.name} kennt kein Netz für ${nlN2ip(sip)} – die Antwort bleibt im Router liegen.`);
-    add(`Echo Reply: ${d.name} schickt die Antwort an sein Gateway ${gwHop.dev.name}.`,nlPath(d.id,hop.port,gwHop.dev.id),"reply");
-    const fin=nlInSeg(seg,seg.of(gwHop.dev.id,o)).filter(h=>nlIp2n(h.ifc.ip)===sip);
-    if(!fin.length) return fail(`${gwHop.dev.name} findet ${nlN2ip(sip)} hinter ${gwHop.dev.ifs[o].name} nicht.`);
-    add(`${gwHop.dev.name} leitet die Antwort über ${gwHop.dev.ifs[o].name} an ${src.name} weiter.`,nlPath(gwHop.dev.id,o,src.id),"reply"); return {ok:true,steps:S};
-  };
-  if(nlSame(sip,dip,smask)){
-    add(`${src.name} vergleicht: ${nlN2ip(dip)} liegt im eigenen Netz ${nlN2ip(sip&smask)}/${nlCidr(smask)}. Also direkt zustellen.`);
-    const hits=nlInSeg(seg,mySeg).filter(h=>nlIp2n(h.ifc.ip)===dip&&h.dev.id!==src.id);
-    add(`ARP-Anfrage als Broadcast: „Wer hat ${nlN2ip(dip)}?“ – der Switch flutet sie an alle Ports.`,null,"arp");
-    if(!hits.length) return fail(`Niemand antwortet auf die ARP-Anfrage. Entweder hat kein Gerät in diesem Segment die Adresse ${nlN2ip(dip)}, oder es ist nicht angeschlossen.`);
-    if(hits.length>1) return fail(`Zwei Geräte antworten auf ARP (${hits.map(h=>h.dev.name).join(", ")}): doppelte IP-Adresse. Der Switch lernt abwechselnd beide MACs, die Verbindung flackert.`);
-    const h=hits[0]; add(`${h.dev.name} antwortet mit seiner MAC-Adresse. Echo Request läuft los.`,nlPath(src.id,0,h.dev.id),"req");
-    return back(h);
-  }
-  add(`${src.name} vergleicht: ${nlN2ip(dip)} liegt NICHT im eigenen Netz ${nlN2ip(sip&smask)}/${nlCidr(smask)}. Das Paket muss zum Gateway.`);
-  const gw=nlIp2n(f0.gw);
-  if(gw===null) return fail(`Kein Standardgateway eingetragen. ${src.name} weiß nicht, wem es Pakete für fremde Netze geben soll.`);
-  if(!nlSame(sip,gw,smask)) return fail(`Das Gateway ${f0.gw} liegt nicht im eigenen Netz ${nlN2ip(sip&smask)}/${nlCidr(smask)} – es ist für ${src.name} unerreichbar.`);
-  add(`ARP-Anfrage: „Wer hat ${f0.gw}?“ (die Adresse des Gateways, nicht des Ziels!)`,null,"arp");
-  const gwHits=nlInSeg(seg,mySeg).filter(h=>nlIp2n(h.ifc.ip)===gw);
-  if(!gwHits.length) return fail(`Auf ${f0.gw} antwortet niemand. Entweder hat der Router diese Adresse nicht, oder er hängt nicht an diesem Segment.`);
-  const gh=gwHits[0];
-  if(gh.dev.type!=="rt") return fail(`${f0.gw} gehört ${gh.dev.name} – das ist ein PC, kein Router. Der leitet nichts weiter.`);
-  add(`Echo Request geht an die MAC des Routers ${gh.dev.name} (Ziel-IP bleibt ${nlN2ip(dip)}).`,nlPath(src.id,0,gh.dev.id),"req");
-  const o=gh.dev.ifs.findIndex(x=>nlIp2n(x.ip)!==null&&nlMask(x.mask)!==null&&nlSame(nlIp2n(x.ip),dip,nlMask(x.mask)));
-  if(o<0) return fail(`${gh.dev.name} schaut in seine Routing-Tabelle: kein Interface und keine Route für ${nlN2ip(dip)}. „Destination unreachable.“`);
-  const seg2=seg.of(gh.dev.id,o);
-  if(!seg2) return fail(`${gh.dev.name} kennt das Zielnetz an ${gh.dev.ifs[o].name}, aber dort steckt kein Kabel.`);
-  add(`${gh.dev.name}: Routing-Tabelle sagt „${nlN2ip(nlIp2n(gh.dev.ifs[o].ip)&nlMask(gh.dev.ifs[o].mask))}/${nlCidr(nlMask(gh.dev.ifs[o].mask))} liegt direkt an ${gh.dev.ifs[o].name}“. TTL um 1 runter, ARP im Zielnetz.`,null,"arp");
-  const hits=nlInSeg(seg,seg2).filter(h=>nlIp2n(h.ifc.ip)===dip);
-  if(!hits.length) return fail(`Im Zielnetz antwortet niemand auf „Wer hat ${nlN2ip(dip)}?“. Adresse prüfen, Kabel prüfen.`);
-  if(hits.length>1) return fail(`Doppelte IP-Adresse im Zielnetz (${hits.map(h=>h.dev.name).join(", ")}).`);
-  const h=hits[0]; add(`${gh.dev.name} stellt den Echo Request an ${h.dev.name} zu.`,nlPath(gh.dev.id,o,h.dev.id),"req");
-  return back(h);
+  const hit=nlRoute(S,src,0,dip,"req",8); if(!hit) return {ok:false,steps:S};
+  const tb=nlHostBad(dip,nlMask(hit.ifc.mask)); if(tb) return fail(`${hit.dev.name} trägt mit ${hit.ifc.ip} die ${tb} seines Netzes ${nlNet(dip,nlMask(hit.ifc.mask))}. Das ist keine gültige Geräteadresse.`);
+  S.push({t:`— Rückweg: ${hit.dev.name} antwortet an ${nlN2ip(sip)} —`,ok:true,kind:"reply"});
+  const n0=S.length, back=nlRoute(S,hit.dev,hit.port,sip,"reply",8);
+  if(!back){ const last=S[S.length-1]; last.t="Hinweg geschafft, Rückweg nicht: "+last.t; return {ok:false,steps:S}; }
+  S.push({t:`Antwort angekommen: ${src.name} meldet „Reply from ${nlN2ip(dip)}“. ✔`,ok:true,kind:"reply"});
+  return {ok:true,steps:S};
 }
 
+/* ---- Erklärungen ---- */
+const NL_EXPLAIN={
+  mask:{t:"Subnetzmaske",x:"Die Maske teilt eine Adresse in Netzanteil und Hostanteil. Zwei Geräte „sehen“ sich nur dann als Nachbarn, wenn Adresse UND Maske zum selben Netz führen. Unterschiedliche Masken im selben Kabelstrang sind ein Klassiker: Hinweg klappt, Rückweg nicht.",ex:"192.168.1.10/24 und 192.168.1.200/25: Der erste hält beide für ein Netz, der zweite nicht."},
+  gw:{t:"Standardgateway",x:"Liegt das Ziel nicht im eigenen Netz, gibt der PC das Paket an sein Gateway – an die MAC des Routers, die Ziel-IP bleibt. Das Gateway muss im eigenen Netz liegen und ein Router sein. Für den Rückweg braucht das Ziel genauso ein Gateway.",ex:"PC 192.168.10.10/24 → Gateway 192.168.10.1 (Router-Interface im selben Netz)."},
+  arp:{t:"ARP",x:"Bevor ein Frame im LAN losgeht, braucht der Sender die MAC-Adresse des nächsten Hops. ARP fragt per Broadcast „Wer hat IP X?“, das Gerät mit X antwortet. Gefragt wird immer nach dem NÄCHSTEN Hop: im eigenen Netz nach dem Ziel, sonst nach dem Gateway.",ex:"Antwortet niemand, hat kein Gerät im Segment die Adresse – oder das Kabel fehlt."},
+  sw:{t:"Switch",x:"Arbeitet auf Schicht 2. Er lernt, an welchem Port welche MAC hängt, und leitet Frames nur dorthin. Broadcasts (z. B. ARP) gehen an alle Ports. Ein Switch braucht für seine Arbeit keine IP und trennt keine Netze.",ex:"Zwei PCs aus verschiedenen IP-Netzen am selben Switch sehen sich trotzdem nicht – es fehlt der Router."},
+  rt:{t:"Router und Routing-Tabelle",x:"Arbeitet auf Schicht 3 und verbindet Netze. Jedes Interface hat eine Adresse aus dem Netz, das daran hängt. Direkt angeschlossene Netze kennt er automatisch, alles andere braucht eine Route: „Netz X erreichst du über Nachbar-Router Y“. Bei jedem Hop sinkt die TTL um 1.",ex:"Route 192.168.30.0/24 via 10.0.0.2 – 10.0.0.2 muss an einem eigenen Interface direkt erreichbar sein."},
+  host:{t:"Netz- und Broadcast-Adresse",x:"Die erste Adresse eines Netzes (Hostanteil nur Nullen) ist die Netzadresse, die letzte (nur Einsen) der Broadcast. Beide darf kein Gerät tragen. Bei /26 ist das z. B. .0 und .63, .64 und .127, .128 und .191, .192 und .255.",ex:"192.168.10.127/26 ist der Broadcast des Netzes 192.168.10.64/26 – als PC-Adresse ungültig."},
+  dup:{t:"Doppelte IP-Adresse",x:"Zwei Geräte mit derselben IP antworten beide auf ARP. Der Switch lernt die MAC abwechselnd an zwei Ports, Pakete landen mal hier, mal dort. Darum Adressen zentral per DHCP oder mit Liste vergeben.",ex:"Typisches Symptom: „geht manchmal“."},
+  ping:{t:"Ping (ICMP Echo)",x:"Ping schickt einen Echo Request und wartet auf den Echo Reply. Kommt keine Antwort, kann der Hinweg ODER der Rückweg kaputt sein – deshalb immer beide Richtungen durchdenken.",ex:"„Request timed out“ heißt nicht automatisch, dass das Ziel aus ist."}
+};
 /* ---- Aufgaben ---- */
-const nlPC=(name,x,y,ip,mask,gw)=>({type:"pc",name,x,y,ifs:[{name:"eth0",ip:ip||"",mask:mask||"255.255.255.0",gw:gw||""}]});
-const nlSW=(name,x,y)=>({type:"sw",name,x,y,ifs:[]});
-const nlRT=(name,x,y,a,b)=>({type:"rt",name,x,y,ifs:[{name:"eth0",ip:a?a[0]:"",mask:a?a[1]:"",gw:""},{name:"eth1",ip:b?b[0]:"",mask:b?b[1]:"",gw:""}]});
+const nlPC=(name,x,y,ip,mask,gw)=>({type:"pc",name,x,y,routes:[],ifs:[{name:"eth0",ip:ip||"",mask:mask||"255.255.255.0",gw:gw||""}]});
+const nlSW=(name,x,y)=>({type:"sw",name,x,y,routes:[],ifs:[]});
+const nlRT=(name,x,y,a,b,c,routes)=>({type:"rt",name,x,y,routes:routes||[],ifs:[a,b,c].map((v,i)=>({name:"eth"+i,ip:v?v[0]:"",mask:v?v[1]:"",gw:""}))});
 const nlOkPing=(st,from,to)=>st.last&&st.last.ok&&st.last.srcName===from&&st.last.dstName===to;
+const nlUnique=st=>{ const ips=st.devs.flatMap(d=>d.ifs.map(f=>f.ip)).filter(Boolean); return new Set(ips).size===ips.length; };
+const nlInNet=(st,net,mask)=>st.devs.filter(d=>d.type==="pc").every(d=>{ const i=nlIp2n(d.ifs[0].ip),m=nlMask(d.ifs[0].mask); return i!==null&&m===nlMask(mask)&&nlSame(i,nlIp2n(net),m); });
 const NL_MISSIONS=[
-  {id:"m1",icon:"🔌",t:"Zwei Kollegen, ein Switch",
+  {id:"m1",icon:"🔌",t:"Zwei Kollegen, ein Switch",topics:["arp","sw","mask"],
    d:"Mara braucht eine Datei von Jens. Beide PCs stehen da, der Switch auch – nur hängt noch nichts zusammen. Verkabele beide PCs mit dem Switch, gib ihnen je eine Adresse im Netz 192.168.10.0/24 und schick von PC-Jens einen Ping zu PC-Mara.",
    goal:"Ping PC-Jens → PC-Mara kommt an (beide im Netz 192.168.10.0/24)",
-   devs:[nlPC("PC-Jens",60,70),nlSW("Switch-1",180,160),nlPC("PC-Mara",300,70)],links:[],tools:["sel","cable","ping"],
-   check:st=>nlOkPing(st,"PC-Jens","PC-Mara")&&st.devs.filter(d=>d.type==="pc").every(d=>{ const i=nlIp2n(d.ifs[0].ip),m=nlMask(d.ifs[0].mask); return i!==null&&m===0xffffff00&&nlSame(i,nlIp2n("192.168.10.0"),m); }),
-   why:"Beide PCs liegen im selben Netz, also redet PC-Jens direkt mit PC-Mara: erst ARP („Wer hat die Adresse?“), dann der Ping an die MAC-Adresse. Der Switch merkt sich, an welchem Port welche MAC hängt, und leitet nur noch dorthin. Ein Gateway war nicht nötig – das braucht man erst, wenn das Ziel in einem anderen Netz liegt."},
-  {id:"m2",icon:"🎭",t:"Hinweg ja, Rückweg nein",
+   devs:[nlPC("PC-Jens",70,70),nlSW("Switch-1",180,170),nlPC("PC-Mara",290,70)],links:[],tools:["sel","cable","ping"],
+   hints:["Werkzeug „Kabel“: erst PC-Jens antippen, dann Switch-1. Dasselbe für PC-Mara.","Werkzeug „Auswahl“, PC antippen: z. B. 192.168.10.10 mit Maske 255.255.255.0. Gateway bleibt leer – beide sind im selben Netz.","PC-Mara bekommt eine andere Hostnummer, z. B. 192.168.10.20. Dann „Ping“: PC-Jens, dann PC-Mara."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara")&&nlInNet(st,"192.168.10.0","/24"),
+   why:"Beide PCs liegen im selben Netz, also redet PC-Jens direkt mit PC-Mara: erst ARP („Wer hat die Adresse?“), dann der Ping an die MAC-Adresse. Der Switch merkt sich, an welchem Port welche MAC hängt. Ein Gateway war nicht nötig – das braucht man erst, wenn das Ziel in einem anderen Netz liegt."},
+  {id:"m2",icon:"🎭",t:"Hinweg ja, Rückweg nein",topics:["mask","gw","ping"],
    d:"Ticket: „Ping von PC-Jens zu PC-Mara schlägt fehl, dabei sind die Kabel neu.“ Beide hängen am selben Switch, beide haben eine Adresse. Schick den Ping, lies das Protokoll – und behebe den Fehler mit so wenig Änderung wie möglich.",
    goal:"Ping PC-Jens → PC-Mara kommt an",
-   devs:[nlPC("PC-Jens",60,70,"192.168.1.10","255.255.255.0"),nlSW("Switch-1",180,160),nlPC("PC-Mara",300,70,"192.168.1.200","255.255.255.128")],
+   devs:[nlPC("PC-Jens",70,70,"192.168.1.10","255.255.255.0"),nlSW("Switch-1",180,170),nlPC("PC-Mara",290,70,"192.168.1.200","255.255.255.128")],
    links:[["PC-Jens",0,"Switch-1",0],["PC-Mara",0,"Switch-1",1]],tools:["sel","ping"],
+   hints:["Schick erst den Ping und lies, an welchem Schritt es hängt.","Vergleiche die Masken der beiden PCs. Wie groß ist das Netz aus Sicht von PC-Mara?","PC-Mara: Maske auf 255.255.255.0 (/24) setzen – dann liegt PC-Jens auch aus ihrer Sicht im selben Netz."],
    check:st=>nlOkPing(st,"PC-Jens","PC-Mara"),
-   why:"PC-Mara hatte die Maske /25 (255.255.255.128). Aus ihrer Sicht geht ihr Netz von .128 bis .255 – PC-Jens mit der .10 liegt also „woanders“. Den Hinweg stört das nicht, aber ihre Antwort wollte sie zum Gateway schicken, das es nicht gibt. Eine Maske muss im ganzen Netz gleich sein, sonst sehen zwei Geräte zwei verschiedene Netze."},
-  {id:"m3",icon:"📡",t:"Über den Router",
+   why:"PC-Mara hatte die Maske /25. Aus ihrer Sicht geht ihr Netz von .128 bis .255 – PC-Jens mit der .10 liegt „woanders“. Den Hinweg stört das nicht, aber ihre Antwort wollte sie zum Gateway schicken, das es nicht gibt. Eine Maske muss im ganzen Netz gleich sein."},
+  {id:"m3",icon:"📡",t:"Über den Router",topics:["gw","rt","arp"],
    d:"Zwei Abteilungen, zwei Netze: Technik 192.168.10.0/24 links, Verwaltung 192.168.20.0/24 rechts. Der Router steht dazwischen, aber seine Interfaces sind noch leer. Gib dem Router auf beiden Seiten die .1, trag sie bei den PCs als Gateway ein und schick einen Ping von PC-Jens zu PC-Mara.",
    goal:"Ping PC-Jens → PC-Mara über den Router",
-   devs:[nlPC("PC-Jens",50,60,"192.168.10.10","255.255.255.0"),nlSW("Switch-1",50,180),nlRT("Router-1",180,120),nlSW("Switch-2",310,180),nlPC("PC-Mara",310,60,"192.168.20.10","255.255.255.0")],
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0"),nlSW("Switch-1",65,180),nlRT("Router-1",180,120),nlSW("Switch-2",295,180),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0")],
    links:[["PC-Jens",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Router-1",1,"Switch-2",0],["Switch-2",1,"PC-Mara",0]],tools:["sel","ping"],
+   hints:["Router antippen: eth0 hängt an Switch-1 (Technik), eth1 an Switch-2 (Verwaltung).","eth0: 192.168.10.1 /24 – eth1: 192.168.20.1 /24.","Bei PC-Jens Gateway 192.168.10.1, bei PC-Mara 192.168.20.1. Beide brauchen es – sonst klappt nur der Hinweg."],
    check:st=>nlOkPing(st,"PC-Jens","PC-Mara"),
-   why:"PC-Jens sieht: das Ziel liegt nicht im eigenen Netz, also geht das Paket an das Gateway – an die MAC des Routers, die Ziel-IP bleibt PC-Mara. Der Router schaut in seine Routing-Tabelle, findet das Netz 192.168.20.0/24 direkt an eth1 und stellt zu. Für die Antwort braucht PC-Mara genauso ein Gateway, sonst hängt der Rückweg."},
-  {id:"m4",icon:"🎫",t:"Ticket #4711: Verwaltung offline",
+   why:"PC-Jens sieht: das Ziel liegt nicht im eigenen Netz, also an das Gateway – an die MAC des Routers, die Ziel-IP bleibt PC-Mara. Der Router findet 192.168.20.0/24 direkt an eth1 und stellt zu. Für die Antwort braucht PC-Mara genauso ein Gateway."},
+  {id:"m4",icon:"🎫",t:"Ticket #4711: Verwaltung offline",topics:["gw","arp"],
    d:"Die Verwaltung erreicht die Technik nicht. Alles sieht aufgeräumt aus, die Kabel stecken. Schick Pings, lies das Protokoll und finde den einen falschen Eintrag.",
    goal:"Ping PC-Mara → PC-Jens kommt an",
-   devs:[nlPC("PC-Jens",50,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlSW("Switch-1",50,180),nlRT("Router-1",180,120,["192.168.10.1","255.255.255.0"],["192.168.20.1","255.255.255.0"]),nlSW("Switch-2",310,180),nlPC("PC-Mara",310,60,"192.168.20.10","255.255.255.0","192.168.20.254")],
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlSW("Switch-1",65,180),nlRT("Router-1",180,120,["192.168.10.1","255.255.255.0"],["192.168.20.1","255.255.255.0"]),nlSW("Switch-2",295,180),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0","192.168.20.254")],
    links:[["PC-Jens",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Router-1",1,"Switch-2",0],["Switch-2",1,"PC-Mara",0]],tools:["sel","ping"],
+   hints:["Ping von PC-Mara zu PC-Jens schicken und lesen, wonach ARP fragt.","Nach welcher Adresse fragt PC-Mara? Hat der Router die überhaupt?","Gateway bei PC-Mara auf 192.168.20.1 ändern."],
    check:st=>nlOkPing(st,"PC-Mara","PC-Jens"),
-   why:"Bei PC-Mara stand als Gateway die .254, der Router hat aber die .1. Die ARP-Anfrage nach der .254 blieb unbeantwortet – genau das zeigte das Protokoll. Typischer Prüfungsklassiker: Ein falsches Gateway fällt erst auf, wenn ein anderes Netz erreicht werden soll; innerhalb des eigenen Netzes läuft alles."},
-  {id:"m5",icon:"👯",t:"Zwei mit derselben Adresse",
+   why:"Bei PC-Mara stand als Gateway die .254, der Router hat aber die .1. Die ARP-Anfrage nach der .254 blieb unbeantwortet – genau das zeigte das Protokoll. Ein falsches Gateway fällt erst auf, wenn ein anderes Netz erreicht werden soll."},
+  {id:"m5",icon:"👯",t:"Zwei mit derselben Adresse",topics:["dup","arp"],
    d:"Ein neuer Rechner ist dazugekommen, seitdem „spinnt“ die Verbindung zu PC-Mara. Finde heraus, warum, und gib dem Neuen eine freie Adresse.",
    goal:"Ping PC-Jens → PC-Mara kommt an, alle Adressen eindeutig",
-   devs:[nlPC("PC-Jens",60,60,"10.0.5.10","255.255.255.0"),nlSW("Switch-1",180,170),nlPC("PC-Mara",300,60,"10.0.5.20","255.255.255.0"),nlPC("PC-Neu",180,60,"10.0.5.20","255.255.255.0")],
+   devs:[nlPC("PC-Jens",65,60,"10.0.5.10","255.255.255.0"),nlSW("Switch-1",180,180),nlPC("PC-Mara",295,60,"10.0.5.20","255.255.255.0"),nlPC("PC-Neu",180,60,"10.0.5.20","255.255.255.0")],
    links:[["PC-Jens",0,"Switch-1",0],["PC-Mara",0,"Switch-1",1],["PC-Neu",0,"Switch-1",2]],tools:["sel","ping"],
-   check:st=>nlOkPing(st,"PC-Jens","PC-Mara")&&(()=>{ const ips=st.devs.flatMap(d=>d.ifs.map(f=>f.ip)).filter(Boolean); return new Set(ips).size===ips.length; })(),
-   why:"Zwei Geräte mit derselben IP antworten beide auf dieselbe ARP-Anfrage. Der Switch lernt die MAC mal am einen, mal am anderen Port, Pakete landen abwechselnd beim falschen Gerät. Deshalb vergibt man Adressen zentral per DHCP oder führt bei statischen Adressen eine Liste."},
-  {id:"m6",icon:"🧪",t:"Freies Labor",
-   d:"Leerer Tisch. Setz Geräte, verkabele, adressiere, ping. Ideal, um eine Prüfungsaufgabe nachzubauen und zu sehen, wo das Paket hängt.",
-   goal:"Kein Ziel – ausprobieren",free:true,
-   devs:[],links:[],tools:["sel","cable","ping","add_pc","add_sw","add_rt","del"],check:()=>false,why:""}
+   hints:["Ping schicken und lesen, wer alles auf ARP antwortet.","Vergleiche die Adressen von PC-Mara und PC-Neu.","PC-Neu z. B. auf 10.0.5.30 setzen."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara")&&nlUnique(st),
+   why:"Zwei Geräte mit derselben IP antworten beide auf dieselbe ARP-Anfrage. Der Switch lernt die MAC mal am einen, mal am anderen Port, Pakete landen abwechselnd beim falschen Gerät. Deshalb Adressen zentral vergeben."},
+  {id:"m6",icon:"🔀",t:"Interfaces vertauscht",topics:["rt","gw"],
+   d:"Ein Kollege hat den Router neu konfiguriert, seitdem geht nichts mehr zwischen den Abteilungen. Die PCs sind richtig eingestellt, die Kabel stecken. Finde den Fehler am Router.",
+   goal:"Ping PC-Jens → PC-Mara kommt an",
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlSW("Switch-1",65,180),nlRT("Router-1",180,120,["192.168.20.1","255.255.255.0"],["192.168.10.1","255.255.255.0"]),nlSW("Switch-2",295,180),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0","192.168.20.1")],
+   links:[["PC-Jens",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Router-1",1,"Switch-2",0],["Switch-2",1,"PC-Mara",0]],tools:["sel","ping"],
+   hints:["Ping schicken: Nach welcher Adresse fragt PC-Jens, und wer hängt an seinem Switch?","Router antippen: Welches Interface hängt an Switch-1? Passt die Adresse dort zum Netz 192.168.10.0/24?","eth0 und eth1 tauschen: eth0 = 192.168.10.1, eth1 = 192.168.20.1."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara"),
+   why:"Die Adressen des Routers waren vertauscht: Am Technik-Kabel hing das Verwaltungs-Interface. PC-Jens fragte per ARP nach 192.168.10.1 – in seinem Segment hatte das niemand. Ein Router-Interface muss immer eine Adresse aus dem Netz tragen, das physisch daran hängt."},
+  {id:"m7",icon:"🧷",t:"Das vergessene Kabel",topics:["rt","arp"],
+   d:"Nach dem Umzug ins neue Rack: Alle Adressen stimmen, aber die Buchhaltung kommt nicht raus. Ein Blick auf den Tisch lohnt sich.",
+   goal:"Ping PC-Mara → PC-Jens kommt an",
+   devs:[nlPC("PC-Jens",65,60,"172.16.1.10","255.255.255.0","172.16.1.1"),nlSW("Switch-1",65,180),nlRT("Router-1",180,120,["172.16.1.1","255.255.255.0"],["172.16.2.1","255.255.255.0"]),nlSW("Switch-2",295,180),nlPC("PC-Mara",295,60,"172.16.2.10","255.255.255.0","172.16.2.1")],
+   links:[["PC-Jens",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Switch-2",1,"PC-Mara",0]],tools:["sel","cable","ping"],
+   hints:["Welches Gerät hat keine Leitung zum Router?","Werkzeug „Kabel“: Router-1 antippen, dann Switch-2. Der Router nimmt automatisch sein freies Interface eth1."],
+   check:st=>nlOkPing(st,"PC-Mara","PC-Jens"),
+   why:"Schicht 1 vor Schicht 3: Ohne Kabel nützt die beste Adresse nichts. Im Protokoll stand „kein Kabel an diesem Interface“ – in der Praxis ist das die Link-LED, die dunkel bleibt. Erst Kabel, dann Adressen, dann Routing prüfen."},
+  {id:"m8",icon:"🧮",t:"Die Adresse, die es nicht gibt",topics:["host","mask"],
+   d:"Die Abteilung hat ein /26-Netz bekommen: 192.168.10.64/26. PC-Mara wurde „die letzte Adresse“ gegeben – und seitdem meldet sie nichts. Rechne nach und gib ihr eine gültige Adresse.",
+   goal:"Ping PC-Jens → PC-Mara kommt an, beide im Netz 192.168.10.64/26",
+   devs:[nlPC("PC-Jens",70,70,"192.168.10.70","255.255.255.192"),nlSW("Switch-1",180,170),nlPC("PC-Mara",290,70,"192.168.10.127","255.255.255.192")],
+   links:[["PC-Jens",0,"Switch-1",0],["PC-Mara",0,"Switch-1",1]],tools:["sel","ping"],
+   hints:["/26 heißt 64 Adressen pro Netz. Welches Netz ist 192.168.10.64/26 – von wo bis wo?","Die erste Adresse (.64) ist die Netzadresse, die letzte (.127) der Broadcast. Beide sind tabu.","PC-Mara z. B. auf 192.168.10.126 – die letzte NUTZBARE Adresse."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara")&&nlInNet(st,"192.168.10.64","/26"),
+   why:"192.168.10.127 ist in /26 der Broadcast des Netzes .64–.127. Nutzbar sind .65 bis .126. Das ist eine typische Prüfungsfrage: Netzadresse und Broadcast abziehen, dann bleiben 2ⁿ−2 Hosts."},
+  {id:"m9",icon:"🏢",t:"Dritte Abteilung dazu",topics:["rt","gw"],
+   d:"Der Router hat ein drittes Interface. Die neue Abteilung Lager bekommt 192.168.30.0/24 am Switch-3. Konfiguriere eth2 und den neuen PC so, dass Lager und Technik sich erreichen.",
+   goal:"Ping PC-Lager → PC-Jens kommt an",
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlSW("Switch-1",65,170),nlRT("Router-1",180,110,["192.168.10.1","255.255.255.0"],["192.168.20.1","255.255.255.0"]),nlSW("Switch-2",295,170),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0","192.168.20.1"),nlSW("Switch-3",180,215),nlPC("PC-Lager",65,230)],
+   links:[["PC-Jens",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Router-1",1,"Switch-2",0],["Switch-2",1,"PC-Mara",0],["Router-1",2,"Switch-3",0],["Switch-3",1,"PC-Lager",0]],tools:["sel","ping"],
+   hints:["Router antippen: eth2 bekommt 192.168.30.1 /24.","PC-Lager: 192.168.30.10 /24, Gateway 192.168.30.1.","Ping von PC-Lager zu PC-Jens."],
+   check:st=>nlOkPing(st,"PC-Lager","PC-Jens"),
+   why:"Jedes weitere Netz ist ein weiteres Interface mit eigener Adresse – der Router kennt es dann automatisch als „direkt angeschlossen“. Die PCs im neuen Netz brauchen dieses Interface als Gateway."},
+  {id:"m10",icon:"🗺️",t:"Zwei Router, eine Route",topics:["rt","gw"],
+   d:"Zwei Standorte, zwei Router, dazwischen das Transfernetz 10.0.0.0/30. Beide Router kennen nur ihre direkten Netze. PC-Jens erreicht PC-Mara nicht. Trag auf beiden Routern die fehlende statische Route ein.",
+   goal:"Ping PC-Jens → PC-Mara über beide Router",
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlRT("Router-A",120,160,["192.168.10.1","255.255.255.0"],["10.0.0.1","255.255.255.252"]),nlRT("Router-B",250,160,["10.0.0.2","255.255.255.252"],["192.168.20.1","255.255.255.0"]),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0","192.168.20.1")],
+   links:[["PC-Jens",0,"Router-A",0],["Router-A",1,"Router-B",0],["Router-B",1,"PC-Mara",0]],tools:["sel","ping"],
+   hints:["Ping schicken: Router-A sagt „keine Route“. Er kennt 192.168.20.0/24 nicht.","Router-A antippen, Routen: 192.168.20.0/24 via 10.0.0.2 (das ist Router-B im Transfernetz).","Router-B braucht den Rückweg: 192.168.10.0/24 via 10.0.0.1."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara"),
+   why:"Ein Router kennt nur direkt angeschlossene Netze. Alles dahinter muss ihm jemand sagen – statisch oder per Routing-Protokoll. Und: Routing ist immer eine Zweibahnstraße. Fehlt die Route auf Router-B, kommt der Hinweg an, aber die Antwort findet nicht zurück."},
+  {id:"m11",icon:"🚪",t:"Default-Route zum Provider",topics:["rt"],
+   d:"Router-B ist der Internet-Router, dahinter steht ein Server des Providers (203.0.113.10). Router-A soll nicht jedes Netz einzeln lernen: Gib ihm eine Default-Route 0.0.0.0/0 zu Router-B. Router-B kennt den Rückweg schon.",
+   goal:"Ping PC-Jens → Server (203.0.113.10) kommt an",
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlRT("Router-A",120,160,["192.168.10.1","255.255.255.0"],["10.0.0.1","255.255.255.252"]),nlRT("Router-B",250,160,["10.0.0.2","255.255.255.252"],["203.0.113.1","255.255.255.0"],null,[{net:"192.168.10.0",mask:"255.255.255.0",via:"10.0.0.1"}]),nlPC("Server",295,60,"203.0.113.10","255.255.255.0","203.0.113.1")],
+   links:[["PC-Jens",0,"Router-A",0],["Router-A",1,"Router-B",0],["Router-B",1,"Server",0]],tools:["sel","ping"],
+   hints:["Router-A antippen, Routen-Feld: 0.0.0.0/0 via 10.0.0.2.","Die Default-Route greift für alles, wofür keine genauere Route passt."],
+   check:st=>nlOkPing(st,"PC-Jens","Server"),
+   why:"0.0.0.0/0 passt auf jede Adresse – sie wird aber nur genommen, wenn keine genauere Route zutrifft („longest prefix match“). Genau so arbeitet dein Heimrouter: alles Unbekannte zum Provider."},
+  {id:"m12",icon:"🔁",t:"Die Schleife",topics:["rt"],
+   d:"Jemand hat auf Router-B eine falsche Route eingetragen – jetzt kreisen Pakete zwischen beiden Routern, bis die TTL abläuft. Finde die Route und korrigiere sie.",
+   goal:"Ping PC-Jens → PC-Mara kommt an",
+   devs:[nlPC("PC-Jens",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlRT("Router-A",120,160,["192.168.10.1","255.255.255.0"],["10.0.0.1","255.255.255.252"],null,[{net:"192.168.20.0",mask:"255.255.255.0",via:"10.0.0.2"}]),nlRT("Router-B",250,160,["10.0.0.2","255.255.255.252"],["192.168.30.1","255.255.255.0"],null,[{net:"192.168.20.0",mask:"255.255.255.0",via:"10.0.0.1"},{net:"192.168.10.0",mask:"255.255.255.0",via:"10.0.0.1"}]),nlPC("PC-Mara",295,60,"192.168.20.10","255.255.255.0","192.168.20.1")],
+   links:[["PC-Jens",0,"Router-A",0],["Router-A",1,"Router-B",0],["Router-B",1,"PC-Mara",0]],tools:["sel","ping"],
+   hints:["Ping schicken: Das Protokoll zeigt, wie das Paket hin und her geht, bis die TTL 0 ist.","Router-B: An eth1 hängt PC-Mara (192.168.20.0/24) – aber eth1 hat die .30.1. Und die Route nach 192.168.20.0 zeigt zurück zu Router-A.","Router-B eth1 auf 192.168.20.1 setzen und die Zeile „192.168.20.0/24 via 10.0.0.1“ löschen."],
+   check:st=>nlOkPing(st,"PC-Jens","PC-Mara"),
+   why:"Router-A schickt alles für 192.168.20.0 zu B, B schickt es zurück zu A – eine Routing-Schleife. Die TTL verhindert, dass solche Pakete ewig kreisen. Deshalb bei jeder statischen Route prüfen: Zeigt sie wirklich RICHTUNG Ziel?"},
+  {id:"free",icon:"🧪",t:"Freies Labor",topics:["arp","mask","gw","sw","rt","host","dup","ping"],
+   d:"Leerer Tisch. Geräte setzen, verkabeln, adressieren, Routen eintragen, pingen – oder eine Vorlage laden und eine Prüfungsaufgabe nachbauen.",
+   goal:"Kein Ziel – ausprobieren",free:true,hints:["Mit „Vorlage“ bekommst du ein fertiges Grundnetz.","Router antippen: unten lassen sich statische Routen eintragen (eine pro Zeile).","„Tabellen“ zeigt alle Adressen und Routen auf einen Blick."],
+   devs:[],links:[],tools:["sel","cable","unplug","ping","add_pc","add_sw","add_rt","del","tpl","tables"],check:()=>false,why:""}
+];
+const NL_TEMPLATES=[
+  {t:"Ein Netz, ein Switch",devs:[nlPC("PC-1",70,70,"192.168.0.10","255.255.255.0"),nlPC("PC-2",290,70,"192.168.0.20","255.255.255.0"),nlSW("Switch-1",180,170)],links:[["PC-1",0,"Switch-1",0],["PC-2",0,"Switch-1",1]]},
+  {t:"Zwei Netze, ein Router",devs:[nlPC("PC-1",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlSW("Switch-1",65,180),nlRT("Router-1",180,120,["192.168.10.1","255.255.255.0"],["192.168.20.1","255.255.255.0"]),nlSW("Switch-2",295,180),nlPC("PC-2",295,60,"192.168.20.10","255.255.255.0","192.168.20.1")],links:[["PC-1",0,"Switch-1",0],["Switch-1",1,"Router-1",0],["Router-1",1,"Switch-2",0],["Switch-2",1,"PC-2",0]]},
+  {t:"Zwei Router mit Transfernetz",devs:[nlPC("PC-1",65,60,"192.168.10.10","255.255.255.0","192.168.10.1"),nlRT("Router-A",120,160,["192.168.10.1","255.255.255.0"],["10.0.0.1","255.255.255.252"],null,[{net:"192.168.20.0",mask:"255.255.255.0",via:"10.0.0.2"}]),nlRT("Router-B",250,160,["10.0.0.2","255.255.255.252"],["192.168.20.1","255.255.255.0"],null,[{net:"192.168.10.0",mask:"255.255.255.0",via:"10.0.0.1"}]),nlPC("PC-2",295,60,"192.168.20.10","255.255.255.0","192.168.20.1")],links:[["PC-1",0,"Router-A",0],["Router-A",1,"Router-B",0],["Router-B",1,"PC-2",0]]},
+  {t:"Leerer Tisch",devs:[],links:[]}
 ];
 
 /* ---- Bildschirme ---- */
 function nlHome(){
-  const done=nlDone();
+  const done=nlDone(), n=NL_MISSIONS.filter(m=>!m.free).length;
   $("#nl").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
       <div class="big-ic" style="font-size:34px">🧩</div>
       <h2>Netz-Labor</h2><p>Bauen statt raten: Geräte verkabeln, Adressen vergeben, Ping schicken. Das Paket läuft sichtbar über die Leitung, und das Protokoll sagt dir, wo es warum hängen bleibt.</p>
-      <span class="pill">${done.length} von ${NL_MISSIONS.length-1} Aufgaben gelöst</span></div>
-    <span class="field-l">Aufgaben</span>
+      <span class="pill">${done.filter(id=>NL_MISSIONS.some(m=>m.id===id)).length} von ${n} Tickets gelöst</span></div>
+    <span class="field-l">Tickets</span>
     <div class="nl-missions">${NL_MISSIONS.map(m=>`<button class="hrow${done.includes(m.id)?" done":""}" data-m="${m.id}"><span class="ic">${done.includes(m.id)?"✅":m.icon}</span><span class="tx"><b>${esc(m.t)}</b><small>${esc(m.goal)}</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`).join("")}</div>
     <div class="panel ld-rules"><b style="font:600 15px var(--display)">So geht's</b>
-      <div>👆 Gerät antippen: Adresse, Maske, Gateway eintragen</div>
+      <div>👆 Gerät antippen: Adresse, Maske, Gateway, Routen</div>
       <div>✋ Gerät gedrückt halten und ziehen: verschieben</div>
-      <div>🔌 Werkzeug „Kabel“: erst Gerät A, dann Gerät B antippen</div>
-      <div>📨 Werkzeug „Ping“: Absender antippen, Ziel antippen (oder Adresse eingeben)</div></div>`;
+      <div>🔌 „Kabel“: erst Gerät A, dann Gerät B antippen</div>
+      <div>📨 „Ping“: Absender antippen, dann Ziel (Absender nochmal = Adresse eintippen)</div>
+      <div>💡 „Tipp“ hilft in Stufen, 📘 „Erklärung“ erklärt das Thema</div></div>`;
   $$("#nl [data-m]").forEach(b=>b.onclick=()=>nlStart(b.dataset.m));
   window.scrollTo({top:0});
 }
-function nlStart(mid){
-  const M=NL_MISSIONS.find(m=>m.id===mid);
-  const devs=M.devs.map(d=>({...d,id:d.type+"_"+Math.random().toString(36).slice(2,7),ifs:d.ifs.map(f=>({...f}))}));
+function nlBuild(devsIn,linksIn){
+  const devs=devsIn.map(d=>({...d,id:d.type+"_"+Math.random().toString(36).slice(2,7),ifs:d.ifs.map(f=>({...f})),routes:(d.routes||[]).map(r=>({...r}))}));
   const byName=n=>devs.find(d=>d.name===n);
-  const links=M.links.map(([a,pa,b,pb])=>({a:{id:byName(a).id,port:pa},b:{id:byName(b).id,port:pb}}));
-  nl={mission:M,devs,links,tool:"sel",pend:null,sel:null,last:null,anim:null,done:false,log:[],solved:false};
+  const links=linksIn.map(([a,pa,b,pb])=>({a:{id:byName(a).id,port:pa},b:{id:byName(b).id,port:pb}}));
+  return {devs,links};
+}
+function nlStart(mid){
+  const M=NL_MISSIONS.find(m=>m.id===mid); const {devs,links}=nlBuild(M.devs,M.links);
+  nl={mission:M,devs,links,tool:"sel",pend:null,sel:null,last:null,anim:null,done:false,log:[],solved:false,hintN:0};
   nlRender();
 }
+const NL_TOOLS=[["sel","👆 Auswahl"],["cable","🔌 Kabel"],["unplug","✂️ Kabel ziehen"],["ping","📨 Ping"],["add_pc","+ PC"],["add_sw","+ Switch"],["add_rt","+ Router"],["del","🗑 Löschen"],["tpl","📐 Vorlage"],["tables","📋 Tabellen"]];
 function nlRender(){
-  const M=nl.mission, T=[["sel","👆 Auswahl"],["cable","🔌 Kabel"],["ping","📨 Ping"],["add_pc","+ PC"],["add_sw","+ Switch"],["add_rt","+ Router"],["del","🗑 Löschen"]].filter(t=>M.tools.includes(t[0]));
+  const M=nl.mission, T=NL_TOOLS.filter(t=>M.tools.includes(t[0]));
   $("#nl").innerHTML=`<div class="nl-wrap">
     <div class="nl-task"><b>${esc(M.t)}</b><p>${esc(M.d)}</p><span class="nl-goal">Ziel: ${esc(M.goal)}</span></div>
-    <div class="nl-tools">${T.map(([k,n])=>`<button class="pillbtn${k.startsWith("add")?" nl-add":""}" data-tool="${k}" aria-pressed="${nl.tool===k}">${n}</button>`).join("")}</div>
+    <div class="nl-tools">${T.map(([k,n])=>`<button class="pillbtn${k.startsWith("add")?" nl-add":""}" data-tool="${k}" aria-pressed="${nl.tool===k}">${n}</button>`).join("")}
+      <span style="flex:1"></span><button class="pillbtn" id="nl-tip">💡 Tipp</button><button class="pillbtn" id="nl-exp">📘 Erklärung</button></div>
     <div class="nl-two"><div>
       <div class="nl-board" id="nl-board">${nlSvg()}</div>
       <div class="nl-hintbar" id="nl-hint">${nlHintText()}</div></div>
       <div class="nl-log" id="nl-log">${nl.log.length?nl.log.map(nlStepHtml).join(""):`<span class="hint" style="text-align:left;margin:0">Hier erscheint das Protokoll des Pings – Schritt für Schritt, wie in der Prüfung erklärt.</span>`}</div></div>
     ${nl.solved?`<div class="nl-done"><b>✅ Gelöst: ${esc(M.t)}</b><p style="margin:0;font-size:14px;line-height:1.45">${esc(M.why)}</p>
-      <div class="grid2"><button class="btn ghost" id="nl-home">← Alle Aufgaben</button><button class="btn primary" id="nl-next">Nächste Aufgabe</button></div></div>`
-      :`<div class="grid2"><button class="btn ghost" id="nl-home">← Aufgaben</button><button class="btn ghost" id="nl-reset">Aufgabe zurücksetzen</button></div>`}
+      <div class="grid2"><button class="btn ghost" id="nl-home">← Alle Tickets</button><button class="btn primary" id="nl-next">Nächstes Ticket</button></div></div>`
+      :`<div class="grid2"><button class="btn ghost" id="nl-home">← Tickets</button><button class="btn ghost" id="nl-reset">Zurücksetzen</button></div>`}
   </div>`;
   $$("#nl [data-tool]").forEach(b=>b.onclick=()=>{ const k=b.dataset.tool;
-    if(k.startsWith("add_")){ const type=k.slice(4); nl.devs.push(nlNewDev(type,60+Math.random()*240,60+Math.random()*140)); nl.tool="sel"; nlRender(); return; }
+    if(k.startsWith("add_")){ const type=k.slice(4); nl.devs.push(nlNewDev(type,70+Math.random()*220,60+Math.random()*140)); nl.tool="sel"; nlRender(); return; }
+    if(k==="tpl"){ nlTemplates(); return; } if(k==="tables"){ nlTables(); return; }
     nl.tool=k; nl.pend=null; nl.sel=null; nlRender(); });
+  $("#nl-tip").onclick=nlTip; $("#nl-exp").onclick=nlExplain;
   $("#nl-home").onclick=()=>{ nlStopAnim(); nl.done=true; nlHome(); };
   const rs=$("#nl-reset"); if(rs) rs.onclick=()=>nlStart(M.id);
-  const nx=$("#nl-next"); if(nx) nx.onclick=()=>{ const i=NL_MISSIONS.indexOf(M); nlStart((NL_MISSIONS[i+1]||NL_MISSIONS[0]).id); };
+  const nx=$("#nl-next"); if(nx) nx.onclick=nlNext;
   nlWireBoard();
 }
+function nlNext(){ const i=NL_MISSIONS.indexOf(nl.mission); nlStart((NL_MISSIONS[i+1]||NL_MISSIONS[0]).id); }
+function nlTip(){ const H=nl.mission.hints||[]; if(!H.length){ toast("Für diese Aufgabe gibt es keinen Tipp."); return; }
+  const i=Math.min(nl.hintN,H.length-1); nl.hintN=Math.min(nl.hintN+1,H.length);
+  openSheet(`💡 Tipp ${i+1} von ${H.length}`,`<p style="font-size:15px;line-height:1.5;margin:0 0 12px">${esc(H[i])}</p>${i<H.length-1?`<button class="btn ghost block" id="nl-tip-more">Noch ein Tipp</button>`:`<p class="hint">Das war der letzte Tipp – er enthält die Lösung.</p>`}`,()=>{ const b=$("#nl-tip-more"); if(b) b.onclick=()=>{ closeSheet(); nlTip(); }; }); }
+function nlExplain(){ const keys=nl.mission.topics||Object.keys(NL_EXPLAIN);
+  openSheet("📘 Erklärung",keys.map(k=>{ const E=NL_EXPLAIN[k]; return `<div class="panel" style="margin-bottom:10px"><b style="font:700 15px var(--display)">${esc(E.t)}</b><p style="margin:6px 0;font-size:14px;line-height:1.5">${esc(E.x)}</p><p class="hint" style="text-align:left;margin:0">Beispiel: ${esc(E.ex)}</p></div>`; }).join("")); }
+function nlTemplates(){ openSheet("📐 Vorlage laden",`<div class="nl-missions">${NL_TEMPLATES.map((t,i)=>`<button class="hrow" data-t="${i}"><span class="ic">📐</span><span class="tx"><b>${esc(t.t)}</b><small>${t.devs.length} Geräte</small></span></button>`).join("")}</div><p class="hint">Ersetzt den aktuellen Tisch.</p>`,root=>{
+  root.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ const T=NL_TEMPLATES[+b.dataset.t]; const {devs,links}=nlBuild(T.devs,T.links); nl.devs=devs; nl.links=links; nl.log=[]; nl.last=null; nl.pend=null; closeSheet(); nlRender(); }); }); }
+function nlTables(){
+  const html=nl.devs.filter(d=>d.type!=="sw").map(d=>`<div class="panel" style="margin-bottom:10px"><b style="font:700 15px var(--display)">${NL_ICON[d.type]} ${esc(d.name)}</b>
+    <table class="nl-tbl"><tr><th>Interface</th><th>Adresse</th><th>Netz</th><th>Link</th></tr>${d.ifs.map((f,i)=>{ const ip=nlIp2n(f.ip),m=nlMask(f.mask); return `<tr><td>${f.name}</td><td>${esc(f.ip||"–")}${f.gw?`<br><small>GW ${esc(f.gw)}</small>`:""}</td><td>${ip!==null&&m!==null?nlNet(ip,m):"–"}</td><td>${nlLinked(d.id,i)?"🟢":"⚫"}</td></tr>`; }).join("")}</table>
+    ${d.type==="rt"?`<small style="color:var(--muted)">Routen: ${(d.routes||[]).length?d.routes.map(r=>`${esc(r.net)}/${nlCidr(nlMask(r.mask))} via ${esc(r.via)}`).join(" · "):"nur direkt angeschlossene Netze"}</small>`:""}</div>`).join("");
+  openSheet("📋 Adressen und Routen",html||`<p class="hint">Noch keine Geräte mit Adressen.</p>`); }
 function nlHintText(){
   if(nl.anim) return "Paket unterwegs …";
   if(nl.tool==="cable") return nl.pend?`Kabel von ${nlDev(nl.pend).name} – jetzt das zweite Gerät antippen`:"Erstes Gerät für das Kabel antippen";
-  if(nl.tool==="ping") return nl.pend?`Ping von ${nlDev(nl.pend).name} – Ziel antippen`:"Absender des Pings antippen (ein PC)";
+  if(nl.tool==="unplug") return nl.pend?`Kabel von ${nlDev(nl.pend).name} – anderes Ende antippen`:"Erstes Gerät des Kabels antippen, das weg soll";
+  if(nl.tool==="ping") return nl.pend?`Ping von ${nlDev(nl.pend).name} – Ziel antippen (oder Absender nochmal für Eingabe)`:"Absender des Pings antippen (ein PC)";
   if(nl.tool==="del") return "Gerät antippen, um es samt Kabeln zu entfernen";
   return "Gerät antippen für Adressen · ziehen zum Verschieben";
 }
-function nlDevPos(d){ return {x:d.x,y:d.y}; }
+function nlBoxH(d){ return 36+Math.max(0,d.ifs.filter(f=>f.ip).length-1)*12; }
 function nlSvg(){
   const L=nl.links.map(l=>{ const a=nlDev(l.a.id), b=nlDev(l.b.id); return `<line class="nl-link on" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`; }).join("");
-  const D=nl.devs.map(d=>{ const ips=d.ifs.filter(f=>f.ip).map(f=>d.type==="rt"?`${f.name} ${f.ip}`:f.ip);
-    const cls=["nl-dev",nl.sel===d.id?"sel":"",nl.pend===d.id?"src":"",nl.badDev===d.id?"bad":""].join(" ").trim();
-    const h=38+Math.max(0,ips.length-1)*11;
-    return `<g class="${cls}" data-id="${d.id}" transform="translate(${d.x-48},${d.y-h/2})"><rect width="96" height="${h}"/>
-      <text class="nl-ico" x="18" y="${h/2+7}">${NL_ICON[d.type]}</text><text x="62" y="${ips.length?14:h/2+4}">${esc(d.name)}</text>
-      ${ips.map((t,i)=>`<text class="nl-ip" x="62" y="${25+i*11}">${esc(t)}</text>`).join("")}</g>`; }).join("");
+  const D=nl.devs.map(d=>{ const ips=d.ifs.filter(f=>f.ip).map(f=>d.type==="rt"?`${f.name.replace("eth","e")} ${f.ip}`:f.ip);
+    const cls=["nl-dev",nl.sel===d.id?"sel":"",nl.pend===d.id?"src":""].join(" ").trim(), h=nlBoxH(d);
+    return `<g class="${cls}" data-id="${d.id}" transform="translate(${d.x-NL_BW/2},${d.y-h/2})"><rect width="${NL_BW}" height="${h}"/>
+      <text class="nl-ico" x="17" y="${h/2+7}">${NL_ICON[d.type]}</text><text class="nl-nm" x="34" y="${ips.length?14:h/2+4}">${esc(d.name)}</text>
+      ${ips.map((t,i)=>`<text class="nl-ip" x="34" y="${26+i*12}">${esc(t)}</text>`).join("")}</g>`; }).join("");
   return `<svg viewBox="0 0 ${NL_W} ${NL_H}" id="nl-svg">${L}${D}<circle class="nl-pkt" id="nl-pkt" r="6" cx="-20" cy="-20" style="display:none"/></svg>`;
 }
 function nlWireBoard(){
   const svg=$("#nl-svg"); if(!svg) return;
   const pt=e=>{ const r=svg.getBoundingClientRect(); return {x:(e.clientX-r.left)/r.width*NL_W,y:(e.clientY-r.top)/r.height*NL_H}; };
   let drag=null;
-  const place=d=>{ /* nur Position nachführen, kein Neuaufbau – so bleibt der Zeiger gefangen */
-    const g=svg.querySelector(`.nl-dev[data-id="${d.id}"]`); if(!g) return; const h=+g.querySelector("rect").getAttribute("height");
-    g.setAttribute("transform",`translate(${d.x-48},${d.y-h/2})`);
+  const place=d=>{ const g=svg.querySelector(`.nl-dev[data-id="${d.id}"]`); if(!g) return; const h=nlBoxH(d);
+    g.setAttribute("transform",`translate(${d.x-NL_BW/2},${d.y-h/2})`);
     svg.querySelectorAll(".nl-link").forEach((ln,i)=>{ const l=nl.links[i]; if(!l) return; if(l.a.id===d.id){ ln.setAttribute("x1",d.x); ln.setAttribute("y1",d.y); } if(l.b.id===d.id){ ln.setAttribute("x2",d.x); ln.setAttribute("y2",d.y); } }); };
   svg.onpointerdown=e=>{ const g=e.target.closest(".nl-dev"); if(!g||nl.anim) return; const d=nlDev(g.dataset.id); const p=pt(e);
     drag={d,dx:d.x-p.x,dy:d.y-p.y,moved:false,x0:p.x,y0:p.y}; try{ svg.setPointerCapture(e.pointerId); }catch(_){} };
   svg.onpointermove=e=>{ if(!drag||nl.tool!=="sel") return; const p=pt(e); if(!drag.moved&&Math.hypot(p.x-drag.x0,p.y-drag.y0)>6) drag.moved=true;
-    if(drag.moved){ drag.d.x=Math.max(50,Math.min(NL_W-50,p.x+drag.dx)); drag.d.y=Math.max(24,Math.min(NL_H-24,p.y+drag.dy)); place(drag.d); } };
+    if(drag.moved){ drag.d.x=Math.max(NL_BW/2+2,Math.min(NL_W-NL_BW/2-2,p.x+drag.dx)); drag.d.y=Math.max(22,Math.min(NL_H-22,p.y+drag.dy)); place(drag.d); } };
   svg.onpointerup=()=>{ if(!drag) return; const d=drag.d, moved=drag.moved; drag=null; if(!moved) nlTap(d); };
   svg.onpointercancel=()=>{ drag=null; };
 }
@@ -6155,6 +6343,11 @@ function nlTap(d){
   if(nl.anim) return;
   if(nl.tool==="sel"){ nlConfig(d); return; }
   if(nl.tool==="del"){ nl.devs=nl.devs.filter(x=>x.id!==d.id); nl.links=nl.links.filter(l=>l.a.id!==d.id&&l.b.id!==d.id); nlRender(); return; }
+  if(nl.tool==="unplug"){
+    if(!nl.pend){ nl.pend=d.id; nlRender(); return; }
+    const i=nl.links.findIndex(l=>(l.a.id===nl.pend&&l.b.id===d.id)||(l.b.id===nl.pend&&l.a.id===d.id));
+    if(i<0) toast("Zwischen den beiden ist kein Kabel."); else nl.links.splice(i,1);
+    nl.pend=null; nlRender(); return; }
   if(nl.tool==="cable"){
     if(!nl.pend){ if(nlFreePort(d)<0){ toast(`${d.name} hat keinen freien Port.`); return; } nl.pend=d.id; nlRender(); return; }
     if(nl.pend===d.id){ nl.pend=null; nlRender(); return; }
@@ -6162,7 +6355,7 @@ function nlTap(d){
     if(pa<0||pb<0){ toast(`${pb<0?d.name:a.name} hat keinen freien Port.`); nl.pend=null; nlRender(); return; }
     if(nl.links.some(l=>(l.a.id===a.id&&l.b.id===d.id)||(l.a.id===d.id&&l.b.id===a.id))){ toast("Die beiden sind schon verbunden."); nl.pend=null; nlRender(); return; }
     nl.links.push({a:{id:a.id,port:pa},b:{id:d.id,port:pb}}); nl.pend=null;
-    nl.log=[{t:`Kabel gesteckt: ${a.name} ${a.type==="rt"?a.ifs[pa].name:""} ↔ ${d.name} ${d.type==="rt"?d.ifs[pb].name:""}. Schicht 1 steht, Link-LED an.`.replace(/\s+/g," "),ok:true}]; nlRender(); return; }
+    nl.log=[{t:`Kabel gesteckt: ${a.name}${a.type==="rt"?" "+a.ifs[pa].name:""} ↔ ${d.name}${d.type==="rt"?" "+d.ifs[pb].name:""}. Schicht 1 steht, Link-LED an.`,ok:true}]; nlRender(); return; }
   if(nl.tool==="ping"){
     if(!nl.pend){ if(d.type!=="pc"){ toast("Der Ping startet an einem PC."); return; } nl.pend=d.id; nlRender(); return; }
     if(nl.pend===d.id){ nlPingPrompt(); return; }
@@ -6180,44 +6373,55 @@ function nlConfig(d){
   if(d.type==="sw"){ openSheet(d.name,`<div class="nl-cfg"><label>Name<input id="nl-name" value="${esc(d.name)}"></label>
       <p class="hint" style="text-align:left;margin:0">Ein Switch braucht für seine Arbeit keine IP-Adresse: Er arbeitet auf Schicht 2 und merkt sich nur, an welchem Port welche MAC-Adresse hängt. Belegte Ports: ${nl.links.filter(l=>l.a.id===d.id||l.b.id===d.id).length} von ${NL_PORTS.sw}.</p>
       <button class="btn primary block" id="nl-save">Übernehmen</button></div>`,()=>{ $("#nl-save").onclick=()=>{ d.name=$("#nl-name").value.trim()||d.name; closeSheet(); nlRender(); }; }); return; }
-  const ifs=d.ifs.map((f,i)=>`<div class="nl-if">${d.type==="rt"?`<b>${f.name}${nl.links.some(l=>(l.a.id===d.id&&l.a.port===i)||(l.b.id===d.id&&l.b.port===i))?"":" · kein Kabel"}</b>`:""}
+  const ifs=d.ifs.map((f,i)=>`<div class="nl-if">${d.type==="rt"?`<b>${f.name}${nlLinked(d.id,i)?"":" · kein Kabel"}</b>`:""}
       <label>IP-Adresse<input data-f="${i}" data-k="ip" inputmode="decimal" value="${esc(f.ip)}" placeholder="192.168.10.10"></label>
       <label>Subnetzmaske<input data-f="${i}" data-k="mask" inputmode="decimal" value="${esc(f.mask)}" placeholder="255.255.255.0 oder /24"></label>
       ${d.type==="pc"?`<label>Standardgateway<input data-f="${i}" data-k="gw" inputmode="decimal" value="${esc(f.gw)}" placeholder="leer, wenn nur im eigenen Netz"></label>`:""}</div>`).join("");
-  openSheet(d.name,`<div class="nl-cfg"><label>Name<input id="nl-name" value="${esc(d.name)}"></label>${ifs}
-    ${d.type==="rt"?`<p class="hint" style="text-align:left;margin:0">Jedes Router-Interface bekommt eine Adresse aus dem Netz, das daran hängt – üblich ist die .1. Der Router kennt seine direkt angeschlossenen Netze automatisch.</p>`:""}
+  const routes=d.type==="rt"?`<label>Statische Routen – eine pro Zeile: Netz/Präfix via NächsterHop<textarea id="nl-routes" rows="3" placeholder="192.168.20.0/24 via 10.0.0.2&#10;0.0.0.0/0 via 10.0.0.2">${esc((d.routes||[]).map(r=>`${r.net}/${nlCidr(nlMask(r.mask))} via ${r.via}`).join("\n"))}</textarea></label>`:"";
+  openSheet(d.name,`<div class="nl-cfg"><label>Name<input id="nl-name" value="${esc(d.name)}"></label>${ifs}${routes}
+    ${d.type==="rt"?`<p class="hint" style="text-align:left;margin:0">Jedes Interface bekommt eine Adresse aus dem Netz, das daran hängt – üblich ist die .1. Direkt angeschlossene Netze kennt der Router automatisch, alles dahinter braucht eine Route.</p>`:""}
     <button class="btn primary block" id="nl-save">Übernehmen</button></div>`,root=>{
     $("#nl-save").onclick=()=>{ let ok=true;
       root.querySelectorAll("input[data-f]").forEach(inp=>{ const v=inp.value.trim(); inp.classList.remove("err");
         if(v&&((inp.dataset.k==="mask"&&nlMask(v)===null)||(inp.dataset.k!=="mask"&&nlIp2n(v)===null))){ inp.classList.add("err"); ok=false; } });
-      if(!ok){ toast("Eine Eingabe ist keine gültige Adresse bzw. Maske."); return; }
+      let newRoutes=null; const ta=$("#nl-routes");
+      if(ta){ newRoutes=[]; ta.classList.remove("err"); for(const line of ta.value.split("\n").map(s=>s.trim()).filter(Boolean)){
+        const m=/^(\d+\.\d+\.\d+\.\d+)\s*\/\s*(\d{1,2})\s+via\s+(\d+\.\d+\.\d+\.\d+)$/i.exec(line);
+        if(!m||nlIp2n(m[1])===null||nlMask("/"+m[2])===null||nlIp2n(m[3])===null){ ta.classList.add("err"); ok=false; break; }
+        newRoutes.push({net:nlN2ip((nlIp2n(m[1])&nlMask("/"+m[2]))>>>0),mask:nlN2ip(nlMask("/"+m[2])),via:m[3]}); } }
+      if(!ok){ toast("Eine Eingabe ist keine gültige Adresse, Maske oder Route."); return; }
       root.querySelectorAll("input[data-f]").forEach(inp=>{ let v=inp.value.trim(); if(inp.dataset.k==="mask"&&/^\/?\d{1,2}$/.test(v)) v=nlN2ip(nlMask(v)); d.ifs[+inp.dataset.f][inp.dataset.k]=v; });
-      d.name=$("#nl-name").value.trim()||d.name; closeSheet(); nl.badDev=null; nlRender(); }; });
+      if(newRoutes) d.routes=newRoutes;
+      d.name=$("#nl-name").value.trim()||d.name; closeSheet(); nlRender(); }; });
 }
-function nlStepHtml(s,i){ return `<div class="step ${s.fail?"fail":s.ok?"ok":""}"><i>${s.fail?"✕":i+1}</i><span>${esc(s.t)}</span></div>`; }
-function nlStopAnim(){ if(nl&&nl.anim){ cancelAnimationFrame(nl.anim.raf); nl.anim=null; } }
+function nlStepHtml(s,i){ return `<div class="step ${s.fail?"fail":s.ok?"ok":""}${s.kind==="reply"?" reply":""}"><i>${s.fail?"✕":i+1}</i><span>${esc(s.t)}</span></div>`; }
+function nlStopAnim(){ if(nl&&nl.anim&&nl.anim.raf){ cancelAnimationFrame(nl.anim.raf); } if(nl) nl.anim=null; }
+function nlSolvedSheet(){ const M=nl.mission;
+  openSheet("✅ Ticket gelöst",`<b style="font:700 17px var(--display)">${esc(M.t)}</b><p style="font-size:14.5px;line-height:1.5;margin:8px 0 14px">${esc(M.why)}</p>
+    <div class="grid2"><button class="btn ghost" id="nl-s-home">Alle Tickets</button><button class="btn primary" id="nl-s-next">Nächstes Ticket</button></div>`,()=>{
+    $("#nl-s-home").onclick=()=>{ closeSheet(); nl.done=true; nlHome(); }; $("#nl-s-next").onclick=()=>{ closeSheet(); nlNext(); }; }); }
 /* Ping laufen lassen: Schritte nacheinander ins Protokoll, Paket entlang der Pfade animieren */
 function nlRun(srcId,dstIp,dstName){
   const src=nlDev(srcId); const res=nlPing(srcId,dstIp);
-  nlStopAnim(); nl.last={ok:res.ok,srcName:src.name,dstName,dstIp}; nl.log=[]; nl.badDev=null; nl.pend=null; nl.anim={raf:0};
+  nlStopAnim(); nl.last={ok:res.ok,srcName:src.name,dstName,dstIp}; nl.log=[]; nl.pend=null; nl.anim={raf:0};
   nlRender();
   const steps=res.steps; let k=0; const run=nl;
   const pkt=()=>$("#nl-pkt");
   const later=(fn,ms)=>setTimeout(()=>{ if(nl===run&&!run.done) fn(); },ms);
   const next=()=>{
     if(k>=steps.length){ nl.anim=null; const p=pkt(); if(p) p.style.display="none";
-      if(res.ok&&!nl.solved&&nl.mission.check(nl)){ nl.solved=true; const dn=nlDone(); if(!dn.includes(nl.mission.id)){ dn.push(nl.mission.id); store.set("nl_done",JSON.stringify(dn)); } }
-      nlRender(); return; }
+      let fresh=false; if(res.ok&&!nl.solved&&nl.mission.check(nl)){ nl.solved=true; fresh=true; const dn=nlDone(); if(!dn.includes(nl.mission.id)){ dn.push(nl.mission.id); store.set("nl_done",JSON.stringify(dn)); } }
+      nlRender(); if(fresh) nlSolvedSheet(); return; }
     const s=steps[k++]; nl.log.push(s); const lg=$("#nl-log"); if(lg){ lg.insertAdjacentHTML("beforeend",nlStepHtml(s,nl.log.length-1)); lg.scrollTop=lg.scrollHeight; }
     if(s.fail){ nl.anim=null; const p=pkt(); if(p) p.style.display="none"; nlRender(); return; }
-    const path=s.path; if(!path||path.length<2){ nl.anim={raf:0}; later(next,650); return; }
-    const pts=path.map(id=>nlDevPos(nlDev(id))); const p=pkt(); p.style.display=""; p.classList.toggle("reply",s.kind==="reply");
+    const path=s.path; if(!path||path.length<2){ nl.anim={raf:0}; later(next,s.kind==="arp"?700:450); return; }
+    const pts=path.map(id=>{ const d=nlDev(id); return {x:d.x,y:d.y}; }); const p=pkt(); p.style.display=""; p.classList.toggle("reply",s.kind==="reply");
     const total=pts.slice(1).reduce((a,q,i)=>a+Math.hypot(q.x-pts[i].x,q.y-pts[i].y),0), dur=Math.max(500,total*7);
     const t0=performance.now();
-    const frame=now=>{ let u=Math.min(1,(now-t0)/dur), dist=u*total, i=0;
+    const frame=now=>{ if(nl!==run||run.done) return; let u=Math.min(1,(now-t0)/dur), dist=u*total, i=0;
       while(i<pts.length-2&&dist>Math.hypot(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y)){ dist-=Math.hypot(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y); i++; }
       const a=pts[i], b=pts[i+1], L=Math.hypot(b.x-a.x,b.y-a.y)||1, f=dist/L; p.setAttribute("cx",a.x+(b.x-a.x)*f); p.setAttribute("cy",a.y+(b.y-a.y)*f);
-      if(nl!==run||run.done) return; if(u<1){ nl.anim={raf:requestAnimationFrame(frame)}; } else { nl.anim={raf:0}; later(next,250); } };
+      if(u<1){ nl.anim={raf:requestAnimationFrame(frame)}; } else { nl.anim={raf:0}; later(next,250); } };
     nl.anim={raf:requestAnimationFrame(frame)};
   };
   later(next,300);
