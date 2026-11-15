@@ -1700,7 +1700,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.1.0";
+const APP_VER="5.2.0"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2085,16 +2085,18 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Fortschritt. */
 const WHATS_NEW=[
-  {v:"5.1.0",t:"Feierabendfunk & neue Ordnung",l:[
-    "Die ersten Hörspiel-Folgen sind da: Podcast → Feierabendfunk",
-    "Zum Nachlesen liegt jede Folge unter Wissen – als Kapitel mit „Worauf es ankommt“ und Quiz",
+  {v:"5.2.0",t:"Neue Labore & mehr Ordnung",l:[
     "Neues Praxis-Labor: Netz-Labor – zwölf Tickets vom ersten Kabel bis zur statischen Route, dazu ein freies Labor mit Vorlagen",
     "Neue Konsolen-Story „Außenstelle Nord“: eine Nacht lang DHCP, DNS und Firewall einrichten, das Panel erklärt jeden Befehl",
     "ERD-Architekt: zehn neue Fälle (Tierheim, Werkstatt, Hotel, Musikschule …)",
     "3D-Druck: Klipper-Dokumentation auf Deutsch und Englisch verlinkt",
     "Aufgeräumt: Abkürzungen und Port-Labor stehen jetzt unter Wissen, die Spiele in Praxis-Labore, Quiz & Tempo und Arcade",
+    "Podcast-Folge 7 spielt wieder",
     "Unter Fortschritt → App installieren holst du dir dasLabor23 auf den Startbildschirm – läuft dann auch offline",
     "Die anonyme Nutzungsstatistik zählt nur, welche Bereiche genutzt werden, keine persönlichen Daten. Lass sie bitte an: Sie zeigt, wo die App besser werden muss"]},
+  {v:"5.1.0",t:"Feierabendfunk",l:[
+    "Die ersten Hörspiel-Folgen sind da: Podcast → Feierabendfunk",
+    "Zum Nachlesen liegt jede Folge unter Wissen → Nachschlagen – als Kapitel mit „Worauf es ankommt“ und Quiz"]},
   {v:"5.0.0",t:"Arcade im Labor 23",l:[
     "Vier neue Spiele: Nachtschicht im Labor 23, Patchfeld-Blitz, Frame-Rallye und Broadcast-Sturm",
     "Jedes mit Bestenliste und Combo-Serie",
@@ -2103,8 +2105,10 @@ const WHATS_NEW=[
 ];
 function whatsNew(force){
   const cur=WHATS_NEW[0]; if(!cur) return;
-  if(!force&&store.get("seen_ver","")===cur.v) return;
-  store.set("seen_ver",cur.v);
+  /* Gemerkt wird ein Fingerabdruck aus Nummer und Text – kommt eine Zeile dazu, erscheint das Fenster wieder */
+  const sig=cur.v+"|"+[...(cur.t+cur.l.join("|"))].reduce((h,ch)=>(h*31+ch.charCodeAt(0))>>>0,7).toString(36);
+  if(!force&&store.get("seen_ver","")===sig) return;
+  store.set("seen_ver",sig);
   const body=WHATS_NEW.map((n,i)=>`<div class="panel" style="${i?"margin-top:12px":""}">
       <b style="font:600 15px var(--display)">Version ${esc(n.v)} · ${esc(n.t)}</b>
       <div class="ld-rules" style="padding:0;border:0;background:none">${n.l.map(x=>`<div>${esc(x)}</div>`).join("")}</div>
@@ -7603,7 +7607,7 @@ const EPISODES_BUILTIN=[
   {"nr": 4, "title": "Schleifen und Spanning Tree im Netz", "drive": "10P2mX8LO5JX1yi5cczv7iqIv2CZh5c7L", "cover": "1H-BN29P9uv9Ts-qjroM0nSIL6XEj5OsT", "file": "folge04.mp3", "coverFile": "folge04.jpg", "deck": "Netzwerktechnik::Schicht 2 & Switching", "date": "2026-11-05", "desc": "Dein Netz steht, obwohl nichts kaputt ist? Genau darum geht's in dieser Folge: Warum Broadcasts in einer Schleife ewig kreisen und wie das Spanning Tree Protocol dafür sorgt, dass alles geordnet bleibt. Außerdem klären wir, wer Root Bridge wird und warum ein blockierter Port trotzdem ein wichtiger Ersatzspieler ist."},
   {"nr": 5, "title": "IPv6 ohne Doppelpunkt-Panik", "drive": "16XUvQ4h6_WegIyh9TKydS34onhWb0_qa", "cover": "1qbHXnIwbXHYCcf0Fvv3QlCmkZroWK1m4", "file": "folge05.mp3", "coverFile": "folge05.jpg", "deck": "Netzwerktechnik::IPv6", "date": "2026-11-05", "desc": "Diesmal wird's mit IPv6 richtig lang, aber auch richtig spannend. Lisa und Jens kürzen die Monster-Adressen, schauen sich Subnetting, Multicast und SLAAC an und räumen mit ein paar typischen Prüfungsfallen auf. Hol dir einen Kaffee, danach wirken die Doppelpunkte deutlich weniger bedrohlich."},
   {"nr": 6, "title": "Quiz-Duell: 14 Fragen zu Subnetting & Co.", "drive": "1U0FO8aHz9wFHsXNbmVZM67hTVKIT9vGv", "cover": "1B0EIhEdsGepcRHl2rq8Jrz1t2OFfvt35", "file": "folge06.mp3", "coverFile": "folge06.jpg", "deck": "Netzwerktechnik::IP & Routing", "date": "2026-11-05", "desc": "Zettel raus und mitraten! Lisa und Jens spielen ein Quiz mit 14 Fragen zu Subnetting, Routing und IPv6. Wer holt die meisten Punkte, und wo schleichen sich typische Prüfungsfehler ein?"},
-  {"nr": 7, "title": "Von der Mondrakete zur Tabelle", "drive": "10NMJ3w6uDF1iuHKJgBsDmjkUZePEWEJ9", "cover": "1_Zl7wvNna5lQiq9wTeB2GmY9bIDO_BR7", "deck": "Datenbanken::Grundlagen & Modelle", "date": "2026-11-13", "desc": "Warum Excel-Listen und einzelne Dateien irgendwann nicht mehr reichen: Jens und Mara gehen vom hierarchischen Modell über das Netzwerkmodell bis zum relationalen Modell, klären Primär- und Fremdschlüssel und lösen eine n:m-Beziehung sauber mit einer Zwischentabelle auf. Außerdem verabschiedet sich Lisa, Mara übernimmt, und zum Schluss gibt es einen Blick auf NoSQL."}
+  {"nr": 7, "title": "Von der Mondrakete zur Tabelle", "file": "folge07.mp3", "coverFile": "folge07.jpg", "drive": "10NMJ3w6uDF1iuHKJgBsDmjkUZePEWEJ9", "cover": "1_Zl7wvNna5lQiq9wTeB2GmY9bIDO_BR7", "deck": "Datenbanken::Grundlagen & Modelle", "date": "2026-11-13", "desc": "Warum Excel-Listen und einzelne Dateien irgendwann nicht mehr reichen: Jens und Mara gehen vom hierarchischen Modell über das Netzwerkmodell bis zum relationalen Modell, klären Primär- und Fremdschlüssel und lösen eine n:m-Beziehung sauber mit einer Zwischentabelle auf. Außerdem verabschiedet sich Lisa, Mara übernimmt, und zum Schluss gibt es einen Blick auf NoSQL."}
 ];
 const driveAudio=id=>`https://drive.usercontent.google.com/download?id=${encodeURIComponent(id)}&export=download`;
 const driveImg=id=>`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w600`;
