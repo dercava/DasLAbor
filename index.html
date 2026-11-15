@@ -633,6 +633,23 @@ body.kb .stage{padding-bottom:45vh}
 .eps{display:flex;flex-direction:column;gap:10px}
 .player{position:sticky;bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;z-index:5}
 .player .row1{display:flex;align-items:center;gap:10px}
+/* Mini-Player: läuft auf allen Seiten unten mit, solange eine Folge geladen ist */
+.miniplayer{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:min(576px,calc(100% - 24px));z-index:40;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.has-tabs .miniplayer{bottom:calc(var(--tabbar-h) + 10px + env(safe-area-inset-bottom))}
+.miniplayer[hidden]{display:none}
+.miniplayer img{width:42px;height:42px;border-radius:10px;object-fit:cover;flex:none}
+.miniplayer .mp-tx{flex:1;min-width:0;display:flex;flex-direction:column;background:none;border:0;color:inherit;text-align:left;padding:0;font:inherit;cursor:pointer}
+.miniplayer .mp-tx b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.miniplayer .mp-tx small{font:500 12px var(--mono);color:var(--muted)}
+.miniplayer .mp-btn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;flex:none;background:var(--grad);color:var(--on-grad)}
+.miniplayer .mp-btn svg{width:20px;height:20px}
+.miniplayer .mp-x{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);display:grid;place-items:center;flex:none}
+.miniplayer .mp-x svg{width:16px;height:16px}
+body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
+#app.deep~.miniplayer,body:not(.has-tabs) .miniplayer{bottom:calc(12px + env(safe-area-inset-bottom))}
+.player .p-min{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);display:grid;place-items:center;flex:none}
+.player .p-min svg{width:16px;height:16px}
+
 .player .row1 b{flex:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .player .ctl{display:flex;align-items:center;justify-content:center;gap:14px}
 .player .big{width:58px;height:58px;border-radius:50%;border:0;background:var(--grad);color:var(--on-grad);display:grid;place-items:center;transition:transform .3s var(--spring)}
@@ -1318,6 +1335,7 @@ body.kb .stage{padding-bottom:45vh}
   <nav class="tabbar" id="tabbar" aria-label="Bereiche"><button class="tab" data-go="start" data-tab="home"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg></span><span>Lernpfad</span></button><button class="tab" data-go="karten" data-tab="karten"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="15" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg></span><span>Karten</span></button><button class="tab" data-go="bibliothek" data-tab="wissen"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span>Wissen</span></button><button class="tab" data-go="spiele" data-tab="spiele"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M7 11v4M5 13h4M15.5 12h.01M18 14.5h.01"/></svg></span><span>Spiele</span></button><button class="tab" data-go="fortschritt" data-tab="fort"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span>Fortschritt</span></button></nav>
 </div>
 
+<div class="miniplayer" id="miniplayer" hidden></div>
 <div class="scrim" id="scrim"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
   <div class="grab"></div>
@@ -1692,7 +1710,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.3.1"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.3.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -1751,6 +1769,7 @@ function show(r){
   gcArea(r);
   stopGamesExcept(id);
   if(PAGE_ENTER[id]) PAGE_ENTER[id]();
+  try{ renderMini(); }catch(_){}
   window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
 }
 window.addEventListener("hashchange",()=>show(route()));
@@ -2088,6 +2107,9 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Fortschritt. */
 const WHATS_NEW=[
+  {v:"5.3.2",t:"Mini-Player",l:[
+    "Der Podcast-Player lässt sich mit dem Pfeil oben rechts verkleinern. Die Folge läuft weiter, und unten erscheint eine kleine Leiste mit Play/Pause – auf jeder Seite der App",
+    "Antippen der Leiste öffnet den großen Player wieder, das X beendet die Wiedergabe"]},
   {v:"5.3.1",t:"Neue Hörspielfolgen",l:[
     "Feierabendfunk: Folge 4 bis 8 sind da – Subnetting, VLSM, Netzzugänge, VLAN-Praxis und Gebäudeverkabelung",
     "Neu unter Fortschritt: „Nach Updates suchen“. Im Browser lädt die App die neueste Version, in der Android-App startet der Download der neuen APK"]},
@@ -5021,7 +5043,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.3.1";
+const APK_URL="dasLabor23.apk", APK_VER="5.3.2";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7820,17 +7842,18 @@ function renderPodcast(){
   renderPlayer();
 }
 function renderPlayer(){
-  const el=$("#player"); if(!el||!curEp) return; el.hidden=false;
+  const el=$("#player"); if(!el||!curEp) return; el.hidden=podMini; renderMini(); if(podMini) return;
   const sp=+store.get("pod_speed","1");
   if(!audio){ const p=podDl[curEp.id]||{};
-    el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b></div>
+    el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b><button class="p-min" id="p-min" aria-label="Player verkleinern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
       ${p.fail?`<p class="hint" style="text-align:left;margin:0">Folge konnte nicht geladen werden (${esc(p.fail)}). Internet an?</p><button class="btn primary block" id="p-retry">Nochmal versuchen</button>`
         :`<p class="hint" style="text-align:left;margin:0">Folge wird aufs Handy geladen … ${p.pct>=0?p.pct+" %":p.mb?p.mb+" MB":""}<br><small>Nur einmal nötig, danach auch offline.</small></p>
       <div class="bar" style="display:block;height:6px;border-radius:3px;background:var(--line,#233);overflow:hidden"><i style="display:block;height:100%;width:${Math.max(3,p.pct||0)}%;background:var(--acc,#22c3e6)"></i></div>`}
       ${curEp.desc?`<p class="hint" style="text-align:left;margin:0">${esc(curEp.desc)}</p>`:""}`;
     const rt=$("#p-retry"); if(rt) rt.onclick=()=>{ const e=curEp; curEp=null; playEp(e); };
+    $("#p-min").onclick=podMinimize;
     return; }
-  el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b><button class="speed" id="p-speed">${sp}×</button></div>
+  el.innerHTML=`${curEp.img?podImg(curEp,"pod-cover zoomable"):""}<div class="row1"><b>${esc(curEp.title)}</b><button class="speed" id="p-speed">${sp}×</button><button class="p-min" id="p-min" aria-label="Player verkleinern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div>
     <input type="range" id="p-seek" min="0" max="${Math.floor(audio.duration||curEp.dur||0)}" value="${Math.floor(audio.currentTime)}" aria-label="Position">
     <div class="times"><span id="p-cur">${fmtT(audio.currentTime)}</span><span>${fmtT(audio.duration||curEp.dur)}</span></div>
     <div class="ctl"><button class="iconbtn" id="p-back" aria-label="15 Sekunden zurück">−15</button>
@@ -7838,12 +7861,31 @@ function renderPlayer(){
       <button class="iconbtn" id="p-fwd" aria-label="30 Sekunden vor">+30</button></div>
     ${curEp.desc?`<p class="hint" style="text-align:left;margin:0">${esc(curEp.desc)}</p>`:""}
     ${curEp.deck?`<button class="btn ghost block" id="p-learn">Passende Karten lernen: ${esc(deckLabel(curEp.deck))}</button>`:""}`;
+  $("#p-min").onclick=podMinimize;
   const pl=$("#p-learn"); if(pl) pl.onclick=()=>{ deckSel=curEp.deck; store.set("deck",deckSel); startSession("all"); };
   $("#p-play").onclick=()=>{ if(!audio) return; audio.paused?tryPlay():audio.pause(); };
   $("#p-back").onclick=()=>audio.currentTime=Math.max(0,audio.currentTime-15);
   $("#p-fwd").onclick=()=>audio.currentTime=Math.min(audio.duration||1e9,audio.currentTime+30);
   $("#p-seek").oninput=e=>audio.currentTime=+e.target.value;
   $("#p-speed").onclick=()=>{ const n={1:1.25,1.25:1.5,1.5:2,2:1}[sp]||1; store.set("pod_speed",String(n)); audio.playbackRate=n; renderPlayer(); };
+}
+
+/* Mini-Player: Der große Player lässt sich verkleinern, die Folge läuft weiter.
+   Auf allen anderen Seiten erscheint unten eine kleine Leiste mit Play/Pause. */
+let podMini=false;
+function podMinimize(){ podMini=true; renderPlayer(); window.scrollTo({top:0,behavior:"smooth"}); }
+function renderMini(){
+  const m=$("#miniplayer"); if(!m) return;
+  const show=!!curEp&&(current!=="podcast"||podMini);
+  m.hidden=!show; document.body.classList.toggle("mp-on",show); if(!show) return;
+  const playing=audio&&!audio.paused;
+  const sub=audio?`${fmtT(audio.currentTime)} / ${fmtT(audio.duration||curEp.dur)}`:(podDl[curEp.id]&&podDl[curEp.id].fail?"Laden fehlgeschlagen":"Wird geladen …");
+  m.innerHTML=`${curEp.img?podImg(curEp,""):""}<button class="mp-tx" id="mp-open" aria-label="Player öffnen"><b>${esc(curEp.title)}</b><small id="mp-t">${sub}</small></button>
+    <button class="mp-btn" id="mp-play" aria-label="${playing?"Pause":"Abspielen"}" ${audio?"":"disabled"}>${playing?ICON_PAUSE:ICON_PLAY}</button>
+    <button class="mp-x" id="mp-stop" aria-label="Wiedergabe beenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
+  $("#mp-open").onclick=()=>{ podMini=false; if(current==="podcast") renderPodcast(); else go("podcast"); };
+  $("#mp-play").onclick=()=>{ if(!audio) return; audio.paused?tryPlay():audio.pause(); };
+  $("#mp-stop").onclick=()=>{ if(audio){ store.set(posKey(curEp.id),String(Math.floor(audio.currentTime))); audio.pause(); } audio=null; curEp=null; podMini=false; renderMini(); if(current==="podcast") renderPodcast(); };
 }
 /* In der Android-App lädt die App die MP3 einmal selbst herunter (Drive spielt im eingebauten Browser nicht direkt ab).
    Im Browser/Claude wird direkt gestreamt. */
@@ -7856,7 +7898,7 @@ window.__podFail=(id,msg)=>{ if(curEp&&curEp.id===id&&!audio&&curEp.alt&&!podDl[
 function playEp(e){
   if(curEp&&curEp.id===e.id&&audio){ audio.paused?tryPlay():audio.pause(); return; }
   if(audio){ audio.pause(); audio=null; }
-  curEp=e;
+  curEp=e; podMini=false;
   if(nativePod()&&/^https?:/.test(e.url)){
     let local=""; try{ local=window.AndroidBridge.podCached(String(e.id)); }catch(_){}
     if(local){ startAudio(e,local); return; }
@@ -7870,8 +7912,8 @@ function startAudio(e,src,isAlt){
   const a=audio;
   const pos=+store.get(posKey(e.id),"0"); a.addEventListener("loadedmetadata",()=>{ if(pos&&pos<a.duration-5) a.currentTime=pos; if(a===audio) renderPlayer(); },{once:true});
   let last=0; a.addEventListener("timeupdate",()=>{ if(a!==audio) return; const t=a.currentTime; if(Math.abs(t-last)>4){ last=t; store.set(posKey(e.id),String(Math.floor(t))); }
-    const c=$("#p-cur"), sk=$("#p-seek"); if(c) c.textContent=fmtT(t); if(sk&&document.activeElement!==sk) sk.value=Math.floor(t); });
-  ["play","pause","ended"].forEach(ev=>a.addEventListener(ev,()=>{ if(a!==audio) return; if(ev==="ended") store.set(posKey(e.id),String(Math.floor(a.duration))); if(current==="podcast") renderPodcast(); }));
+    const c=$("#p-cur"), sk=$("#p-seek"); if(c) c.textContent=fmtT(t); if(sk&&document.activeElement!==sk) sk.value=Math.floor(t); const mt=$("#mp-t"); if(mt) mt.textContent=fmtT(t)+" / "+fmtT(a.duration||e.dur); });
+  ["play","pause","ended"].forEach(ev=>a.addEventListener(ev,()=>{ if(a!==audio) return; if(ev==="ended") store.set(posKey(e.id),String(Math.floor(a.duration))); if(current==="podcast") renderPodcast(); else renderMini(); }));
   a.addEventListener("error",()=>{ if(a!==audio) return;
     if(nativePod()&&/^file:/.test(src)){ try{ window.AndroidBridge.podDelete(String(e.id)); }catch(_){} }
     audio=null;
