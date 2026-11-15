@@ -1100,6 +1100,56 @@ body.kb .stage{padding-bottom:45vh}
 .sec-h{font:700 12.5px var(--body);letter-spacing:.04em;text-transform:none;color:var(--muted)}
 .hlist{box-shadow:none}
 :root[data-theme="dark"] .hubscreen>.hub-head{background:color-mix(in srgb,var(--area) 18%,var(--surface))}
+/* >>> game-css aussen */
+/* Außenstelle Nord: Konsole + Erklär-Panel */
+.ak-wrap{display:flex;flex-direction:column;gap:10px}
+.ak-head{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1.5px solid var(--area);border-radius:16px;padding:12px 14px}
+.ak-head small{font:600 12.5px var(--body);color:var(--muted)}
+.ak-head b{font:700 16px var(--display)}
+.ak-head p{margin:0;font-size:14px;line-height:1.45}
+.ak-head .ak-goal{font:600 13px var(--body);color:var(--muted)}
+.ak-prog{display:flex;gap:4px}
+.ak-prog i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.ak-prog i.on{background:var(--area)}
+.ak-prog i.cur{background:color-mix(in srgb,var(--area) 45%,var(--line))}
+.ak-split{display:grid;gap:10px}
+@media(min-width:760px){.ak-split{grid-template-columns:1.25fr 1fr;align-items:start}}
+.ak-term{background:#070b07;color:#c6efc0;border:1.5px solid #1d361d;border-radius:16px;display:flex;flex-direction:column;overflow:hidden;font:13.5px/1.5 var(--mono)}
+.ak-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#0f190f;border-bottom:1px solid #1d361d;color:#8fbf8a;font:600 12px var(--body)}
+.ak-bar i{width:10px;height:10px;border-radius:50%;background:#ff5f56;display:inline-block}
+.ak-bar i:nth-child(2){background:#ffbd2e}.ak-bar i:nth-child(3){background:#27c93f}
+.ak-bar span{margin-left:auto;opacity:.85;font-family:var(--mono)}
+.ak-out{padding:10px 12px;height:min(48vh,400px);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.ak-out .cmd{color:#fff}
+.ak-out .cmd::before{content:"admin@nord-gw:~$ ";color:#5ee17a}
+.ak-out .sys{color:#ffd166}
+.ak-out .msg{color:#8ad4ff}
+.ak-out .msg b{color:#d2efff}
+.ak-out .err{color:#ff8f8f}
+.ak-out .dim{color:#7a9a78}
+.ak-out .ok{color:#5ee17a}
+.ak-in{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid #1d361d;background:#0b120b}
+.ak-in b{color:#5ee17a;font:600 13.5px var(--mono);white-space:nowrap}
+.ak-in input{flex:1;background:transparent;border:0;outline:0;color:#fff;font:15px var(--mono);caret-color:#5ee17a;min-width:0}
+.ak-in button{background:#1d361d;color:#c6efc0;border:0;border-radius:8px;padding:7px 11px;font:700 12.5px var(--body)}
+.ak-keys{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 10px;background:#0b120b}
+.ak-keys button{background:#122012;color:#a6dca0;border:1px solid #1d361d;border-radius:8px;padding:6px 10px;font:600 12.5px var(--mono)}
+.ak-panel{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5}
+.ak-panel h3{margin:0;font:700 15px var(--display);display:flex;align-items:baseline;gap:8px}
+.ak-panel h3 small{font:600 11.5px var(--body);color:var(--muted);margin-left:auto}
+.ak-panel .ak-box{border-left:4px solid var(--area);padding:7px 10px;background:color-mix(in srgb,var(--area) 9%,var(--surface));border-radius:8px}
+.ak-panel .ak-box b{display:block;font:700 13.5px var(--display);margin-bottom:2px}
+.ak-panel .ak-tip{border-left-color:var(--hard);background:color-mix(in srgb,var(--hard) 10%,var(--surface))}
+.ak-panel code{font:13px var(--mono);background:color-mix(in srgb,var(--ink) 8%,transparent);padding:1px 5px;border-radius:5px;white-space:nowrap}
+.ak-panel p{margin:0}
+.ak-cmds{display:flex;flex-direction:column;gap:6px}
+.ak-cmds button{display:flex;flex-direction:column;gap:2px;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 12px}
+.ak-cmds button code{font:600 13.5px var(--mono);color:var(--ink)}
+.ak-cmds button small{color:var(--muted);font-size:12.5px}
+.ak-chap{display:grid;gap:8px}
+.ak-chap .hrow .ic{font-size:20px}
+.ak-chap .hrow.done .ic{background:color-mix(in srgb,var(--easy) 20%,transparent)}
+/* <<< game-css aussen */
 </style>
 </head>
 <body>
@@ -1170,7 +1220,7 @@ body.kb .stage{padding-bottom:45vh}
         <div class="hub-head"><span class="illu" data-illu="spiele"></span><h2 class="title">Spiele & Labore</h2><p>Spielerisch üben – und wie in der Prüfung selbst lösen.</p></div>
         
         <div class="sec-h">Praxis-Labore</div>
-        <div class="hlist"><button class="hrow is-lab" data-go="netz"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Netz-Labor</b><small>Geräte setzen, verkabeln, Adressen vergeben – und zusehen, wie das Paket läuft</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow is-lab" data-go="netz"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Netz-Labor</b><small>Geräte setzen, verkabeln, Adressen vergeben – und zusehen, wie das Paket läuft</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="aussen"><span class="ic" style="font-size:20px">🏢</span><span class="tx"><b>Außenstelle Nord</b><small>Konsolen-Story: DHCP, DNS und Firewall-Regeln einrichten – mit Erklär-Panel</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Quiz & Tempo</div>
         <div class="hlist"><button class="hrow is-quiz" data-go="leiter"><span class="ic" style="font-size:20px">🪜</span><span class="tx"><b>Die 100-Punkte-Leiter</b><small>Quizshow mit Fragen aus deinen Unterlagen – 3 Joker, bis 100 IHK-Punkte</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Arcade</div>
@@ -1187,6 +1237,8 @@ body.kb .stage{padding-bottom:45vh}
     <section class="screen" id="s-sturm"><div class="center" id="bs"></div></section>
 
     <section class="screen" id="s-netz"><div class="center" id="nl"></div></section>
+
+    <section class="screen" id="s-aussen"><div class="center" id="ak"></div></section>
 
     <section class="screen" id="s-fortschritt">
       <div class="center hubscreen">
@@ -1589,7 +1641,7 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz"};
+const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz",aussen:"aussen"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
@@ -1649,7 +1701,7 @@ const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
 const APP_VER="5.1.0";
-const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor"};
+const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -1684,6 +1736,7 @@ const PAGE_ENTER={
   lernen:()=>{ if(!session) startSession("due",true); else renderLearn("card-enter"); },
   neu:()=>prepAdd(), verwalten:()=>renderManage(), podcast:()=>renderPodcast(), statistik:()=>renderStats(), sprachen:()=>spHome(),
   blitz:()=>bzHome(), terminal:()=>tmHome(), sql:()=>sqHome(), erd:()=>erHome(), subnetz:()=>snHome(), vokabeln:()=>vkHome(), ports:()=>pjHome(), challenge:()=>chHome(), match:()=>mtHome(), unterricht:()=>{ if(!ut||ut.done) utHome(); }, leiter:()=>{ if(!ld||ld.done||ldPending) ldHome(); }, fangen:()=>{ if(pf&&!pf.done) pf.done=true; pfHome(); },
+  aussen:()=>{ if(ak&&!ak.done) ak.done=true; akHome(); },
   sturm:()=>{ if(bs&&!bs.done) bs.done=true; bsHome(); },
   rallye:()=>{ if(fr&&!fr.done) fr.done=true; frHome(); },
   patch:()=>{ if(pb&&!pb.done) pb.done=true; pbHome(); },
@@ -1691,7 +1744,7 @@ const PAGE_ENTER={
   nacht:()=>{ if(ns&&!ns.done) ns.done=true; nsHome(); }
 };
 /* Laufende Spiele je Seite. Verlässt man die Seite, wird das Spiel beendet: Timer stoppen, nichts läuft unsichtbar weiter. */
-const RUNNING={blitz:()=>[bz],terminal:()=>[tm],sql:()=>[sq],erd:()=>[er],subnetz:()=>[sn],ports:()=>[pj,pm],vokabeln:()=>[vr],challenge:()=>[ch],match:()=>[mt],unterricht:()=>[ut],leiter:()=>[ld],fangen:()=>[pf],nacht:()=>[ns],patch:()=>[pb],rallye:()=>[fr],sturm:()=>[bs],netz:()=>[nl]};
+const RUNNING={blitz:()=>[bz],terminal:()=>[tm],sql:()=>[sq],erd:()=>[er],subnetz:()=>[sn],ports:()=>[pj,pm],vokabeln:()=>[vr],challenge:()=>[ch],match:()=>[mt],unterricht:()=>[ut],leiter:()=>[ld],fangen:()=>[pf],nacht:()=>[ns],patch:()=>[pb],rallye:()=>[fr],sturm:()=>[bs],netz:()=>[nl],aussen:()=>[ak]};
 function stopGamesExcept(id){ for(const page in RUNNING){ if(page!==id) RUNNING[page]().forEach(g=>{ if(g&&!g.done) g.done=true; }); } }
 function show(r){
   const id=ROUTES[r]; if(current===id) return;
@@ -2036,6 +2089,7 @@ const WHATS_NEW=[
     "Die ersten Hörspiel-Folgen sind da: Podcast → Feierabendfunk",
     "Zum Nachlesen liegt jede Folge unter Wissen – als Kapitel mit „Worauf es ankommt“ und Quiz",
     "Neues Praxis-Labor: Netz-Labor – zwölf Tickets vom ersten Kabel bis zur statischen Route, dazu ein freies Labor mit Vorlagen",
+    "Neue Konsolen-Story „Außenstelle Nord“: eine Nacht lang DHCP, DNS und Firewall einrichten, das Panel erklärt jeden Befehl",
     "ERD-Architekt: zehn neue Fälle (Tierheim, Werkstatt, Hotel, Musikschule …)",
     "3D-Druck: Klipper-Dokumentation auf Deutsch und Englisch verlinkt",
     "Aufgeräumt: Abkürzungen und Port-Labor stehen jetzt unter Wissen, die Spiele in Praxis-Labore, Quiz & Tempo und Arcade",
@@ -6427,6 +6481,408 @@ function nlRun(srcId,dstIp,dstName){
   later(next,300);
 }
 /* <<< game-js netz */
+/* >>> game-js aussen */
+/* ---------- Außenstelle Nord (Praxis-Labor, Konsole + Erklär-Panel) ----------
+   Freitagabend, die neue Außenstelle soll Montag früh laufen. Jens ist vor Ort an
+   der Konsole, Mara schreibt aus der Zentrale. Drei Kapitel: DHCP, DNS, Firewall-
+   Regelwerk. Jeder Befehl wird simuliert, das Panel rechts erklärt Was und Warum,
+   Fehler geben einen Tipp statt einer kahlen Fehlermeldung.
+   Erweitern: neues Kapitel in AK_CHAPTERS anhängen (setup + check je Mission). */
+let ak=null;
+const akDone=()=>utJ("ak_done",[]);
+
+/* ---- Adressen ---- */
+const akIp=s=>{ const m=/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec((s||"").trim()); if(!m) return null;
+  const p=m.slice(1).map(Number); if(p.some(x=>x>255)) return null; return ((p[0]<<24)|(p[1]<<16)|(p[2]<<8)|p[3])>>>0; };
+const akN2ip=n=>[n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".");
+function akMask(s){ s=(s||"").trim(); const sl=/^\/?(\d{1,2})$/.exec(s); if(sl){ const b=+sl[1]; if(b>32) return null; return b===0?0:(0xffffffff<<(32-b))>>>0; }
+  const n=akIp(s); if(n===null) return null; const inv=(~n)>>>0; return ((inv+1)&inv)===0?n:null; }
+const akSame=(a,b,m)=>((a&m)>>>0)===((b&m)>>>0);
+const AK_NET=akIp("192.168.50.0"), AK_M24=akMask("/24");
+const akNorm=n=>(n||"").toLowerCase().trim().replace(/\.$/,"").replace(/\.nord\.local$/,"");
+const AK_SVC={http:["tcp","80"],https:["tcp","443"],dns:["udp","53"],smtp:["tcp","25"],submission:["tcp","587"],imaps:["tcp","993"],ntp:["udp","123"],ping:["icmp","any"]};
+
+/* ---- Ausgangszustand jeder Mission ---- */
+function akBase(){ return {
+  dhcp:{start:"",end:"",mask:"",router:"",dns:"",lease:86400,excl:[],leases:{}},
+  clients:{"PC-Empfang":{mode:"dhcp",ip:"",mask:"",gw:"",dns:"",lease:0,cache:{}},
+           "Drucker":{mode:"static",ip:"192.168.50.120",mask:"255.255.255.0",gw:"192.168.50.1",dns:"192.168.50.10",cache:{}}},
+  hosts:{"192.168.50.1":"nord-gw (Router)","192.168.50.10":"dns01 (DNS-Server)","192.168.50.20":"srv01 (Intranet-Server)"},
+  dns:{"nord-gw":{t:"A",v:"192.168.50.1"},"dns01":{t:"A",v:"192.168.50.10"},"srv01":{t:"A",v:"192.168.50.20"}},
+  fw:{def:"allow",rules:[]},
+  did:{ns:{}} }; }
+const akScope=st=>Object.assign(st.dhcp,{start:"192.168.50.100",end:"192.168.50.199",mask:"255.255.255.0"});
+const akOpts=st=>Object.assign(st.dhcp,{router:"192.168.50.1",dns:"192.168.50.10"});
+const akPC=st=>Object.assign(st.clients["PC-Empfang"],{ip:"192.168.50.100",mask:"255.255.255.0",gw:"192.168.50.1",dns:"192.168.50.10",lease:86400});
+function akEval(st,proto,port){ const R=st.fw.rules;
+  for(let i=0;i<R.length;i++){ const r=R[i]; if((r.proto==="any"||r.proto===proto)&&(r.port==="any"||r.port===String(port))) return {act:r.act,i}; }
+  return {act:st.fw.def,i:-1}; }
+const akOk=(st,list)=>list.every(([p,port,want])=>akEval(st,p,port).act===want);
+
+/* ---- Kapitel und Missionen ---- */
+const AK_CHAPTERS=[
+ {id:"k1",icon:"📮",t:"Kapitel 1: Adressen für alle",d:"Ohne DHCP müsste jemand 60 Rechner von Hand einstellen. Heute Nacht richtest du den Dienst ein, der das übernimmt.",missions:[
+  {id:"a1",t:"Der Adress-Pool",time:"21:34",
+   intro:["Mara: Bist du drin? Gut. Montag um sieben sitzen da 60 Leute, und keiner von denen trägt eine IP-Adresse von Hand ein.",
+          "Mara: Das Netz ist 192.168.50.0/24. Der Router hat die .1, der DNS-Server die .10, der Intranet-Server die .20. Die .200 bis .250 hab ich für Drucker und Kameras reserviert.",
+          "Mara: Leg den DHCP-Bereich so an, dass er nichts davon berührt – und mindestens 80 Adressen hat."],
+   goal:"DHCP-Bereich mit mind. 80 Adressen im Netz 192.168.50.0/24, ohne .1, .10, .20 und .200–.250",
+   hints:["Der Befehl heißt dhcp scope START ENDE MASKE.","Zwischen .20 und .200 ist genug Platz. Zum Beispiel ab .100.","dhcp scope 192.168.50.100 192.168.50.199 255.255.255.0"],
+   setup:()=>{}, check:st=>{ const d=st.dhcp, a=akIp(d.start), b=akIp(d.end), m=akMask(d.mask); if(a===null||b===null||m!==AK_M24||a>b) return false;
+     if(!akSame(a,AK_NET,m)||!akSame(b,AK_NET,m)) return false; const tabu=[1,10,20].map(x=>AK_NET+x); if(tabu.some(t=>t>=a&&t<=b)) return false;
+     if(b>=AK_NET+200&&a<=AK_NET+250) return false; return b-a+1>=80; },
+   done:"Mara: Pool steht. Damit ist geklärt, WELCHE Adressen verteilt werden. Jetzt fehlt noch, was die Rechner sonst wissen müssen.",
+   why:"Ein DHCP-Bereich (Scope) ist ein Stück des Netzes, das der Server verteilen darf. Feste Adressen – Router, Server, Drucker – gehören nicht hinein, sonst vergibt der Server sie doppelt."},
+  {id:"a2",t:"Was ein Rechner sonst noch braucht",time:"21:51",
+   intro:["Mara: Testrechner hat eine Adresse bekommen. Aber er kommt nicht raus, und Namen löst er auch nicht auf.",
+          "Mara: Eine IP allein reicht nicht. Der Rechner muss wissen, wo es aus dem Netz rausgeht – und wen er nach Namen fragt."],
+   goal:"DHCP-Optionen: Gateway 192.168.50.1 und DNS-Server 192.168.50.10",
+   hints:["Gateway und DNS-Server werden als DHCP-Optionen mitgegeben.","dhcp option router IP – und dhcp option dns IP","dhcp option router 192.168.50.1 und dhcp option dns 192.168.50.10"],
+   setup:st=>akScope(st), check:st=>st.dhcp.router==="192.168.50.1"&&st.dhcp.dns==="192.168.50.10",
+   done:"Mara: Jetzt bekommt jeder Rechner das Komplettpaket: Adresse, Maske, Gateway, DNS. Genau das steht in der Prüfung, wenn nach DHCP-Optionen gefragt wird.",
+   why:"Neben Adresse und Maske verteilt DHCP Optionen. Die wichtigsten: Standardgateway (Option 3, „router“) und DNS-Server (Option 6). Fehlt das Gateway, bleibt der Rechner im eigenen Netz gefangen. Fehlt der DNS-Server, gehen nur IP-Adressen, keine Namen."},
+  {id:"a3",t:"Vier Pakete bis zur Adresse",time:"22:08",
+   intro:["Mara: Eine Sache noch: Die Leute arbeiten in Schichten. Leases über einen ganzen Tag sind zu lang – stell sie auf 8 Stunden.",
+          "Mara: Dann lass PC-Empfang neu anfragen und schau dir an, was dabei passiert. Das ist der DORA-Ablauf, den will die IHK gern hören."],
+   goal:"Lease-Dauer 8 Stunden (28800 s), dann PC-Empfang neu anfragen lassen",
+   hints:["Die Lease-Dauer wird in Sekunden angegeben. 8 × 60 × 60 = 28800.","dhcp lease 28800","Danach: client renew PC-Empfang"],
+   setup:st=>{ akScope(st); akOpts(st); }, check:st=>st.dhcp.lease===28800&&st.clients["PC-Empfang"].lease===28800,
+   done:"Mara: Discover, Offer, Request, Ack – du hast es gerade live gesehen. Merk dir: die ersten beiden gehen als Broadcast, weil der Rechner noch keine Adresse hat.",
+   why:"DORA: DHCPDISCOVER (Client sucht per Broadcast einen Server), DHCPOFFER (Server bietet eine Adresse an), DHCPREQUEST (Client nimmt an), DHCPACK (Server bestätigt). Nach der halben Lease-Zeit fragt der Client von sich aus nach Verlängerung."},
+  {id:"a4",t:"Der Drucker, der verschwindet",time:"22:40",
+   intro:["Mara: Hm. Der neue Rechner PC-Neu bekommt keine Adresse. Und der Kollege sagt, der Drucker war gerade kurz weg.",
+          "Mara: Lass PC-Neu mal anfragen und lies genau, was zurückkommt."],
+   goal:"PC-Neu bekommt eine Adresse, und die feste Adresse des Druckers wird nie mehr vergeben",
+   hints:["client renew PC-Neu – und dann lesen, welche Adresse angeboten wird und wer sie schon benutzt.","Der Drucker hat 192.168.50.120 fest eingestellt – und die liegt mitten im Pool. Der Server weiß das nicht.","dhcp exclude 192.168.50.120 – dann noch einmal client renew PC-Neu."],
+   setup:st=>{ akScope(st); akOpts(st); for(let i=0;i<20;i++) st.dhcp.leases["192.168.50."+(100+i)]=(i<12?"Kasse-":"Platz-")+(i<12?i+1:i-11);
+     st.clients["PC-Neu"]={mode:"dhcp",ip:"",mask:"",gw:"",dns:"",lease:0,cache:{}}; },
+   check:st=>{ const c=st.clients["PC-Neu"], d=st.dhcp, p=akIp("192.168.50.120"); const inPool=p>=akIp(d.start)&&p<=akIp(d.end)&&!akExcluded(st,p);
+     return !!c.ip&&c.ip!=="192.168.50.120"&&!inPool; },
+   done:"Mara: Das war der Klassiker: feste Adresse im DHCP-Pool. Entweder Ausschluss oder Pool kleiner machen. Für Drucker gibt's noch die Reservierung – kommt später dran.",
+   why:"Der DHCP-Server weiß nichts von Geräten mit fest eingestellter Adresse. Liegt so eine Adresse im Pool, bietet er sie irgendwann an. Gute Clients merken den Konflikt (ARP-Prüfung) und lehnen ab (DHCPDECLINE). Lösung: Adresse ausschließen oder feste Geräte außerhalb des Pools halten."}]},
+ {id:"k2",icon:"🔤",t:"Kapitel 2: Namen statt Nummern",d:"Niemand merkt sich 192.168.50.120. Heute Nacht bekommt die Außenstelle ihre Namen.",missions:[
+  {id:"a5",t:"Ein Name für den Drucker",time:"23:05",
+   intro:["Mara: Die Leute sollen „drucker.nord.local“ eintippen können statt der IP.",
+          "Mara: Leg im DNS einen Eintrag an und prüf mit nslookup, ob er von PC-Empfang aus aufgelöst wird."],
+   goal:"A-Record drucker → 192.168.50.120, dann nslookup drucker erfolgreich",
+   hints:["Ein Name zu einer IPv4-Adresse ist ein A-Record.","dns add drucker A 192.168.50.120","Danach: nslookup drucker"],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); },
+   check:st=>st.dns.drucker&&st.dns.drucker.t==="A"&&st.dns.drucker.v==="192.168.50.120"&&st.did.ns.drucker==="192.168.50.120",
+   done:"Mara: Perfekt. A wie Address: Name zu IPv4. Für IPv6 wäre es ein AAAA-Record.",
+   why:"Ein A-Record ordnet einem Namen eine IPv4-Adresse zu (AAAA für IPv6). nslookup fragt den eingestellten DNS-Server und zeigt, welcher Server geantwortet hat und was herauskam."},
+  {id:"a6",t:"Der zweite Name",time:"23:20",
+   intro:["Mara: Das Intranet läuft auf srv01. Die Leute kennen es aber als „intranet“ – und falls wir den Server irgendwann tauschen, will ich nur an einer Stelle ändern.",
+          "Mara: Mach „intranet“ zu einem Alias auf srv01. Keinen zweiten A-Record!"],
+   goal:"CNAME intranet → srv01, nslookup intranet liefert 192.168.50.20",
+   hints:["Ein Alias auf einen anderen Namen ist ein CNAME-Record.","dns add intranet CNAME srv01","Danach: nslookup intranet"],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); },
+   check:st=>st.dns.intranet&&st.dns.intranet.t==="CNAME"&&akNorm(st.dns.intranet.v)==="srv01"&&st.did.ns.intranet==="192.168.50.20",
+   done:"Mara: Genau so. Ändert sich die Adresse von srv01, zieht „intranet“ automatisch mit.",
+   why:"Ein CNAME zeigt auf einen anderen Namen, nicht auf eine Adresse. Der Resolver folgt der Kette bis zum A-Record. Vorteil: Ändert sich die IP, passt man nur den A-Record an."},
+  {id:"a7",t:"Umzug mit Gedächtnis",time:"23:47",
+   intro:["Mara: srv01 läuft ab jetzt auf neuer Hardware: 192.168.50.21. Die alte Kiste unter .20 hab ich gerade ausgeschaltet.",
+          "Mara: Trag die neue Adresse ein. Und sorg dafür, dass PC-Empfang SOFORT bei der neuen landet – nicht erst morgen."],
+   goal:"A-Record srv01 → 192.168.50.21, und nslookup srv01 von PC-Empfang liefert die neue Adresse",
+   hints:["Erst den Eintrag ändern: dns set srv01 192.168.50.21","Dann nslookup srv01 – und genau lesen, woher die Antwort kommt.","PC-Empfang hat die alte Antwort im Cache. client flushdns PC-Empfang leert ihn."],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); st.clients["PC-Empfang"].cache={srv01:{v:"192.168.50.20",ttl:3600}}; delete st.hosts["192.168.50.20"]; st.hosts["192.168.50.21"]="srv01 (neue Hardware)"; },
+   check:st=>st.dns.srv01&&st.dns.srv01.v==="192.168.50.21"&&st.did.ns.srv01==="192.168.50.21",
+   done:"Mara: Genau das ist TTL. Bei einem geplanten Umzug setzt man die TTL vorher runter, dann merkt das niemand.",
+   why:"Clients speichern DNS-Antworten für die Dauer der TTL (Time to Live). Ändert sich ein Eintrag, sehen sie die neue Adresse erst nach Ablauf – oder nach dem Leeren des Caches (unter Windows: ipconfig /flushdns)."}]},
+ {id:"k3",icon:"🧱",t:"Kapitel 3: Nur was gebraucht wird",d:"Ein Regelwerk für den Weg vom Büro ins Internet: offen ist nur, was die Arbeit braucht.",missions:[
+  {id:"a8",t:"Das erste Regelwerk",time:"00:15",
+   intro:["Mara: Letzter Block. Im Moment lässt die Firewall vom Büro ins Internet einfach alles durch.",
+          "Mara: Unsere Vorgabe: Webseiten nur verschlüsselt, also HTTPS. Dazu DNS. Alles andere bleibt zu, bis jemand es begründet braucht."],
+   goal:"Erlaubt: tcp 443 und udp 53 – alles andere gesperrt",
+   hints:["Erst die Grundhaltung ändern: fw default deny","Dann erlauben, was gebraucht wird: fw add allow tcp 443","Und DNS: fw add allow udp 53. Prüfen mit fw test tcp 80."],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); },
+   check:st=>st.fw.def==="deny"&&akOk(st,[["tcp","443","allow"],["udp","53","allow"],["tcp","80","deny"],["tcp","25","deny"],["udp","123","deny"]]),
+   done:"Mara: Default deny, dann gezielt öffnen. So herum ist es richtig – nicht erst alles erlauben und dann einzeln verbieten.",
+   why:"Grundprinzip „Default deny“ (Whitelist): Alles ist gesperrt, nur benötigte Dienste werden erlaubt. Das Gegenteil (Blacklist) übersieht immer etwas. HTTPS läuft über TCP 443, DNS über UDP 53."},
+  {id:"a9",t:"Wer zuerst passt",time:"00:32",
+   intro:["Mara: Ich hab dein Regelwerk auf die Firewall in der Zentrale kopiert … und jetzt geht da gar nichts mehr.",
+          "Mara: Schau dir die Liste an. Irgendwas mit der Reihenfolge."],
+   goal:"HTTPS und DNS gehen wieder, alles andere bleibt gesperrt",
+   hints:["fw list – und dann mit fw test tcp 443 prüfen, welche Regel greift.","Regeln werden von oben nach unten geprüft, die erste passende gewinnt.","Regel 1 sperrt alles. Entweder löschen (fw del 1) oder nach unten schieben (fw move 1 3)."],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); st.fw.def="deny"; st.fw.rules=[{act:"deny",proto:"any",port:"any"},{act:"allow",proto:"tcp",port:"443"},{act:"allow",proto:"udp",port:"53"}]; },
+   check:st=>akOk(st,[["tcp","443","allow"],["udp","53","allow"],["tcp","80","deny"],["tcp","25","deny"]]),
+   done:"Mara: First match wins. Eine „alles sperren“-Regel ganz oben macht alles darunter wirkungslos.",
+   why:"Firewalls prüfen Regeln der Reihe nach, die erste passende entscheidet (first match). Allgemeine Regeln gehören deshalb nach unten, spezielle nach oben – oder man nutzt gleich die Default-Policy."},
+  {id:"a10",t:"Post muss raus",time:"00:58",
+   intro:["Mara: Letzter Wunsch für heute: Die Mailprogramme müssen senden und abrufen können.",
+          "Mara: Versand über Submission (tcp 587), Abruf über IMAPS (tcp 993). Port 25 bleibt zu – direkt zustellen darf bei uns nur der Mailserver in der Zentrale."],
+   goal:"tcp 587 und tcp 993 erlaubt, tcp 25 gesperrt, HTTPS und DNS gehen weiter",
+   hints:["Zwei weitere allow-Regeln.","fw add allow tcp 587 – und fw add allow tcp 993","Mit fw test tcp 25 prüfen, dass der Port zu bleibt."],
+   setup:st=>{ akScope(st); akOpts(st); akPC(st); st.fw.def="deny"; st.fw.rules=[{act:"allow",proto:"tcp",port:"443"},{act:"allow",proto:"udp",port:"53"}]; },
+   check:st=>akOk(st,[["tcp","587","allow"],["tcp","993","allow"],["tcp","25","deny"],["tcp","443","allow"],["udp","53","allow"]]),
+   done:"Mara: Feierabend. Montag um sieben läuft die Außenstelle. Danke dir.",
+   why:"Mailclients senden über Port 587 (Submission, mit Anmeldung) und rufen über 993 (IMAP über TLS) ab. Port 25 ist für Server untereinander – von normalen Arbeitsplätzen gesperrt, damit keine Mails an der eigenen Infrastruktur vorbei verschickt werden."}]},
+ {id:"frei",icon:"🧪",t:"Freie Konsole",d:"Alle Befehle, kein Ziel. Ausprobieren, was passiert.",missions:[
+  {id:"af",t:"Freie Konsole",time:"—",free:true,intro:["Mara: Spielwiese. Mach kaputt, was du willst – mit „reset“ fängst du neu an."],goal:"Kein Ziel",hints:["help zeigt alle Befehle.","status zeigt den aktuellen Stand."],
+   setup:()=>{}, check:()=>false, done:"", why:""}]}
+];
+const AK_ALL=AK_CHAPTERS.flatMap(c=>c.missions.map(m=>Object.assign(m,{chap:c})));
+
+/* ---- Erklärungen (Panel) ---- */
+const AK_EX={
+  help:{t:"help",was:"Listet alle Befehle. Unter „Befehle“ kannst du sie antippen statt tippen.",warum:"In echten Konsolen hilft meist <code>?</code> oder <code>help</code> – niemand kennt alle Befehle auswendig."},
+  status:{t:"status",was:"Zeigt DHCP-Bereich, Optionen, DNS-Einträge und Firewall-Regeln auf einen Blick.",warum:"Bevor man etwas ändert, schaut man nach, was schon da ist."},
+  scope:{t:"DHCP-Bereich (Scope)",was:"Legt fest, welche Adressen der Server verteilen darf: Start, Ende und Subnetzmaske.",warum:"Feste Adressen (Router, Server, Drucker) gehören NICHT in den Bereich, sonst werden sie doppelt vergeben."},
+  option:{t:"DHCP-Optionen",was:"Zusätzliche Angaben, die mit der Adresse verteilt werden: <code>router</code> = Standardgateway (Option 3), <code>dns</code> = DNS-Server (Option 6).",warum:"Ohne Gateway kommt der Rechner nicht aus dem eigenen Netz, ohne DNS gehen keine Namen."},
+  lease:{t:"Lease-Dauer",was:"Wie lange ein Client seine Adresse behalten darf, in Sekunden. Nach der Hälfte fragt er von sich aus nach Verlängerung.",warum:"Kurz bei vielen wechselnden Geräten (WLAN, Schichten), lang bei festen Arbeitsplätzen."},
+  exclude:{t:"Ausschluss",was:"Nimmt einzelne Adressen oder einen Bereich aus dem Pool. Der Server vergibt sie nie.",warum:"Für Geräte mit fester Adresse, die mitten im Pool liegen."},
+  leases:{t:"Vergebene Adressen",was:"Zeigt, welche Adresse gerade an welchen Client vergeben ist.",warum:"Erste Anlaufstelle, wenn ein Gerät „keine Adresse“ bekommt: Ist der Pool voll?"},
+  renew:{t:"DHCP-Anfrage (DORA)",was:"Der Client fragt neu an: <b>D</b>iscover (Broadcast: Gibt es einen Server?) → <b>O</b>ffer (Angebot) → <b>R</b>equest (Client nimmt an) → <b>A</b>ck (Bestätigung).",warum:"Discover und Request gehen als Broadcast, weil der Client noch keine Adresse hat. Unter Windows: <code>ipconfig /renew</code>."},
+  cshow:{t:"Client-Konfiguration",was:"Zeigt Adresse, Maske, Gateway, DNS-Server und Lease eines Geräts.",warum:"Entspricht <code>ipconfig /all</code> unter Windows bzw. <code>ip addr</code> unter Linux."},
+  nslookup:{t:"nslookup",was:"Fragt den eingestellten DNS-Server nach einem Namen. Zeigt, welcher Server antwortet und welche Adresse herauskommt.",warum:"Damit trennt man DNS-Probleme von Netzproblemen: Löst der Name auf, liegt der Fehler woanders."},
+  dnsa:{t:"A-Record",was:"Ordnet einem Namen eine IPv4-Adresse zu. Für IPv6 heißt der Typ AAAA.",warum:"Der häufigste Eintrag überhaupt. Prüfungsklassiker: A = IPv4, AAAA = IPv6, CNAME = Alias, MX = Mailserver."},
+  dnscname:{t:"CNAME-Record",was:"Ein Alias: zeigt auf einen anderen Namen, nicht auf eine Adresse. Der Resolver folgt der Kette bis zum A-Record.",warum:"Ändert sich die IP, passt man nur den A-Record an – alle Aliase ziehen mit."},
+  dnsset:{t:"Eintrag ändern",was:"Setzt die Adresse eines vorhandenen A-Records neu.",warum:"Achtung: Clients, die den alten Wert im Cache haben, merken das erst nach Ablauf der TTL."},
+  dnsdel:{t:"Eintrag löschen",was:"Entfernt einen Namen aus der Zone.",warum:"Alte Einträge aufzuräumen verhindert, dass jemand auf ein abgeschaltetes Gerät zeigt."},
+  dnslist:{t:"Zone anzeigen",was:"Alle Einträge der Zone nord.local mit Typ und Ziel.",warum:"Überblick vor jeder Änderung."},
+  flush:{t:"DNS-Cache leeren",was:"Löscht die zwischengespeicherten Antworten eines Clients. Unter Windows: <code>ipconfig /flushdns</code>.",warum:"Clients merken sich Antworten für die TTL-Dauer. Nach einer Änderung hilft das Leeren, sofort den neuen Stand zu sehen."},
+  ping:{t:"ping",was:"Schickt ein ICMP-Echo und wartet auf Antwort. Ein Name wird vorher per DNS aufgelöst.",warum:"Prüft Erreichbarkeit auf Schicht 3. Kommt keine Antwort, kann auch eine Firewall ICMP sperren – Ping ist kein Beweis, dass ein Gerät aus ist."},
+  fwlist:{t:"Regelwerk",was:"Zeigt die Regeln in Prüfreihenfolge und die Grundhaltung (Default-Policy).",warum:"Die Reihenfolge entscheidet – die erste passende Regel gewinnt."},
+  fwadd:{t:"Regel hinzufügen",was:"<code>fw add allow|deny PROTOKOLL PORT</code> hängt eine Regel unten an. Statt Port geht auch ein Dienstname: https, dns, submission, imaps, ntp.",warum:"Bei Default deny schreibt man nur allow-Regeln für das, was wirklich gebraucht wird."},
+  fwdel:{t:"Regel löschen",was:"Entfernt die Regel mit dieser Nummer. Die anderen rücken nach.",warum:"Nicht mehr benötigte Freigaben sofort entfernen – jede offene Tür ist eine zu viel."},
+  fwmove:{t:"Regel verschieben",was:"<code>fw move VON NACH</code> setzt eine Regel an eine andere Position.",warum:"First match: spezielle Regeln nach oben, allgemeine nach unten."},
+  fwdef:{t:"Default-Policy",was:"Was passiert, wenn keine Regel passt: allow oder deny.",warum:"Empfohlen ist deny (Whitelist-Prinzip): Alles zu, nur Benötigtes auf."},
+  fwtest:{t:"Regel testen",was:"Spielt ein Paket durch das Regelwerk und zeigt, welche Regel greift.",warum:"So prüft man eine Änderung, bevor sich jemand beschwert."},
+  reset:{t:"reset",was:"Setzt die aktuelle Mission auf den Anfang zurück.",warum:""},
+  hint:{t:"Tipp",was:"Gibt den nächsten Hinweis zur Mission. Der letzte Hinweis enthält die Lösung.",warum:""}
+};
+const AK_CMDS=[
+  ["Allgemein",[["help","alle Befehle"],["status","Überblick"],["mission","Auftrag nochmal anzeigen"],["hint","Tipp"],["reset","Mission neu starten"],["clear","Bildschirm leeren"]]],
+  ["DHCP",[["dhcp scope 192.168.50.100 192.168.50.199 255.255.255.0","Bereich anlegen"],["dhcp option router 192.168.50.1","Gateway verteilen"],["dhcp option dns 192.168.50.10","DNS-Server verteilen"],["dhcp lease 28800","Lease-Dauer in Sekunden"],["dhcp exclude 192.168.50.120","Adresse ausschließen"],["dhcp show","Einstellungen"],["dhcp leases","vergebene Adressen"],["client list","Geräte"],["client renew PC-Empfang","neu anfragen (DORA)"],["client show PC-Empfang","Konfiguration"]]],
+  ["DNS",[["dns list","Zone anzeigen"],["dns add drucker A 192.168.50.120","A-Record"],["dns add intranet CNAME srv01","Alias"],["dns set srv01 192.168.50.21","Adresse ändern"],["dns del drucker","Eintrag löschen"],["nslookup srv01","Namen auflösen"],["client flushdns PC-Empfang","DNS-Cache leeren"],["ping PC-Empfang srv01","Erreichbarkeit"]]],
+  ["Firewall",[["fw list","Regelwerk"],["fw default deny","Grundhaltung"],["fw add allow tcp 443","Regel anhängen"],["fw add allow dns","per Dienstname"],["fw del 1","Regel löschen"],["fw move 1 3","Reihenfolge ändern"],["fw test tcp 80","Paket durchspielen"]]]
+];
+
+/* ---- Bildschirme ---- */
+function akHome(){
+  const done=akDone(), n=AK_ALL.filter(m=>!m.free).length, k=done.filter(id=>AK_ALL.some(m=>m.id===id)).length;
+  $("#ak").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div class="big-ic" style="font-size:34px">🏢</div>
+      <h2>Außenstelle Nord</h2><p>Freitag, 21:30 Uhr. Montag früh sitzen 60 Leute in der neuen Außenstelle, und das Netz ist noch nackt. Du bist vor Ort an der Konsole, Mara schreibt aus der Zentrale.</p>
+      <span class="pill">${k} von ${n} Aufträgen erledigt</span></div>
+    ${AK_CHAPTERS.map(c=>`<span class="field-l">${esc(c.t)}</span><p class="hint" style="text-align:left;margin:-4px 2px 4px">${esc(c.d)}</p>
+      <div class="ak-chap">${c.missions.map(m=>`<button class="hrow${done.includes(m.id)?" done":""}" data-m="${m.id}"><span class="ic">${done.includes(m.id)?"✅":c.icon}</span><span class="tx"><b>${esc(m.t)}</b><small>${esc(m.goal)}</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>`).join("")}</div>`).join("")}
+    <div class="panel ld-rules"><b style="font:600 15px var(--display)">So geht's</b>
+      <div>⌨️ Befehle tippen – oder unter „Befehle“ antippen und anpassen</div>
+      <div>📘 Rechts erklärt das Panel jeden Befehl: was er tut und warum</div>
+      <div>💡 „hint“ gibt Tipps in Stufen, Fehler werden erklärt statt bestraft</div></div>`;
+  $$("#ak [data-m]").forEach(b=>b.onclick=()=>akStart(b.dataset.m));
+  window.scrollTo({top:0});
+}
+function akStart(mid){
+  const M=AK_ALL.find(m=>m.id===mid), st=akBase(); M.setup(st);
+  ak={m:M,st,hist:[],hp:-1,hintN:0,solved:false,done:false,lines:[]};
+  akRender();
+  akSys(`── ${M.chap.t} · ${M.t} ──`); akSys(`Außenstelle Nord, ${M.time} Uhr`);
+  let i=0; const show=()=>{ if(!ak||ak.m!==M||ak.done) return; if(i<M.intro.length){ akMsg(M.intro[i++]); setTimeout(show,650); } else { akDim(`Ziel: ${M.goal}`); akDim("Tippe help für alle Befehle oder hint für einen Tipp."); } };
+  setTimeout(show,250);
+  akPanel("start");
+}
+function akRender(){
+  const M=ak.m, ms=M.chap.missions, idx=ms.indexOf(M), done=akDone();
+  $("#ak").innerHTML=`<div class="ak-wrap">
+    <div class="ak-head"><small>${esc(M.chap.t)}${M.free?"":` · Auftrag ${idx+1} von ${ms.length}`}</small><b>${esc(M.t)}</b><span class="ak-goal">Ziel: ${esc(M.goal)}</span>
+      ${M.free?"":`<div class="ak-prog">${ms.map((m,i)=>`<i class="${done.includes(m.id)?"on":i===idx?"cur":""}"></i>`).join("")}</div>`}</div>
+    <div class="ak-split">
+      <div class="ak-term"><div class="ak-bar"><i></i><i></i><i></i><span>nord-gw · ${esc(M.time)}</span></div>
+        <div class="ak-out" id="ak-out" aria-live="polite">${ak.lines.join("")}</div>
+        <form class="ak-in" id="ak-form" autocomplete="off"><b>$</b><input id="ak-cmd" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="Befehl eingeben …"><button type="submit">⏎</button></form>
+        <div class="ak-keys"><button data-k="help">help</button><button data-k="status">status</button><button data-k="hint">hint</button><button data-k="__cmds">Befehle …</button><button data-k="__up">↑</button></div></div>
+      <div class="ak-panel" id="ak-panel"></div></div>
+    <div class="grid2"><button class="btn ghost" id="ak-home">← Aufträge</button><button class="btn ghost" id="ak-reset">Neu starten</button></div>
+  </div>`;
+  const inp=$("#ak-cmd");
+  $("#ak-form").onsubmit=e=>{ e.preventDefault(); const v=inp.value; inp.value=""; ak.hp=-1; akExec(v); };
+  inp.onkeydown=e=>{ if(e.key==="ArrowUp"){ e.preventDefault(); akHistory(1); } else if(e.key==="ArrowDown"){ e.preventDefault(); akHistory(-1); } };
+  $$("#ak [data-k]").forEach(b=>b.onclick=()=>{ const k=b.dataset.k; if(k==="__cmds") akCmdSheet(); else if(k==="__up") akHistory(1); else akExec(k); });
+  $("#ak-home").onclick=()=>{ ak.done=true; akHome(); };
+  $("#ak-reset").onclick=()=>akStart(M.id);
+  const o=$("#ak-out"); o.scrollTop=o.scrollHeight;
+}
+function akHistory(dir){ const h=ak.hist; if(!h.length) return; ak.hp=Math.max(-1,Math.min(h.length-1,ak.hp+dir)); $("#ak-cmd").value=ak.hp<0?"":h[h.length-1-ak.hp]; }
+function akCmdSheet(){
+  openSheet("Befehle",AK_CMDS.map(([g,L])=>`<span class="field-l">${esc(g)}</span><div class="ak-cmds">${L.map(([c,d])=>`<button data-c="${esc(c)}"><code>${esc(c)}</code><small>${esc(d)}</small></button>`).join("")}</div>`).join(""),root=>{
+    root.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{ closeSheet(); const i=$("#ak-cmd"); i.value=b.dataset.c; i.focus(); try{ i.setSelectionRange(i.value.length,i.value.length); }catch(_){} }); });
+}
+/* ---- Ausgabe ---- */
+function akLine(cls,html){ if(!ak) return; const h=`<div class="${cls}">${html}</div>`; ak.lines.push(h); const o=$("#ak-out"); if(o){ o.insertAdjacentHTML("beforeend",h); o.scrollTop=o.scrollHeight; } }
+const akOut=t=>akLine("",esc(t)), akSys=t=>akLine("sys",esc(t)), akDim=t=>akLine("dim",esc(t)), akGood=t=>akLine("ok",esc(t)), akErr=t=>akLine("err",esc(t));
+function akMsg(t){ const i=t.indexOf(":"); akLine("msg",i>0?`<b>${esc(t.slice(0,i+1))}</b>${esc(t.slice(i+1))}`:esc(t)); }
+function akPanel(key,tip){
+  const p=$("#ak-panel"); if(!p) return; const M=ak.m;
+  let html="";
+  if(key==="start") html=`<h3>📘 Warum, wieso, weshalb<small>Erklär-Panel</small></h3><p>Hier erscheint zu jedem Befehl, was er macht und warum man das so macht. Lies zuerst Maras Nachrichten links.</p>`;
+  else if(AK_EX[key]){ const E=AK_EX[key]; html=`<h3>📘 ${E.t}<small>Erklär-Panel</small></h3><div class="ak-box"><b>Was passiert?</b><p>${E.was}</p></div>${E.warum?`<div class="ak-box"><b>Warum?</b><p>${E.warum}</p></div>`:""}`; }
+  if(tip) html+=`<div class="ak-box ak-tip"><b>💡 Tipp</b><p>${tip}</p></div>`;
+  html+=`<p class="hint" style="text-align:left;margin:0">Ziel: ${esc(M.goal)}</p>`;
+  p.innerHTML=html;
+}
+function akTip(t,key){ akPanel(key||"help",t); }
+
+/* ---- Befehle ---- */
+function akExcluded(st,n){ return st.dhcp.excl.some(([a,b])=>n>=a&&n<=b); }
+function akClient(name){ const k=Object.keys(ak.st.clients).find(c=>c.toLowerCase()===(name||"").toLowerCase()); return k?[k,ak.st.clients[k]]:[null,null]; }
+function akExec(raw){
+  const line=(raw||"").trim(); if(!line) return; if(!ak.hist.length||ak.hist[ak.hist.length-1]!==line) ak.hist.push(line);
+  akLine("cmd",esc(line));
+  const t=line.split(/\s+/), c0=t[0].toLowerCase(), c1=(t[1]||"").toLowerCase();
+  try{ akDispatch(t,c0,c1); }catch(e){ akErr("Interner Fehler – bitte nochmal versuchen."); }
+  akCheck();
+}
+function akDispatch(t,c0,c1){
+  const st=ak.st, d=st.dhcp;
+  if(c0==="help"||c0==="?"){ AK_CMDS.forEach(([g,L])=>{ akSys(g+":"); L.forEach(([c,x])=>akOut(`  ${c.padEnd(46)} ${x}`)); }); akPanel("help"); return; }
+  if(c0==="clear"){ ak.lines=[]; $("#ak-out").innerHTML=""; return; }
+  if(c0==="reset"){ akStart(ak.m.id); return; }
+  if(c0==="mission"){ ak.m.intro.forEach(akMsg); akDim(`Ziel: ${ak.m.goal}`); return; }
+  if(c0==="hint"){ const H=ak.m.hints; const i=Math.min(ak.hintN,H.length-1); ak.hintN=Math.min(ak.hintN+1,H.length); akDim(`Tipp ${i+1}/${H.length}: ${H[i]}`); akPanel("hint",esc(H[i])+(i===H.length-1?" <i>(letzter Tipp)</i>":"")); return; }
+  if(c0==="status"){ akStatus(); akPanel("status"); return; }
+  if(c0==="dhcp"){
+    if(c1==="scope"){ const a=akIp(t[2]),b=akIp(t[3]),m=akMask(t[4]);
+      if(a===null||b===null||m===null) return akErr("Syntax: dhcp scope START ENDE MASKE"),akTip("Beispiel: <code>dhcp scope 192.168.50.100 192.168.50.199 255.255.255.0</code>. Die Maske geht auch als <code>/24</code>.","scope");
+      if(a>b) return akErr("Start liegt hinter dem Ende."),akTip("Die kleinere Adresse kommt zuerst.","scope");
+      if(!akSame(a,b,m)) return akErr("Start und Ende liegen nicht im selben Netz."),akTip("Mit dieser Maske gehören Start und Ende zu verschiedenen Netzen. Für das Netz 192.168.50.0 brauchst du /24.","scope");
+      if(!akSame(a,AK_NET,m)) akDim("Hinweis: Das ist nicht das Netz der Außenstelle (192.168.50.0/24).");
+      Object.assign(d,{start:t[2],end:t[3],mask:/^\//.test(t[4])||/^\d{1,2}$/.test(t[4])?akN2ip(m):t[4]});
+      akGood(`Bereich gesetzt: ${d.start} – ${d.end} (${b-a+1} Adressen), Maske ${d.mask}`);
+      const tabu=Object.keys(st.hosts).map(akIp).filter(x=>x>=a&&x<=b&&!akExcluded(st,x));
+      if(tabu.length) akErr(`Achtung: ${tabu.map(akN2ip).join(", ")} liegt im Bereich, ist aber fest vergeben.`);
+      return akPanel("scope",tabu.length?"Router und Server haben feste Adressen. Liegen die im Pool, vergibt der Server sie ein zweites Mal.":null); }
+    if(c1==="option"){ const k=(t[2]||"").toLowerCase(), ip=akIp(t[3]);
+      if(!["router","dns","gateway"].includes(k)||ip===null) return akErr("Syntax: dhcp option router|dns IP"),akTip("Zwei Optionen gibt es hier: <code>dhcp option router 192.168.50.1</code> und <code>dhcp option dns 192.168.50.10</code>.","option");
+      if(k==="dns"){ d.dns=t[3]; akGood(`Option 6 (DNS-Server) = ${t[3]}`); if(t[3]!=="192.168.50.10") akDim("Hinweis: Der DNS-Server der Außenstelle ist 192.168.50.10."); }
+      else { d.router=t[3]; akGood(`Option 3 (Router/Gateway) = ${t[3]}`); if(!st.hosts[t[3]]||!/Router/.test(st.hosts[t[3]])) akDim("Hinweis: Unter dieser Adresse steht kein Router."); }
+      return akPanel("option"); }
+    if(c1==="lease"){ const s=parseInt(t[2],10); if(!(s>=60)) return akErr("Syntax: dhcp lease SEKUNDEN (mind. 60)"),akTip("Die Dauer wird in Sekunden angegeben. Eine Stunde sind 3600 Sekunden.","lease");
+      d.lease=s; akGood(`Lease-Dauer: ${s} s (${(s/3600).toFixed(s%3600?1:0)} h)`); akDim("Gilt für neue Anfragen. Bereits vergebene Adressen behalten ihre alte Dauer bis zur Verlängerung."); return akPanel("lease"); }
+    if(c1==="exclude"){ const a=akIp(t[2]), b=t[3]?akIp(t[3]):a; if(a===null||b===null||a>b) return akErr("Syntax: dhcp exclude IP [BIS-IP]"),akTip("Eine Adresse: <code>dhcp exclude 192.168.50.120</code>. Ein Bereich: <code>dhcp exclude 192.168.50.120 192.168.50.129</code>.","exclude");
+      d.excl.push([a,b]); akGood(`Ausgeschlossen: ${t[2]}${b!==a?" – "+t[3]:""}`); return akPanel("exclude"); }
+    if(c1==="show"||!c1){ akOut(`Bereich:  ${d.start?`${d.start} – ${d.end}`:"(keiner)"}  Maske ${d.mask||"–"}`); akOut(`Gateway:  ${d.router||"(fehlt)"}    DNS: ${d.dns||"(fehlt)"}`); akOut(`Lease:    ${d.lease} s`); akOut(`Ausschluss: ${d.excl.length?d.excl.map(([a,b])=>a===b?akN2ip(a):akN2ip(a)+"–"+akN2ip(b)).join(", "):"–"}`); return akPanel("scope"); }
+    if(c1==="leases"){ const L=Object.entries(d.leases); if(!L.length) akDim("Noch keine Adressen vergeben."); else L.sort((x,y)=>akIp(x[0])-akIp(y[0])).forEach(([ip,n])=>akOut(`${ip.padEnd(16)} ${n}`)); return akPanel("leases"); }
+    akErr(`Unbekannt: dhcp ${c1}`); return akTip("Unter <code>dhcp</code> gibt es: scope, option, lease, exclude, show, leases.","scope");
+  }
+  if(c0==="client"||c0==="ipconfig"){
+    if(c0==="ipconfig"){ t=["client",(t[1]||"").replace(/^\//,"")==="flushdns"?"flushdns":"show",t[2]||t[1]]; if(!/flushdns|show/.test(t[1])) t[1]="show"; c1=t[1]; }
+    if(c1==="list"){ Object.entries(st.clients).forEach(([n,c])=>akOut(`${n.padEnd(12)} ${c.mode==="dhcp"?"DHCP ":"fest "} ${c.ip||"(keine Adresse)"}`)); return akPanel("cshow"); }
+    const [name,c]=akClient(t[2]);
+    if(!c) return akErr(`Gerät „${t[2]||""}“ nicht gefunden.`),akTip(`Vorhanden: ${Object.keys(st.clients).map(n=>`<code>${esc(n)}</code>`).join(", ")}. Mit <code>client list</code> siehst du alle.`,"cshow");
+    if(c1==="show"){ akOut(`${name}  (${c.mode==="dhcp"?"per DHCP":"fest eingestellt"})`); akOut(`  IPv4-Adresse . . : ${c.ip||"–"}`); akOut(`  Subnetzmaske  . . : ${c.mask||"–"}`); akOut(`  Standardgateway . : ${c.gw||"–"}`); akOut(`  DNS-Server  . . . : ${c.dns||"–"}`); if(c.mode==="dhcp") akOut(`  Lease . . . . . . : ${c.lease?c.lease+" s":"–"}`); return akPanel("cshow"); }
+    if(c1==="renew") return akRenew(name,c);
+    if(c1==="flushdns"){ const n=Object.keys(c.cache).length; c.cache={}; akGood(`DNS-Cache von ${name} geleert (${n} Einträge).`); return akPanel("flush"); }
+    akErr(`Unbekannt: client ${c1}`); return akTip("Unter <code>client</code> gibt es: list, show, renew, flushdns.","cshow");
+  }
+  if(c0==="nslookup"){ if(!t[1]) return akErr("Syntax: nslookup NAME [von GERÄT]"),akTip("Zum Beispiel <code>nslookup srv01</code>. Gefragt wird standardmäßig von PC-Empfang aus.","nslookup");
+    const from=t[2]&&/^(von|from)$/i.test(t[2])?t[3]:(t[2]||"PC-Empfang"); return akLookup(t[1],from,true); }
+  if(c0==="ping"){ const src=t[2]?t[1]:"PC-Empfang", dst=t[2]||t[1]; return akPing(src,dst); }
+  if(c0==="dns"){
+    if(c1==="list"||!c1){ Object.entries(st.dns).sort().forEach(([n,r])=>akOut(`${(n+".nord.local").padEnd(26)} ${r.t.padEnd(6)} ${r.t==="CNAME"?r.v+".nord.local":r.v}`)); return akPanel("dnslist"); }
+    if(c1==="add"){ const n=akNorm(t[2]), typ=(t[3]||"").toUpperCase(), v=t[4];
+      if(!n||!["A","CNAME"].includes(typ)||!v) return akErr("Syntax: dns add NAME A IP  oder  dns add NAME CNAME ZIELNAME"),akTip("A-Record: <code>dns add drucker A 192.168.50.120</code>. Alias: <code>dns add intranet CNAME srv01</code>.","dnsa");
+      if(st.dns[n]) return akErr(`${n} gibt es schon (${st.dns[n].t}).`),akTip(`Ändern mit <code>dns set ${esc(n)} NEUE-IP</code> oder erst löschen mit <code>dns del ${esc(n)}</code>.`,"dnsset");
+      if(typ==="A"){ if(akIp(v)===null) return akErr(`${v} ist keine gültige IPv4-Adresse.`),akTip("Ein A-Record zeigt immer auf eine IPv4-Adresse. Für einen Namen nimmst du CNAME.","dnsa");
+        st.dns[n]={t:"A",v}; akGood(`${n}.nord.local  A  ${v}  angelegt`); if(!st.hosts[v]&&!Object.values(st.clients).some(c=>c.ip===v)) akDim("Hinweis: Unter dieser Adresse antwortet derzeit kein Gerät."); return akPanel("dnsa"); }
+      if(akIp(v)!==null) return akErr("Ein CNAME zeigt auf einen Namen, nicht auf eine Adresse."),akTip("Für eine Adresse nimmst du einen A-Record. Ein CNAME braucht einen Zielnamen wie <code>srv01</code>.","dnscname");
+      st.dns[n]={t:"CNAME",v:akNorm(v)}; akGood(`${n}.nord.local  CNAME  ${akNorm(v)}.nord.local  angelegt`); if(!st.dns[akNorm(v)]) akDim(`Hinweis: ${akNorm(v)} gibt es noch nicht – der Alias läuft ins Leere.`); return akPanel("dnscname"); }
+    if(c1==="set"){ const n=akNorm(t[2]); if(!st.dns[n]) return akErr(`${t[2]||""} gibt es nicht.`),akTip("Neue Einträge legst du mit <code>dns add</code> an.","dnsa");
+      if(st.dns[n].t!=="A") return akErr(`${n} ist ein ${st.dns[n].t}, kein A-Record.`),akTip("Einen Alias änderst du, indem du ihn löschst und neu anlegst.","dnscname");
+      if(akIp(t[3])===null) return akErr("Syntax: dns set NAME IP"),akTip(`Zum Beispiel <code>dns set ${esc(n)} 192.168.50.21</code>.`,"dnsset");
+      const old=st.dns[n].v; st.dns[n].v=t[3]; akGood(`${n}.nord.local  A  ${old} → ${t[3]}`); akDim("Clients mit der alten Antwort im Cache sehen das erst nach Ablauf der TTL (hier 3600 s)."); return akPanel("dnsset"); }
+    if(c1==="del"){ const n=akNorm(t[2]); if(!st.dns[n]) return akErr(`${t[2]||""} gibt es nicht.`),akTip("Mit <code>dns list</code> siehst du alle Einträge.","dnsdel");
+      if(["dns01","nord-gw"].includes(n)) return akErr(`${n} wird für den Betrieb gebraucht und bleibt.`),akPanel("dnsdel");
+      delete st.dns[n]; akGood(`${n}.nord.local gelöscht`); return akPanel("dnsdel"); }
+    akErr(`Unbekannt: dns ${c1}`); return akTip("Unter <code>dns</code> gibt es: list, add, set, del.","dnslist");
+  }
+  if(c0==="fw"){
+    const fw=st.fw;
+    if(c1==="list"||!c1){ akOut("Regelwerk Büronetz → Internet (erste passende Regel gewinnt)"); if(!fw.rules.length) akDim("  (keine Regeln)"); fw.rules.forEach((r,i)=>akOut(`  ${String(i+1).padStart(2)}  ${r.act.padEnd(5)}  ${r.proto.padEnd(4)}  ${r.port}`)); akOut(`  Default: ${fw.def}`); return akPanel("fwlist"); }
+    if(c1==="default"){ const v=(t[2]||"").toLowerCase(); if(!["allow","deny"].includes(v)) return akErr("Syntax: fw default allow|deny"),akTip("Empfohlen: <code>fw default deny</code> – dann nur Benötigtes erlauben.","fwdef");
+      fw.def=v; akGood(`Default-Policy: ${v}`); if(v==="allow") akDim("Alles, wofür keine Regel passt, geht jetzt durch."); return akPanel("fwdef"); }
+    if(c1==="add"){ const act=(t[2]||"").toLowerCase(); let pr=(t[3]||"").toLowerCase(), port=(t[4]||"").toLowerCase();
+      if(AK_SVC[pr]){ [pr,port]=AK_SVC[pr]; }
+      if(pr==="icmp") port="any"; if(pr==="any"&&!port) port="any";
+      if(!["allow","deny"].includes(act)||!["tcp","udp","icmp","any"].includes(pr)||!(port==="any"||/^\d{1,5}$/.test(port)&&+port<=65535)) return akErr("Syntax: fw add allow|deny tcp|udp|icmp|any PORT|any"),akTip("Beispiele: <code>fw add allow tcp 443</code>, <code>fw add allow dns</code>, <code>fw add deny any any</code>.","fwadd");
+      fw.rules.push({act,proto:pr,port}); akGood(`Regel ${fw.rules.length}: ${act} ${pr} ${port}`);
+      const sh=fw.rules.findIndex((r,i)=>i<fw.rules.length-1&&(r.proto==="any"||r.proto===pr)&&(r.port==="any"||r.port===port));
+      if(sh>=0) akDim(`Hinweis: Regel ${sh+1} passt schon vorher auf dieses Paket – die neue Regel wird nie erreicht.`);
+      return akPanel("fwadd",sh>=0?`Regel ${sh+1} steht weiter oben und greift zuerst. Mit <code>fw move</code> änderst du die Reihenfolge.`:null); }
+    if(c1==="del"){ const i=parseInt(t[2],10)-1; if(!(i>=0&&i<fw.rules.length)) return akErr("Syntax: fw del NUMMER"),akTip("Die Nummern siehst du mit <code>fw list</code>.","fwdel");
+      const r=fw.rules.splice(i,1)[0]; akGood(`Regel ${i+1} (${r.act} ${r.proto} ${r.port}) gelöscht`); return akPanel("fwdel"); }
+    if(c1==="move"){ const i=parseInt(t[2],10)-1, j=parseInt(t[3],10)-1; if(!(i>=0&&i<fw.rules.length&&j>=0&&j<fw.rules.length)) return akErr("Syntax: fw move VON NACH"),akTip("Zum Beispiel <code>fw move 1 3</code> schiebt Regel 1 an Position 3.","fwmove");
+      const [r]=fw.rules.splice(i,1); fw.rules.splice(j,0,r); akGood(`Regel verschoben: ${r.act} ${r.proto} ${r.port} jetzt an Position ${j+1}`); return akPanel("fwmove"); }
+    if(c1==="test"){ let pr=(t[2]||"").toLowerCase(), port=(t[3]||"").toLowerCase(); if(AK_SVC[pr]) [pr,port]=AK_SVC[pr]; if(pr==="icmp") port="any";
+      if(!["tcp","udp","icmp"].includes(pr)||!(port==="any"||/^\d+$/.test(port))) return akErr("Syntax: fw test tcp|udp|icmp PORT"),akTip("Zum Beispiel <code>fw test tcp 443</code> oder <code>fw test https</code>.","fwtest");
+      const r=akEval(st,pr,port); (r.act==="allow"?akGood:akErr)(`${pr} ${port}: ${r.act==="allow"?"ERLAUBT":"GESPERRT"} – ${r.i>=0?`Regel ${r.i+1} (${fw.rules[r.i].act} ${fw.rules[r.i].proto} ${fw.rules[r.i].port})`:`keine Regel passt, Default ${fw.def}`}`); return akPanel("fwtest"); }
+    akErr(`Unbekannt: fw ${c1}`); return akTip("Unter <code>fw</code> gibt es: list, default, add, del, move, test.","fwlist");
+  }
+  akErr(`Befehl „${t[0]}“ kenne ich nicht.`);
+  akTip("Mit <code>help</code> siehst du alle Befehle, unter „Befehle“ kannst du sie antippen. Groß- und Kleinschreibung ist egal.","help");
+}
+function akStatus(){ const st=ak.st, d=st.dhcp;
+  akSys("DHCP"); akOut(`  Bereich ${d.start?`${d.start}–${d.end}`:"–"}, Gateway ${d.router||"–"}, DNS ${d.dns||"–"}, Lease ${d.lease} s`);
+  akSys("DNS (nord.local)"); akOut("  "+Object.entries(st.dns).map(([n,r])=>`${n} ${r.t} ${r.v}`).join(" · "));
+  akSys("Firewall"); akOut(`  ${st.fw.rules.length} Regeln, Default ${st.fw.def}`);
+  akSys("Geräte"); Object.entries(st.clients).forEach(([n,c])=>akOut(`  ${n}: ${c.ip||"keine Adresse"}`)); }
+function akRenew(name,c){ const st=ak.st, d=st.dhcp;
+  if(c.mode!=="dhcp") return akErr(`${name} hat eine fest eingestellte Adresse und fragt keinen DHCP-Server.`),akTip("Nur Geräte, die auf „automatisch beziehen“ stehen, nutzen DHCP.","renew");
+  akOut(`DHCPDISCOVER  → Broadcast 255.255.255.255: „Gibt es hier einen DHCP-Server?“`);
+  if(!d.start||!d.end||!d.mask){ akErr("… keine Antwort. Es ist kein DHCP-Bereich eingerichtet."); akDim(`${name} vergibt sich selbst eine 169.254.x.x-Adresse (APIPA).`); return akTip("Ohne Bereich hat der Server nichts zu verteilen. Erst <code>dhcp scope …</code> anlegen.","renew"); }
+  const a=akIp(d.start), b=akIp(d.end), used=new Set(Object.entries(d.leases).filter(([,n])=>n!==name).map(([ip])=>akIp(ip)));
+  let off=null; for(let n=a;n<=b;n++){ if(akExcluded(st,n)||used.has(n)) continue; off=n; break; }
+  if(off===null){ akErr("… DHCPNAK: Der Pool ist erschöpft."); return akTip("Alle Adressen im Bereich sind vergeben oder ausgeschlossen. Bereich vergrößern oder alte Leases aufräumen.","leases"); }
+  const ip=akN2ip(off);
+  akOut(`DHCPOFFER     ← Server 192.168.50.1 bietet ${ip} an (Maske ${d.mask}, Gateway ${d.router||"–"}, DNS ${d.dns||"–"}, Lease ${d.lease} s)`);
+  akOut(`DHCPREQUEST   → Broadcast: „Ich nehme ${ip}.“`);
+  const owner=Object.entries(st.clients).find(([n,x])=>n!==name&&x.mode==="static"&&x.ip===ip);
+  if(owner){ akErr(`Konfliktprüfung (ARP): ${ip} antwortet bereits – ${owner[0]} benutzt diese Adresse fest.`); akErr(`DHCPDECLINE   → ${name} lehnt die Adresse ab und hat weiter keine.`);
+    akDim("Der Server weiß nichts von fest eingestellten Geräten und wird dieselbe Adresse wieder anbieten.");
+    return akTip(`${esc(owner[0])} steht fest auf ${ip} – mitten im Pool. Schließ die Adresse aus (<code>dhcp exclude ${ip}</code>) oder verkleinere den Bereich.`,"exclude"); }
+  akOut(`DHCPACK       ← Bestätigt. ${name} nutzt jetzt ${ip}.`);
+  Object.keys(d.leases).forEach(k=>{ if(d.leases[k]===name) delete d.leases[k]; }); d.leases[ip]=name;
+  Object.assign(c,{ip,mask:d.mask,gw:d.router,dns:d.dns,lease:d.lease});
+  akGood(`${name}: ${ip} / ${d.mask}, Gateway ${d.router||"–"}, DNS ${d.dns||"–"}`);
+  const miss=[!d.router&&"Gateway",!d.dns&&"DNS-Server"].filter(Boolean);
+  if(miss.length) akErr(`Achtung: ${miss.join(" und ")} fehlt – ${name} ${!d.router?"kommt nicht aus dem Netz":"kann keine Namen auflösen"}.`);
+  akPanel("renew",miss.length?`Es fehlt: ${miss.join(", ")}. Das kommt über <code>dhcp option …</code>.`:null);
+}
+function akLookup(name,from,loud){ const st=ak.st, [cn,c]=akClient(from), n=akNorm(name);
+  if(!c){ akErr(`Gerät „${from}“ nicht gefunden.`); akTip("Gefragt wird von einem Gerät aus, z. B. <code>nslookup srv01 von PC-Empfang</code>.","nslookup"); return null; }
+  if(!c.ip){ akErr(`${cn} hat keine IP-Adresse und kann niemanden fragen.`); akTip(`Erst <code>client renew ${esc(cn)}</code>.`,"nslookup"); return null; }
+  if(!c.dns){ akErr(`${cn} kennt keinen DNS-Server.`); akTip("Der DNS-Server wird per DHCP-Option mitgegeben: <code>dhcp option dns 192.168.50.10</code>, danach Client neu anfragen lassen.","option"); return null; }
+  if(c.dns!=="192.168.50.10"){ akErr(`DNS request timed out – unter ${c.dns} antwortet kein DNS-Server.`); akTip("Der DNS-Server der Außenstelle ist 192.168.50.10.","nslookup"); return null; }
+  if(loud){ akOut("Server:  dns01.nord.local"); akOut("Address: 192.168.50.10"); akOut(""); }
+  if(c.cache[n]){ const v=c.cache[n].v; if(loud){ akDim("Antwort aus dem lokalen Cache (TTL noch gültig):"); akOut(`Name:    ${n}.nord.local`); akOut(`Address: ${v}`); } st.did.ns[n]=v;
+    if(loud) akPanel("nslookup",st.dns[n]&&st.dns[n].v!==v?`Die Zone sagt inzwischen ${esc(st.dns[n].v)} – ${esc(cn)} hat aber noch die alte Antwort gespeichert. <code>client flushdns ${esc(cn)}</code> leert den Cache.`:null); return v; }
+  let cur=n, chain=[];
+  for(let i=0;i<6;i++){ const r=st.dns[cur]; if(!r){ if(loud){ akErr(`*** dns01.nord.local findet ${cur}.nord.local nicht: Non-existent domain`); akTip(chain.length?`Der Alias zeigt auf <code>${esc(cur)}</code>, aber den Namen gibt es nicht.`:`Den Namen gibt es in der Zone noch nicht. Anlegen mit <code>dns add ${esc(n)} A IP</code>.`,"dnsa"); } return null; }
+    if(r.t==="A"){ if(loud){ akOut(`Name:    ${cur}.nord.local`); akOut(`Address: ${r.v}`); if(chain.length) akOut(`Aliases: ${chain.map(x=>x+".nord.local").join(", ")}`); }
+      c.cache[n]={v:r.v,ttl:3600}; st.did.ns[n]=r.v; if(loud) akPanel(chain.length?"dnscname":"nslookup"); return r.v; }
+    chain.push(cur); cur=r.v; }
+  if(loud){ akErr("Zu viele Aliase hintereinander (Schleife?)."); akTip("Ein CNAME darf nicht auf sich selbst oder im Kreis zeigen.","dnscname"); } return null; }
+function akPing(src,dst){ const st=ak.st, [sn,c]=akClient(src);
+  if(!c) return akErr(`Gerät „${src}“ nicht gefunden.`),akTip("Syntax: <code>ping GERÄT ZIEL</code>, z. B. <code>ping PC-Empfang srv01</code>.","ping");
+  if(!c.ip) return akErr(`${sn} hat keine IP-Adresse.`),akTip(`Erst <code>client renew ${esc(sn)}</code>.`,"ping");
+  let ip=dst; if(akIp(dst)===null){ ip=akLookup(dst,sn,false); if(!ip) return akErr(`Ping-Anforderung konnte Host „${dst}“ nicht finden.`),akTip("Der Name lässt sich nicht auflösen. Mit <code>nslookup</code> siehst du warum.","nslookup"); }
+  akOut(`Ping wird ausgeführt für ${dst}${ip!==dst?` [${ip}]`:""} mit 32 Bytes Daten:`);
+  const alive=st.hosts[ip]||Object.values(st.clients).some(x=>x.ip===ip);
+  for(let i=0;i<4;i++) (alive?akOut:akErr)(alive?`Antwort von ${ip}: Bytes=32 Zeit<1ms TTL=64`:"Zeitüberschreitung der Anforderung.");
+  if(!alive) akTip(`Unter ${esc(ip)} antwortet kein Gerät.${ip!==dst?" Stimmt der DNS-Eintrag noch – oder hat der Client eine alte Antwort im Cache?":""}`,"ping"); else akPanel("ping"); }
+
+/* ---- Fortschritt ---- */
+function akCheck(){ if(!ak||ak.solved||ak.m.free) return; let ok=false; try{ ok=ak.m.check(ak.st); }catch(_){}
+  if(!ok) return; ak.solved=true; const M=ak.m;
+  const dn=akDone(); if(!dn.includes(M.id)){ dn.push(M.id); store.set("ak_done",JSON.stringify(dn)); }
+  akGood("✔ Auftrag erledigt."); setTimeout(()=>{ if(ak&&ak.m===M) akMsg(M.done); },400);
+  const prog=$("#ak .ak-prog"); if(prog){ const i=M.chap.missions.indexOf(M); prog.children[i]&&prog.children[i].classList.add("on"); }
+  setTimeout(()=>{ if(!ak||ak.m!==M||ak.done) return; const i=AK_ALL.indexOf(M), nx=AK_ALL[i+1];
+    openSheet("✅ Auftrag erledigt",`<b style="font:700 17px var(--display)">${esc(M.t)}</b><p style="font-size:14.5px;line-height:1.5;margin:8px 0 14px">${esc(M.why)}</p>
+      <div class="grid2"><button class="btn ghost" id="ak-s-stay">Weiter probieren</button><button class="btn primary" id="ak-s-next">${nx&&!nx.free?"Nächster Auftrag":"Zur Übersicht"}</button></div>`,()=>{
+      $("#ak-s-stay").onclick=closeSheet; $("#ak-s-next").onclick=()=>{ closeSheet(); if(nx&&!nx.free) akStart(nx.id); else { ak.done=true; akHome(); } }; }); },1300);
+}
+/* <<< game-js aussen */
 /* ---------- Unterricht (unter Wissen): Nachlesen, Prüfungsstellen und Quiz je Unterrichtsabend ---------- */
 let ut=null, utSel=null, utTab="z";
 const UT_FACH={alle:"Alle",netz:"Netzwerk",db:"Datenbanken",wiso:"WiSo",ds:"Datenschutz"};
