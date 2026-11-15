@@ -633,6 +633,11 @@ body.kb .stage{padding-bottom:45vh}
 .eps{display:flex;flex-direction:column;gap:10px}
 .player{position:sticky;bottom:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;z-index:5}
 .player .row1{display:flex;align-items:center;gap:10px}
+.fb-kind{display:flex;gap:8px;flex-wrap:wrap}
+.fb-form{display:flex;flex-direction:column;gap:12px}
+.fb-form textarea{min-height:120px;resize:vertical;font:inherit}
+.fb-count{text-align:right;font-size:12px;color:var(--muted)}
+
 /* Mini-Player: läuft auf allen Seiten unten mit, solange eine Folge geladen ist */
 .miniplayer{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:min(576px,calc(100% - 24px));z-index:40;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
 .has-tabs .miniplayer{bottom:calc(var(--tabbar-h) + 10px + env(safe-area-inset-bottom))}
@@ -1264,8 +1269,8 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 
     <section class="screen" id="s-fortschritt">
       <div class="center hubscreen">
-        <div class="hub-head"><span class="illu" data-illu="fort"></span><h2 class="title">Fortschritt</h2><p>Sieh, wo du stehst – und sichere deinen Lernstand.</p></div>
-        <div class="hlist"><button class="hrow" data-go="statistik"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="tx"><b>Statistik</b><small>Lernstand je Fach, Spiele-Rekorde</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="remind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="tx"><b>Lernplan</b><small><span id="remind-label"></span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="backup-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><span class="tx"><b>Lernstand sichern</b><small>Exportieren & auf anderem Gerät laden</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="inst-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg></span><span class="tx"><b>App herunterladen</b><small>Android-App oder auf den Startbildschirm – läuft dann auch offline</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="upd-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 4v5h-5"/></svg></span><span class="tx"><b>Nach Updates suchen</b><small id="upd-sub">Prüft, ob es eine neuere Version gibt</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="stats-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><span class="tx"><b>Anonyme Nutzungsstatistik</b><small id="stats-label"></small></span><span class="tgl" id="stats-tgl"></span></button></div>
+        <div class="hub-head"><span class="illu" data-illu="fort"></span><h2 class="title">Optionen</h2><p>Lernstand, Sicherung, App und Feedback.</p></div>
+        <div class="hlist"><button class="hrow" data-go="statistik"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="tx"><b>Statistik</b><small>Lernstand je Fach, Spiele-Rekorde</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="remind-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="tx"><b>Lernplan</b><small><span id="remind-label"></span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="backup-chip"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><span class="tx"><b>Lernstand sichern</b><small>Exportieren & auf anderem Gerät laden</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="inst-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 19h14"/></svg></span><span class="tx"><b>App herunterladen</b><small>Android-App oder auf den Startbildschirm – läuft dann auch offline</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="upd-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 4v5h-5"/></svg></span><span class="tx"><b>Nach Updates suchen</b><small id="upd-sub">Prüft, ob es eine neuere Version gibt</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="fb-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="tx"><b>Feedback geben</b><small>Lob, Ideen oder Fehler – anonym oder mit Nickname</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" id="stats-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><span class="tx"><b>Anonyme Nutzungsstatistik</b><small id="stats-label"></small></span><span class="tgl" id="stats-tgl"></span></button></div>
         <p class="hint ver-line" id="ver-line"></p>
       </div>
     </section>
@@ -1332,7 +1337,7 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
     <section class="screen" id="s-druck"><div class="center" id="dr" style="--area:var(--c-wissen)"></div></section>
   </main>
   <!-- Untere Navigation: auf den fünf Hauptseiten sichtbar, in Spielen und Lernrunden ausgeblendet -->
-  <nav class="tabbar" id="tabbar" aria-label="Bereiche"><button class="tab" data-go="start" data-tab="home"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg></span><span>Lernpfad</span></button><button class="tab" data-go="karten" data-tab="karten"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="15" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg></span><span>Karten</span></button><button class="tab" data-go="bibliothek" data-tab="wissen"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span>Wissen</span></button><button class="tab" data-go="spiele" data-tab="spiele"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M7 11v4M5 13h4M15.5 12h.01M18 14.5h.01"/></svg></span><span>Spiele</span></button><button class="tab" data-go="fortschritt" data-tab="fort"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span>Fortschritt</span></button></nav>
+  <nav class="tabbar" id="tabbar" aria-label="Bereiche"><button class="tab" data-go="start" data-tab="home"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg></span><span>Lernpfad</span></button><button class="tab" data-go="karten" data-tab="karten"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="15" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg></span><span>Karten</span></button><button class="tab" data-go="bibliothek" data-tab="wissen"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span>Wissen</span></button><button class="tab" data-go="spiele" data-tab="spiele"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M7 11v4M5 13h4M15.5 12h.01M18 14.5h.01"/></svg></span><span>Spiele</span></button><button class="tab" data-go="fortschritt" data-tab="fort"><span class="tab-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span>Optionen</span></button></nav>
 </div>
 
 <div class="miniplayer" id="miniplayer" hidden></div>
@@ -1710,7 +1715,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.3.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.3.3"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2105,8 +2110,11 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
 
 /* ---------- Was ist neu ----------
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
-   die Versionszeile unter Fortschritt. */
+   die Versionszeile unter Optionen. */
 const WHATS_NEW=[
+  {v:"5.3.3",t:"Feedback & Optionen",l:[
+    "Der Reiter „Fortschritt“ heißt jetzt „Optionen“",
+    "Neu dort: „Feedback geben“ – Ideen, Fehler, Lob oder Fragen direkt aus der App schicken, anonym oder mit Nickname"]},
   {v:"5.3.2",t:"Mini-Player",l:[
     "Der Podcast-Player lässt sich mit dem Pfeil oben rechts verkleinern. Die Folge läuft weiter, und unten erscheint eine kleine Leiste mit Play/Pause – auf jeder Seite der App",
     "Antippen der Leiste öffnet den großen Player wieder, das X beendet die Wiedergabe"]},
@@ -5043,13 +5051,13 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.3.2";
+const APK_URL="dasLabor23.apk", APK_VER="5.3.3";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
   const pwa=isStandalone()?"":`<button class="hrow" id="ia-pwa"><span class="ic" style="font-size:20px">📲</span><span class="tx"><b>Auf den Startbildschirm</b><small>${isIOS()?"So geht's in Safari":"Ohne Download, direkt aus dem Browser"}</small></span></button>`;
   openSheet("App herunterladen",`<div class="hlist">${isIOS()?pwa:apk+pwa}</div>
-    <p class="hint" style="text-align:left">${isIOS()?"Für iPhone gibt es keine APK – über den Startbildschirm läuft dasLabor23 wie eine App.":"Android fragt beim ersten Mal, ob der Browser Apps installieren darf. Das einmal erlauben, danach geht es. Dein Lernstand zieht mit: unter Fortschritt → Sichern die Datei teilen und in der App wiederherstellen."}</p>`,root=>{
+    <p class="hint" style="text-align:left">${isIOS()?"Für iPhone gibt es keine APK – über den Startbildschirm läuft dasLabor23 wie eine App.":"Android fragt beim ersten Mal, ob der Browser Apps installieren darf. Das einmal erlauben, danach geht es. Dein Lernstand zieht mit: unter Optionen → Lernstand sichern die Datei teilen und in der App wiederherstellen."}</p>`,root=>{
     const a=root.querySelector("#ia-apk"); if(a) a.onclick=()=>{ const l=document.createElement("a"); l.href=APK_URL; l.download=`dasLabor23_v${APK_VER}.apk`; document.body.appendChild(l); l.click(); l.remove(); toast("Download gestartet – danach die Datei öffnen"); };
     const p=root.querySelector("#ia-pwa"); if(p) p.onclick=()=>{ closeSheet(); setTimeout(installPwa,250); }; });
 }
@@ -5095,8 +5103,49 @@ async function checkUpdate(){
       const g=root.querySelector("#upd-go"); if(g) g.onclick=()=>{ closeSheet(); location.href=UPD_BASE+"dasLabor23.apk?v="+encodeURIComponent(info.apk); }; });
 }
 $("#upd-row").onclick=checkUpdate;
+/* ---------- Feedback ----------
+   Läuft über GoatCounter als Ereignis: kein Konto, keine Kosten, landet nur im privaten Dashboard.
+   Nickname freiwillig, ohne Nickname komplett anonym. Gesendet wird nur auf Knopfdruck. */
+const FB_KINDS=[["idee","💡 Idee"],["fehler","🐞 Fehler"],["lob","👍 Lob"],["frage","❓ Frage"]], FB_MAX=400;
+function feedbackSheet(){
+  let kind="idee";
+  const nick=store.get("fb_nick","");
+  openSheet("Feedback geben",`<div class="fb-form">
+      <div class="fb-kind" id="fb-kind">${FB_KINDS.map(([k,t])=>`<button class="pillbtn" data-k="${k}" aria-pressed="${k===kind}">${t}</button>`).join("")}</div>
+      <label><span class="field-l">Nickname (freiwillig)</span><input type="text" id="fb-nick" maxlength="24" placeholder="leer lassen = anonym" value="${esc(nick)}" autocomplete="off"></label>
+      <label><span class="field-l">Deine Nachricht</span><textarea id="fb-text" maxlength="${FB_MAX}" placeholder="Was gefällt dir, was fehlt, was klemmt?"></textarea></label>
+      <div class="fb-count" id="fb-count">0 / ${FB_MAX}</div>
+      <button class="btn primary block" id="fb-send" disabled>Absenden</button>
+      <p class="hint" style="text-align:left;margin:0">Es wird nur gesendet, was du hier schreibst, dazu die App-Version. Ohne Nickname ist das Feedback komplett anonym. Bitte keine Namen, Telefonnummern oder anderen persönlichen Daten eintragen.</p>
+    </div>`,root=>{
+    const ta=root.querySelector("#fb-text"), btn=root.querySelector("#fb-send"), cnt=root.querySelector("#fb-count");
+    root.querySelectorAll("#fb-kind [data-k]").forEach(b=>b.onclick=()=>{ kind=b.dataset.k; root.querySelectorAll("#fb-kind [data-k]").forEach(x=>x.setAttribute("aria-pressed",x===b)); });
+    ta.oninput=()=>{ cnt.textContent=ta.value.length+" / "+FB_MAX; btn.disabled=ta.value.trim().length<3; };
+    btn.onclick=()=>{
+      const last=+store.get("fb_last","0")||0;
+      if(Date.now()-last<60000){ toast("Bitte eine Minute warten, bevor du noch etwas schickst."); return; }
+      if(!navigator.onLine){ toast("Keine Internetverbindung. Dein Text bleibt stehen, versuch es gleich noch mal."); return; }
+      const nk=root.querySelector("#fb-nick").value.trim().replace(/\s+/g," ").slice(0,24);
+      store.set("fb_nick",nk);
+      const kt=(FB_KINDS.find(x=>x[0]===kind)||["",kind])[1].replace(/^\S+\s/,"");
+      const text=ta.value.trim().replace(/\s+/g," ").slice(0,FB_MAX);
+      const title=`[${kt}] ${nk||"anonym"}: ${text} · v${APP_VER} ${window.AndroidBridge?"App":"Web"}`;
+      const id=new Date().toISOString().slice(0,16).replace(/[-:T]/g,"")+"-"+Math.random().toString(36).slice(2,6);
+      const q=new URLSearchParams({p:"feedback/"+kind+"/"+id,t:title,e:"true",rnd:Math.random().toString(36).slice(2)});
+      btn.disabled=true; btn.textContent="Wird gesendet …";
+      const img=new Image(); img.referrerPolicy="no-referrer";
+      const ok=()=>{ store.set("fb_last",String(Date.now())); closeSheet(); toast("Danke! Dein Feedback ist angekommen."); };
+      img.onload=ok;
+      img.onerror=()=>{ btn.disabled=false; btn.textContent="Absenden"; toast("Senden hat nicht geklappt. Werbeblocker an? Dein Text bleibt stehen."); };
+      img.src=GC_URL+"?"+q.toString();
+    };
+    setTimeout(()=>ta.focus(),200);
+  });
+}
+$("#fb-row").onclick=feedbackSheet;
 
-$("#inst-x").onclick=()=>{ store.set("inst_off",String(Date.now())); bkHint(); toast("Ausgeblendet. Unter Fortschritt kannst du die App jederzeit installieren."); };
+
+$("#inst-x").onclick=()=>{ store.set("inst_off",String(Date.now())); bkHint(); toast("Ausgeblendet. Unter Optionen kannst du die App jederzeit installieren."); };
 
 /* ---------- Abkürzungen & Fachbegriffe (Vokabel-Spiel, A–Z-Liste) ----------
    Auswahl nach dem IHK-AP1-Prüfungskatalog und den gängigsten IT-Abkürzungen, Protokollen und Programmiersprachen.
