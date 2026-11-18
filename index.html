@@ -915,6 +915,55 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 .kh-read td:first-child{white-space:normal;min-width:6em}
 .kh-read td code{white-space:nowrap}
 .kh-read h2{scroll-margin-top:72px}
+/* Lernzettel AP1 */
+.zt-pruefrow{margin:4px 0 6px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
+.zt-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.zt-tile{font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-top:4px solid var(--zc);min-height:112px;position:relative}
+.zt-tile b{font-size:14px;line-height:1.25}.zt-tile small{color:var(--muted,#888);font-size:12px;line-height:1.3}
+.zt-tile.seen::after{content:"✓";position:absolute;top:8px;right:10px;font-size:12px;color:var(--zc);font-weight:700}
+.zt-tile:focus-visible,.zt-chip:focus-visible,.pr-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.zt-ti{font-size:24px}
+.zt-poster{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
+.zt-head{display:flex;gap:14px;align-items:center;padding:18px 18px 16px;background:linear-gradient(135deg,var(--zc),color-mix(in srgb,var(--zc) 55%,#000));color:#fff}
+.zt-head small{opacity:.85;font-size:12px}.zt-head h2{margin:2px 0;font-size:22px;line-height:1.2;color:#fff}.zt-head p{margin:0;opacity:.9;font-size:13px}
+.zt-hi{font-size:40px;line-height:1;background:rgba(255,255,255,.18);border-radius:16px;padding:10px}
+.zt-body{display:flex;flex-direction:column;gap:14px;padding:16px}
+.zt-stack{display:flex;flex-direction:column;gap:4px}
+.zt-layer{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:9px 12px;border-radius:10px;background:color-mix(in srgb,var(--zc) calc(32% - var(--k)*3%),transparent);border-left:5px solid var(--zc)}
+.zt-layer b{font-size:14px;min-width:150px}.zt-layer span{font-size:13px;opacity:.9}
+.zt-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.zt-step{flex:1 1 120px;display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:12px;border:2px solid var(--zc);background:color-mix(in srgb,var(--zc) 10%,transparent)}
+.zt-step b{font-size:13px;color:var(--zc)}.zt-step span{font-size:12.5px;line-height:1.3}
+.zt-arrow{align-self:center;color:var(--zc);font-weight:700}
+.zt-formula{border-radius:14px;padding:14px;background:color-mix(in srgb,var(--zc) 14%,transparent);border:1px dashed var(--zc);text-align:center}
+.zt-f{font-size:17px;font-weight:700;font-family:ui-monospace,Consolas,monospace;line-height:1.35}
+.zt-ex{margin-top:8px;font-size:13px;line-height:1.4}.zt-ex span{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--zc);color:#fff;margin-right:4px}
+.zt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.zt-card{padding:10px;border-radius:12px;background:var(--surface,transparent);border:1px solid var(--line)}
+.zt-ci{font-size:22px}.zt-card b{display:block;font-size:13.5px;margin:2px 0}.zt-card p{margin:0;font-size:12.5px;line-height:1.35}
+.zt-vs{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px}
+@media (max-width:520px){.zt-vs{grid-template-columns:1fr}}
+.zt-col{border-radius:12px;padding:10px;border:1px solid var(--line);border-top:4px solid var(--zc)}
+.zt-col b{font-size:13.5px}.zt-col ul{margin:6px 0 0;padding-left:18px}.zt-col li{font-size:12.5px;line-height:1.35;margin:2px 0}
+.zt-table{width:100%;border-collapse:collapse;font-size:13px}.zt-table th{background:var(--zc);color:#fff;text-align:left;padding:7px 9px}
+.zt-table td{padding:6px 9px;border-bottom:1px solid var(--line)}.zt-table tr:nth-child(even) td{background:color-mix(in srgb,var(--zc) 7%,transparent)}
+.zt-code{margin:0;padding:12px;border-radius:12px;background:#0f172a;color:#e2e8f0;font-size:12.5px;overflow:auto;white-space:pre}
+.zt-tip{padding:11px 13px;border-radius:12px;background:color-mix(in srgb,#facc15 22%,transparent);border-left:5px solid #eab308;font-size:13px;line-height:1.4}
+.zt-tip b{display:block;font-size:12px;margin-bottom:2px}
+.zt-foot{padding:0 16px 16px}.zt-foot small{display:block;margin-bottom:6px;color:var(--muted,#888)}
+.zt-chips{display:flex;flex-wrap:wrap;gap:6px}
+.zt-chip{font:inherit;font-size:12.5px;cursor:pointer;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink)}
+.pr-top{display:flex;flex-direction:column;gap:6px}
+.pr-bar{font:inherit;display:grid;grid-template-columns:minmax(0,190px) 1fr 34px;gap:8px;align-items:center;background:none;border:0;color:var(--ink);cursor:pointer;padding:3px 0;text-align:left}
+.pr-l{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pr-b{height:12px;border-radius:6px;background:var(--line);overflow:hidden}.pr-b i{display:block;height:100%;background:var(--zc);border-radius:6px}
+.pr-n{font-size:12.5px;font-weight:700;text-align:right}
+.pr-list{display:flex;flex-direction:column;gap:10px}
+.pr-ex summary{display:flex;gap:10px;align-items:center;cursor:pointer;list-style:none}.pr-ex summary::-webkit-details-marker{display:none}
+.pr-ex summary .tx{display:flex;flex-direction:column}.pr-ex summary small{color:var(--muted,#888);font-size:12.5px}
+.pr-badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:8px;background:var(--accent);color:#fff}.pr-badge.zp{background:#64748b}
+.pr-a{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}.pr-ah{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.pr-ah small{color:var(--muted,#888);white-space:nowrap}.pr-a ul{margin:6px 0 8px;padding-left:18px}.pr-a li{font-size:13px;line-height:1.4}
+
 .kh-read blockquote{margin:12px 0;padding:10px 14px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0}
 .kh-read blockquote p{margin:0 0 4px}.kh-read blockquote ul{margin:4px 0 0}
 .kh-toc{display:flex;flex-direction:column;gap:6px}
@@ -1243,6 +1292,8 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
         
         <div class="sec-h">Nachschlagen</div>
         <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="unterricht"><span class="ic" style="font-size:20px">🎙️</span><span class="tx"><b>Feierabendfunk</b><small>Folgen nachlesen, Prüfungsstellen, Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="vokabeln"><span class="ic" style="font-size:20px">📖</span><span class="tx"><b>Abkürzungs-Labor</b><small>318 Begriffe · Tabelle, Karteikarten, Puzzle, Rennen, Duell</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="ports"><span class="ic" style="font-size:20px">🔌</span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="sprachen"><span class="ic" style="font-size:19px">💻</span><span class="tx"><b>Programmiersprachen</b><small>Python, Java, C# & Co. · Compiler, Typisierung, Paradigmen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist" style="margin-top:8px"><button class="hrow" data-go="zettel"><span class="ic" style="font-size:20px">🗺️</span><span class="tx"><b>Lernzettel als Grafik</b><small>33 AP1-Themen auf einen Blick</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist" style="margin-top:8px"><button class="hrow" data-go="pruef"><span class="ic" style="font-size:20px">📝</span><span class="tx"><b>Prüfungen 2020–2025</b><small>Was drankam und was am häufigsten gefragt wird</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Hören</div>
         <div class="hlist"><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Mehr im Labor</div>
@@ -1342,6 +1393,8 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
     <section class="screen" id="s-wissen"><div class="center wi" id="wi"></div></section>
     <section class="screen" id="s-statistik"><div id="st" style="display:flex;flex-direction:column;gap:14px"></div></section>
 
+    <section class="screen" id="s-zettel"><div class="center" id="zt"></div></section>
+    <section class="screen" id="s-pruef"><div class="center" id="pr"></div></section>
     <section class="screen" id="s-druck"><div class="center" id="dr" style="--area:var(--c-wissen)"></div></section>
   </main>
   <!-- Untere Navigation: auf den fünf Hauptseiten sichtbar, in Spielen und Lernrunden ausgeblendet -->
@@ -1664,7 +1717,7 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz",aussen:"aussen"};
+const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",zettel:"zettel",pruef:"pruef",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz",aussen:"aussen"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
@@ -1720,11 +1773,11 @@ window.addEventListener("scroll",glossHide,{passive:true});
 
 /* Welche Seite gehört zu welchem Tab und zu welcher Bereichsfarbe? Alles ohne Eintrag zählt zu „spiele“. */
 const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fortschritt:"fort"};
-const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
+const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.3.5"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
-const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
+const APP_VER="5.4.0"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -1753,6 +1806,8 @@ function gcArea(r){
 /* Was beim Betreten einer Seite neu aufgebaut wird */
 const PAGE_ENTER={
   druck:()=>{ if(!$("#dr").innerHTML) drHome(); },
+  zettel:()=>{ if(!$("#zt").innerHTML) ztHome(); },
+  pruef:()=>prRender(),
   /* renderHome() füllt auch die Zähler der Bereichs-Seiten (fällige Karten, Lernstand) – deshalb dort ebenfalls aufrufen */
   home:()=>renderHome(), karten:()=>renderHome(), fortschritt:()=>renderHome(), bibliothek:()=>renderHome(),
   wissen:()=>{ wiSel=(history.state&&history.state.wi)||null; renderWissen(); },
@@ -1791,6 +1846,7 @@ $("#back").onclick=()=>{ if(history.length>1&&current!=="home") history.back(); 
 window.appBack=()=>{
   if($("#sheet").classList.contains("show")){ closeSheet(); return true; }
   if(current==="druck"&&drSel){ drGroup(drGrp); return true; }
+  if(current==="zettel"&&ztSel){ ztHome(); window.scrollTo({top:0}); return true; }
   if(current==="druck"&&drGrp){ drHome(); window.scrollTo({top:0}); return true; }
   if(current==="wissen"&&history.state&&history.state.wi){ history.back(); return true; }
   if(!TAB_OF[current]){ $("#back").click(); return true; }
@@ -2120,6 +2176,9 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Optionen. */
 const WHATS_NEW=[
+  {v:"5.4.0",t:"AP1-Lernzettel & Prüfungen",l:[
+    "Unter Wissen: 33 Lernzettel als Grafik – von Subnetting über Netzplan bis Datenschutz, mit Formeln, Beispielen und Prüfungstipps",
+    "Neu: „Prüfungen 2020–2025“ – welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird"]},
   {v:"5.3.3",t:"Feedback & Optionen",l:[
     "Der Reiter „Fortschritt“ heißt jetzt „Optionen“",
     "Neu dort: „Feedback geben“ – Ideen, Fehler, Lob oder Fragen direkt aus der App schicken, anonym oder mit Nickname"]},
@@ -5059,7 +5118,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.3.5";
+const APK_URL="dasLabor23.apk", APK_VER="5.4.0";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7059,6 +7118,303 @@ const DR_GROUPS=[
 let drSel=null, drGrp=null;
 const drRead=()=>{ try{ return JSON.parse(store.get("kh_read")||"{}"); }catch(e){ return {}; } };
 const DR_CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+const ZT_GROUPS=[
+ {id:"rech",t:"Rechnen & Hardware",c:"#3b82f6"},
+ {id:"netz",t:"Netzwerk",c:"#10b981"},
+ {id:"wirt",t:"Wirtschaft & Recht",c:"#f59e0b"},
+ {id:"proj",t:"Projekt & Service",c:"#8b5cf6"},
+ {id:"soft",t:"Software",c:"#14b8a6"},
+ {id:"sich",t:"Sicherheit & Datenschutz",c:"#ef4444"}];
+const ZETTEL=[
+/* ---------- RECHNEN & HARDWARE ---------- */
+{id:"zahl",g:"rech",ic:"🔢",t:"Zahlensysteme & Einheiten",s:"Bit, Byte, KiB vs. KB, Binär und Hex",b:[
+ {t:"stack",items:[["1 Bit","0 oder 1"],["1 Byte","8 Bit"],["1 KiB","1.024 Byte (2¹⁰)"],["1 MiB","1.024 KiB = 1.048.576 Byte"],["1 GiB","1.024 MiB"],["1 TiB","1.024 GiB"]]},
+ {t:"vs",cols:[{h:"Binär-Präfix (IEC) · ×1024",items:["KiB, MiB, GiB, TiB","Arbeitsspeicher, Dateigrößen im Betriebssystem"]},{h:"Dezimal-Präfix (SI) · ×1000",items:["kB, MB, GB, TB","Festplatten-Hersteller, Datenraten (Mbit/s)"]}]},
+ {t:"formula",f:"Anzahl Werte = 2ⁿ",ex:"8 Bit → 2⁸ = 256 Werte · 24 Bit RGB → 16.777.216 Farben"},
+ {t:"table",head:["Dezimal","Binär","Hex"],rows:[["10","1010","A"],["15","1111","F"],["255","1111 1111","FF"],["192","1100 0000","C0"]]},
+ {t:"grid",items:[["➗","Dezimal → Binär","Immer durch 2 teilen, Reste von unten nach oben lesen."],["🧮","Binär → Dezimal","Stellenwerte 128 64 32 16 8 4 2 1 addieren."],["🔤","Hex","1 Hex-Ziffer = 4 Bit. A=10 … F=15."],["⏱️","Takt","3,4 GHz = 3.400.000.000 Hz (3,4 × 10⁹)."]]},
+ {t:"tip",text:"Erst auf die Einheit schauen: Steht da KiB/MiB, wird mit 1024 gerechnet, bei kB/MB/Mbit mit 1000."}]},
+{id:"rech",g:"rech",ic:"📐",t:"Speicher- & Übertragungsrechnung",s:"Bilder, Datenmengen, Übertragungsdauer",b:[
+ {t:"formula",f:"Bildgröße (Bit) = Breite × Höhe × Farbtiefe",ex:"1920 × 1080 × 24 Bit = 49.766.400 Bit ÷ 8 = 6.220.800 Byte ≈ 5,93 MiB"},
+ {t:"formula",f:"Übertragungsdauer = Datenmenge (Bit) ÷ Datenrate (Bit/s)",ex:"100 MiB = 100 × 1024 × 1024 × 8 = 838.860.800 Bit ÷ 100.000.000 Bit/s ≈ 8,4 s"},
+ {t:"flow",items:[["1. Einheit prüfen","MiB (×1024) oder MB (×1000)?"],["2. In Bit umrechnen","Byte × 8"],["3. Durch Rate teilen","Mbit/s = 1.000.000 Bit/s"],["4. Einheit des Ergebnisses","s → min (÷60)"]]},
+ {t:"grid",items:[["🗄️","Tabelle","Datensätze × Bytes pro Datensatz (Summe aller Felder)."],["📷","Kamera","Bilder pro Sekunde × Sekunden × Bildgröße."],["📉","Kompression","30 % kleiner → Größe × 0,7."],["➕","Prozent mehr","(neu − alt) ÷ alt × 100."]]},
+ {t:"tip",text:"Rechenweg immer hinschreiben, auch Zwischenergebnisse – dafür gibt es Teilpunkte. Gerundete Zwischenwerte so weiterverwenden."}]},
+{id:"energie",g:"rech",ic:"⚡",t:"Energie & Stromkosten",s:"Leistung, kWh, Wirkungsgrad, Amortisation",b:[
+ {t:"formula",f:"P (W) = U (V) × I (A)",ex:"24 V × 0,5 A = 12 W · Über USB mit 5 V: 12 W ÷ 5 V = 2,4 A"},
+ {t:"formula",f:"Energie (kWh) = Leistung (W) × Stunden ÷ 1000",ex:"150 W × 9 h × 200 Tage = 270.000 Wh = 270 kWh"},
+ {t:"formula",f:"Kosten = kWh × Preis pro kWh",ex:"270 kWh × 0,40 € = 108 €"},
+ {t:"formula",f:"Aufnahme aus Steckdose = abgegebene Leistung ÷ Wirkungsgrad",ex:"Netzteil liefert 270 W bei 90 % → 270 ÷ 0,9 = 300 W"},
+ {t:"grid",items:[["🏷️","80 PLUS","Prüfsiegel für Netzteil-Wirkungsgrad: Bronze, Silber, Gold, Platin, Titan. Gold ≈ 90 % bei halber Last."],["📦","Netzteil wählen","Summe aller Komponenten + Puffer (z. B. 20 %), dann nächstgrößere Stufe."],["⏳","Amortisation","Mehrkosten ÷ Ersparnis pro Monat = Monate bis es sich lohnt."],["🔌","Mehrfachsteckdose","Summe der Leistungen ≤ zulässige Leistung (z. B. 3.680 W bei 16 A × 230 V)."]]},
+ {t:"tip",text:"Energiesparen: Energiesparmodus, Bildschirm aus, effiziente Netzteile, Thin Clients, Geräte nachts ganz ausschalten."}]},
+{id:"usv",g:"rech",ic:"🔋",t:"USV – unterbrechungsfreie Stromversorgung",s:"Typen, VA und Watt, Auslegung",b:[
+ {t:"stack",items:[["VFI · Online / Doppelwandler","Strom wird ständig umgewandelt, keine Umschaltzeit, höchster Schutz (Server)"],["VI · Line-Interactive","Regelt Spannung nach, kurze Umschaltzeit (Arbeitsplätze, kleine Server)"],["VFD · Offline / Standby","Schaltet erst bei Ausfall um, günstig (Einzel-PCs)"]]},
+ {t:"formula",f:"Scheinleistung S (VA) = Wirkleistung P (W) ÷ Leistungsfaktor cos φ",ex:"600 W ÷ 0,6 = 1.000 VA"},
+ {t:"flow",items:[["Leistung","Alle angeschlossenen Geräte addieren"],["Reserve","Puffer für Erweiterung einplanen"],["VA prüfen","Auch die VA-Angabe der USV muss reichen"],["Laufzeit","Überbrückungszeit für sauberes Herunterfahren"]]},
+ {t:"tip",text:"Die USV muss bei Watt UND VA reichen. Meist begrenzt der kleinere Wert."}]},
+{id:"hw",g:"rech",ic:"🖥️",t:"Hardware im PC",s:"CPU, RAM, SSD, Einbau",b:[
+ {t:"grid",items:[["🧠","CPU","Kerne = echte Recheneinheiten. Logische Prozessoren (Threads) = ein Kern bearbeitet zwei Befehlsströme (Hyper-Threading/SMT)."],["⚡","Cache","Sehr schneller Zwischenspeicher in der CPU (L1–L3). Hält oft gebrauchte Daten bereit, damit die CPU nicht auf den RAM warten muss."],["🧊","Wärmeleitpaste","Füllt winzige Unebenheiten zwischen CPU und Kühler, damit die Wärme gut abfließt. Dünn auftragen."],["🧩","RAM","Flüchtig, verliert Daten ohne Strom. DDR4 und DDR5 sind nicht kompatibel (Kerbe sitzt anders). Notebook: SO-DIMM."]]},
+ {t:"flow",items:[["Hebel öffnen","Sockel entriegeln"],["CPU ausrichten","Markierung (Dreieck) beachten, ohne Druck einlegen"],["Hebel schließen","Danach Wärmeleitpaste und Kühler"]]},
+ {t:"vs",cols:[{h:"SATA-SSD",items:["2,5 Zoll oder M.2 mit SATA","bis ca. 550 MB/s","Kabel für Daten und Strom"]},{h:"NVMe-SSD (M.2, PCIe)",items:["Steckt direkt auf dem Mainboard","mehrere GB/s","Kann heiß werden, kostet etwas mehr"]},{h:"HDD",items:["Mechanisch, Magnetscheiben","Günstig pro TB","Langsam, stoßempfindlich"]}]},
+ {t:"tip",text:"Dual Channel: zwei gleiche Riegel in die passenden (meist gleichfarbigen) Slots laut Mainboard-Handbuch."}]},
+{id:"schnitt",g:"rech",ic:"🔌",t:"Schnittstellen & Anschlüsse",s:"USB, Bild, Netzwerk",b:[
+ {t:"table",head:["Standard","Datenrate"],rows:[["USB 2.0","480 Mbit/s"],["USB 3.2 Gen 1 (USB 3.0)","5 Gbit/s"],["USB 3.2 Gen 2","10 Gbit/s"],["USB 3.2 Gen 2×2","20 Gbit/s"],["USB4 / Thunderbolt 4","40 Gbit/s"]]},
+ {t:"grid",items:[["🔁","USB-C","Stecker passt in beide Richtungen, liefert viel Strom (Power Delivery), kann Bild übertragen. USB-C ist die Steckerform, nicht die Geschwindigkeit."],["🖥️","HDMI / DisplayPort","Bild und Ton. DisplayPort häufig an PCs und Monitoren, HDMI an TV und Beamer."],["🌐","RJ45","Netzwerkkabel (Twisted Pair). LED an der Buchse: Link (Verbindung) und Aktivität."],["🪪","Kartenleser","z. B. Gesundheitskarte, oft per USB oder LAN angebunden."]]},
+ {t:"tip",text:"Bei Strom über USB: Leistung des Netzteils durch 5 V teilen, um den nötigen Strom zu bekommen."}]},
+{id:"raid",g:"rech",ic:"💽",t:"RAID & Speichersysteme",s:"Level, Kapazität, NAS und SAN",b:[
+ {t:"table",head:["Level","Prinzip","Min. Platten","Nutzbar"],rows:[["RAID 0","Striping, kein Schutz","2","n × Größe"],["RAID 1","Spiegelung","2","1 × Größe"],["RAID 5","Verteilte Parität, 1 darf ausfallen","3","(n − 1) × Größe"],["RAID 6","Doppelte Parität, 2 dürfen ausfallen","4","(n − 2) × Größe"],["RAID 10","Spiegel + Striping","4","n ÷ 2 × Größe"],["JBOD","Platten hintereinander","1","Summe aller"]]},
+ {t:"formula",f:"RAID 5 mit verschiedenen Platten: kleinste Platte × (n − 1)",ex:"4 × 4 TB → 3 × 4 = 12 TB nutzbar"},
+ {t:"vs",cols:[{h:"NAS",items:["Netzwerkspeicher mit eigenem Betriebssystem","Dateizugriff (SMB, NFS) über normales LAN","Einfach, günstig"]},{h:"SAN",items:["Eigenes Speichernetz (z. B. Fibre Channel, iSCSI)","Blockzugriff, Server sehen es wie eine lokale Platte","Schnell, skalierbar, teuer"]}]},
+ {t:"tip",text:"RAID ersetzt kein Backup! Löschen, Viren oder Brand treffen alle Platten gleichzeitig. Parität bei RAID 5 wird per XOR berechnet."}]},
+/* ---------- NETZWERK ---------- */
+{id:"osi",g:"netz",ic:"🧱",t:"OSI-Modell",s:"7 Schichten mit Geräten und Protokollen",b:[
+ {t:"stack",items:[["7 Anwendung","HTTP(S), DNS, SMTP, IMAP, FTP"],["6 Darstellung","Kodierung, Verschlüsselung (TLS), Kompression"],["5 Sitzung","Aufbau und Steuerung einer Sitzung"],["4 Transport","TCP, UDP · Ports · Segmente"],["3 Vermittlung","IP, ICMP · Router · Pakete"],["2 Sicherung","MAC-Adressen, Ethernet, WLAN · Switch · Frames"],["1 Bitübertragung","Kabel, Funk, Stecker · Hub, Repeater · Bits"]]},
+ {t:"vs",cols:[{h:"TCP",items:["Verbindungsorientiert (Handshake)","Bestätigt und sortiert Pakete","HTTP, E-Mail, SSH"]},{h:"UDP",items:["Verbindungslos, ohne Bestätigung","Schnell, wenig Overhead","DNS, Streaming, VoIP"]}]},
+ {t:"grid",items:[["🏷️","MAC-Adresse","48 Bit, fest in der Netzwerkkarte, Hex mit Bindestrichen oder Doppelpunkten. Erste Hälfte = Hersteller."],["❓","ARP","Fragt im lokalen Netz: Welche MAC gehört zu dieser IP? Antwort landet im ARP-Cache."]]},
+ {t:"tip",text:"Merksatz von unten: „Alle Deutschen Studenten Trinken Verschiedene Sorten Bier“ (Bit, Sicherung, Vermittlung, Transport, Sitzung, Darstellung, Anwendung)."}]},
+{id:"ipv4",g:"netz",ic:"🌐",t:"IPv4 & Subnetting",s:"Adressen, Masken, private Bereiche",b:[
+ {t:"grid",items:[["🔢","Aufbau","32 Bit, 4 Oktette à 8 Bit: 192.168.10.25"],["🎭","Subnetzmaske","Trennt Netz- und Hostteil: /24 = 255.255.255.0"],["🚪","Gateway","Router-Adresse für alles außerhalb des eigenen Netzes"],["📬","DHCP","Verteilt automatisch IP, Maske, Gateway und DNS-Server"]]},
+ {t:"formula",f:"Nutzbare Hosts = 2^(32 − Präfix) − 2",ex:"/24 → 2⁸ − 2 = 254 · /26 → 2⁶ − 2 = 62"},
+ {t:"table",head:["Bereich","Bedeutung"],rows:[["10.0.0.0/8","privat"],["172.16.0.0/12","privat"],["192.168.0.0/16","privat"],["127.0.0.0/8","Loopback (eigener Rechner)"],["169.254.0.0/16","APIPA: kein DHCP-Server erreicht!"]]},
+ {t:"flow",items:[["Netzadresse","Alle Hostbits 0"],["Erster Host","Netzadresse + 1"],["Letzter Host","Broadcast − 1"],["Broadcast","Alle Hostbits 1"]]},
+ {t:"tip",text:"Sieht man 169.254.x.x, hat der PC keine Antwort vom DHCP-Server bekommen – Kabel, Switch-Port oder DHCP prüfen."}]},
+{id:"ipv6",g:"netz",ic:"🛰️",t:"IPv6",s:"Schreibweise, Adressarten, Subnetze",b:[
+ {t:"grid",items:[["📏","Aufbau","128 Bit, 8 Blöcke à 16 Bit in Hex: 2001:0db8:0000:0000:0000:0000:0000:0001"],["✂️","Kürzen","Führende Nullen weglassen, einmal eine Folge von Null-Blöcken durch :: ersetzen → 2001:db8::1"],["🏠","Präfix","Meist /64 für ein Netz: vorne Netz, hinten 64 Bit Interface-ID"],["🌍","Vorteile","Riesiger Adressraum (gut für IoT), kein NAT nötig, Autokonfiguration (SLAAC)"]]},
+ {t:"table",head:["Adresse","Art"],rows:[["::1","Loopback"],["fe80::/10","Link-Local (nur im eigenen Segment, automatisch erzeugt)"],["2000::/3","Global Unicast (öffentlich)"],["fc00::/7","Unique Local (privat)"],["ff00::/8","Multicast"]]},
+ {t:"formula",f:"Anzahl Subnetze = 2^(neues Präfix − altes Präfix)",ex:"/48 auf /64 aufteilen → 2¹⁶ = 65.536 Subnetze"},
+ {t:"tip",text:"Eine fe80-Adresse, die man nicht eingetragen hat, erzeugt das Gerät selbst – oft aus der MAC (EUI-64: ff:fe in der Mitte einfügen, 7. Bit umdrehen)."}]},
+{id:"befehle",g:"netz",ic:"⌨️",t:"Netzwerkbefehle & Fehlersuche",s:"Windows, Linux, Vorgehen",b:[
+ {t:"table",head:["Windows","Linux","Wofür"],rows:[["ipconfig /all","ip addr","IP, MAC, DNS, Gateway, DHCP anzeigen"],["ipconfig /release · /renew","dhclient","IP vom DHCP neu holen"],["ping","ping","Erreichbarkeit prüfen (ICMP)"],["tracert","traceroute","Weg über die Router anzeigen"],["nslookup","nslookup / dig","Namen in IP auflösen (DNS)"],["arp -a","ip neigh","ARP-Tabelle (IP ↔ MAC)"],["netstat","ss","Offene Verbindungen und Ports"],["ipconfig /flushdns","–","DNS-Cache leeren"]]},
+ {t:"flow",items:[["1. Kabel/LED","Link vorhanden?"],["2. Eigene IP","169.254? → DHCP-Problem"],["3. ping 127.0.0.1","Eigener Netzwerkstack ok?"],["4. ping Gateway","Lokales Netz ok?"],["5. ping 8.8.8.8","Internet ok?"],["6. ping Name","DNS ok?"]]},
+ {t:"grid",items:[["🐧","Linux-Rechte","r=4, w=2, x=1 für Besitzer, Gruppe, Andere. chmod 754 = rwx r-x r--"],["📝","Dokumentieren","Fehler, Ursache, Lösung und Uhrzeit festhalten (Ticket)."]]}]},
+{id:"ports",g:"netz",ic:"🚪",t:"Wichtige Ports",s:"Dienste und ihre Portnummern",b:[
+ {t:"table",head:["Port","Dienst","Hinweis"],rows:[["20/21","FTP","unverschlüsselt"],["22","SSH / SFTP","verschlüsselte Fernwartung"],["23","Telnet","unverschlüsselt, nicht nutzen"],["25","SMTP","Mail zwischen Servern"],["53","DNS","Namensauflösung"],["67/68","DHCP","Adressvergabe"],["80","HTTP","unverschlüsselt"],["110","POP3","Mail abholen"],["143","IMAP","Mail auf dem Server"],["443","HTTPS","verschlüsselt"],["465 / 587","SMTPS / Submission","Mail senden verschlüsselt"],["993","IMAPS","verschlüsselt"],["995","POP3S","verschlüsselt"],["3389","RDP","Remote Desktop"]]},
+ {t:"vs",cols:[{h:"IMAP",items:["Mails bleiben auf dem Server","Auf allen Geräten gleicher Stand","Ordner werden synchronisiert"]},{h:"POP3",items:["Mails werden heruntergeladen","Meist danach vom Server gelöscht","Nur auf einem Gerät sinnvoll"]}]},
+ {t:"tip",text:"Bei „sichere Verbindung zum Server“: SSH (22) oder HTTPS (443) wählen, nicht Telnet (23) oder HTTP (80) – die übertragen im Klartext."}]},
+{id:"wlan",g:"netz",ic:"📶",t:"WLAN & Verkabelung",s:"Standards, Sicherheit, Kabel",b:[
+ {t:"table",head:["Name","Standard","Band"],rows:[["Wi-Fi 4","802.11n","2,4 + 5 GHz"],["Wi-Fi 5","802.11ac","5 GHz"],["Wi-Fi 6 / 6E","802.11ax","2,4 + 5 (+ 6) GHz"],["Wi-Fi 7","802.11be","2,4 + 5 + 6 GHz"]]},
+ {t:"vs",cols:[{h:"WPA2/3-Personal (PSK)",items:["Ein gemeinsames Passwort","Einfach, für zu Hause und kleine Firmen","Passwort-Wechsel betrifft alle"]},{h:"WPA2/3-Enterprise (802.1X/EAP)",items:["Jeder meldet sich einzeln an (RADIUS-Server)","Zugang pro Person sperrbar","Aufwendiger, für größere Firmen"]}]},
+ {t:"grid",items:[["🔑","Zum Verbinden","SSID (Netzname) und Schlüssel bzw. Zugangsdaten, ggf. Zertifikat."],["🧵","Twisted Pair","Cat 5e: 1 Gbit/s · Cat 6A: 10 Gbit/s auf 100 m. S/FTP = Gesamtschirm Geflecht + Folie je Paar."],["🏢","Strukturierte Verkabelung","Primär (Gelände), Sekundär (Gebäude/Steigbereich), Tertiär (Etage, max. 90 m fest + Patchkabel = 100 m)."],["💡","LWL","Glasfaser: große Strecken, störsicher. Singlemode weiter als Multimode."]]}]},
+{id:"cloud",g:"netz",ic:"☁️",t:"Cloud & Virtualisierung",s:"IaaS, PaaS, SaaS, On-Premises",b:[
+ {t:"stack",items:[["SaaS","Fertige Software im Browser (z. B. Office online). Kunde nutzt nur."],["PaaS","Plattform zum Entwickeln und Betreiben eigener Anwendungen."],["IaaS","Virtuelle Server, Speicher, Netz. Kunde verwaltet Betriebssystem selbst."]]},
+ {t:"vs",cols:[{h:"Cloud",items:["+ Kein eigener Server, schnell skalierbar","+ Updates macht der Anbieter","− Abhängig von Internet und Anbieter","− Datenschutz/Standort prüfen (DSGVO)"]},{h:"On-Premises",items:["+ Volle Kontrolle, Daten im Haus","+ Läuft ohne Internet","− Eigene Hardware, Wartung, Personal","− Hohe Anschaffungskosten"]}]},
+ {t:"grid",items:[["🖥️","Hypervisor Typ 1","Läuft direkt auf der Hardware (Server): z. B. ESXi, Hyper-V."],["💻","Hypervisor Typ 2","Läuft als Programm auf einem Betriebssystem: z. B. VirtualBox."],["🪟","VDI / Thin Client","Desktop läuft im Rechenzentrum, am Platz nur ein schlankes Gerät."],["🌥️","Bereitstellung","Public, Private, Hybrid, Community Cloud."]]}]},
+/* ---------- WIRTSCHAFT & RECHT ---------- */
+{id:"kalk",g:"wirt",ic:"🧾",t:"Kalkulation & Kosten",s:"Bezugspreis, Skonto, Rabatt, Stundensatz",b:[
+ {t:"stack",items:[["Listeneinkaufspreis","Preis laut Angebot"],["− Liefererrabatt","Nachlass, z. B. Mengenrabatt"],["= Zieleinkaufspreis",""],["− Liefererskonto","Nachlass für schnelle Zahlung"],["= Bareinkaufspreis",""],["+ Bezugskosten","Versand, Verpackung, Zoll"],["= Bezugspreis (Einstandspreis)","Das ist der Vergleichswert"]]},
+ {t:"vs",cols:[{h:"Rabatt",items:["Sofortiger Preisnachlass","Gründe: Menge, Treue, Aktion","Steht schon in der Rechnung"]},{h:"Skonto",items:["Nachlass für Zahlung innerhalb einer Frist","z. B. 2 % bei Zahlung in 10 Tagen","Wird vom Rechnungsbetrag abgezogen"]}]},
+ {t:"formula",f:"Monatliche Kosten = Anschaffung ÷ Nutzungsdauer in Monaten",ex:"PC 1.800 € über 3 Jahre → 1.800 ÷ 36 = 50 € pro Monat"},
+ {t:"grid",items:[["⏱️","Stundensatz","Kosten pro Jahr ÷ produktive Stunden pro Jahr."],["📞","Minutensatz","Gesamtkosten ÷ Minuten (z. B. für eine Hotline)."],["📊","Fix / variabel","Fixe Kosten bleiben gleich (Miete), variable steigen mit der Menge (Material)."],["🧮","Prozent","Grundwert × Prozentsatz ÷ 100. Kaufmännisch auf 2 Stellen runden."]]}]},
+{id:"nwa",g:"wirt",ic:"⚖️",t:"Angebotsvergleich & Nutzwertanalyse",s:"Quantitativ und qualitativ entscheiden",b:[
+ {t:"flow",items:[["Kriterien","Was ist wichtig? (Preis, Leistung, Service …)"],["Gewichtung","in %, Summe = 100 %"],["Punkte","Jede Option pro Kriterium bewerten"],["Gewichtete Punkte","Gewicht × Punkte"],["Summe","Höchste Summe gewinnt"]]},
+ {t:"table",head:["Kriterium","Gewicht","A: Punkte","A: gewichtet"],rows:[["Preis","40 %","8","3,2"],["Leistung","35 %","6","2,1"],["Service","25 %","9","2,25"],["Summe","100 %","","7,55"]]},
+ {t:"vs",cols:[{h:"Quantitativ",items:["Messbare Zahlen","Preis, Lieferzeit, Leistungsdaten"]},{h:"Qualitativ",items:["Nicht direkt messbar","Service, Erfahrungen, Zuverlässigkeit, Nachhaltigkeit"]}]},
+ {t:"tip",text:"Gründe für einen teureren Lieferanten: bessere Qualität, schnellere Lieferung, guter Service, Zuverlässigkeit, Erfahrungen."}]},
+{id:"vertrag",g:"wirt",ic:"📜",t:"Kaufvertrag, Störungen & Leasing",s:"Zustandekommen, Rechte, Leasing",b:[
+ {t:"flow",items:[["Antrag","z. B. Bestellung auf ein Angebot"],["Annahme","z. B. Auftragsbestätigung oder Lieferung"],["Vertrag","Zwei übereinstimmende Willenserklärungen"]]},
+ {t:"grid",items:[["🐢","Lieferungsverzug","Ware kommt zu spät → Nachfrist setzen, dann Rücktritt oder Schadensersatz."],["🧩","Mangelhafte Lieferung","Falsch, kaputt, zu wenig → zuerst Nacherfüllung (Reparatur/Ersatz), dann Rücktritt, Minderung, Schadensersatz."],["💸","Zahlungsverzug","Käufer zahlt nicht → Mahnung, Verzugszinsen, ggf. Mahnverfahren."],["📦","Annahmeverzug","Käufer nimmt Ware nicht an."]]},
+ {t:"vs",cols:[{h:"Leasing",items:["Leasinggeber bleibt Eigentümer","Leasingnehmer ist Besitzer (darf nutzen)","Monatliche Raten, schont Liquidität","Am Ende: zurückgeben, verlängern oder Kaufoption"]},{h:"Kauf",items:["Käufer wird Eigentümer und Besitzer","Hohe einmalige Ausgabe","Freie Nutzung, Abschreibung"]}]},
+ {t:"tip",text:"Kaufoption = Recht, das Gerät nach der Leasingzeit zu einem festgelegten Restwert zu kaufen. Gewährleistung beim Kauf: 2 Jahre."}]},
+{id:"markt",g:"wirt",ic:"🏪",t:"Markt, Marketing & Organisation",s:"Marktformen, Kunden, Aufbauorganisation",b:[
+ {t:"table",head:["Anbieter \\ Nachfrager","viele","wenige","einer"],rows:[["viele","Polypol","Nachfrage-Oligopol","Nachfrage-Monopol"],["wenige","Angebots-Oligopol","Zweiseitiges Oligopol","Beschränktes Nachfrage-Monopol"],["einer","Angebots-Monopol","Beschränktes Angebots-Monopol","Zweiseitiges Monopol"]]},
+ {t:"grid",items:[["🎯","Zielgruppe","Wer soll angesprochen werden? Alter, Branche, Größe, Bedürfnisse."],["📣","Marketing-Mix","Produkt, Preis, Vertrieb (Place), Kommunikation (Promotion)."],["💰","Preisstrategien","Abschöpfung: hoch einsteigen, dann senken. Penetration: niedrig einsteigen, Markt gewinnen."],["🔎","Bedarfsanalyse","Interview, Fragebogen, Beobachtung, Workshop."]]},
+ {t:"grid",items:[["🏢","Aufbauorganisation","Wer ist wem unterstellt? Organigramm, Stellen, Abteilungen (Einlinien-, Mehrlinien-, Matrixorganisation)."],["🔄","Ablauforganisation","Wie laufen Prozesse ab? Kern- und Unterstützungsprozesse."],["🎤","Präsentation","Kurze Stichpunkte, je eine Botschaft, Zielgruppe im Blick."]]}]},
+{id:"lizenz",g:"wirt",ic:"📄",t:"Software & Lizenzen",s:"Lizenzarten, Urheberrecht, Softwarearten",b:[
+ {t:"table",head:["Art","Kosten","Quellcode"],rows:[["Freeware","kostenlos","geschlossen"],["Shareware","Test kostenlos, dann zahlen","geschlossen"],["Open Source","meist kostenlos","offen, ändern erlaubt"],["Proprietär","kostenpflichtig","geschlossen"]]},
+ {t:"grid",items:[["👤","Named User","Lizenz gehört einer bestimmten Person."],["🔄","Concurrent / Floating","Begrenzte Zahl gleichzeitiger Nutzer."],["🏭","OEM","Mit Hardware verkauft, an das Gerät gebunden."],["📆","Abo / SaaS","Laufende Gebühr, immer aktuell."],["📚","Volumenlizenz","Viele Lizenzen günstiger für Firmen."],["©️","Urheberrecht","Entsteht automatisch beim Programmieren, schützt den Code."]]},
+ {t:"vs",cols:[{h:"Standardsoftware",items:["Für viele Kunden gleich","Günstig, sofort verfügbar","Passt nicht immer genau"]},{h:"Individualsoftware",items:["Für einen Kunden entwickelt","Passt genau","Teuer, dauert länger"]}]}]},
+{id:"wiso",g:"wirt",ic:"🏛️",t:"Ausbildung & Betrieb (WiSo)",s:"Vor allem in alten Zwischenprüfungen",b:[
+ {t:"grid",items:[["📘","BBiG","Berufsbildungsgesetz: Ausbildungsvertrag, Probezeit 1–4 Monate, Rechte und Pflichten."],["🧑‍🎓","JAV","Jugend- und Auszubildendenvertretung, möglich ab 5 Jugendlichen/Azubis unter 25."],["🏖️","Urlaub","Jugendarbeitsschutzgesetz für unter 18-Jährige: mehr Urlaubstage je nach Alter."],["🏢","Rechtsformen","GmbH: haftet mit Firmenvermögen, Geschäftsführer leiten. AG, KG, OHG, Einzelunternehmen."],["🧯","Arbeitsschutz","Arbeitsstättenverordnung, Erste Hilfe, Brandschutz, Fluchtwege."],["♻️","Umwelt","Mülltrennung, Elektroschrott zurückgeben, Energie sparen."]]},
+ {t:"tip",text:"In der neuen AP1 kommt WiSo nicht mehr als eigener Teil vor – aber Arbeitsschutz und Ergonomie tauchen in Situationen auf."}]},
+/* ---------- PROJEKT & SERVICE ---------- */
+{id:"pm",g:"proj",ic:"🗂️",t:"Projektmanagement",s:"Merkmale, SMART, Phasen, Lasten-/Pflichtenheft",b:[
+ {t:"grid",items:[["1️⃣","Einmalig","Nicht Routine."],["⏳","Zeitlich begrenzt","Klarer Start und Ende."],["🎯","Klares Ziel","Definiertes Ergebnis."],["💶","Begrenzte Mittel","Budget, Personal."],["🧩","Komplex","Viele Beteiligte, Risiko."],["👥","Eigene Organisation","Projektteam, Projektleitung."]]},
+ {t:"stack",items:[["S – spezifisch","Eindeutig formuliert"],["M – messbar","Überprüfbar"],["A – attraktiv / akzeptiert","Von allen getragen"],["R – realistisch","Machbar"],["T – terminiert","Mit Termin"]]},
+ {t:"flow",items:[["Initiierung","Idee, Projektauftrag"],["Definition","Ziele, Lastenheft"],["Planung","Aufgaben, Zeit, Kosten"],["Durchführung","Umsetzen, steuern"],["Abschluss","Übergabe, Abnahme, Bericht"]]},
+ {t:"vs",cols:[{h:"Lastenheft",items:["Schreibt der Auftraggeber","WAS soll erreicht werden und WOFÜR?","Ausgangslage, Ziele, Anforderungen, Rahmenbedingungen"]},{h:"Pflichtenheft",items:["Schreibt der Auftragnehmer","WIE und WOMIT wird es umgesetzt?","Technische Lösung, Umsetzung, Abnahmekriterien"]}]},
+ {t:"grid",items:[["👥","Stakeholder","Alle, die betroffen sind oder Einfluss haben: Kunde, Mitarbeiter, Geschäftsleitung, Betriebsrat, Lieferanten."],["🤝","Teamphasen","Forming → Storming → Norming → Performing → Adjourning."]]}]},
+{id:"netzplan",g:"proj",ic:"🕸️",t:"Netzplan & Gantt",s:"FAZ, FEZ, SAZ, SEZ, Puffer, kritischer Pfad",b:[
+ {t:"table",head:["Kürzel","Bedeutung","Berechnung"],rows:[["FAZ","Frühester Anfang","= größter FEZ der Vorgänger"],["FEZ","Frühestes Ende","FAZ + Dauer"],["SEZ","Spätestes Ende","= kleinster SAZ der Nachfolger"],["SAZ","Spätester Anfang","SEZ − Dauer"],["GP","Gesamtpuffer","SAZ − FAZ (oder SEZ − FEZ)"],["FP","Freier Puffer","kleinster FAZ der Nachfolger − eigener FEZ"]]},
+ {t:"flow",items:[["Vorwärts","FAZ und FEZ von links nach rechts"],["Rückwärts","SEZ und SAZ von rechts nach links"],["Puffer","GP und FP"],["Kritischer Pfad","Alle Vorgänge mit GP = 0"]]},
+ {t:"vs",cols:[{h:"Netzplan",items:["Zeigt Abhängigkeiten und Puffer genau","Kritischer Pfad sichtbar","Bei großen Projekten unübersichtlich"]},{h:"Gantt-Diagramm",items:["Balken auf einer Zeitachse","Dauer, Beginn, Ende auf einen Blick","Abhängigkeiten nur mit Pfeilen"]}]},
+ {t:"tip",text:"Verzögert sich ein Vorgang auf dem kritischen Pfad, verschiebt sich das Projektende um genau diese Zeit. Außerhalb: erst wenn der Puffer aufgebraucht ist."}]},
+{id:"support",g:"proj",ic:"🎧",t:"Support, Service & Change",s:"Ticket, SLA, Level, Kommunikation",b:[
+ {t:"stack",items:[["1st Level","Erste Annahme, einfache Lösungen, Ticket anlegen"],["2nd Level","Fachleute für schwierigere Fälle"],["3rd Level","Hersteller oder Entwicklung"]]},
+ {t:"grid",items:[["🎫","Ticketsystem","Jede Meldung bekommt eine Nummer, Status, Priorität, Verlauf. Nichts geht verloren, Auswertung möglich."],["📜","SLA","Service Level Agreement: vereinbarte Reaktionszeit, Lösungszeit, Verfügbarkeit."],["🧯","Incident vs. Problem","Incident = Störung schnell beheben. Problem = Ursache finden, damit es nicht wiederkommt."],["⬆️","Eskalation","Fachlich (an höheres Level) oder hierarchisch (an Vorgesetzte)."],["🖥️","Fernwartung","+ schnell, günstig · − braucht Netz und Zustimmung, nicht alles geht remote."],["💬","Kommunikation","Aktiv zuhören, nachfragen, verständlich erklären, Ergebnis zusammenfassen."]]},
+ {t:"flow",items:[["Information","Früh und ehrlich informieren"],["Beteiligung","Betroffene einbeziehen"],["Schulung","Sicherheit im Umgang geben"],["Begleitung","Ansprechpartner, Feedback"]]},
+ {t:"tip",text:"Widerstand gegen Neues kommt oft von Angst (Jobverlust, Überforderung). Gegenmittel: informieren, beteiligen, schulen."}]},
+{id:"qm",g:"proj",ic:"✅",t:"Qualitätsmanagement",s:"PDCA, Normen, Abnahme",b:[
+ {t:"flow",items:[["Plan","Ziel und Maßnahmen planen"],["Do","Umsetzen (testweise)"],["Check","Ergebnis prüfen"],["Act","Verbessern und als Standard festlegen"]]},
+ {t:"grid",items:[["📏","ISO 9001","Norm für Qualitätsmanagementsysteme, Zertifizierung durch externe Prüfer."],["🔁","KVP","Kontinuierlicher Verbesserungsprozess in kleinen Schritten."],["📝","Testprotokoll","Was wurde wann wie getestet, Soll, Ist, Ergebnis, Unterschrift."],["🤝","Abnahme","Kunde prüft gegen Pflichtenheft und bestätigt mit Abnahmeprotokoll."]]}]},
+{id:"ergo",g:"proj",ic:"🪑",t:"Ergonomie, Barrierefreiheit & Green IT",s:"Arbeitsplatz, Homeoffice, Umwelt",b:[
+ {t:"grid",items:[["🖥️","Bildschirm","Oberkante auf oder unter Augenhöhe, ca. 50–70 cm Abstand, blendfrei, seitlich zum Fenster."],["⌨️","Notebook","Externe Tastatur, Maus und Monitor oder Notebook-Ständer verwenden."],["📱","Tablet","Kein vollwertiger Bildschirmarbeitsplatz: kleiner Bildschirm, keine getrennte Tastatur, ungünstige Haltung."],["💡","Licht & Raum","Gute Beleuchtung, Pausen, verstellbarer Stuhl und Tisch."]]},
+ {t:"vs",cols:[{h:"Homeoffice: Vorteile",items:["Kein Arbeitsweg","Flexible Zeiten","Ruhiges Arbeiten"]},{h:"Homeoffice: Nachteile",items:["Weniger Austausch","Grenze Arbeit/Freizeit verschwimmt","Datenschutz und Technik zu Hause"]}]},
+ {t:"grid",items:[["♿","Barrierefreiheit","Screenreader, Braillezeile, Vergrößerung, Kontrast, Untertitel. Regeln: BITV 2.0, WCAG."],["🌱","Green IT","Siegel: Blauer Engel, Energy Star, TCO Certified, EU-Energielabel. Lange Nutzung, Reparatur, Recycling."]]}]},
+/* ---------- SOFTWARE ---------- */
+{id:"prog",g:"soft",ic:"🧑‍💻",t:"Programmierung & Struktogramm",s:"Datentypen, Kontrollstrukturen, Schreibtischtest",b:[
+ {t:"table",head:["Datentyp","Beispiel"],rows:[["int (Ganzzahl)","42"],["float / double (Kommazahl)","3.14"],["char (Zeichen)","'A'"],["String (Text)","\"Hallo\""],["boolean (Wahrheitswert)","true / false"],["Array (Liste)","[3, 7, 9]"]]},
+ {t:"grid",items:[["➡️","Sequenz","Anweisungen nacheinander."],["🔀","Verzweigung","if / else, switch: abhängig von einer Bedingung."],["🔁","Kopfgesteuerte Schleife","while, for: prüft vorher, läuft evtl. nie."],["🔂","Fußgesteuerte Schleife","do … while: läuft mindestens einmal."]]},
+ {t:"vs",cols:[{h:"Compiler",items:["Übersetzt das ganze Programm vorher","Schnell beim Ausführen","z. B. C, C++"]},{h:"Interpreter",items:["Übersetzt Zeile für Zeile beim Ausführen","Plattformunabhängig, schnell testen","z. B. Python, JavaScript"]}]},
+ {t:"flow",items:[["Tabelle anlegen","Eine Spalte pro Variable"],["Zeile für Zeile","Jede Änderung eintragen"],["Schleifen","Jeden Durchlauf neu notieren"],["Ausgabe","Am Ende ablesen"]]},
+ {t:"tip",text:"Schreibtischtest = Programm im Kopf mit einer Wertetabelle durchgehen. Typische Fehler: falsche Startwerte, < statt <=, Summe nicht zurückgesetzt."}]},
+{id:"oop",g:"soft",ic:"🧬",t:"OOP & UML",s:"Klassen, Vererbung, Diagramme",b:[
+ {t:"grid",items:[["📦","Klasse","Bauplan mit Attributen (Daten) und Methoden (Funktionen)."],["🧍","Objekt","Konkretes Exemplar einer Klasse."],["🔒","Kapselung","Attribute privat (−), Zugriff über Methoden (+). # = protected."],["👪","Vererbung","Unterklasse übernimmt alles von der Oberklasse und ergänzt."],["🎭","Polymorphie","Gleiche Methode, unterschiedliches Verhalten je Klasse."],["🔧","Methode","Name(Parameter: Typ): Rückgabetyp, z. B. checkAuthority(id: int, raum: int): bool"]]},
+ {t:"vs",cols:[{h:"Use-Case-Diagramm",items:["Akteure (Strichmännchen) und Anwendungsfälle (Ellipsen)","Systemgrenze als Rahmen","«include» = immer dabei, «extend» = optional"]},{h:"Klassendiagramm",items:["Kasten: Name, Attribute, Methoden","Linien mit Kardinalität (1, *, 0..1)","Pfeil mit leerem Dreieck = Vererbung"]},{h:"Aktivitätsdiagramm",items:["Ablauf mit Start, Aktionen, Entscheidungen","Ähnlich wie ein Programmablaufplan"]}]}]},
+{id:"db",g:"soft",ic:"🗃️",t:"Datenbanken & SQL",s:"Schlüssel, ERM, Normalisierung, Abfragen",b:[
+ {t:"grid",items:[["🔑","Primärschlüssel","Identifiziert jeden Datensatz eindeutig."],["🔗","Fremdschlüssel","Verweist auf den Primärschlüssel einer anderen Tabelle → Tabellen verknüpfen."],["♻️","Redundanz","Doppelte Daten → Speicher, Widersprüche, Anomalien beim Einfügen, Ändern, Löschen."],["📐","Kardinalität","1:1, 1:n, n:m (n:m braucht eine Zwischentabelle)."]]},
+ {t:"stack",items:[["1. NF","Jedes Feld nur ein Wert (atomar)"],["2. NF","Alles hängt vom ganzen Schlüssel ab"],["3. NF","Keine Abhängigkeit zwischen Nicht-Schlüssel-Feldern"]]},
+ {t:"code",text:"SELECT kunde, COUNT(*) AS anzahl\nFROM tickets\nWHERE zustand = 'offen' AND datum < '2025-01-01'\nGROUP BY kunde\nHAVING COUNT(*) > 2\nORDER BY anzahl DESC;"},
+ {t:"table",head:["Befehl","Wofür"],rows:[["SUM, AVG, MIN, MAX, COUNT","Summe, Durchschnitt, Minimum, Maximum, Anzahl"],["JOIN … ON","Tabellen verbinden"],["LIKE '%abc%'","Textsuche mit Platzhalter"],["BETWEEN x AND y","Bereich"],["INSERT · UPDATE · DELETE","Einfügen · Ändern · Löschen"]]},
+ {t:"tip",text:"WHERE filtert Zeilen vor dem Gruppieren, HAVING filtert Gruppen danach."}]},
+{id:"test",g:"soft",ic:"🧪",t:"Softwaretest & Vorgehensmodelle",s:"Teststufen, Testarten, Modelle",b:[
+ {t:"stack",items:[["Abnahmetest","Kunde prüft gegen die Anforderungen"],["Systemtest","Ganzes System gegen die Spezifikation"],["Integrationstest","Zusammenspiel mehrerer Komponenten"],["Komponenten-/Unittest","Einzelne Funktion oder Klasse"]]},
+ {t:"vs",cols:[{h:"Blackbox",items:["Ohne Blick in den Code","Testfälle aus der Spezifikation","Äquivalenzklassen, Grenzwerte"]},{h:"Whitebox",items:["Mit Blick in den Code","Testfälle aus dem Programm","Anweisungs-, Zweigüberdeckung"]}]},
+ {t:"vs",cols:[{h:"Wasserfall (sequenziell)",items:["Analyse → Entwurf → Umsetzung → Test → Betrieb","Klar planbar","Änderungen spät teuer"]},{h:"Agil / iterativ (Scrum)",items:["Kurze Zyklen (Sprints)","Kunde sieht früh Ergebnisse","Flexibel bei Änderungen"]}]},
+ {t:"grid",items:[["🐞","Debugger","Programm schrittweise ausführen, Haltepunkte, Variablen beobachten."],["🗃️","Versionsverwaltung","z. B. Git: Änderungen nachverfolgen, gemeinsam arbeiten, zurückspringen."],["🔁","Regressionstest","Nach Änderungen prüfen, ob Altes noch funktioniert."]]}]},
+{id:"ki",g:"soft",ic:"🤖",t:"KI & Digitalisierung",s:"Chatbots, Chancen, Risiken",b:[
+ {t:"grid",items:[["🧠","KI","Systeme, die aus Daten lernen und Muster erkennen (maschinelles Lernen)."],["💬","Chatbot","Beantwortet Anfragen automatisch, rund um die Uhr."],["📄","Digitale Prozesse","z. B. Rechnungen automatisch erfassen und prüfen."],["🔗","API","Schnittstelle, über die Programme Daten austauschen."]]},
+ {t:"vs",cols:[{h:"Chancen",items:["24/7 erreichbar","Schneller, weniger Routinearbeit","Weniger Tippfehler"]},{h:"Risiken",items:["Falsche Antworten (Halluzination)","Datenschutz bei sensiblen Daten","Haftung, Transparenz, Akzeptanz der Mitarbeiter"]}]},
+ {t:"tip",text:"Bei KI mit Kundendaten immer an DSGVO, Server-Standort und Kennzeichnung („Sie chatten mit einer KI“) denken."}]},
+/* ---------- SICHERHEIT ---------- */
+{id:"sich",g:"sich",ic:"🛡️",t:"IT-Sicherheit",s:"Schutzziele, Bedrohungen, Maßnahmen",b:[
+ {t:"stack",items:[["Vertraulichkeit","Nur Berechtigte sehen die Daten"],["Integrität","Daten sind unverändert und korrekt"],["Verfügbarkeit","Daten und Systeme sind nutzbar, wenn man sie braucht"]]},
+ {t:"grid",items:[["🦠","Virus","Hängt sich an Dateien, braucht einen Wirt."],["🐛","Wurm","Verbreitet sich selbst über das Netz."],["🐴","Trojaner","Getarnt als nützliches Programm."],["🔐","Ransomware","Verschlüsselt Daten, fordert Lösegeld."],["👀","Spyware / Keylogger","Spioniert Eingaben und Daten aus."],["🎣","Phishing","Gefälschte Mails/Seiten → Zugangsdaten stehlen. Anzeichen: fremder Absender, Druck, komische Links, Anhänge, Fehler."]]},
+ {t:"vs",cols:[{h:"Technisch",items:["Updates, Virenschutz, Firewall","Härtung: unnötige Dienste aus, Standardpasswörter ändern","Backups (3-2-1), Verschlüsselung","Zwei-Faktor-Anmeldung, Netze trennen"]},{h:"Organisatorisch",items:["Schulungen, Richtlinien","Rechte nur so viel wie nötig","Zutrittskontrolle, Besucher begleiten","Protokollierung und Kontrolle"]}]},
+ {t:"grid",items:[["🏛️","BSI","Bundesamt für Sicherheit in der Informationstechnik: berät, warnt, gibt den IT-Grundschutz heraus."],["🔑","Passwort","Lang (≥ 12 Zeichen), nicht wiederverwenden, nicht erratbar, Passwortmanager, 2FA."],["🪪","Authentifizierung","Wissen (Passwort), Besitz (Karte), Sein (Fingerabdruck). Zwei davon = 2FA."],["👑","Adminrechte","Nicht für alle: ein Fehler oder Schadprogramm kann sonst das ganze System ändern."]]}]},
+{id:"krypto",g:"sich",ic:"🔐",t:"Kryptografie & sichere Verbindungen",s:"Symmetrisch, asymmetrisch, Hash, VPN",b:[
+ {t:"vs",cols:[{h:"Symmetrisch",items:["Ein gemeinsamer Schlüssel","Schnell (z. B. AES)","Problem: Schlüssel sicher austauschen"]},{h:"Asymmetrisch",items:["Schlüsselpaar: öffentlich + privat","Langsamer (z. B. RSA)","Kein geheimer Schlüsselaustausch nötig"]}]},
+ {t:"flow",items:[["Empfänger","gibt seinen öffentlichen Schlüssel"],["Absender","verschlüsselt mit diesem öffentlichen Schlüssel"],["Übertragung","Nur Kauderwelsch unterwegs"],["Empfänger","entschlüsselt mit seinem privaten Schlüssel"]]},
+ {t:"grid",items:[["🧾","Hashwert","Fingerabdruck einer Datei (z. B. SHA-256). Download prüfen: selbst berechneter Hash = Hash auf der Website → Datei unverändert (Integrität)."],["✍️","Digitale Signatur","Hash mit dem eigenen privaten Schlüssel signiert → Echtheit und Unverändertheit."],["📜","Zertifikat","Eine Zertifizierungsstelle (CA) bestätigt: Dieser öffentliche Schlüssel gehört zu dieser Person/diesem Server."],["🔀","Hybrid","Schlüssel asymmetrisch austauschen, Daten symmetrisch verschlüsseln (so arbeitet TLS/HTTPS)."],["🚇","VPN","Verschlüsselter Tunnel über das Internet ins Firmennetz (IPsec, OpenVPN, WireGuard)."],["💽","Festplattenverschlüsselung","Bei Diebstahl sind die Daten ohne Schlüssel nicht lesbar (z. B. BitLocker)."]]}]},
+{id:"dsgvo",g:"sich",ic:"⚖️",t:"Datenschutz (DSGVO & BDSG)",s:"Personenbezogene Daten, Rechte, Grundsätze",b:[
+ {t:"grid",items:[["🧍","Personenbezogen","Alle Daten, die einer Person zugeordnet werden können: Name, Adresse, IP, Kundennummer."],["❗","Besondere Kategorien","Gesundheit, Religion, Herkunft, politische Meinung, Gewerkschaft, Biometrie, Genetik, Sexualleben (Art. 9 DSGVO) → besonders geschützt."],["🏥","Schweigepflicht","Ärzte, Anwälte, Apotheker: Berufsgeheimnis (§ 203 StGB) → besonders sichere Kommunikation."],["👮","Datenschutzbeauftragter","Pflicht u. a. ab 20 Personen, die ständig Daten automatisiert verarbeiten (BDSG)."]]},
+ {t:"stack",items:[["Rechtmäßigkeit","Gesetzliche Grundlage oder Einwilligung"],["Zweckbindung","Nur für den genannten Zweck"],["Datenminimierung","So wenig wie nötig"],["Richtigkeit","Daten aktuell halten"],["Speicherbegrenzung","Löschen, wenn nicht mehr nötig"],["Integrität & Vertraulichkeit","Technisch schützen"]]},
+ {t:"grid",items:[["📋","Betroffenenrechte","Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch."],["🎭","Pseudonymisierung","Name durch Kennung ersetzt, mit Zusatzinfo rückführbar."],["🕶️","Anonymisierung","Nicht mehr rückführbar – fällt nicht mehr unter die DSGVO."],["🗒️","Protokolle (Logs)","Nur nötige Daten, Zugriff beschränken, Löschfristen, Zweck festlegen."]]},
+ {t:"tip",text:"TOM = technische und organisatorische Maßnahmen, z. B. Zutritts-, Zugangs-, Zugriffskontrolle, Verschlüsselung, Backup."}]}
+];
+
+const PRUEF=[
+{id:"h25",t:"Herbst 2025",typ:"AP1",szen:"Apothekengruppe eröffnet eine neue Filiale",a:[
+ {p:25,t:"Beschaffung und Rechnung",th:["Kaufmännische Termine auf einem Beleg","Rechnung prüfen, Skonto berechnen, Skonto vs. Rabatt","GiroCode (QR-Code) auf Rechnungen","Widerstände gegen neue Abläufe (Change)"],z:["kalk","vertrag","support"]},
+ {p:25,t:"Digitales Rechnungsmanagement",th:["Vor- und Nachteile digitaler Rechnungen","Prozess Rechnungseingang, KI-gestützte Prüfung","Speicherbedarf pro Tag in KiB, Kompression in %","Angebot für externen Speicher bewerten"],z:["rech","ki","cloud"]},
+ {p:26,t:"Kartenterminal einrichten",th:["Gesundheitsdaten: erhöhter Schutzbedarf","Authentifizierung: Wissen, Besitz, Biometrie","Updates und sichere Lieferkette","Leistung: P = U × I, Strom über USB berechnen","Störungen eingrenzen"],z:["dsgvo","sich","energie","schnitt","support"]},
+ {p:24,t:"Datenbank für Medikamente",th:["Primär- und Fremdschlüssel, Tabellen verknüpfen","Algorithmus erklären, Schreibtischtest","Fehler im Pseudocode finden und korrigieren"],z:["db","prog"]}]},
+{id:"f25",t:"Frühjahr 2025",typ:"AP1",szen:"Anwaltskanzlei modernisiert ihre IT",a:[
+ {p:25,t:"Multifunktionsgeräte",th:["Entscheidungsmatrix (Nutzwertanalyse) ausfüllen","Kauf abwickeln","Einrichtung und LAN-Einbindung","Englischer Herstellertext: Sicherheitsmaßnahmen","Warum nicht alle Nutzer Adminrechte bekommen"],z:["nwa","vertrag","sich","ipv4"]},
+ {p:20,t:"Verschlüsselte Kommunikation",th:["Rechtliche Grundlage der Schweigepflicht","Asymmetrische Verschlüsselung Schritt für Schritt","Schutzziel Vertraulichkeit","Symmetrisch vs. asymmetrisch","Hashwert eines Downloads prüfen","IMAP vs. POP3"],z:["krypto","dsgvo","ports"]},
+ {p:30,t:"Website der Kanzlei",th:["Netzplan: FAZ, FEZ, SAZ, SEZ, GP, FP, kritischer Pfad","Dynamische vs. statische Website","Funktion für Seitenaufrufe auswerten (Schreibtischtest)"],z:["netzplan","prog"]},
+ {p:25,t:"KI in der Kanzlei",th:["Ablauf einer Terminanfrage","Bedenken gegen KI","KI-Chatbot: Chancen und Risiken","Sichere Verbindung zum Cloud-Server (Ports)","Redundanzen in Daten und ihre Probleme"],z:["ki","ports","cloud","db"]}]},
+{id:"h24",t:"Herbst 2024",typ:"AP1",szen:"Firma für Schließsysteme (Identify OHG)",a:[
+ {p:25,t:"Besprechungsraum absichern",th:["Zutrittskontrolle, BSI-Grundschutz","Sicherheitsrisiken in Alltagssituationen","APIPA-Adresse 169.254.x.x erkennen","IP-Konfiguration nach Vorgabe","Netz trennen (VLAN/Gastnetz), MAC-Adresse ermitteln"],z:["sich","ipv4","befehle","osi"]},
+ {p:25,t:"Software für Schließsysteme",th:["Eigenentwicklung vs. Fremdvergabe","Programmiersprache wählen","Compiler vs. Interpreter","UML-Anwendungsfalldiagramm","Methode mit Parametern und Rückgabewert","Kostenübersicht für eine Schule"],z:["prog","oop","kalk"]},
+ {p:24,t:"Computer beschaffen",th:["Angebot über 10 Computer prüfen","RAM-Kompatibilität (DDR-Generation, Bauform)","HDD durch SSD ersetzen","Phishing: Gefahren, Anzeichen, Schutz"],z:["hw","kalk","sich"]},
+ {p:26,t:"Produktion dokumentieren",th:["Lasten- und Pflichtenheft","Datenmodell redundanzfrei erweitern, Kardinalitäten","Leasingende: Optionen","Alte Maschine weiter nutzen: Argumente"],z:["pm","db","vertrag"]}]},
+{id:"f24",t:"Frühjahr 2024",typ:"AP1",szen:"Fünf CAD-Arbeitsplätze einrichten (KustoFlex GmbH)",a:[
+ {p:26,t:"Systeme auswählen",th:["Nutzwertanalyse vervollständigen und Rangfolge","Nur On-Premises: Auswirkung","Laufende Kosten pro Monat (Abschreibung über Nutzungsdauer)","Wann ist der Kaufvertrag zustande gekommen?","Kaufvertragsstörungen und Rechte des Käufers"],z:["nwa","kalk","vertrag","cloud"]},
+ {p:24,t:"Netzwerk prüfen",th:["Link-LED an der Netzwerkbuchse","ipconfig /all auswerten (DHCP, DNS, Gateway)","IPv6 Link-Local-Adresse analysieren","ARP erklären","Erreichbarkeit prüfen (ping)"],z:["befehle","ipv4","ipv6","osi"]},
+ {p:24,t:"Dateiformat und Netzteil",th:["Infos zu unbekanntem Dateiformat beschaffen","ASCII- vs. Binärdatei","Speicherbedarf von 3D-Punkten in KiB","RGB mit 8 Bit pro Kanal: Anzahl Farben, Mehrbedarf in %","Netzteil mit Puffer wählen","Stromkosten im Jahr"],z:["zahl","rech","energie"]},
+ {p:26,t:"Mobiles Arbeiten",th:["Sichtschutz und Verhalten unterwegs","Mobilfunk-Alternativen","VPN","Backup auf externe Festplatte","Malware-Arten und Schutz","Übertragungsdauer berechnen"],z:["sich","krypto","rech","wlan"]}]},
+{id:"h23",t:"Herbst 2023",typ:"AP1",szen:"Softwarefirma baut 24/7-Service auf (OptiSoft-XXL GmbH)",a:[
+ {p:25,t:"Störungsmeldungen verbessern",th:["UML-Anwendungsfalldiagramm ergänzen","Kritik an E-Mail + Tabelle als Ticketersatz","Bedarfsanalyse beim Kunden","Service-Preise: zu hoch, zu niedrig, Kriterien"],z:["oop","support","markt"]},
+ {p:25,t:"Telearbeit",th:["Ausstattung Heimarbeitsplatz","Tablet erfüllt Bildschirmarbeitsplatz nicht","Notebook ergonomisch machen","Homeoffice: Vor- und Nachteile","Minutensatz einer Hotline kalkulieren"],z:["ergo","kalk"]},
+ {p:22,t:"Datenschutz im Homeoffice",th:["DSGVO und BDSG","BSI-Maßnahmen (TOM) für Telearbeit","Sicheres Passwort","Festplattenverschlüsselung: Vertraulichkeit, Integrität","VPN und Zertifikat zur Identifizierung"],z:["dsgvo","sich","krypto"]},
+ {p:28,t:"Ticketsystem einführen",th:["Gantt-Diagramm vs. Netzplan","Gantt erstellen, Projektende, größter Puffer","ERD ergänzen","SQL: offene Tickets nach Datum"],z:["netzplan","db","support"]}]},
+{id:"f23",t:"Frühjahr 2023",typ:"AP1",szen:"Versicherung modernisiert Arbeitsplätze (SecuRita AG)",a:[
+ {p:26,t:"Flexible Arbeitsplätze",th:["Arbeitsplatz-Modelle: Vor- und Nachteile","Nutzwertanalyse: gewichtete Punkte berechnen","Weiteres Kriterium begründen"],z:["nwa","hw"]},
+ {p:25,t:"3.500 Notebooks beschaffen",th:["Bezugspreis kalkulieren (Rabatt, Skonto, Bezugskosten)","Gründe für teureren Lieferanten","Leasing: Eigentum und Besitz","Leasing vs. Kauf: Differenz","Kaufoption"],z:["kalk","vertrag"]},
+ {p:24,t:"Betriebssysteme absichern",th:["Schichten eines Systems","Aufgaben des BSI","Härtung und Beispiele","Bordmittel für Sicherheit","Protokollierung und Datenschutz"],z:["sich","dsgvo"]},
+ {p:25,t:"Chatbot für Schadensfälle",th:["Argumente für und gegen Chatbot","Lastenheft vs. Pflichtenheft","Inhalte eines Lastenhefts","Klassendiagramm / Methoden","SQL: Durchschnitt (AVG), Filter nach Datum"],z:["ki","pm","oop","db"]}]},
+{id:"h22",t:"Herbst 2022",typ:"AP1",szen:"Kartonhersteller digitalisiert die Produktion (Package AG)",a:[
+ {p:23,t:"Projekt und Markt",th:["Marktformen (Oligopol, Polypol)","Projektphasen mit Inhalten","Stakeholder und ihr Einfluss","Externer Berater: Vor- und Nachteile","Effektiver Stundensatz"],z:["markt","pm","kalk"]},
+ {p:25,t:"Scans speichern",th:["Scans pro Tag berechnen","Datenvolumen in MiB und TiB","RAID 5 Nettokapazität, JBOD","JBOD vs. RAID 0","NAS vs. SAN","QR-Code vs. RFID"],z:["rech","raid","zahl"]},
+ {p:28,t:"IPv6 für IoT",th:["Vorteile von IPv6","Anzahl Subnetze aus einem Präfix","IPv6-Adressen vergeben","Loopback und Gateway prüfen","Automatisch erzeugte Link-Local-Adresse","Angebote mit Bezugspreis bewerten"],z:["ipv6","befehle","nwa","kalk"]},
+ {p:24,t:"Datenbank und Steuerung",th:["SQL: SELECT mit WHERE, COUNT, SUM","API zur Maschinensteuerung","Struktogramm ergänzen","ERM vervollständigen"],z:["db","prog"]}]},
+{id:"f22",t:"Frühjahr 2022",typ:"AP1",szen:"Systemhaus gewinnt einen Kunden (AllRound AG)",a:[
+ {p:25,t:"Kundengespräch vorbereiten",th:["Präsentationsfolie mit Kernbotschaften","Leistungsangebote erklären","Infos für ein Angebot"],z:["markt","support"]},
+ {p:24,t:"PC zusammenbauen",th:["CPU einbauen, Wärmeleitpaste","RAM im Dual-Channel","M.2 vs. SATA-SSD","Anschlüsse erkennen, USB-C vs. USB 3","Logische Prozessoren, Cache, GHz in Hz"],z:["hw","schnitt","zahl"]},
+ {p:25,t:"WLAN einrichten",th:["Was man vom Admin braucht (SSID, Schlüssel)","WPA-PSK vs. EAP (Enterprise)","OSI-Schichten mit Beispielen","MAC- und Link-Local-Adresse","DHCP erneuern, ping auswerten"],z:["wlan","osi","ipv6","befehle"]},
+ {p:26,t:"Workspace-Management",th:["Leistungsmerkmale aus einem Text","Cloud vs. On-Premises","Übertragungsdauer einer Datei (MiB über Mbit/s)"],z:["cloud","rech"]}]},
+{id:"h21",t:"Herbst 2021",typ:"AP1",szen:"Arztpraxis zieht um (IT.SYS GmbH)",a:[
+ {p:25,t:"Umzug planen",th:["Merkmale eines Projekts","SMART-Ziele","Netzplan vervollständigen","Verzögerung: Auswirkung auf das Projektende"],z:["pm","netzplan"]},
+ {p:25,t:"Energie und Skript",th:["Leistung und Energiekosten pro Monat","80 PLUS Gold: Amortisation","Weitere Energiespar-Ideen","Mehrfachsteckdose überlastet?","Fehler im Backup-Skript"],z:["energie","prog"]},
+ {p:26,t:"IT für die Praxis",th:["Lastenheft","Kosten und Dauer einer E-Mail-Migration","Fernwartung vs. Vor-Ort","Software-Schulung: Möglichkeiten","RAID-Level erklären und empfehlen"],z:["pm","kalk","support","raid"]},
+ {p:24,t:"Datenschutz und Datensicherheit",th:["Schutzziele","BSI-Grundschutz-Anforderungen","Gesundheitsdaten (besondere Kategorien)","Sicheres Passwort","Risiken aufzeigen, Verbesserung vorschlagen"],z:["sich","dsgvo"]}]},
+{id:"f21",t:"Frühjahr 2021",typ:"ZP",szen:"Zwischenprüfung (alte Ordnung) – Ankreuz- und Zuordnungsaufgaben",a:[
+ {p:null,t:"Betrieb und Projekt",th:["Werkstoffe, Energiekosten","Aufbauorganisation, Stellen","Konsumverhalten, Abschöpfungsstrategie","Netzplan: Pufferarten","Projektstrukturplan, Kick-off, Teambildung","Ergonomie"],z:["markt","netzplan","pm","ergo"]},
+ {p:null,t:"IT-Systeme",th:["Standardsoftware, Lizenzarten","Druckerkosten vergleichen","Cache, Beamer, Partitionen, Betriebssystem","Speicherbedarf Kamerabilder","Datentypen, Skripte, Debugging, IDE","RAID-Parität, A/D-Wandlung"],z:["lizenz","hw","rech","prog","raid","zahl"]},
+ {p:null,t:"Softwareentwicklung",th:["Webanwendung, OOP, Klassendiagramm","Versionsverwaltung, Bibliotheken","Debugger","Blackbox-Test, Integrationstest"],z:["oop","test","prog"]},
+ {p:null,t:"Wirtschafts- und Sozialkunde",th:["Wirtschaftssektoren","Ausbildungsvertrag, Urlaub","JAV, Entgeltabrechnung","Erste Hilfe, Brandschutz, Umwelt"],z:["wiso"]}]},
+{id:"h20",t:"Herbst 2020",typ:"ZP",szen:"Zwischenprüfung (alte Ordnung) – Ankreuz- und Zuordnungsaufgaben",a:[
+ {p:null,t:"Betrieb und Markt",th:["Produktionsfaktoren, kostenorientierte Preise","Organigramm, Petri-Netz","Marketing-Maßnahmen, Auftragsabwicklung","Netzplan, Protokoll, Diagramme","Ergonomie, Abfall"],z:["markt","kalk","netzplan","ergo"]},
+ {p:null,t:"IT-Systeme",th:["Revisionssicheres Backup","Energie-Einsparung berechnen","CPU-Bestandteile, Partitionierung","Linux-Dateirechte","Speicherbedarf einer Tabelle","Wasserfallmodell, Tests, Testdokumentation","Twisted Pair, USB-Datenrate"],z:["energie","hw","befehle","rech","test","wlan","schnitt"]},
+ {p:null,t:"Softwareentwicklung",th:["Anforderungen an eine Raumverwaltung","Web, Desktop oder App","OOP-Vorteile","Struktogramm mit Schleife","Methodensignatur"],z:["prog","oop"]},
+ {p:null,t:"Wirtschafts- und Sozialkunde",th:["Gesellschaftsformen (GmbH)","Berufsbildungsgesetz","JAV-Wahl","Arbeitsstättenverordnung, Brandschutz, Umwelt"],z:["wiso"]}]}
+];
+
+/* ===== AP1-Lernzettel & Prüfungsübersicht ===== */
+let ztSel=null, ztGrp=null;
+const ZT_CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+const ztRead=()=>{ try{ return JSON.parse(store.get("zt_read")||"{}"); }catch(e){ return {}; } };
+const ztExams=id=>PRUEF.filter(p=>p.a.some(a=>a.z.includes(id)));
+function ztBlock(b){
+  if(b.t==="stack") return `<div class="zt-stack">${b.items.map((it,k)=>`<div class="zt-layer" style="--k:${k}"><b>${esc(it[0])}</b>${it[1]?`<span>${esc(it[1])}</span>`:""}</div>`).join("")}</div>`;
+  if(b.t==="flow") return `<div class="zt-flow">${b.items.map(it=>`<div class="zt-step"><b>${esc(it[0])}</b><span>${esc(it[1])}</span></div>`).join('<div class="zt-arrow" aria-hidden="true">➜</div>')}</div>`;
+  if(b.t==="formula") return `<div class="zt-formula"><div class="zt-f">${esc(b.f)}</div>${b.ex?`<div class="zt-ex"><span>Beispiel</span> ${esc(b.ex)}</div>`:""}</div>`;
+  if(b.t==="grid") return `<div class="zt-grid">${b.items.map(it=>`<div class="zt-card"><div class="zt-ci">${it[0]}</div><b>${esc(it[1])}</b><p>${esc(it[2])}</p></div>`).join("")}</div>`;
+  if(b.t==="vs") return `<div class="zt-vs" style="--n:${b.cols.length}">${b.cols.map(c=>`<div class="zt-col"><b>${esc(c.h)}</b><ul>${c.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>`;
+  if(b.t==="table") return `<div class="ut-tw"><table class="zt-table"><thead><tr>${b.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  if(b.t==="code") return `<pre class="zt-code">${esc(b.text)}</pre>`;
+  if(b.t==="tip") return `<div class="zt-tip"><b>Prüfungstipp</b> ${esc(b.text)}</div>`;
+  return "";
+}
+function ztHome(){
+  ztSel=null; ztGrp=null; const r=ztRead(), n=ZETTEL.filter(z=>r[z.id]).length;
+  $("#zt").innerHTML=`<div class="hubscreen" style="--area:var(--c-wissen)">
+    <div class="hub-head"><h2 class="title">Lernzettel AP1</h2><p>${ZETTEL.length} Themen als Grafik, sortiert nach Bereichen${n?` · ${n} angesehen`:""}.</p><span class="illu" data-illu="wissen"></span></div>
+    <button class="hrow zt-pruefrow" data-go="pruef"><span class="ic" style="font-size:20px">📝</span><span class="tx"><b>Prüfungen 2020–2025</b><small>Was in welcher Prüfung drankam und welche Themen am häufigsten sind</small></span>${ZT_CHEV}</button>
+    ${ZT_GROUPS.map(g=>`<div class="sec-h">${esc(g.t)}</div><div class="zt-tiles">${ZETTEL.filter(z=>z.g===g.id).map(z=>`<button class="zt-tile${r[z.id]?" seen":""}" data-zt="${z.id}" style="--zc:${g.c}"><span class="zt-ti">${z.ic}</span><b>${esc(z.t)}</b><small>${esc(z.s)}</small></button>`).join("")}</div>`).join("")}
+    <p class="hint">Zusammengefasst in eigenen Worten aus Lernzetteln, Lernmaterial und den IHK-Prüfungen 2020–2025. Keine Gewähr – im Zweifel die offiziellen Unterlagen nutzen.</p></div>`;
+  $$("#zt [data-zt]").forEach(b=>b.onclick=()=>ztOpen(b.dataset.zt));
+  $$("#zt [data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+}
+function ztOpen(id){
+  const z=ZETTEL.find(x=>x.id===id); if(!z) return ztHome();
+  const g=ZT_GROUPS.find(x=>x.id===z.g), all=ZETTEL, i=all.indexOf(z), prev=all[i-1], next=all[i+1];
+  ztSel=id; const r=ztRead(); if(!r[id]){ r[id]=1; store.set("zt_read",JSON.stringify(r)); }
+  const ex=ztExams(id);
+  $("#zt").innerHTML=`<button class="btn ghost" id="zt-back" style="align-self:flex-start;padding:8px 12px">‹ Alle Lernzettel</button>
+    <article class="zt-poster" style="--zc:${g.c}">
+      <header class="zt-head"><span class="zt-hi">${z.ic}</span><div><small>${esc(g.t)}</small><h2>${esc(z.t)}</h2><p>${esc(z.s)}</p></div></header>
+      <div class="zt-body">${z.b.map(ztBlock).join("")}</div>
+      ${ex.length?`<footer class="zt-foot"><small>Kam dran in</small><div class="zt-chips">${ex.map(p=>`<button class="zt-chip" data-pr="${p.id}">${p.typ==="ZP"?"ZP ":""}${esc(p.t)}</button>`).join("")}</div></footer>`:""}
+    </article>
+    <div class="grid2">${prev?`<button class="btn ghost" data-zt="${prev.id}">‹ ${esc(prev.t)}</button>`:"<span></span>"}${next?`<button class="btn primary" data-zt="${next.id}">${esc(next.t)} ›</button>`:`<button class="btn primary" id="zt-end">Zur Übersicht</button>`}</div>`;
+  $("#zt-back").onclick=ztHome; const e=$("#zt-end"); if(e) e.onclick=ztHome;
+  $$("#zt [data-zt]").forEach(b=>b.onclick=()=>ztOpen(b.dataset.zt));
+  $$("#zt [data-pr]").forEach(b=>b.onclick=()=>{ prOpenId=b.dataset.pr; go("pruef"); });
+  window.scrollTo({top:0});
+}
+let prOpenId=null;
+function prRender(){
+  const cnt={}; PRUEF.forEach(p=>{ const s=new Set(); p.a.forEach(a=>a.z.forEach(t=>s.add(t))); s.forEach(t=>cnt[t]=(cnt[t]||0)+1); });
+  const top=Object.entries(cnt).filter(([k])=>ZETTEL.find(z=>z.id===k)).sort((a,b)=>b[1]-a[1]).slice(0,12), max=top.length?top[0][1]:1;
+  $("#pr").innerHTML=`<div class="hubscreen" style="--area:var(--c-wissen)">
+    <div class="hub-head"><h2 class="title">Prüfungen 2020–2025</h2><p>${PRUEF.length} Prüfungen: worum es ging und welche Themen gefragt waren – in eigenen Worten, ohne Aufgabentexte.</p><span class="illu" data-illu="wissen"></span></div>
+    <div class="sec-h">Am häufigsten gefragt</div>
+    <div class="panel pr-top">${top.map(([k,v])=>{ const z=ZETTEL.find(x=>x.id===k), g=ZT_GROUPS.find(x=>x.id===z.g);
+      return `<button class="pr-bar" data-zt="${k}" style="--zc:${g.c}"><span class="pr-l">${z.ic} ${esc(z.t)}</span><span class="pr-b"><i style="width:${Math.round(v/max*100)}%"></i></span><span class="pr-n">${v}×</span></button>`; }).join("")}
+      <small class="count">Zahl der Prüfungen (von ${PRUEF.length}), in denen das Thema vorkam. Antippen öffnet den Lernzettel.</small></div>
+    <div class="sec-h">Alle Prüfungen</div>
+    <div class="pr-list">${PRUEF.map(p=>`<details class="panel pr-ex" id="pr-${p.id}"${prOpenId===p.id?" open":""}>
+      <summary><span class="pr-badge${p.typ==="ZP"?" zp":""}">${p.typ}</span><span class="tx"><b>${esc(p.t)}</b><small>${esc(p.szen)}</small></span></summary>
+      ${p.a.map((a,k)=>`<div class="pr-a"><div class="pr-ah"><b>${k+1}. ${esc(a.t)}</b>${a.p?`<small>${a.p} Punkte</small>`:""}</div>
+        <ul>${a.th.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+        <div class="zt-chips">${a.z.map(t=>{ const z=ZETTEL.find(x=>x.id===t); return z?`<button class="zt-chip" data-zt="${t}">${z.ic} ${esc(z.t)}</button>`:""; }).join("")}</div></div>`).join("")}
+    </details>`).join("")}</div>
+    <p class="hint">Die Original-Prüfungen sind urheberrechtlich geschützt (IHK/ZPA) und deshalb nicht in der App. Alte Prüfungen gibt es offiziell beim U-Form-Verlag.</p></div>`;
+  $$("#pr [data-zt]").forEach(b=>b.onclick=()=>{ go("zettel"); ztOpen(b.dataset.zt); });
+  if(prOpenId){ const el=document.getElementById("pr-"+prOpenId); prOpenId=null; if(el) setTimeout(()=>el.scrollIntoView({block:"start",behavior:"smooth"}),40); } else window.scrollTo({top:0});
+}
+
 function drHome(){
   drSel=null; drGrp=null; const r=drRead();
   const row=g=>{ const cs=KLIPPER_HB.filter(c=>c.g===g.id), n=cs.filter(c=>r[c.id]).length;
