@@ -944,6 +944,8 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 .al-tt{width:100%;border-collapse:collapse;font:12.5px var(--mono)}.al-tt th{background:var(--surface-2);text-align:left;padding:6px 8px;position:sticky;top:0}
 .al-tt td{padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}.al-tt td small{color:var(--muted);font-family:var(--body)}
 .al-tt tr.cur td{background:rgba(250,204,21,.15)}.al-tt td.chg{font-weight:700;color:var(--accent)}
+.al-learn summary{cursor:pointer;font-weight:700}.al-learn p{margin:8px 0 0;font-size:14px;line-height:1.5}
+.al-say{margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(250,204,21,.14);border-left:4px solid #facc15;font-size:13.5px;line-height:1.45}.al-say b{display:block;font-size:12px;margin-bottom:2px}
 .al-tc{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:8px;font-size:13px}.al-tc .btn{padding:6px 14px}
 /* Lernzettel AP1 */
 .zt-pruefrow{margin:4px 0 6px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
@@ -1812,7 +1814,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.6.1"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.6.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",algo:"Algo-Knacker",falln:"Fall N.",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2215,10 +2217,10 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Optionen. */
 const WHATS_NEW=[
-  {v:"5.6.1",t:"Das Update vom 18. November",l:[
+  {v:"5.6.2",t:"Das Update vom 18. November",l:[
     "• Wissen → Lernzettel als Grafik: 33 AP1-Themen von Subnetting über Netzplan bis Datenschutz – mit Formeln, Rechenbeispielen und Prüfungstipps",
     "• Wissen → Prüfungen 2020–2025: welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird",
-    "• Spiele → Algo-Knacker: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen, danach der Schreibtischtest Schritt für Schritt",
+    "• Spiele → Algo-Knacker: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen, danach der Schreibtischtest Schritt für Schritt. Jedes Level erklärt vorher das Konzept, jeder Schritt wird begründet",
     "• Spiele → Fall N.: ein Terminal-Krimi in 5 Kapiteln – Logs, nmap, Mitschnitt, Passwort-Audit und ein Ransomware-Angriff, mit Erklär-Panel zu jedem Befehl",
     "• Kleinigkeiten: größere Bereichsüberschriften bei den Lernzetteln"]},
   {v:"5.3.3",t:"Feedback & Optionen",l:[
@@ -5160,7 +5162,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.6.1";
+const APK_URL="dasLabor23.apk", APK_VER="5.6.2";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7520,16 +7522,16 @@ function alParse(lines){
 const alFmt=v=>Array.isArray(v)?"["+v.map(alFmt).join(", ")+"]":typeof v==="number"?String(Math.round(v*1000)/1000).replace(".",","):typeof v==="boolean"?(v?"WAHR":"FALSCH"):String(v);
 function alRun(code,input){
   const lines=code.split("\n"), env=JSON.parse(JSON.stringify(input||{})), out=[], steps=[]; let n=0;
-  const snap=(ln,note)=>{ steps.push({ln,env:JSON.parse(JSON.stringify(env)),out:out.slice(),note}); if(++n>600) throw new Error("Endlosschleife? Abbruch nach 600 Schritten"); };
+  const snap=(ln,note,say)=>{ steps.push({ln,env:JSON.parse(JSON.stringify(env)),out:out.slice(),note,say}); if(++n>600) throw new Error("Endlosschleife? Abbruch nach 600 Schritten"); };
   const ev=(e,ln)=>{ try{ return alExpr(e,env); }catch(x){ throw new Error(`Zeile ${ln+1}: ${x.message}`); } };
   const exec=list=>{ for(const s of list){
-    if(s.k==="set"){ const v=ev(s.e,s.ln); if(s.idx!==undefined){ const i=ev(s.idx,s.ln); if(!Array.isArray(env[s.v])) throw new Error(`Zeile ${s.ln+1}: ${s.v} ist kein Array`); if(i<0||i>=env[s.v].length) throw new Error(`Zeile ${s.ln+1}: Index ${i} außerhalb`); env[s.v][i]=v; } else env[s.v]=v; snap(s.ln); }
+    if(s.k==="set"){ const v=ev(s.e,s.ln); if(s.idx!==undefined){ const i=ev(s.idx,s.ln); if(!Array.isArray(env[s.v])) throw new Error(`Zeile ${s.ln+1}: ${s.v} ist kein Array`); if(i<0||i>=env[s.v].length) throw new Error(`Zeile ${s.ln+1}: Index ${i} außerhalb`); env[s.v][i]=v; } else env[s.v]=v; snap(s.ln,null,`${s.v}${s.idx!==undefined?"["+alFmt(ev(s.idx,s.ln))+"]":""} ← ${s.e}: Der Ausdruck rechts wird ausgerechnet (= ${alFmt(v)}) und in ${s.v} gespeichert.${s.idx===undefined&&new RegExp("\\b"+s.v+"\\b").test(s.e)?" Der alte Wert von "+s.v+" wird dabei überschrieben.":""}`); }
     else if(s.k==="out"){ const parts=[]; let depth=0, cur=""; for(const ch of s.e){ if(ch==="("||ch==="[") depth++; if(ch===")"||ch==="]") depth--; if(ch===","&&depth===0){ parts.push(cur); cur=""; } else cur+=ch; } parts.push(cur);
-      out.push(parts.map(x=>alFmt(ev(x.trim(),s.ln))).join(" ")); snap(s.ln); }
-    else if(s.k==="if"){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"Bedingung wahr":"Bedingung falsch"); exec(c?s.th:s.el); }
-    else if(s.k==="while"){ for(;;){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"weiter":"Schleife endet"); if(!c) break; exec(s.b); } }
-    else if(s.k==="for"){ const a=ev(s.a,s.ln), z=ev(s.z,s.ln), st=ev(s.st,s.ln); env[s.v]=a; for(;;){ const c=st>0?env[s.v]<=z:env[s.v]>=z; snap(s.ln,c?`${s.v} = ${env[s.v]}`:"Schleife endet"); if(!c) break; exec(s.b); env[s.v]+=st; } }
-    else if(s.k==="repeat"){ for(;;){ exec(s.b); const c=!!ev(s.c,s.eln); snap(s.eln,c?"Abbruch: Bedingung wahr":"nochmal"); if(c) break; } }
+      out.push(parts.map(x=>alFmt(ev(x.trim(),s.ln))).join(" ")); snap(s.ln,null,`AUSGABE: Auf dem Bildschirm erscheint „${out[out.length-1]}“.`); }
+    else if(s.k==="if"){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"Bedingung wahr":"Bedingung falsch",`WENN ${s.c}: Die Bedingung ist ${c?"WAHR → es geht mit dem DANN-Teil weiter.":"FALSCH → "+(s.el.length?"der SONST-Teil wird ausgeführt.":"der DANN-Teil wird übersprungen.")}`); exec(c?s.th:s.el); }
+    else if(s.k==="while"){ for(;;){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"weiter":"Schleife endet",`SOLANGE ${s.c}: Vor jedem Durchlauf wird geprüft. ${c?"WAHR → die Schleife läuft noch einmal.":"FALSCH → die Schleife ist zu Ende, es geht nach ENDE SOLANGE weiter."}`); if(!c) break; exec(s.b); } }
+    else if(s.k==="for"){ const a=ev(s.a,s.ln), z=ev(s.z,s.ln), st=ev(s.st,s.ln); env[s.v]=a; for(;;){ const c=st>0?env[s.v]<=z:env[s.v]>=z; snap(s.ln,c?`${s.v} = ${env[s.v]}`:"Schleife endet",c?`FÜR: Der Zähler ${s.v} ist jetzt ${env[s.v]} und noch nicht über ${alFmt(z)} → ein Durchlauf.`:`FÜR: ${s.v} wäre jetzt ${env[s.v]} und damit größer als ${alFmt(z)} → die Schleife endet.`); if(!c) break; exec(s.b); env[s.v]+=st; } }
+    else if(s.k==="repeat"){ for(;;){ exec(s.b); const c=!!ev(s.c,s.eln); snap(s.eln,c?"Abbruch: Bedingung wahr":"nochmal",`BIS ${s.c}: Erst NACH dem Durchlauf wird geprüft. ${c?"WAHR → die Schleife endet.":"FALSCH → noch ein Durchlauf."}`); if(c) break; } }
   } };
   try{ exec(alParse(lines)); return {ok:true,out,steps,env}; }catch(e){ return {ok:false,err:e.message,out,steps,env}; }
 }
@@ -7571,6 +7573,24 @@ const AL_LEVELS=[
  code:"tage ← 0\nstufe ← 0\nWIEDERHOLE\n    tage ← tage + 14\n    stufe ← stufe + 1\nBIS tage ≥ offen ODER stufe = 3\nAUSGABE stufe",wrong:["1","3","0"],tip:"Fußgesteuerte Schleife: Der Körper läuft mindestens einmal, geprüft wird erst am Ende. Nach 14 Tagen: noch nicht, nach 28: Schluss."}
 ];
 
+const AL_LEARN={
+ a1:["Zuweisung","Der Pfeil ← heißt „bekommt den Wert“. Rechts wird gerechnet, links steht die Variable, in die das Ergebnis kommt. Das Programm läuft streng von oben nach unten – und eine neue Zuweisung überschreibt den alten Wert.\n\nBeispiel: x ← 2, dann x ← x + 1. Rechts steht 2 + 1 = 3, also ist x danach 3."],
+ a2:["Verzweigung (WENN … DANN … SONST)","Nach WENN steht eine Bedingung, die wahr oder falsch ist. Ist sie wahr, läuft der DANN-Teil, sonst der SONST-Teil – nie beide. ENDE WENN schließt den Block.\n\nAchtung bei Vergleichen: > heißt „echt größer“, ≥ heißt „größer oder gleich“."],
+ a3:["Zählschleife (FÜR)","FÜR i ← 1 BIS 4 wiederholt den Block für i = 1, 2, 3 und 4 – der Endwert ist dabei. Nach jedem Durchlauf erhöht sich i um 1.\n\nEine Variable wie summe, die in der Schleife immer weiter wächst, heißt Akkumulator. Sie muss VOR der Schleife einen Startwert bekommen (meist 0)."],
+ a4:["Kopfgesteuerte Schleife (SOLANGE)","SOLANGE prüft die Bedingung VOR jedem Durchlauf. Ist sie schon am Anfang falsch, läuft die Schleife gar nicht.\n\nIm Block muss sich etwas ändern (hier n ← n − 2), sonst wird die Bedingung nie falsch – eine Endlosschleife."],
+ a5:["MOD und DIV","MOD gibt den Rest einer Division: 472 MOD 10 = 2. DIV teilt ganzzahlig und wirft den Rest weg: 472 DIV 10 = 47.\n\nMit MOD 10 und DIV 10 zerlegt man eine Zahl Ziffer für Ziffer von hinten."],
+ b1:["Arrays und Durchschnitt","Ein Array ist eine Liste: preise[0] ist das erste Element, preise[1] das zweite. LÄNGE(preise) ist die Anzahl. Darum läuft der Index von 0 bis LÄNGE − 1.\n\nDurchschnitt = Summe aller Werte ÷ Anzahl. Geteilt wird erst nach der Schleife, wenn die Summe fertig ist."],
+ b2:["Maximum suchen","Man merkt sich den bisher größten Wert (max) und vergleicht jedes weitere Element damit. Ist ein Element größer, wird es das neue max.\n\nGute Startwert-Wahl: das erste Element des Arrays."],
+ b3:["Zählen mit Bedingung","Ein Zähler startet bei 0 und wird nur dann um 1 erhöht, wenn eine Bedingung zutrifft. So zählt man z. B. Artikel unter einem Mindestbestand."],
+ b4:["Lineare Suche","Man geht das Array von vorne nach hinten durch, bis man das Gesuchte findet. Die Position merkt man sich in einer Variable. -1 bedeutet „nicht gefunden“, weil es keinen Index -1 gibt.\n\nDie Bedingung pos = -1 sorgt dafür, dass die Suche nach dem ersten Treffer aufhört."],
+ b5:["Startwert-Falle","Der Startwert entscheidet mit: Wer das Maximum bei 0 beginnt, bekommt bei lauter negativen Zahlen ein falsches Ergebnis. Sicher ist immer der erste Wert aus dem Array."],
+ c1:["Aufsummieren","Soll ein Wert über alle Durchläufe wachsen, muss der alte Wert mitgenommen werden: gesamt ← gesamt + … . Fehlt „gesamt +“, steht am Ende nur der letzte Durchlauf drin. Das ist einer der häufigsten Prüfungsfehler."],
+ c2:["Verschachtelte Verzweigung","Ein WENN kann in einem anderen stecken. Man prüft von außen nach innen und von oben nach unten – sobald eine Bedingung passt, werden die anderen Zweige übersprungen.\n\nRabatt in Prozent: Preis − Preis × Rabatt ÷ 100."],
+ c3:["Fakultät","n! ist das Produkt aller Zahlen von 1 bis n: 5! = 1·2·3·4·5 = 120. Beim Multiplizieren ist der Startwert 1 (bei 0 käme immer 0 heraus)."],
+ c4:["Bubble Sort","Benachbarte Elemente werden verglichen. Steht das größere vorne, werden beide getauscht – über eine Hilfsvariable tmp, sonst geht ein Wert verloren.\n\nNach einem Durchlauf steht das größte Element ganz hinten. Für eine komplett sortierte Liste braucht man mehrere Durchläufe."],
+ c5:["Dezimal in Binär","Man teilt immer wieder durch 2 und notiert den Rest (MOD 2). Die Reste von unten nach oben gelesen ergeben die Binärzahl: 13 → 1101.\n\nWeil der erste Rest die letzte Ziffer ist, kommt jeder neue Rest VOR die bisherigen."],
+ c6:["Fußgesteuerte Schleife (WIEDERHOLE … BIS)","Der Block läuft erst und wird danach geprüft – also mindestens einmal. Die Schleife endet, sobald die Bedingung nach BIS WAHR ist (umgekehrt zu SOLANGE)."]
+};
 /* --- Spiel-Logik & Oberfläche --- */
 let alLv=null, alSt=null;
 const alProg=()=>{ try{ return JSON.parse(store.get("al_prog")||"{}"); }catch(e){ return {}; } };
@@ -7592,6 +7612,8 @@ function alHome(){
     <div class="big-ic" style="font-size:30px">🧩</div><h2>Algo-Knacker</h2>
     <p>Pseudocode lesen wie in der Prüfung: Ausgaben vorhersagen, Lücken füllen, Fehler finden und Zeilen ordnen. Nach jeder Aufgabe läuft der Schreibtischtest Schritt für Schritt.</p>
     <span class="pill">⭐ ${tot} / ${AL_LEVELS.length*3}</span></div>
+    <details class="panel al-rules"${Object.keys(pr).length?"":" open"}><summary><b>So spielst du</b></summary>
+      <table class="al-rt"><tr><td>👁️ Ausgabe vorhersagen</td><td>Geh den Code im Kopf Zeile für Zeile durch und wähle, was am Ende ausgegeben wird.</td></tr><tr><td>✏️ Lücke füllen</td><td>Wähle den Baustein, mit dem genau die Ziel-Ausgabe herauskommt.</td></tr><tr><td>🐞 Fehler finden</td><td>Erwartet und tatsächlich stehen darüber. Tippe auf die Zeile, die den Fehler verursacht.</td></tr><tr><td>🔀 Zeilen ordnen</td><td>Tippe die Zeilen in der richtigen Reihenfolge an. Antippen oben nimmt eine Zeile wieder heraus.</td></tr><tr><td>⭐ Sterne</td><td>3 beim ersten Versuch, 2 beim zweiten, sonst 1. Ab dem zweiten Fehlversuch gibt es einen Tipp.</td></tr><tr><td>📘 Erklärung</td><td>Jedes Level erklärt vorher das Konzept. Nach der Lösung zeigt der Schreibtischtest jeden Schritt mit Begründung.</td></tr></table></details>
     <details class="panel al-rules"><summary><b>So liest du den Pseudocode</b></summary>
       <table class="al-rt"><tr><td><code>x ← 5</code></td><td>x bekommt den Wert 5 (Zuweisung)</td></tr><tr><td><code>=  ≠  ≤  ≥</code></td><td>Vergleich: gleich, ungleich, kleiner/gleich, größer/gleich</td></tr><tr><td><code>MOD · DIV</code></td><td>Rest · ganzzahlige Division (7 MOD 2 = 1, 7 DIV 2 = 3)</td></tr><tr><td><code>z[0]</code></td><td>Arrays beginnen bei Index 0</td></tr><tr><td><code>LÄNGE(z)</code></td><td>Anzahl der Elemente</td></tr><tr><td><code>FÜR i ← 1 BIS 4</code></td><td>i = 1, 2, 3, 4 (Ende inklusive)</td></tr><tr><td><code>SOLANGE …</code></td><td>prüft vor jedem Durchlauf (kopfgesteuert)</td></tr><tr><td><code>WIEDERHOLE … BIS</code></td><td>läuft mindestens einmal (fußgesteuert)</td></tr></table></details>
     ${AL_WORLDS.map(w=>`<div class="sec-h" style="margin:14px 2px 2px">${esc(w.t)} <span style="font-weight:400">· ${esc(w.s)}</span></div><div class="tm-list">${AL_LEVELS.filter(l=>l.w===w.id).map(l=>{ const st=pr[l.id]||0, i=AL_LEVELS.indexOf(l);
@@ -7614,6 +7636,7 @@ function alStart(i){
   $("#al").innerHTML=`<button class="btn ghost" id="al-back" style="align-self:flex-start;padding:8px 12px">‹ Alle Level</button>
     <div><small class="count">${esc(AL_WORLDS.find(w=>w.id===L.w).t)} · Level ${i+1}/${AL_LEVELS.length}</small><h2 class="title" style="margin:2px 0 0;text-align:left">${esc(L.t)}</h2></div>
     <div class="panel al-story">${esc(L.story)}</div>
+    ${AL_LEARN[L.id]?`<details class="panel al-learn"${(alProg()[L.id]||0)?"":" open"}><summary>📘 Erklärung: ${esc(AL_LEARN[L.id][0])}</summary>${AL_LEARN[L.id][1].split("\n\n").map(p=>`<p>${esc(p)}</p>`).join("")}</details>`:""}
     ${Object.keys(L.input).length?`<div class="al-in"><span>Eingabe</span> <code>${esc(alInputTxt(L.input))}</code></div>`:""}
     <div id="al-codebox">${L.type==="order"?"":alCode(lines,{click:L.type==="bug"})}</div>
     <div id="al-task" class="al-task">${task}</div><div id="al-fb"></div>`;
@@ -7667,6 +7690,7 @@ function alTrace(k){
   $("#al-trace").innerHTML=`<div class="ut-tw"><table class="al-tt"><thead><tr><th>Schritt</th><th>Zeile</th>${vars.map(v=>`<th>${esc(v)}</th>`).join("")}<th>Ausgabe</th></tr></thead><tbody>
     ${show.map((s,i)=>{ const prev=i?show[i-1]:{env:L.input,out:[]};
       return `<tr class="${i===k?"cur":""}"><td>${i+1}</td><td>${s.ln+1}${s.note?`<small> ${esc(s.note)}</small>`:""}</td>${vars.map(v=>{ const a=alFmt(s.env[v]??""), b=alFmt(prev.env[v]??""); return `<td class="${a!==b?"chg":""}">${v in s.env?esc(a):""}</td>`; }).join("")}<td>${s.out.length!==prev.out.length?esc(s.out[s.out.length-1]):""}</td></tr>`; }).join("")}</tbody></table></div>
+    ${cur.say?`<div class="al-say"><b>Schritt ${k+1} · Zeile ${cur.ln+1}</b>${esc(cur.say)}</div>`:""}
     <div class="al-tc"><button class="btn ghost" id="al-tp" ${k?"":"disabled"}>‹</button><span>Schritt ${k+1} / ${S.length}</span><button class="btn ghost" id="al-tn" ${k<S.length-1?"":"disabled"}>›</button><button class="btn ghost" id="al-ta" ${k<S.length-1?"":"disabled"}>Alle</button></div>`;
   $("#al-tp").onclick=()=>alTrace(k-1); $("#al-tn").onclick=()=>alTrace(k+1); $("#al-ta").onclick=()=>alTrace(S.length-1);
 }
