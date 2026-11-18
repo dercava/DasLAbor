@@ -915,6 +915,34 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 .kh-read td:first-child{white-space:normal;min-width:6em}
 .kh-read td code{white-space:nowrap}
 .kh-read h2{scroll-margin-top:72px}
+
+/* Algo-Knacker */
+.al-story{font-size:14.5px;line-height:1.45}
+.al-in{font-size:13px;display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}.al-in span{font-weight:700;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#fff}
+.al-in code{font-family:var(--mono);font-size:13px}
+.al-code{list-style:none;margin:0;padding:10px 0;border-radius:14px;background:#0f1424;color:#e6e9ff;font:13.5px/1.55 var(--mono);overflow-x:auto}
+.al-code li{display:flex;gap:10px;padding:1px 12px;white-space:pre;border-left:3px solid transparent}
+.al-code li.clk{cursor:pointer}.al-code li.clk:hover,.al-code li.clk:focus-visible{background:rgba(255,255,255,.07);outline:none}
+.al-code li.al-cur{background:rgba(250,204,21,.18);border-left-color:#facc15}
+.al-code li.al-wrong{background:rgba(239,68,68,.22);border-left-color:#ef4444}.al-code li.al-right{background:rgba(34,197,94,.22);border-left-color:#22c55e}
+.al-n{color:#6b7299;min-width:18px;text-align:right;user-select:none}
+.al-code code,.al-line code{font:inherit;color:inherit;background:none}
+.al-k{color:#7dd3fc;font-weight:700}.al-s{color:#fca5a5}.al-gap{display:inline-block;min-width:26px;text-align:center;border-radius:5px;background:#facc15;color:#1a1300;font-weight:700}
+.al-q{margin:0;font-size:15px}.al-q b{font-family:var(--mono)}.al-bad{color:#ef4444}
+.al-task{display:flex;flex-direction:column;gap:10px}
+.al-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.al-opts.one{grid-template-columns:1fr}.al-opts .btn{font-family:var(--mono);justify-content:center}
+.al-opts .btn.al-wrong{border-color:#ef4444;color:#ef4444;opacity:.8}.al-opts .btn.al-right{border-color:#22c55e;background:rgba(34,197,94,.15)}
+.al-seq,.al-pool{display:flex;flex-direction:column;gap:6px}
+.al-seq{min-height:52px;padding:8px;border-radius:14px;border:2px dashed var(--line)}
+.al-line{display:flex;gap:10px;align-items:center;text-align:left;font:13.5px/1.4 var(--mono);white-space:pre;overflow-x:auto;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.al-line.in{background:#0f1424;color:#e6e9ff;border-color:#0f1424}
+.al-fb{font-size:14px;line-height:1.45}.al-fb p{margin:6px 0 0}.al-fb.bad{border-left:4px solid #ef4444}.al-fb.good{border-left:4px solid #22c55e}
+.al-stars{color:#f59e0b;letter-spacing:1px;font-size:14px}
+.al-rules summary{cursor:pointer}.al-rt{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}.al-rt td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}.al-rt td:first-child{white-space:nowrap;font-family:var(--mono)}
+.al-tt{width:100%;border-collapse:collapse;font:12.5px var(--mono)}.al-tt th{background:var(--surface-2);text-align:left;padding:6px 8px;position:sticky;top:0}
+.al-tt td{padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}.al-tt td small{color:var(--muted);font-family:var(--body)}
+.al-tt tr.cur td{background:rgba(250,204,21,.15)}.al-tt td.chg{font-weight:700;color:var(--accent)}
+.al-tc{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:8px;font-size:13px}.al-tc .btn{padding:6px 14px}
 /* Lernzettel AP1 */
 .zt-pruefrow{margin:4px 0 6px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
 #zt .sec-h,#pr .sec-h{margin:16px 2px 4px}
@@ -1310,7 +1338,7 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
         <div class="hub-head"><span class="illu" data-illu="spiele"></span><h2 class="title">Spiele & Labore</h2><p>Spielerisch üben – und wie in der Prüfung selbst lösen.</p></div>
         
         <div class="sec-h">Praxis-Labore</div>
-        <div class="hlist"><button class="hrow is-lab" data-go="netz"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Netz-Labor</b><small>Geräte setzen, verkabeln, Adressen vergeben – und zusehen, wie das Paket läuft</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="aussen"><span class="ic" style="font-size:20px">🏢</span><span class="tx"><b>Außenstelle Nord</b><small>Konsolen-Story: DHCP, DNS und Firewall-Regeln einrichten – mit Erklär-Panel</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist"><button class="hrow is-lab" data-go="netz"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Netz-Labor</b><small>Geräte setzen, verkabeln, Adressen vergeben – und zusehen, wie das Paket läuft</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="aussen"><span class="ic" style="font-size:20px">🏢</span><span class="tx"><b>Außenstelle Nord</b><small>Konsolen-Story: DHCP, DNS und Firewall-Regeln einrichten – mit Erklär-Panel</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="terminal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><span class="tx"><b>Terminal</b><small>Windows, Linux & Cisco-Tickets lösen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="sql"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="tx"><b>SQL-Detektiv</b><small>Abfragen schreiben, Fälle knacken</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="algo"><span class="ic" style="font-size:20px">🧩</span><span class="tx"><b>Algo-Knacker</b><small>Pseudocode: Ausgabe vorhersagen, Lücken füllen, Fehler finden – mit Schreibtischtest</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="erd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M5.5 8v4.5h6.5M12 12.5l2-2 2 2-2 2zM16 12.5h2.5V16"/></svg></span><span class="tx"><b>ERD-Architekt</b><small>Datenbank planen: Entitäten & Kardinalitäten</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-lab" data-go="subnetz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="tx"><b>Subnetz-Profi</b><small>Subnetting, VLSM, Binär & Hex</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Quiz & Tempo</div>
         <div class="hlist"><button class="hrow is-quiz" data-go="leiter"><span class="ic" style="font-size:20px">🪜</span><span class="tx"><b>Die 100-Punkte-Leiter</b><small>Quizshow mit Fragen aus deinen Unterlagen – 3 Joker, bis 100 IHK-Punkte</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="challenge"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tx"><b>Challenge</b><small>10 Fragen gegen die Uhr</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="match"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></span><span class="tx"><b>Match-Survival</b><small>Begriffe zuordnen, 3 Leben</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow is-quiz" data-go="blitz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="tx"><b>Richtig/Falsch</b><small>Aussagen blitzschnell prüfen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Arcade</div>
@@ -1399,6 +1427,7 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 
     <section class="screen" id="s-zettel"><div class="center" id="zt"></div></section>
     <section class="screen" id="s-pruef"><div class="center" id="pr"></div></section>
+    <section class="screen" id="s-algo"><div class="center" id="al"></div></section>
     <section class="screen" id="s-druck"><div class="center" id="dr" style="--area:var(--c-wissen)"></div></section>
   </main>
   <!-- Untere Navigation: auf den fünf Hauptseiten sichtbar, in Spielen und Lernrunden ausgeblendet -->
@@ -1721,7 +1750,7 @@ const WISSEN_TOPICS={
 };
 
 /* ---------- Navigation ---------- */
-const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",zettel:"zettel",pruef:"pruef",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz",aussen:"aussen"};
+const ROUTES={start:"home",lektion:"lektion",sprachen:"sprachen",karten:"karten",bibliothek:"bibliothek",spiele:"spiele",fortschritt:"fortschritt",lernen:"lernen",neu:"neu",verwalten:"verwalten",podcast:"podcast",druck:"druck",algo:"algo",zettel:"zettel",pruef:"pruef",challenge:"challenge",statistik:"statistik",match:"match",wissen:"wissen",blitz:"blitz",terminal:"terminal",sql:"sql",subnetz:"subnetz",vokabeln:"vokabeln",ports:"ports",erd:"erd",unterricht:"unterricht",leiter:"leiter",fangen:"fangen",nacht:"nacht",patch:"patch",rallye:"rallye",sturm:"sturm",netz:"netz",aussen:"aussen"};
 let current=null;
 function go(r){ if(location.hash==="#"+r) show(r); else location.hash=r; }
 function route(){ const h=location.hash.slice(1); return ROUTES[h]?h:"start"; }
@@ -1780,8 +1809,8 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.4.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
-const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
+const APP_VER="5.5.0"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",algo:"Algo-Knacker",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -1811,6 +1840,7 @@ function gcArea(r){
 const PAGE_ENTER={
   druck:()=>{ if(!$("#dr").innerHTML) drHome(); },
   zettel:()=>{ if(!$("#zt").innerHTML) ztHome(); },
+  algo:()=>alHome(),
   pruef:()=>prRender(),
   /* renderHome() füllt auch die Zähler der Bereichs-Seiten (fällige Karten, Lernstand) – deshalb dort ebenfalls aufrufen */
   home:()=>renderHome(), karten:()=>renderHome(), fortschritt:()=>renderHome(), bibliothek:()=>renderHome(),
@@ -1850,6 +1880,7 @@ $("#back").onclick=()=>{ if(history.length>1&&current!=="home") history.back(); 
 window.appBack=()=>{
   if($("#sheet").classList.contains("show")){ closeSheet(); return true; }
   if(current==="druck"&&drSel){ drGroup(drGrp); return true; }
+  if(current==="algo"&&alLv!==null){ alHome(); return true; }
   if(current==="zettel"&&ztSel){ ztHome(); window.scrollTo({top:0}); return true; }
   if(current==="druck"&&drGrp){ drHome(); window.scrollTo({top:0}); return true; }
   if(current==="wissen"&&history.state&&history.state.wi){ history.back(); return true; }
@@ -2180,6 +2211,9 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Optionen. */
 const WHATS_NEW=[
+  {v:"5.5.0",t:"Neues Spiel: Algo-Knacker",l:[
+    "Unter Spiele → Praxis-Labore: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen",
+    "Nach jeder Lösung läuft der Schreibtischtest Schritt für Schritt mit Wertetabelle"]},
   {v:"5.4.0",t:"AP1-Lernzettel & Prüfungen",l:[
     "Unter Wissen: 33 Lernzettel als Grafik – von Subnetting über Netzplan bis Datenschutz, mit Formeln, Beispielen und Prüfungstipps",
     "Neu: „Prüfungen 2020–2025“ – welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird"]},
@@ -5122,7 +5156,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.4.2";
+const APK_URL="dasLabor23.apk", APK_VER="5.5.0";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7417,6 +7451,220 @@ function prRender(){
     <p class="hint">Die Original-Prüfungen sind urheberrechtlich geschützt (IHK/ZPA) und deshalb nicht in der App. Alte Prüfungen gibt es offiziell beim U-Form-Verlag.</p></div>`;
   $$("#pr [data-zt]").forEach(b=>b.onclick=()=>{ go("zettel"); ztOpen(b.dataset.zt); });
   if(prOpenId){ const el=document.getElementById("pr-"+prOpenId); prOpenId=null; if(el) setTimeout(()=>el.scrollIntoView({block:"start",behavior:"smooth"}),40); } else window.scrollTo({top:0});
+}
+
+/* ===== Algo-Knacker: Pseudocode-Spiel ===== */
+/* --- Mini-Interpreter für IHK-Pseudocode --- */
+const AL_KW=["UND","ODER","NICHT","MOD","DIV","WAHR","FALSCH"];
+function alTok(src){
+  const t=[]; let i=0;
+  while(i<src.length){ const c=src[i];
+    if(/\s/.test(c)){ i++; continue; }
+    if(/[0-9]/.test(c)){ let j=i; while(j<src.length&&/[0-9.]/.test(src[j])) j++; t.push({k:"num",v:parseFloat(src.slice(i,j))}); i=j; continue; }
+    if(c==='"'){ let j=i+1; while(j<src.length&&src[j]!=='"') j++; t.push({k:"str",v:src.slice(i+1,j)}); i=j+1; continue; }
+    if(/[A-Za-zÄÖÜäöüß_]/.test(c)){ let j=i; while(j<src.length&&/[A-Za-zÄÖÜäöüß_0-9]/.test(src[j])) j++; const w=src.slice(i,j); t.push(AL_KW.includes(w)?{k:"op",v:w}:{k:"id",v:w}); i=j; continue; }
+    const two=src.slice(i,i+2); if(["<=",">=","<>","!="].includes(two)){ t.push({k:"op",v:two==="<="?"≤":two===">="?"≥":"≠"}); i+=2; continue; }
+    if("+-*/()[],=<>≠≤≥".includes(c)){ t.push({k:"op",v:c}); i++; continue; }
+    throw new Error("Unbekanntes Zeichen: "+c);
+  }
+  return t;
+}
+function alExpr(src,env){
+  const t=alTok(src); let p=0;
+  const peek=()=>t[p], is=v=>t[p]&&t[p].k==="op"&&t[p].v===v, eat=v=>{ if(!is(v)) throw new Error(`„${v}“ erwartet`); p++; };
+  const or=()=>{ let a=and(); while(is("ODER")){ p++; const b=and(); a=!!(a||b); } return a; };
+  const and=()=>{ let a=not(); while(is("UND")){ p++; const b=not(); a=!!(a&&b); } return a; };
+  const not=()=>{ if(is("NICHT")){ p++; return !not(); } return cmp(); };
+  const cmp=()=>{ let a=add(); while(peek()&&["=","≠","<",">","≤","≥"].includes(peek().v)&&peek().k==="op"){ const o=t[p++].v, b=add();
+      a=o==="="?a===b:o==="≠"?a!==b:o==="<"?a<b:o===">"?a>b:o==="≤"?a<=b:a>=b; } return a; };
+  const add=()=>{ let a=mul(); while(is("+")||is("-")){ const o=t[p++].v, b=mul(); a=o==="+"?a+b:a-b; } return a; };
+  const mul=()=>{ let a=un(); while(is("*")||is("/")||is("MOD")||is("DIV")){ const o=t[p++].v, b=un();
+      if((o==="/"||o==="DIV"||o==="MOD")&&b===0) throw new Error("Division durch 0");
+      a=o==="*"?a*b:o==="/"?a/b:o==="MOD"?a%b:Math.trunc(a/b); } return a; };
+  const un=()=>{ if(is("-")){ p++; return -un(); } return post(); };
+  const post=()=>{ let a=prim(); while(is("[")){ p++; const i=or(); eat("]"); if(!Array.isArray(a)&&typeof a!=="string") throw new Error("Kein Array"); if(i<0||i>=a.length) throw new Error(`Index ${i} liegt außerhalb (Länge ${a.length})`); a=a[i]; } return a; };
+  const prim=()=>{ const x=t[p++]; if(!x) throw new Error("Ausdruck unvollständig");
+    if(x.k==="num"||x.k==="str") return x.v;
+    if(x.k==="op"&&x.v==="WAHR") return true; if(x.k==="op"&&x.v==="FALSCH") return false;
+    if(x.k==="op"&&x.v==="("){ const v=or(); eat(")"); return v; }
+    if(x.k==="op"&&x.v==="["){ const arr=[]; if(!is("]")){ arr.push(or()); while(is(",")){ p++; arr.push(or()); } } eat("]"); return arr; }
+    if(x.k==="id"){ if(is("(")){ p++; const args=[]; if(!is(")")){ args.push(or()); while(is(",")){ p++; args.push(or()); } } eat(")");
+        const f=x.v.toUpperCase(); if(f==="LÄNGE") return args[0].length; if(f==="ABRUNDEN") return Math.floor(args[0]); if(f==="RUNDEN") return Math.round(args[0]*100)/100; throw new Error("Unbekannte Funktion "+x.v); }
+      if(!(x.v in env)) throw new Error(`Variable „${x.v}“ hat noch keinen Wert`); return env[x.v]; }
+    throw new Error("Unerwartet: "+x.v);
+  };
+  const v=or(); if(p<t.length) throw new Error("Unerwartet: "+t[p].v); return v;
+}
+function alParse(lines){
+  let i=0;
+  const block=stops=>{ const out=[];
+    while(i<lines.length){ const raw=lines[i], s=raw.replace(/\/\/.*$/,"").trim(); if(!s){ i++; continue; }
+      if(stops.some(x=>s===x||s.startsWith(x+" "))) return out;
+      const ln=i; let m;
+      if((m=s.match(/^WENN (.+) DANN$/))){ i++; const th=block(["SONST","ENDE WENN"]); let el=[]; if(lines[i]&&lines[i].trim()==="SONST"){ i++; el=block(["ENDE WENN"]); } if(!lines[i]||lines[i].trim()!=="ENDE WENN") throw new Error(`Zeile ${ln+1}: ENDE WENN fehlt`); i++; out.push({k:"if",ln,c:m[1],th,el}); continue; }
+      if((m=s.match(/^SOLANGE (.+)$/))){ i++; const b=block(["ENDE SOLANGE"]); if(!lines[i]) throw new Error(`Zeile ${ln+1}: ENDE SOLANGE fehlt`); i++; out.push({k:"while",ln,c:m[1],b}); continue; }
+      if((m=s.match(/^FÜR (\w+) ← (.+) BIS (.+?)(?: SCHRITT (.+))?$/))){ i++; const b=block(["ENDE FÜR"]); if(!lines[i]) throw new Error(`Zeile ${ln+1}: ENDE FÜR fehlt`); i++; out.push({k:"for",ln,v:m[1],a:m[2],z:m[3],st:m[4]||"1",b}); continue; }
+      if(s==="WIEDERHOLE"){ i++; const b=block(["BIS"]); const e=lines[i]&&lines[i].trim().match(/^BIS (.+)$/); if(!e) throw new Error(`Zeile ${ln+1}: BIS fehlt`); const eln=i; i++; out.push({k:"repeat",ln,b,c:e[1],eln}); continue; }
+      if((m=s.match(/^AUSGABE (.+)$/))){ i++; out.push({k:"out",ln,e:m[1]}); continue; }
+      if((m=s.match(/^(\w+)(\[(.+)\])? ← (.+)$/))){ i++; out.push({k:"set",ln,v:m[1],idx:m[3],e:m[4]}); continue; }
+      throw new Error(`Zeile ${ln+1}: unbekannte Anweisung „${s}“`);
+    }
+    if(stops.length) throw new Error(`${stops[stops.length-1]} fehlt`);
+    return out; };
+  const prog=block([]); return prog;
+}
+const alFmt=v=>Array.isArray(v)?"["+v.map(alFmt).join(", ")+"]":typeof v==="number"?String(Math.round(v*1000)/1000).replace(".",","):typeof v==="boolean"?(v?"WAHR":"FALSCH"):String(v);
+function alRun(code,input){
+  const lines=code.split("\n"), env=JSON.parse(JSON.stringify(input||{})), out=[], steps=[]; let n=0;
+  const snap=(ln,note)=>{ steps.push({ln,env:JSON.parse(JSON.stringify(env)),out:out.slice(),note}); if(++n>600) throw new Error("Endlosschleife? Abbruch nach 600 Schritten"); };
+  const ev=(e,ln)=>{ try{ return alExpr(e,env); }catch(x){ throw new Error(`Zeile ${ln+1}: ${x.message}`); } };
+  const exec=list=>{ for(const s of list){
+    if(s.k==="set"){ const v=ev(s.e,s.ln); if(s.idx!==undefined){ const i=ev(s.idx,s.ln); if(!Array.isArray(env[s.v])) throw new Error(`Zeile ${s.ln+1}: ${s.v} ist kein Array`); if(i<0||i>=env[s.v].length) throw new Error(`Zeile ${s.ln+1}: Index ${i} außerhalb`); env[s.v][i]=v; } else env[s.v]=v; snap(s.ln); }
+    else if(s.k==="out"){ const parts=[]; let depth=0, cur=""; for(const ch of s.e){ if(ch==="("||ch==="[") depth++; if(ch===")"||ch==="]") depth--; if(ch===","&&depth===0){ parts.push(cur); cur=""; } else cur+=ch; } parts.push(cur);
+      out.push(parts.map(x=>alFmt(ev(x.trim(),s.ln))).join(" ")); snap(s.ln); }
+    else if(s.k==="if"){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"Bedingung wahr":"Bedingung falsch"); exec(c?s.th:s.el); }
+    else if(s.k==="while"){ for(;;){ const c=!!ev(s.c,s.ln); snap(s.ln,c?"weiter":"Schleife endet"); if(!c) break; exec(s.b); } }
+    else if(s.k==="for"){ const a=ev(s.a,s.ln), z=ev(s.z,s.ln), st=ev(s.st,s.ln); env[s.v]=a; for(;;){ const c=st>0?env[s.v]<=z:env[s.v]>=z; snap(s.ln,c?`${s.v} = ${env[s.v]}`:"Schleife endet"); if(!c) break; exec(s.b); env[s.v]+=st; } }
+    else if(s.k==="repeat"){ for(;;){ exec(s.b); const c=!!ev(s.c,s.eln); snap(s.eln,c?"Abbruch: Bedingung wahr":"nochmal"); if(c) break; } }
+  } };
+  try{ exec(alParse(lines)); return {ok:true,out,steps,env}; }catch(e){ return {ok:false,err:e.message,out,steps,env}; }
+}
+
+/* --- Level (Daten) --- */
+const AL_WORLDS=[{id:"w1",t:"Grundlagen",s:"Zuweisung, Verzweigung, Schleifen"},{id:"w2",t:"Arrays",s:"Summe, Maximum, Zählen, Suchen"},{id:"w3",t:"Prüfungsklassiker",s:"Preise, Sortieren, Umrechnen"}];
+const AL_LEVELS=[
+{id:"a1",w:"w1",t:"Der erste Schreibtischtest",story:"Willkommen im Algo-Labor! Ein Azubi hat seine erste Rechnung geschrieben. Geh sie Zeile für Zeile durch.",type:"trace",input:{},
+ code:"a ← 3\nb ← 4\na ← a + b\nb ← a * 2\nAUSGABE a, b",wrong:["7 8","3 14","14 7"],tip:"Eine Zuweisung überschreibt den alten Wert. In Zeile 4 ist a schon 7 – nicht mehr 3."},
+{id:"a2",w:"w1",t:"Lüfter-Steuerung",story:"Der Serverraum-Lüfter springt komisch an. Bei genau 25 °C – was passiert?",type:"trace",input:{temp:25},
+ code:"WENN temp > 25 DANN\n    AUSGABE \"Lüfter an\"\nSONST\n    AUSGABE \"Lüfter aus\"\nENDE WENN",wrong:["Lüfter an","Lüfter an Lüfter aus"],tip:"Grenzwerte sind die beliebteste Prüfungsfalle: 25 > 25 ist falsch. Für „ab 25“ bräuchte man ≥."},
+{id:"a3",w:"w1",t:"Zählschleife",story:"Wie viele Tickets wurden diese Woche summiert?",type:"trace",input:{},
+ code:"summe ← 0\nFÜR i ← 1 BIS 4\n    summe ← summe + i\nENDE FÜR\nAUSGABE summe",wrong:["6","15","4"],tip:"FÜR i ← 1 BIS 4 läuft mit 1, 2, 3 und 4 – die 4 ist mit drin."},
+{id:"a4",w:"w1",t:"Countdown",story:"Der Countdown soll 6 4 2 ausgeben – ohne die 0. Welcher Vergleich gehört in die Lücke?",type:"fill",input:{},
+ code:"n ← 6\nSOLANGE n ▢ 0\n    AUSGABE n\n    n ← n - 2\nENDE SOLANGE",opts:[">","≥","<","="],ans:">",target:"6 4 2",tip:"Mit ≥ würde auch die 0 noch ausgegeben. Kopfgesteuerte Schleife: Die Bedingung wird VOR jedem Durchlauf geprüft."},
+{id:"a5",w:"w1",t:"Ziffernsumme",story:"Prüfziffern berechnet man oft mit MOD und DIV. Was kommt bei 472 heraus?",type:"trace",input:{zahl:472},
+ code:"summe ← 0\nSOLANGE zahl > 0\n    summe ← summe + zahl MOD 10\n    zahl ← zahl DIV 10\nENDE SOLANGE\nAUSGABE summe",wrong:["472","12","7"],tip:"MOD 10 liefert die letzte Ziffer (Rest), DIV 10 schneidet sie ab (ganzzahlige Division). 4 + 7 + 2 = 13."},
+{id:"b1",w:"w2",t:"Durchschnittspreis",story:"Die Zeilen sind durcheinandergeraten. Bring sie in die richtige Reihenfolge, damit der Durchschnittspreis herauskommt.",type:"order",input:{preise:[4,8,6,2]},
+ code:"summe ← 0\nFÜR i ← 0 BIS LÄNGE(preise) - 1\n    summe ← summe + preise[i]\nENDE FÜR\nschnitt ← summe / LÄNGE(preise)\nAUSGABE schnitt",tip:"Erst initialisieren, dann in der Schleife aufsummieren, erst NACH der Schleife teilen."},
+{id:"b2",w:"w2",t:"Höchsttemperatur",story:"Das Programm soll die höchste Temperatur finden, liefert aber einen falschen Wert. Tippe auf die fehlerhafte Zeile.",type:"bug",input:{temp:[12,31,7,25]},
+ code:"max ← temp[0]\nFÜR i ← 1 BIS LÄNGE(temp) - 1\n    WENN temp[i] < max DANN\n        max ← temp[i]\n    ENDE WENN\nENDE FÜR\nAUSGABE max",bug:2,fix:"    WENN temp[i] > max DANN",tip:"Mit < sucht man das Minimum. Für das Maximum muss der neue Wert größer sein als der bisher größte."},
+{id:"b3",w:"w2",t:"Lagerwarnung",story:"Wie viele Artikel liegen unter dem Mindestbestand von 10?",type:"trace",input:{bestand:[12,4,10,0,9]},
+ code:"anzahl ← 0\nFÜR i ← 0 BIS LÄNGE(bestand) - 1\n    WENN bestand[i] < 10 DANN\n        anzahl ← anzahl + 1\n    ENDE WENN\nENDE FÜR\nAUSGABE anzahl",wrong:["2","4","5"],tip:"Die 10 selbst zählt nicht, weil 10 < 10 falsch ist. Treffer: 4, 0 und 9."},
+{id:"b4",w:"w2",t:"Kollegen suchen",story:"Lineare Suche: Die Funktion soll melden, an welcher Position „Tom“ steht. Was gehört in die Lücke?",type:"fill",input:{namen:["Mara","Jens","Tom","Lea"],gesucht:"Tom"},
+ code:"pos ← -1\ni ← 0\nSOLANGE i < LÄNGE(namen) UND pos = -1\n    WENN namen[i] = gesucht DANN\n        pos ← ▢\n    ENDE WENN\n    i ← i + 1\nENDE SOLANGE\nAUSGABE pos",opts:["i","namen[i]","gesucht","i + 1"],ans:"i",target:"2",tip:"Gesucht ist die Position (der Index), nicht der Name. Arrays zählen ab 0 – darum steht Tom an Position 2. Die Bedingung pos = -1 beendet die Suche nach dem ersten Treffer."},
+{id:"b5",w:"w2",t:"Die fiese Falle",story:"Jetzt sind alle Temperaturen negativ – und es kommt 0 heraus. Welche Zeile ist schuld?",type:"bug",input:{temp:[-4,-9,-2,-6]},
+ code:"max ← 0\nFÜR i ← 0 BIS LÄNGE(temp) - 1\n    WENN temp[i] > max DANN\n        max ← temp[i]\n    ENDE WENN\nENDE FÜR\nAUSGABE max",bug:0,fix:"max ← temp[0]",tip:"Startet man das Maximum bei 0, gewinnt bei lauter negativen Werten immer die 0. Besser mit dem ersten Element starten."},
+{id:"c1",w:"w3",t:"Gesamtpreis",story:"Die Rechnung zeigt viel zu wenig an. Finde die fehlerhafte Zeile.",type:"bug",input:{menge:[2,1,3],preis:[5,20,4]},
+ code:"gesamt ← 0\nFÜR i ← 0 BIS LÄNGE(menge) - 1\n    gesamt ← menge[i] * preis[i]\nENDE FÜR\nAUSGABE gesamt",bug:2,fix:"    gesamt ← gesamt + menge[i] * preis[i]",tip:"Ohne „gesamt +“ wird in jedem Durchlauf überschrieben statt aufsummiert – am Ende steht nur die letzte Position drin."},
+{id:"c2",w:"w3",t:"Rabattstaffel",story:"Ab 500 € gibt es 5 %, ab 1000 € 10 % Rabatt. Was zahlt ein Kunde mit genau 500 €?",type:"trace",input:{betrag:500},
+ code:"WENN betrag ≥ 1000 DANN\n    rabatt ← 10\nSONST\n    WENN betrag ≥ 500 DANN\n        rabatt ← 5\n    SONST\n        rabatt ← 0\n    ENDE WENN\nENDE WENN\nAUSGABE betrag - betrag * rabatt / 100",wrong:["500","450","25"],tip:"Verschachtelte Verzweigung von oben nach unten prüfen: 500 ≥ 1000 ist falsch, 500 ≥ 500 ist wahr → 5 % Rabatt."},
+{id:"c3",w:"w3",t:"Fakultät",story:"5! = 1·2·3·4·5. Bring die Zeilen in die richtige Reihenfolge.",type:"order",input:{n:5},
+ code:"erg ← 1\nFÜR i ← 2 BIS n\n    erg ← erg * i\nENDE FÜR\nAUSGABE erg",tip:"Beim Multiplizieren startet man mit 1, nicht mit 0 – sonst ist alles 0."},
+{id:"c4",w:"w3",t:"Bubble Sort",story:"Ein Durchlauf von Bubble Sort. Wie sieht das Array danach aus?",type:"trace",input:{z:[5,1,4,2]},
+ code:"FÜR i ← 0 BIS LÄNGE(z) - 2\n    WENN z[i] > z[i + 1] DANN\n        tmp ← z[i]\n        z[i] ← z[i + 1]\n        z[i + 1] ← tmp\n    ENDE WENN\nENDE FÜR\nAUSGABE z",wrong:["[1, 2, 4, 5]","[5, 4, 2, 1]","[1, 5, 4, 2]"],tip:"Ein Durchlauf schiebt nur das größte Element ganz nach hinten („es blubbert hoch“). Ganz sortiert ist es erst nach mehreren Durchläufen."},
+{id:"c5",w:"w3",t:"Dezimal → Binär",story:"13 soll als Binärzahl 1101 herauskommen. Welche Zeile gehört in die Lücke?",type:"fill",input:{zahl:13},
+ code:"bin ← \"\"\nSOLANGE zahl > 0\n    bin ← ▢\n    zahl ← zahl DIV 2\nENDE SOLANGE\nAUSGABE bin",opts:["(zahl MOD 2) + bin","bin + (zahl MOD 2)","(zahl DIV 2) + bin","zahl MOD 2"],ans:"(zahl MOD 2) + bin",target:"1101",tip:"Die Reste fallen von hinten nach vorne an. Darum kommt jeder neue Rest VOR die bisherigen Ziffern."},
+{id:"c6",w:"w3",t:"Mahnstufe",story:"Alle 14 Tage steigt die Mahnstufe, höchstens bis 3. Eine Rechnung ist 20 Tage offen.",type:"trace",input:{offen:20},
+ code:"tage ← 0\nstufe ← 0\nWIEDERHOLE\n    tage ← tage + 14\n    stufe ← stufe + 1\nBIS tage ≥ offen ODER stufe = 3\nAUSGABE stufe",wrong:["1","3","0"],tip:"Fußgesteuerte Schleife: Der Körper läuft mindestens einmal, geprüft wird erst am Ende. Nach 14 Tagen: noch nicht, nach 28: Schluss."}
+];
+
+/* --- Spiel-Logik & Oberfläche --- */
+let alLv=null, alSt=null;
+const alProg=()=>{ try{ return JSON.parse(store.get("al_prog")||"{}"); }catch(e){ return {}; } };
+const alShuffle=a=>{ const b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; };
+const alInputTxt=inp=>Object.entries(inp).map(([k,v])=>`${k} = ${typeof v==="string"?'"'+v+'"':alFmt(v)}`).join(" · ");
+function alCode(lines,opt={}){
+  return `<ol class="al-code">${lines.map((l,i)=>`<li data-ln="${i}" class="${opt.click?"clk":""}"${opt.click?' tabindex="0" role="button"':""}><span class="al-n">${i+1}</span><code>${alHl(l)}</code></li>`).join("")}</ol>`;
+}
+function alHl(l){
+  let h=esc(l);
+  h=h.replace(/&quot;[^&]*&quot;/g,m=>`<span class="al-s">${m}</span>`);
+  h=h.replace(/\b(WENN|DANN|SONST|ENDE WENN|SOLANGE|ENDE SOLANGE|FÜR|BIS|ENDE FÜR|SCHRITT|WIEDERHOLE|AUSGABE|UND|ODER|NICHT|MOD|DIV|LÄNGE)\b/g,"<b class=\"al-k\">$1</b>");
+  h=h.replace(/▢/g,'<span class="al-gap">▢</span>');
+  return h;
+}
+function alHome(){
+  alLv=null; alSt=null; const pr=alProg(); const tot=AL_LEVELS.reduce((n,l)=>n+(pr[l.id]||0),0);
+  $("#al").innerHTML=`<div class="teaser" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <div class="big-ic" style="font-size:30px">🧩</div><h2>Algo-Knacker</h2>
+    <p>Pseudocode lesen wie in der Prüfung: Ausgaben vorhersagen, Lücken füllen, Fehler finden und Zeilen ordnen. Nach jeder Aufgabe läuft der Schreibtischtest Schritt für Schritt.</p>
+    <span class="pill">⭐ ${tot} / ${AL_LEVELS.length*3}</span></div>
+    <details class="panel al-rules"><summary><b>So liest du den Pseudocode</b></summary>
+      <table class="al-rt"><tr><td><code>x ← 5</code></td><td>x bekommt den Wert 5 (Zuweisung)</td></tr><tr><td><code>=  ≠  ≤  ≥</code></td><td>Vergleich: gleich, ungleich, kleiner/gleich, größer/gleich</td></tr><tr><td><code>MOD · DIV</code></td><td>Rest · ganzzahlige Division (7 MOD 2 = 1, 7 DIV 2 = 3)</td></tr><tr><td><code>z[0]</code></td><td>Arrays beginnen bei Index 0</td></tr><tr><td><code>LÄNGE(z)</code></td><td>Anzahl der Elemente</td></tr><tr><td><code>FÜR i ← 1 BIS 4</code></td><td>i = 1, 2, 3, 4 (Ende inklusive)</td></tr><tr><td><code>SOLANGE …</code></td><td>prüft vor jedem Durchlauf (kopfgesteuert)</td></tr><tr><td><code>WIEDERHOLE … BIS</code></td><td>läuft mindestens einmal (fußgesteuert)</td></tr></table></details>
+    ${AL_WORLDS.map(w=>`<div class="sec-h" style="margin:14px 2px 2px">${esc(w.t)} <span style="font-weight:400">· ${esc(w.s)}</span></div><div class="tm-list">${AL_LEVELS.filter(l=>l.w===w.id).map(l=>{ const st=pr[l.id]||0, i=AL_LEVELS.indexOf(l);
+      return `<button class="tm-mis" data-l="${i}"><span class="tm-os">${{trace:"👁️",fill:"✏️",bug:"🐞",order:"🔀"}[l.type]}</span><span><b>${esc(l.t)}</b><small>${{trace:"Ausgabe vorhersagen",fill:"Lücke füllen",bug:"Fehler finden",order:"Zeilen ordnen"}[l.type]}</small></span><span class="al-stars">${"★".repeat(st)}${"☆".repeat(3-st)}</span></button>`; }).join("")}</div>`).join("")}`;
+  $$("#al [data-l]").forEach(b=>b.onclick=()=>alStart(+b.dataset.l));
+  window.scrollTo({top:0});
+}
+function alStart(i){
+  const L=AL_LEVELS[i]; alLv=i; alSt={tries:0,solved:false};
+  const correctCode=L.type==="fill"?L.code.replace("▢",L.ans):L.type==="bug"?L.code.split("\n").map((x,k)=>k===L.bug?L.fix:x).join("\n"):L.code;
+  alSt.ref=alRun(correctCode,L.input); alSt.correctCode=correctCode;
+  const lines=L.code.split("\n");
+  let task="";
+  if(L.type==="trace"){ const right=alSt.ref.out.join(" "); alSt.right=right; const opts=alShuffle([right,...L.wrong]);
+    task=`<p class="al-q">Was gibt das Programm aus?</p><div class="al-opts">${opts.map(o=>`<button class="btn ghost" data-o="${esc(o)}">${esc(o)}</button>`).join("")}</div>`; }
+  if(L.type==="fill") task=`<p class="al-q">Ziel-Ausgabe: <b>${esc(L.target)}</b> – was gehört in die Lücke?</p><div class="al-opts${L.opts.some(o=>o.length>10)?" one":""}">${alShuffle(L.opts).map(o=>`<button class="btn ghost" data-o="${esc(o)}"><code>${esc(o)}</code></button>`).join("")}</div>`;
+  if(L.type==="bug"){ const bad=alRun(L.code,L.input); task=`<p class="al-q">Erwartet: <b>${esc(alSt.ref.out.join(" "))}</b> · Das Programm liefert: <b class="al-bad">${esc(bad.ok?bad.out.join(" ")||"(nichts)":bad.err)}</b></p><p class="hint" style="margin:0">Tippe auf die fehlerhafte Zeile.</p>`; }
+  if(L.type==="order"){ alSt.pool=alShuffle(lines.map((t,k)=>({t,k}))); alSt.seq=[]; alSt.target=alSt.ref.out.join(" ");
+    task=`<p class="al-q">Ziel-Ausgabe: <b>${esc(alSt.target)}</b> – tippe die Zeilen in der richtigen Reihenfolge an.</p><div id="al-seq" class="al-seq"></div><div id="al-pool" class="al-pool"></div><div class="grid2"><button class="btn ghost" id="al-undo">↶ Zurück</button><button class="btn primary" id="al-check" disabled>Prüfen</button></div>`; }
+  $("#al").innerHTML=`<button class="btn ghost" id="al-back" style="align-self:flex-start;padding:8px 12px">‹ Alle Level</button>
+    <div><small class="count">${esc(AL_WORLDS.find(w=>w.id===L.w).t)} · Level ${i+1}/${AL_LEVELS.length}</small><h2 class="title" style="margin:2px 0 0;text-align:left">${esc(L.t)}</h2></div>
+    <div class="panel al-story">${esc(L.story)}</div>
+    ${Object.keys(L.input).length?`<div class="al-in"><span>Eingabe</span> <code>${esc(alInputTxt(L.input))}</code></div>`:""}
+    <div id="al-codebox">${L.type==="order"?"":alCode(lines,{click:L.type==="bug"})}</div>
+    <div id="al-task" class="al-task">${task}</div><div id="al-fb"></div>`;
+  $("#al-back").onclick=alHome;
+  $$("#al [data-o]").forEach(b=>b.onclick=()=>alAnswer(b.dataset.o,b));
+  if(L.type==="bug") $$("#al .al-code li").forEach(li=>{ const h=()=>alAnswer(+li.dataset.ln,li); li.onclick=h; li.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); h(); } }; });
+  if(L.type==="order") alOrderRender();
+  window.scrollTo({top:0});
+}
+function alOrderRender(){
+  $("#al-seq").innerHTML=alSt.seq.length?alSt.seq.map((x,i)=>`<button class="al-line in" data-s="${i}"><span class="al-n">${i+1}</span><code>${alHl(x.t)}</code></button>`).join(""):'<p class="hint" style="margin:6px">Noch leer – tippe unten die erste Zeile an.</p>';
+  $("#al-pool").innerHTML=alSt.pool.map((x,i)=>`<button class="al-line" data-p="${i}"><code>${alHl(x.t.trim())}</code></button>`).join("");
+  $$("#al [data-p]").forEach(b=>b.onclick=()=>{ alSt.seq.push(alSt.pool.splice(+b.dataset.p,1)[0]); alOrderRender(); });
+  $$("#al [data-s]").forEach(b=>b.onclick=()=>{ alSt.pool.push(...alSt.seq.splice(+b.dataset.s,1)); alOrderRender(); });
+  $("#al-undo").onclick=()=>{ if(alSt.seq.length){ alSt.pool.push(alSt.seq.pop()); alOrderRender(); } };
+  $("#al-check").disabled=alSt.pool.length>0;
+  $("#al-check").onclick=()=>{ const code=alSt.seq.map(x=>x.t).join("\n"), r=alRun(code,AL_LEVELS[alLv].input); alAnswer(r.ok&&r.out.join(" ")===alSt.target?"ok":(r.ok?"Ausgabe: "+(r.out.join(" ")||"(nichts)"):r.err),null); };
+}
+function alAnswer(v,el){
+  if(alSt.solved) return; const L=AL_LEVELS[alLv]; alSt.tries++;
+  const ok=L.type==="trace"?v===alSt.right:L.type==="fill"?v===L.ans:L.type==="bug"?v===L.bug:v==="ok";
+  if(!ok){
+    if(el){ el.classList.add("al-wrong"); el.disabled=el.tagName==="BUTTON"; }
+    let msg="Noch nicht. ";
+    if(L.type==="trace"&&alSt.tries>=2) msg+="Tipp: "+L.tip;
+    else if(L.type==="fill"){ const r=alRun(L.code.replace("▢",v),L.input); msg+=`Mit <code>${esc(v)}</code> käme heraus: <b>${esc(r.ok?r.out.join(" ")||"(nichts)":r.err)}</b>.`; }
+    else if(L.type==="bug") msg+=alSt.tries>=2?"Tipp: "+L.tip:"Diese Zeile ist korrekt. Welche Zeile erzeugt den falschen Wert?";
+    else if(L.type==="order") msg+=`${esc(v)}. ${alSt.tries>=2?"Tipp: "+L.tip:"Prüfe, was vor, in und nach der Schleife passieren muss."}`;
+    else msg+="Geh die Zeilen einzeln durch und notiere dir die Werte.";
+    if(L.type==="order"){ alSt.pool.push(...alSt.seq.splice(0)); alOrderRender(); }
+    $("#al-fb").innerHTML=`<div class="panel al-fb bad">${msg}</div>`; return;
+  }
+  alSt.solved=true; const stars=alSt.tries===1?3:alSt.tries===2?2:1, pr=alProg(); if((pr[L.id]||0)<stars){ pr[L.id]=stars; store.set("al_prog",JSON.stringify(pr)); }
+  if(el) el.classList.add("al-right");
+  $$("#al-task button").forEach(b=>b.disabled=true);
+  if(L.type!=="trace") $("#al-codebox").innerHTML=alCode(alSt.correctCode.split("\n"));
+  if(L.type==="order") $("#al-task").innerHTML="";
+  const next=AL_LEVELS[alLv+1];
+  $("#al-fb").innerHTML=`<div class="panel al-fb good"><b>Richtig! ${"★".repeat(stars)}${"☆".repeat(3-stars)}</b>${L.type==="bug"?`<p>Korrigiert: <code>${esc(L.fix.trim())}</code></p>`:""}<p>${esc(L.tip)}</p></div>
+    <div class="sec-h" style="margin:8px 2px 0">Schreibtischtest</div><div id="al-trace"></div>
+    <div class="grid2"><button class="btn ghost" id="al-home">Alle Level</button>${next?`<button class="btn primary" id="al-next">Nächstes Level ›</button>`:`<button class="btn primary" id="al-home2">Fertig 🎉</button>`}</div>`;
+  $("#al-home").onclick=alHome; const n=$("#al-next"); if(n) n.onclick=()=>alStart(alLv+1); const h2=$("#al-home2"); if(h2) h2.onclick=alHome;
+  alTrace(0);
+}
+function alTrace(k){
+  const S=alSt.ref.steps, L=AL_LEVELS[alLv]; if(!S.length) return;
+  const vars=[]; S.forEach(s=>Object.keys(s.env).forEach(v=>{ if(!vars.includes(v)) vars.push(v); }));
+  const fixed=v=>(v in L.input)&&S.every(s=>alFmt(s.env[v])===alFmt(L.input[v])); for(let i=vars.length-1;i>=0;i--) if(fixed(vars[i])) vars.splice(i,1);
+  const show=S.slice(0,k+1), cur=S[k];
+  $$("#al-codebox li").forEach(li=>li.classList.toggle("al-cur",+li.dataset.ln===cur.ln));
+  $("#al-trace").innerHTML=`<div class="ut-tw"><table class="al-tt"><thead><tr><th>Schritt</th><th>Zeile</th>${vars.map(v=>`<th>${esc(v)}</th>`).join("")}<th>Ausgabe</th></tr></thead><tbody>
+    ${show.map((s,i)=>{ const prev=i?show[i-1]:{env:L.input,out:[]};
+      return `<tr class="${i===k?"cur":""}"><td>${i+1}</td><td>${s.ln+1}${s.note?`<small> ${esc(s.note)}</small>`:""}</td>${vars.map(v=>{ const a=alFmt(s.env[v]??""), b=alFmt(prev.env[v]??""); return `<td class="${a!==b?"chg":""}">${v in s.env?esc(a):""}</td>`; }).join("")}<td>${s.out.length!==prev.out.length?esc(s.out[s.out.length-1]):""}</td></tr>`; }).join("")}</tbody></table></div>
+    <div class="al-tc"><button class="btn ghost" id="al-tp" ${k?"":"disabled"}>‹</button><span>Schritt ${k+1} / ${S.length}</span><button class="btn ghost" id="al-tn" ${k<S.length-1?"":"disabled"}>›</button><button class="btn ghost" id="al-ta" ${k<S.length-1?"":"disabled"}>Alle</button></div>`;
+  $("#al-tp").onclick=()=>alTrace(k-1); $("#al-tn").onclick=()=>alTrace(k+1); $("#al-ta").onclick=()=>alTrace(S.length-1);
 }
 
 function drHome(){
