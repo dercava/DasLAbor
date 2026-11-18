@@ -918,6 +918,44 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 
 .fn-box{height:calc(100dvh - var(--tabbar-h,72px) - 96px);min-height:460px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#05080a}
 .fn-frame{width:100%;height:100%;border:0;display:block}
+
+.zt-h{margin:10px 0 0;font-size:17px;line-height:1.3;color:var(--ink);padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--zc) 40%,transparent);scroll-margin-top:72px}
+.zt-p{margin:0;font-size:14px;line-height:1.55}.zt-p code,.zt-def code,.zt-steps code{font-family:var(--mono);font-size:.92em}
+.zt-toc{padding:12px 16px 0}.zt-nav .btn{min-width:0;white-space:normal;height:auto;min-height:44px;line-height:1.25;padding:8px 10px}
+.zt-bits{margin:0;display:flex;flex-direction:column;gap:3px;overflow-x:auto}
+.zt-bitrow{display:grid;grid-template-columns:repeat(var(--w),minmax(0,1fr));gap:0;min-width:280px}
+.zt-bits.has-rl .zt-bitrow{grid-template-columns:52px repeat(var(--w),minmax(0,1fr))}
+.zt-rl{font-size:11px;font-weight:700;align-self:center;color:var(--muted)}
+.zt-bitrow.ruler span{font:10px var(--mono);color:var(--muted);padding-left:2px;border-left:1px solid var(--line)}
+.zt-bf{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:4px 2px;border:1px solid color-mix(in srgb,var(--zc) 55%,transparent);margin:0 -1px -1px 0;background:color-mix(in srgb,var(--zc) 13%,transparent);overflow:hidden}
+.zt-bf b{font-size:11.5px;line-height:1.15;overflow-wrap:anywhere}.zt-bf.nar{padding:4px 0}.zt-bf.nar b{font-size:9.5px;overflow-wrap:normal}.zt-bf.nar small{font-size:9px;word-break:normal}.zt-bf.one b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px}.zt-bf.one small{display:none}.zt-bf small{font:10px var(--mono);opacity:.75;margin-top:2px;word-break:break-all}
+.zt-bitrow:first-of-type .zt-bf,.zt-bitrow.ruler+.zt-bitrow .zt-bf{border-top-width:1px}
+.zt-bitrow.marks span{font-size:11px;text-align:center;border-top:2px solid var(--zc);margin-top:4px;padding-top:2px}
+.zt-bits figcaption,.zt-frame figcaption{font-size:12px;color:var(--muted);margin-top:4px}
+.zt-leg{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:8px 0 0;font-size:12.5px}.zt-leg dt{font-weight:700}.zt-leg dd{margin:0}
+.zt-frame{margin:0}.zt-fr{display:flex;flex-wrap:wrap;gap:0}.zt-fc{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;padding:6px 8px;border:1px solid color-mix(in srgb,var(--zc) 55%,transparent);margin:0 -1px -1px 0;background:color-mix(in srgb,var(--zc) 13%,transparent)}
+.zt-fc b{font-size:12px}.zt-fc small{font:10.5px var(--mono);opacity:.8}
+.zt-seq{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:12px;border:1px solid var(--line)}
+.zt-sq-h{display:grid;grid-template-columns:90px 1fr 90px;font-size:12.5px;text-align:center}
+.zt-sq-r{display:grid;grid-template-columns:90px 1fr 90px;align-items:center}
+.zt-sq-lane{align-self:stretch;justify-self:center;width:3px;background:var(--line);border-radius:2px;min-height:44px}
+.zt-sq-msg{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.zt-sq-msg b{font-size:13px;color:var(--zc)}.zt-sq-msg small{font-size:12px;color:var(--muted)}
+.zt-sq-arrow{width:100%;height:2px;background:var(--zc);position:relative}
+.zt-sq-arrow::after{content:"";position:absolute;top:-5px;border:6px solid transparent}
+.zt-sq-r.r .zt-sq-arrow::after{right:-2px;border-left:9px solid var(--zc);border-right:0}
+.zt-sq-r.l .zt-sq-arrow::after{left:-2px;border-right:9px solid var(--zc);border-left:0}
+.zt-sq-r.both .zt-sq-arrow{background:repeating-linear-gradient(90deg,var(--zc) 0 6px,transparent 6px 10px)}
+@media (max-width:420px){.zt-sq-h,.zt-sq-r{grid-template-columns:64px 1fr 64px}}
+.zt-steps{margin:0;padding:0;list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:8px}
+.zt-steps li{counter-increment:st;display:grid;grid-template-columns:28px 1fr;gap:2px 10px}
+.zt-steps li::before{content:counter(st);grid-row:span 2;width:26px;height:26px;border-radius:50%;background:var(--zc);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.zt-steps b{font-size:14px}.zt-steps span{font-size:13.5px;line-height:1.45;word-break:break-word}
+.zt-calc{border-radius:14px;padding:12px 14px;background:color-mix(in srgb,var(--zc) 9%,transparent);border:1px solid color-mix(in srgb,var(--zc) 40%,transparent)}
+.zt-calc-t{display:block;font-size:14px;margin-bottom:6px}
+.zt-calc dl{display:grid;grid-template-columns:minmax(0,40%) 1fr;gap:5px 12px;margin:0;font-size:13.5px}.zt-calc dt{color:var(--muted)}.zt-calc dd{margin:0;font-family:var(--mono);font-size:13px;word-break:break-word}
+@media (max-width:420px){.zt-calc dl{grid-template-columns:1fr}.zt-calc dd{margin-bottom:6px}}
+.zt-def{margin:0;display:flex;flex-direction:column;gap:8px}.zt-def dt{font-weight:700;font-size:14px}.zt-def dd{margin:0;font-size:13.5px;line-height:1.45}
 /* Algo-Knacker */
 .al-story{font-size:14.5px;line-height:1.45}
 .al-in{font-size:13px;display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}.al-in span{font-weight:700;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#fff}
@@ -965,8 +1003,8 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 .zt-hi{font-size:40px;line-height:1;background:rgba(255,255,255,.18);border-radius:16px;padding:10px}
 .zt-body{display:flex;flex-direction:column;gap:14px;padding:16px}
 .zt-stack{display:flex;flex-direction:column;gap:4px}
-.zt-layer{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:9px 12px;border-radius:10px;background:color-mix(in srgb,var(--zc) calc(32% - var(--k)*3%),transparent);border-left:5px solid var(--zc)}
-.zt-layer b{font-size:14px;min-width:150px}.zt-layer span{font-size:13px;opacity:.9}
+.zt-layer{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border-radius:10px;background:color-mix(in srgb,var(--zc) calc(32% - var(--k)*3%),transparent);border-left:5px solid var(--zc)}
+.zt-layer b{font-size:14px}.zt-layer span{font-size:13px;opacity:.9}
 .zt-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
 .zt-step{flex:1 1 120px;display:flex;flex-direction:column;gap:2px;padding:10px;border-radius:12px;border:2px solid var(--zc);background:color-mix(in srgb,var(--zc) 10%,transparent)}
 .zt-step b{font-size:13px;color:var(--zc)}.zt-step span{font-size:12.5px;line-height:1.3}
@@ -1328,7 +1366,7 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
         
         <div class="sec-h">Nachschlagen</div>
         <div class="hlist"><button class="hrow" data-go="wissen"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="tx"><b>Themen-Steckbriefe</b><small><span id="hw-n">Alle Prüfungsthemen erklärt</span></small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="unterricht"><span class="ic" style="font-size:20px">🎙️</span><span class="tx"><b>Feierabendfunk</b><small>Folgen nachlesen, Prüfungsstellen, Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="vokabeln"><span class="ic" style="font-size:20px">📖</span><span class="tx"><b>Abkürzungs-Labor</b><small>318 Begriffe · Tabelle, Karteikarten, Puzzle, Rennen, Duell</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="ports"><span class="ic" style="font-size:20px">🔌</span><span class="tx"><b>Port-Labor</b><small>Lerntabelle, Karteikarten, Memory & Quiz</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="hrow" data-go="sprachen"><span class="ic" style="font-size:19px">💻</span><span class="tx"><b>Programmiersprachen</b><small>Python, Java, C# & Co. · Compiler, Typisierung, Paradigmen</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
-        <div class="hlist" style="margin-top:8px"><button class="hrow" data-go="zettel"><span class="ic" style="font-size:20px">🗺️</span><span class="tx"><b>Lernzettel als Grafik</b><small>33 AP1-Themen auf einen Blick</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="hlist" style="margin-top:8px"><button class="hrow" data-go="zettel"><span class="ic" style="font-size:20px">🗺️</span><span class="tx"><b>AP1-Atlas</b><small>Alle Prüfungsthemen zum Nachschlagen – mit Diagrammen und Rechenwegen</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="hlist" style="margin-top:8px"><button class="hrow" data-go="pruef"><span class="ic" style="font-size:20px">📝</span><span class="tx"><b>Prüfungen 2020–2025</b><small>Was drankam und was am häufigsten gefragt wird</small></span> <span class="soon">Neu</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         <div class="sec-h">Hören</div>
         <div class="hlist"><button class="hrow" data-go="podcast"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></span><span class="tx"><b>Podcast</b><small>Folgen & Lernhäppchen zum Hören</small></span> <span class="soon" id="pod-soon">Bald</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
@@ -1814,8 +1852,8 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.6.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
-const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",algo:"Algo-Knacker",falln:"Fall N.",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
+const APP_VER="5.6.3"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",algo:"Algo-Knacker",falln:"Fall N.",zettel:"AP1-Atlas",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
 /* zählt EINEN Aufruf pro App-Start (nicht jeden Bereich) */
@@ -2217,12 +2255,12 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Optionen. */
 const WHATS_NEW=[
-  {v:"5.6.2",t:"Das Update vom 18. November",l:[
-    "• Wissen → Lernzettel als Grafik: 33 AP1-Themen von Subnetting über Netzplan bis Datenschutz – mit Formeln, Rechenbeispielen und Prüfungstipps",
+  {v:"5.6.3",t:"Das Update vom 18. November",l:[
+    "• Wissen → AP1-Atlas: alle Prüfungsthemen zum Nachschlagen, mit Inhaltsverzeichnis je Thema. Netzwerk ist jetzt ausführlich: IPv4- und IPv6-Header, TCP/UDP-Header, Ethernet-Frame und VLAN-Tag als Bit-Grafik, Handshake, ARP, DHCP und DNS als Ablauf, Subnetting mit drei durchgerechneten Beispielen",
     "• Wissen → Prüfungen 2020–2025: welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird",
     "• Spiele → Algo-Knacker: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen, danach der Schreibtischtest Schritt für Schritt. Jedes Level erklärt vorher das Konzept, jeder Schritt wird begründet",
     "• Spiele → Fall N.: ein Terminal-Krimi in 5 Kapiteln – Logs, nmap, Mitschnitt, Passwort-Audit und ein Ransomware-Angriff, mit Erklär-Panel zu jedem Befehl",
-    "• Kleinigkeiten: größere Bereichsüberschriften bei den Lernzetteln"]},
+    "• Kleinigkeiten: größere Bereichsüberschriften, OSI-Schichten einheitlich dargestellt"]},
   {v:"5.3.3",t:"Feedback & Optionen",l:[
     "Der Reiter „Fortschritt“ heißt jetzt „Optionen“",
     "Neu dort: „Feedback geben“ – Ideen, Fehler, Lob oder Fragen direkt aus der App schicken, anonym oder mit Nickname"]},
@@ -5162,7 +5200,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.6.2";
+const APK_URL="dasLabor23.apk", APK_VER="5.6.3";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7211,38 +7249,217 @@ const ZETTEL=[
  {t:"vs",cols:[{h:"NAS",items:["Netzwerkspeicher mit eigenem Betriebssystem","Dateizugriff (SMB, NFS) über normales LAN","Einfach, günstig"]},{h:"SAN",items:["Eigenes Speichernetz (z. B. Fibre Channel, iSCSI)","Blockzugriff, Server sehen es wie eine lokale Platte","Schnell, skalierbar, teuer"]}]},
  {t:"tip",text:"RAID ersetzt kein Backup! Löschen, Viren oder Brand treffen alle Platten gleichzeitig. Parität bei RAID 5 wird per XOR berechnet."}]},
 /* ---------- NETZWERK ---------- */
-{id:"osi",g:"netz",ic:"🧱",t:"OSI-Modell",s:"7 Schichten mit Geräten und Protokollen",b:[
- {t:"stack",items:[["7 Anwendung","HTTP(S), DNS, SMTP, IMAP, FTP"],["6 Darstellung","Kodierung, Verschlüsselung (TLS), Kompression"],["5 Sitzung","Aufbau und Steuerung einer Sitzung"],["4 Transport","TCP, UDP · Ports · Segmente"],["3 Vermittlung","IP, ICMP · Router · Pakete"],["2 Sicherung","MAC-Adressen, Ethernet, WLAN · Switch · Frames"],["1 Bitübertragung","Kabel, Funk, Stecker · Hub, Repeater · Bits"]]},
- {t:"vs",cols:[{h:"TCP",items:["Verbindungsorientiert (Handshake)","Bestätigt und sortiert Pakete","HTTP, E-Mail, SSH"]},{h:"UDP",items:["Verbindungslos, ohne Bestätigung","Schnell, wenig Overhead","DNS, Streaming, VoIP"]}]},
- {t:"grid",items:[["🏷️","MAC-Adresse","48 Bit, fest in der Netzwerkkarte, Hex mit Bindestrichen oder Doppelpunkten. Erste Hälfte = Hersteller."],["❓","ARP","Fragt im lokalen Netz: Welche MAC gehört zu dieser IP? Antwort landet im ARP-Cache."]]},
- {t:"tip",text:"Merksatz von unten: „Alle Deutschen Studenten Trinken Verschiedene Sorten Bier“ (Bit, Sicherung, Vermittlung, Transport, Sitzung, Darstellung, Anwendung)."}]},
-{id:"ipv4",g:"netz",ic:"🌐",t:"IPv4 & Subnetting",s:"Adressen, Masken, private Bereiche",b:[
- {t:"grid",items:[["🔢","Aufbau","32 Bit, 4 Oktette à 8 Bit: 192.168.10.25"],["🎭","Subnetzmaske","Trennt Netz- und Hostteil: /24 = 255.255.255.0"],["🚪","Gateway","Router-Adresse für alles außerhalb des eigenen Netzes"],["📬","DHCP","Verteilt automatisch IP, Maske, Gateway und DNS-Server"]]},
- {t:"formula",f:"Nutzbare Hosts = 2^(32 − Präfix) − 2",ex:"/24 → 2⁸ − 2 = 254 · /26 → 2⁶ − 2 = 62"},
- {t:"table",head:["Bereich","Bedeutung"],rows:[["10.0.0.0/8","privat"],["172.16.0.0/12","privat"],["192.168.0.0/16","privat"],["127.0.0.0/8","Loopback (eigener Rechner)"],["169.254.0.0/16","APIPA: kein DHCP-Server erreicht!"]]},
- {t:"flow",items:[["Netzadresse","Alle Hostbits 0"],["Erster Host","Netzadresse + 1"],["Letzter Host","Broadcast − 1"],["Broadcast","Alle Hostbits 1"]]},
- {t:"tip",text:"Sieht man 169.254.x.x, hat der PC keine Antwort vom DHCP-Server bekommen – Kabel, Switch-Port oder DHCP prüfen."}]},
-{id:"ipv6",g:"netz",ic:"🛰️",t:"IPv6",s:"Schreibweise, Adressarten, Subnetze",b:[
- {t:"grid",items:[["📏","Aufbau","128 Bit, 8 Blöcke à 16 Bit in Hex: 2001:0db8:0000:0000:0000:0000:0000:0001"],["✂️","Kürzen","Führende Nullen weglassen, einmal eine Folge von Null-Blöcken durch :: ersetzen → 2001:db8::1"],["🏠","Präfix","Meist /64 für ein Netz: vorne Netz, hinten 64 Bit Interface-ID"],["🌍","Vorteile","Riesiger Adressraum (gut für IoT), kein NAT nötig, Autokonfiguration (SLAAC)"]]},
- {t:"table",head:["Adresse","Art"],rows:[["::1","Loopback"],["fe80::/10","Link-Local (nur im eigenen Segment, automatisch erzeugt)"],["2000::/3","Global Unicast (öffentlich)"],["fc00::/7","Unique Local (privat)"],["ff00::/8","Multicast"]]},
- {t:"formula",f:"Anzahl Subnetze = 2^(neues Präfix − altes Präfix)",ex:"/48 auf /64 aufteilen → 2¹⁶ = 65.536 Subnetze"},
- {t:"tip",text:"Eine fe80-Adresse, die man nicht eingetragen hat, erzeugt das Gerät selbst – oft aus der MAC (EUI-64: ff:fe in der Mitte einfügen, 7. Bit umdrehen)."}]},
-{id:"befehle",g:"netz",ic:"⌨️",t:"Netzwerkbefehle & Fehlersuche",s:"Windows, Linux, Vorgehen",b:[
- {t:"table",head:["Windows","Linux","Wofür"],rows:[["ipconfig /all","ip addr","IP, MAC, DNS, Gateway, DHCP anzeigen"],["ipconfig /release · /renew","dhclient","IP vom DHCP neu holen"],["ping","ping","Erreichbarkeit prüfen (ICMP)"],["tracert","traceroute","Weg über die Router anzeigen"],["nslookup","nslookup / dig","Namen in IP auflösen (DNS)"],["arp -a","ip neigh","ARP-Tabelle (IP ↔ MAC)"],["netstat","ss","Offene Verbindungen und Ports"],["ipconfig /flushdns","–","DNS-Cache leeren"]]},
- {t:"flow",items:[["1. Kabel/LED","Link vorhanden?"],["2. Eigene IP","169.254? → DHCP-Problem"],["3. ping 127.0.0.1","Eigener Netzwerkstack ok?"],["4. ping Gateway","Lokales Netz ok?"],["5. ping 8.8.8.8","Internet ok?"],["6. ping Name","DNS ok?"]]},
- {t:"grid",items:[["🐧","Linux-Rechte","r=4, w=2, x=1 für Besitzer, Gruppe, Andere. chmod 754 = rwx r-x r--"],["📝","Dokumentieren","Fehler, Ursache, Lösung und Uhrzeit festhalten (Ticket)."]]}]},
-{id:"ports",g:"netz",ic:"🚪",t:"Wichtige Ports",s:"Dienste und ihre Portnummern",b:[
- {t:"table",head:["Port","Dienst","Hinweis"],rows:[["20/21","FTP","unverschlüsselt"],["22","SSH / SFTP","verschlüsselte Fernwartung"],["23","Telnet","unverschlüsselt, nicht nutzen"],["25","SMTP","Mail zwischen Servern"],["53","DNS","Namensauflösung"],["67/68","DHCP","Adressvergabe"],["80","HTTP","unverschlüsselt"],["110","POP3","Mail abholen"],["143","IMAP","Mail auf dem Server"],["443","HTTPS","verschlüsselt"],["465 / 587","SMTPS / Submission","Mail senden verschlüsselt"],["993","IMAPS","verschlüsselt"],["995","POP3S","verschlüsselt"],["3389","RDP","Remote Desktop"]]},
- {t:"vs",cols:[{h:"IMAP",items:["Mails bleiben auf dem Server","Auf allen Geräten gleicher Stand","Ordner werden synchronisiert"]},{h:"POP3",items:["Mails werden heruntergeladen","Meist danach vom Server gelöscht","Nur auf einem Gerät sinnvoll"]}]},
- {t:"tip",text:"Bei „sichere Verbindung zum Server“: SSH (22) oder HTTPS (443) wählen, nicht Telnet (23) oder HTTP (80) – die übertragen im Klartext."}]},
-{id:"wlan",g:"netz",ic:"📶",t:"WLAN & Verkabelung",s:"Standards, Sicherheit, Kabel",b:[
- {t:"table",head:["Name","Standard","Band"],rows:[["Wi-Fi 4","802.11n","2,4 + 5 GHz"],["Wi-Fi 5","802.11ac","5 GHz"],["Wi-Fi 6 / 6E","802.11ax","2,4 + 5 (+ 6) GHz"],["Wi-Fi 7","802.11be","2,4 + 5 + 6 GHz"]]},
- {t:"vs",cols:[{h:"WPA2/3-Personal (PSK)",items:["Ein gemeinsames Passwort","Einfach, für zu Hause und kleine Firmen","Passwort-Wechsel betrifft alle"]},{h:"WPA2/3-Enterprise (802.1X/EAP)",items:["Jeder meldet sich einzeln an (RADIUS-Server)","Zugang pro Person sperrbar","Aufwendiger, für größere Firmen"]}]},
- {t:"grid",items:[["🔑","Zum Verbinden","SSID (Netzname) und Schlüssel bzw. Zugangsdaten, ggf. Zertifikat."],["🧵","Twisted Pair","Cat 5e: 1 Gbit/s · Cat 6A: 10 Gbit/s auf 100 m. S/FTP = Gesamtschirm Geflecht + Folie je Paar."],["🏢","Strukturierte Verkabelung","Primär (Gelände), Sekundär (Gebäude/Steigbereich), Tertiär (Etage, max. 90 m fest + Patchkabel = 100 m)."],["💡","LWL","Glasfaser: große Strecken, störsicher. Singlemode weiter als Multimode."]]}]},
-{id:"cloud",g:"netz",ic:"☁️",t:"Cloud & Virtualisierung",s:"IaaS, PaaS, SaaS, On-Premises",b:[
- {t:"stack",items:[["SaaS","Fertige Software im Browser (z. B. Office online). Kunde nutzt nur."],["PaaS","Plattform zum Entwickeln und Betreiben eigener Anwendungen."],["IaaS","Virtuelle Server, Speicher, Netz. Kunde verwaltet Betriebssystem selbst."]]},
- {t:"vs",cols:[{h:"Cloud",items:["+ Kein eigener Server, schnell skalierbar","+ Updates macht der Anbieter","− Abhängig von Internet und Anbieter","− Datenschutz/Standort prüfen (DSGVO)"]},{h:"On-Premises",items:["+ Volle Kontrolle, Daten im Haus","+ Läuft ohne Internet","− Eigene Hardware, Wartung, Personal","− Hohe Anschaffungskosten"]}]},
- {t:"grid",items:[["🖥️","Hypervisor Typ 1","Läuft direkt auf der Hardware (Server): z. B. ESXi, Hyper-V."],["💻","Hypervisor Typ 2","Läuft als Programm auf einem Betriebssystem: z. B. VirtualBox."],["🪟","VDI / Thin Client","Desktop läuft im Rechenzentrum, am Platz nur ein schlankes Gerät."],["🌥️","Bereitstellung","Public, Private, Hybrid, Community Cloud."]]}]},
+{id:"osi",g:"netz",ic:"🧱",t:"OSI- und TCP/IP-Modell",s:"Schichten, Kapselung, Geräte, Protokolle",b:[
+ {t:"h",text:"Warum Schichten?"},
+ {t:"p",text:"Netzwerkkommunikation ist kompliziert. Das OSI-Modell zerlegt sie in 7 Schichten. Jede Schicht hat eine klare Aufgabe und spricht nur mit der Schicht direkt darüber und darunter. Vorteil: Man kann eine Schicht austauschen (z. B. WLAN statt Kabel), ohne die anderen zu ändern – HTTP funktioniert über beides."},
+ {t:"h",text:"Die 7 Schichten"},
+ {t:"stack",items:[["7 Anwendung","Schnittstelle zur Anwendung: HTTP(S), DNS, SMTP, IMAP, FTP, DHCP, SSH"],["6 Darstellung","Format, Kodierung, Verschlüsselung (TLS), Kompression"],["5 Sitzung","Aufbau, Steuerung und Abbau einer Sitzung"],["4 Transport","Ende-zu-Ende zwischen Programmen: TCP, UDP · Ports · PDU: Segment"],["3 Vermittlung","Weg durch mehrere Netze: IP, ICMP · Router · PDU: Paket"],["2 Sicherung","Übertragung im lokalen Netz: Ethernet, WLAN, MAC · Switch · PDU: Frame"],["1 Bitübertragung","Signale auf Kabel/Funk: Stecker, Spannung, Licht · Hub, Repeater · PDU: Bit"]]},
+ {t:"tip",text:"Merksatz von unten: „Alle Deutschen Studenten Trinken Verschiedene Sorten Bier“ – Bitübertragung, Sicherung, Vermittlung, Transport, Sitzung, Darstellung, Anwendung."},
+ {t:"h",text:"Kapselung: vom Tippen bis zum Kabel"},
+ {t:"p",text:"Beim Senden fügt jede Schicht ihre Steuerinformationen (Header) vor die Daten der Schicht darüber. Beim Empfänger wird das in umgekehrter Reihenfolge wieder ausgepackt."},
+ {t:"flow",items:[["Daten","z. B. HTTP-Anfrage"],["+ TCP-Header","= Segment (Ports)"],["+ IP-Header","= Paket (IP-Adressen)"],["+ Ethernet-Header + FCS","= Frame (MAC-Adressen)"],["Bits","auf dem Kabel"]]},
+ {t:"h",text:"OSI und TCP/IP im Vergleich"},
+ {t:"table",head:["OSI","TCP/IP (DoD)","Beispiele"],rows:[["7–5 Anwendung, Darstellung, Sitzung","Anwendung","HTTP, DNS, SMTP, TLS"],["4 Transport","Transport","TCP, UDP"],["3 Vermittlung","Internet","IPv4, IPv6, ICMP"],["2–1 Sicherung, Bitübertragung","Netzzugang","Ethernet, WLAN, Kabel"]]},
+ {t:"h",text:"Geräte und ihre Schicht"},
+ {t:"table",head:["Gerät","Schicht","Arbeitet mit"],rows:[["Hub, Repeater, Medienkonverter","1","Signalen – leitet alles an alle weiter"],["Switch, Bridge, Access Point","2","MAC-Adressen – leitet gezielt an einen Port"],["Router, Layer-3-Switch","3","IP-Adressen – verbindet Netze"],["Firewall (Paketfilter)","3–4","IP-Adressen und Ports"],["Proxy, Application-Firewall","7","Inhalten (z. B. URLs)"]]},
+ {t:"vs",cols:[{h:"TCP",items:["Verbindungsorientiert (Drei-Wege-Handshake)","Bestätigt, sortiert und wiederholt verlorene Segmente","Langsamer, mehr Overhead","HTTP(S), E-Mail, SSH, FTP"]},{h:"UDP",items:["Verbindungslos","Keine Bestätigung, keine Reihenfolge","Schnell, wenig Overhead","DNS, DHCP, Streaming, VoIP, Online-Spiele"]}]}]},
+
+{id:"ethernet",g:"netz",ic:"🔗",t:"Ethernet, MAC & Switch",s:"Frame-Aufbau, MAC-Adressen, wie ein Switch lernt",b:[
+ {t:"h",text:"Der Ethernet-Frame"},
+ {t:"p",text:"Auf Schicht 2 werden Daten als Frames übertragen. Ein Frame enthält Ziel- und Quell-MAC-Adresse, einen Typ, die Nutzdaten (z. B. ein IP-Paket) und am Ende eine Prüfsumme."},
+ {t:"frame",cap:"Ethernet-II-Frame (Angaben in Byte)",fields:[["Präambel","7","Bitmuster 1010… zum Takt-Synchronisieren"],["SFD","1","Start Frame Delimiter: „jetzt geht's los“"],["Ziel-MAC","6","An wen?"],["Quell-MAC","6","Von wem?"],["VLAN-Tag","4","Optional (802.1Q), siehe VLAN"],["Typ","2","Was steckt drin? 0x0800 IPv4, 0x86DD IPv6, 0x0806 ARP"],["Nutzdaten","46–1500","z. B. das IP-Paket. 1500 = MTU"],["FCS","4","Prüfsumme (CRC-32) – kaputte Frames werden verworfen"]]},
+ {t:"def",items:[["MTU","Maximum Transmission Unit: größte Nutzlast eines Frames, bei Ethernet 1500 Byte."],["Mindestgröße","64 Byte (ohne Präambel). Zu kurze Daten werden aufgefüllt (Padding)."],["Höchstgröße","1518 Byte, mit VLAN-Tag 1522 Byte (ohne Präambel)."]]},
+ {t:"h",text:"Die MAC-Adresse"},
+ {t:"bits",w:48,legend:true,cap:"MAC-Adresse: 48 Bit = 6 Byte, z. B. 00:1A:2B:3C:4D:5E",rows:[[["OUI",24,"Hersteller-Kennung (z. B. 00:1A:2B)"],["NIC",24,"Gerätenummer des Herstellers"]]]},
+ {t:"grid",items:[["🔢","Schreibweise","12 Hex-Ziffern, getrennt durch : oder - (Windows), z. B. 00-1A-2B-3C-4D-5E."],["📢","Broadcast","FF:FF:FF:FF:FF:FF – geht an alle Geräte im LAN (z. B. ARP-Anfrage, DHCP Discover)."],["👥","Multicast","Erstes Byte ungerade (niedrigstes Bit = 1), an eine Gruppe."],["🏠","Lokal verwaltet","Zweitniedrigstes Bit im ersten Byte = 1: selbst vergebene Adresse (z. B. zufällige MAC beim Handy-WLAN)."]]},
+ {t:"h",text:"So lernt ein Switch"},
+ {t:"steps",items:[["Frame kommt an","Der Switch liest die Quell-MAC und merkt sich: „Diese MAC hängt an Port 3“ (MAC-Adresstabelle / CAM-Tabelle)."],["Ziel bekannt?","Steht die Ziel-MAC in der Tabelle, geht der Frame nur an diesen einen Port (Forwarding)."],["Ziel unbekannt","Der Switch schickt den Frame an alle Ports außer dem Eingang (Flooding). Antwortet das Ziel, lernt er dessen Port."],["Broadcast","FF:FF:FF:FF:FF:FF geht immer an alle Ports desselben VLANs."],["Alterung","Einträge verfallen nach einiger Zeit (oft 300 s), damit umgesteckte Geräte gefunden werden."]]},
+ {t:"vs",cols:[{h:"Kollisionsdomäne",items:["Bereich, in dem sich Signale stören können","Hub: alle Ports = eine Domäne","Switch: jeder Port eine eigene Domäne → im Vollduplex keine Kollisionen"]},{h:"Broadcastdomäne",items:["Bereich, den ein Broadcast erreicht","Switch: alle Ports eines VLANs","Router und VLANs trennen Broadcastdomänen"]}]},
+ {t:"tip",text:"Halbduplex = abwechselnd senden (Funkgerät), Vollduplex = gleichzeitig in beide Richtungen (Telefon). Das alte Verfahren CSMA/CD regelt Kollisionen nur im Halbduplex."}]},
+
+{id:"ipv4",g:"netz",ic:"🌐",t:"IPv4: Adresse & Header",s:"Aufbau, Header-Felder, Adressklassen, besondere Bereiche, NAT",b:[
+ {t:"h",text:"Die IPv4-Adresse"},
+ {t:"p",text:"Eine IPv4-Adresse hat 32 Bit, geschrieben als vier Dezimalzahlen von 0 bis 255 (je 8 Bit = ein Oktett), z. B. 192.168.10.25. Die Subnetzmaske (oder das Präfix /24) legt fest, welcher Teil das Netz und welcher Teil das Gerät (Host) beschreibt."},
+ {t:"bits",w:32,vals:true,cap:"192.168.10.25 /24 in Binär",rows:[[["192",8,"11000000"],["168",8,"10101000"],["10",8,"00001010"],["25",8,"00011001"]]],marks:[[0,24,"Netzanteil (24 Bit)"],[24,8,"Host"]]},
+ {t:"h",text:"Der IPv4-Header"},
+ {t:"p",text:"Jedes IP-Paket beginnt mit einem Header von mindestens 20 Byte (ohne Optionen). Er wird in Zeilen zu je 32 Bit dargestellt. Router lesen ihn, um das Paket weiterzuleiten."},
+ {t:"bits",w:32,cap:"IPv4-Header (eine Zeile = 32 Bit = 4 Byte)",rows:[
+   [["Ver",4,"Version"],["IHL",4,"Header-Länge"],["DSCP",6,"Priorität"],["ECN",2,"Stau-Info"],["Gesamtlänge",16,"Total Length"]],
+   [["Identifikation",16,"Identification"],["Flags",3,"Flags"],["Fragment-Offset",13,"Fragment Offset"]],
+   [["TTL",8,"Time to Live"],["Protokoll",8,"Protocol"],["Header-Prüfsumme",16,"Header Checksum"]],
+   [["Quell-IP-Adresse",32,"Source Address"]],
+   [["Ziel-IP-Adresse",32,"Destination Address"]],
+   [["Optionen (selten, bis 40 Byte)",32,"Options"]]]},
+ {t:"table",head:["Feld","Bits","Bedeutung"],rows:[["Version","4","Immer 4 bei IPv4"],["IHL","4","Header-Länge in 32-Bit-Wörtern: 5 = 20 Byte (Minimum), 15 = 60 Byte (Maximum)"],["DSCP / ECN","6 / 2","Dienstgüte (QoS, z. B. VoIP bevorzugen) und Stau-Meldung"],["Gesamtlänge","16","Header + Daten in Byte, max. 65.535"],["Identifikation","16","Gleiche Nummer für alle Teile eines zerlegten (fragmentierten) Pakets"],["Flags","3","0 · DF = Don't Fragment · MF = More Fragments"],["Fragment-Offset","13","Position des Teilstücks (in 8-Byte-Schritten)"],["TTL","8","Jeder Router zieht 1 ab. Bei 0 wird das Paket verworfen → keine Endlosschleifen. tracert nutzt das"],["Protokoll","8","Was steckt drin? 1 = ICMP, 6 = TCP, 17 = UDP"],["Header-Prüfsumme","16","Nur über den Header, wird bei jedem Router neu berechnet (weil TTL sich ändert)"],["Quell-/Ziel-Adresse","je 32","Von wem, an wen"]]},
+ {t:"tip",text:"Typische Prüfungsfrage: Warum hat IPv4 eine TTL? → Damit Pakete bei einem Routing-Fehler nicht ewig im Kreis laufen. Und: Wie lang ist der Header mindestens? → 20 Byte."},
+ {t:"h",text:"Adressklassen (historisch)"},
+ {t:"table",head:["Klasse","Erstes Oktett","Erste Bits","Standardmaske","Zweck"],rows:[["A","1–126","0…","/8 = 255.0.0.0","sehr große Netze"],["B","128–191","10…","/16 = 255.255.0.0","mittlere Netze"],["C","192–223","110…","/24 = 255.255.255.0","kleine Netze"],["D","224–239","1110…","–","Multicast"],["E","240–255","1111…","–","reserviert"]]},
+ {t:"p",text:"Heute wird klassenlos gearbeitet (CIDR): Die Grenze zwischen Netz und Host kann bei jedem Bit liegen. Die Klassen tauchen trotzdem noch in Prüfungen auf."},
+ {t:"h",text:"Besondere Adressen"},
+ {t:"table",head:["Bereich","Bedeutung"],rows:[["10.0.0.0/8","privat (RFC 1918)"],["172.16.0.0/12","privat: 172.16.0.0 – 172.31.255.255"],["192.168.0.0/16","privat"],["127.0.0.0/8","Loopback, z. B. 127.0.0.1 = der eigene Rechner"],["169.254.0.0/16","APIPA / Link-Local: kein DHCP-Server erreicht"],["100.64.0.0/10","Carrier-Grade-NAT beim Provider"],["0.0.0.0","„diese Adresse / unbekannt“, als Route: Standardroute"],["255.255.255.255","Broadcast an alle im eigenen Netz"]]},
+ {t:"h",text:"Unicast, Broadcast, Multicast"},
+ {t:"grid",items:[["👤","Unicast","An genau ein Gerät."],["📢","Broadcast","An alle im Netz, z. B. 192.168.10.255 bei /24."],["👥","Multicast","An eine Gruppe (224.0.0.0–239.255.255.255), z. B. Video-Streams."],["📍","Anycast","Gleiche Adresse an mehreren Orten, der nächste antwortet (bei IPv4 selten, z. B. DNS-Root-Server)."]]},
+ {t:"h",text:"NAT und PAT"},
+ {t:"p",text:"Private Adressen werden im Internet nicht geroutet. Der Router ersetzt deshalb beim Senden die private Quell-Adresse durch seine öffentliche (NAT). Damit viele Geräte eine öffentliche IP teilen können, merkt er sich zusätzlich den Port (PAT bzw. NAT-Overload) und ordnet Antworten so dem richtigen Gerät zu."},
+ {t:"table",head:["","Innen (privat)","Außen (öffentlich)"],rows:[["PC 1","192.168.1.10:51000","203.0.113.5:40001"],["PC 2","192.168.1.11:51000","203.0.113.5:40002"]]},
+ {t:"vs",cols:[{h:"Vorteile NAT",items:["Spart öffentliche IPv4-Adressen","Interne Struktur von außen nicht sichtbar"]},{h:"Nachteile NAT",items:["Geräte innen sind von außen nicht direkt erreichbar (Portweiterleitung nötig)","Stört manche Protokolle (VoIP, VPN)"]}]}]},
+
+{id:"subnet",g:"netz",ic:"✂️",t:"Subnetting Schritt für Schritt",s:"Masken-Tabelle, Netz/Broadcast berechnen, aufteilen, VLSM",b:[
+ {t:"h",text:"Das Prinzip"},
+ {t:"p",text:"Beim Subnetting „leiht“ man sich Bits aus dem Hostteil und macht sie zum Netzteil. So wird ein großes Netz in mehrere kleine aufgeteilt. Jedes geliehene Bit verdoppelt die Zahl der Subnetze und halbiert die Hosts pro Subnetz."},
+ {t:"formula",f:"Hosts = 2^(Hostbits) − 2    ·    Subnetze = 2^(geliehene Bits)",ex:"/26 → 32 − 26 = 6 Hostbits → 2⁶ − 2 = 62 Hosts. Die −2 sind Netzadresse und Broadcast."},
+ {t:"h",text:"Die Tabelle zum Auswendiglernen"},
+ {t:"table",head:["Präfix","Maske","Blockgröße","Hosts"],rows:[["/16","255.255.0.0","65.536","65.534"],["/20","255.255.240.0","16 (im 3. Oktett)","4.094"],["/22","255.255.252.0","4 (im 3. Oktett)","1.022"],["/23","255.255.254.0","2 (im 3. Oktett)","510"],["/24","255.255.255.0","256","254"],["/25","255.255.255.128","128","126"],["/26","255.255.255.192","64","62"],["/27","255.255.255.224","32","30"],["/28","255.255.255.240","16","14"],["/29","255.255.255.248","8","6"],["/30","255.255.255.252","4","2"],["/31","255.255.255.254","2","2 (nur Punkt-zu-Punkt)"],["/32","255.255.255.255","1","1 Host-Route"]]},
+ {t:"tip",text:"Blockgröße = 256 − Masken-Wert im „interessanten“ Oktett. Bei .192 → 256 − 192 = 64. Alle Netzadressen sind Vielfache davon: 0, 64, 128, 192."},
+ {t:"h",text:"Beispiel 1: Netz und Broadcast bestimmen"},
+ {t:"calc",title:"Zu welchem Netz gehört 172.16.45.200/20?",lines:[["Maske","/20 = 255.255.240.0 → das 3. Oktett ist „interessant“"],["Blockgröße","256 − 240 = 16"],["Vielfache von 16","0, 16, 32, 48 … → 45 liegt zwischen 32 und 47"],["Netzadresse","172.16.32.0"],["Broadcast","172.16.47.255 (eins vor dem nächsten Netz 172.16.48.0)"],["Erster / letzter Host","172.16.32.1 – 172.16.47.254"],["Anzahl Hosts","2¹² − 2 = 4.094"]]},
+ {t:"h",text:"Beispiel 2: Ein Netz in 4 Subnetze teilen"},
+ {t:"calc",title:"192.168.10.0/24 soll in 4 gleich große Netze",lines:[["Wie viele Bits leihen?","4 Netze = 2² → 2 Bits"],["Neues Präfix","/24 + 2 = /26 → Maske 255.255.255.192"],["Blockgröße","256 − 192 = 64"],["Hosts je Netz","2⁶ − 2 = 62"]]},
+ {t:"table",head:["Netz","Netzadresse","Hosts","Broadcast"],rows:[["1","192.168.10.0",".1 – .62","192.168.10.63"],["2","192.168.10.64",".65 – .126","192.168.10.127"],["3","192.168.10.128",".129 – .190","192.168.10.191"],["4","192.168.10.192",".193 – .254","192.168.10.255"]]},
+ {t:"h",text:"Beispiel 3: Nach Host-Anzahl planen (VLSM)"},
+ {t:"p",text:"Bei VLSM (Variable Length Subnet Mask) bekommt jedes Netz genau so viel Platz, wie es braucht. Immer mit dem größten Netz anfangen."},
+ {t:"calc",title:"192.168.1.0/24 für 100, 50 und 20 Geräte plus eine Router-Verbindung",lines:[["100 Geräte","braucht 7 Hostbits (126) → /25 → 192.168.1.0 – .127"],["50 Geräte","6 Hostbits (62) → /26 → 192.168.1.128 – .191"],["20 Geräte","5 Hostbits (30) → /27 → 192.168.1.192 – .223"],["Router-Link","2 Adressen → /30 → 192.168.1.224 – .227"],["Frei","192.168.1.228 – .255 für später"]]},
+ {t:"h",text:"Rechnen mit Binär"},
+ {t:"bits",w:32,vals:true,cap:"UND-Verknüpfung: IP AND Maske = Netzadresse (Beispiel 192.168.10.77/26)",rows:[[["192",8,"11000000"],["168",8,"10101000"],["10",8,"00001010"],["77",8,"01001101"]],[["255",8,"11111111"],["255",8,"11111111"],["255",8,"11111111"],["192",8,"11000000"]],[["192",8,"11000000"],["168",8,"10101000"],["10",8,"00001010"],["64",8,"01000000"]]],rowLabels:["IP","Maske","Netz"]},
+ {t:"tip",text:"Gängige Fallen: Netzadresse und Broadcast als Host vergeben, Blockgröße im falschen Oktett ansetzen, /31 und /32 vergessen. Und: Gateway liegt immer im selben Subnetz wie der Host."}]},
+
+{id:"ipv6",g:"netz",ic:"🛰️",t:"IPv6",s:"Schreibweise, Header, Adressarten, EUI-64, Subnetze",b:[
+ {t:"h",text:"Warum IPv6?"},
+ {t:"p",text:"IPv4 hat rund 4,3 Milliarden Adressen – zu wenig für alle Geräte (IoT!). IPv6 hat 128 Bit, also 2¹²⁸ ≈ 3,4 · 10³⁸ Adressen. Dazu kommen Vereinfachungen: kein NAT nötig, Autokonfiguration, kein Broadcast (stattdessen Multicast), einfacherer Header."},
+ {t:"h",text:"Schreibweise und Kürzen"},
+ {t:"p",text:"8 Blöcke à 16 Bit, jeweils 4 Hex-Ziffern, getrennt durch Doppelpunkte."},
+ {t:"steps",items:[["Ausgangsadresse","2001:0db8:0000:0000:0008:0800:200c:417a"],["Führende Nullen weglassen","2001:db8:0:0:8:800:200c:417a"],["Eine Folge von Null-Blöcken durch :: ersetzen","2001:db8::8:800:200c:417a"],["Nur EINMAL ::","Sonst wüsste man nicht, wie viele Nullen wo fehlen. Bei zwei gleich langen Null-Folgen kürzt man die erste."]]},
+ {t:"h",text:"Aufbau einer typischen Adresse"},
+ {t:"bits",w:128,cap:"Global-Unicast-Adresse mit /48 vom Provider und /64 pro Netz",rows:[[["Globales Präfix (vom Provider)",48,""],["Subnetz-ID",16,""],["Interface-ID (Gerät)",64,""]]]},
+ {t:"h",text:"Adressarten"},
+ {t:"table",head:["Präfix","Art","Beispiel / Bedeutung"],rows:[["::1/128","Loopback","der eigene Rechner (wie 127.0.0.1)"],["::/128","unspezifiziert","noch keine Adresse"],["fe80::/10","Link-Local","jedes IPv6-Gerät erzeugt sie automatisch, gilt nur im eigenen Segment, wird nicht geroutet"],["fc00::/7 (meist fd00::/8)","Unique Local (ULA)","privat, vergleichbar mit 192.168.x.x"],["2000::/3","Global Unicast","öffentlich, im Internet erreichbar"],["ff00::/8","Multicast","ff02::1 = alle Knoten, ff02::2 = alle Router"]]},
+ {t:"h",text:"Der IPv6-Header"},
+ {t:"p",text:"Der Header ist immer genau 40 Byte groß – schneller zu verarbeiten als der variable IPv4-Header. Selten gebrauchte Funktionen wandern in Erweiterungs-Header (Extension Headers)."},
+ {t:"bits",w:32,legend:true,cap:"IPv6-Header (40 Byte)",rows:[[["Ver",4,"Version = 6"],["Traffic Class",8,"Priorität"],["Flow Label",20,"Datenstrom-Kennung"]],[["Payload Length",16,"Länge der Daten"],["Next Header",8,"z. B. 6 = TCP"],["Hop Limit",8,"wie TTL"]],[["Quell-Adresse (128 Bit = 4 Zeilen)",32,""]],[["Ziel-Adresse (128 Bit = 4 Zeilen)",32,""]]]},
+ {t:"vs",cols:[{h:"IPv4-Header",items:["20–60 Byte, variabel","Header-Prüfsumme","Router dürfen fragmentieren","TTL"]},{h:"IPv6-Header",items:["Fest 40 Byte","Keine Prüfsumme (machen Schicht 2 und 4)","Nur der Absender fragmentiert","Hop Limit (gleiche Aufgabe wie TTL)"]}]},
+ {t:"h",text:"Automatische Adressen: SLAAC und EUI-64"},
+ {t:"p",text:"Bei SLAAC (Stateless Address Autoconfiguration) schickt der Router das Präfix (z. B. 2001:db8:1:2::/64), das Gerät bildet die hinteren 64 Bit selbst – zufällig (Privacy Extensions) oder aus der MAC-Adresse (EUI-64). Alternativ verteilt DHCPv6 Adressen."},
+ {t:"calc",title:"EUI-64 aus der MAC 00:1A:2B:3C:4D:5E",lines:[["MAC teilen","00:1A:2B | 3C:4D:5E"],["FF:FE einfügen","00:1A:2B:FF:FE:3C:4D:5E"],["7. Bit des 1. Bytes umdrehen","00 = 0000 0000 → 0000 0010 = 02"],["Interface-ID","021a:2bff:fe3c:4d5e"],["Link-Local-Adresse","fe80::21a:2bff:fe3c:4d5e"]]},
+ {t:"h",text:"Subnetze berechnen"},
+ {t:"formula",f:"Anzahl Subnetze = 2^(neues Präfix − altes Präfix)",ex:"Firma bekommt 2001:db8:abcd::/48 und teilt in /64-Netze → 2¹⁶ = 65.536 Netze: 2001:db8:abcd:0000::/64 bis 2001:db8:abcd:ffff::/64"},
+ {t:"tip",text:"Ein /64 hat 2⁶⁴ Adressen – Hosts zählt man bei IPv6 praktisch nie. Gefragt wird nach der Zahl der Subnetze oder nach der richtigen Kürzung."}]},
+
+{id:"tcpudp",g:"netz",ic:"🤝",t:"TCP, UDP & Ports",s:"Header, Drei-Wege-Handshake, Portbereiche, Sockets",b:[
+ {t:"h",text:"Aufgabe der Transportschicht"},
+ {t:"p",text:"IP bringt Pakete zum richtigen Rechner. Die Transportschicht bringt sie zum richtigen Programm – über Portnummern (0–65.535). IP-Adresse + Port + Protokoll ergeben einen Socket, z. B. 192.168.1.10:443/TCP."},
+ {t:"h",text:"Der TCP-Header"},
+ {t:"bits",w:32,legend:true,cap:"TCP-Header (mindestens 20 Byte)",rows:[[["Quell-Port",16,"Source Port"],["Ziel-Port",16,"Destination Port"]],[["Sequenznummer",32,"Sequence Number"]],[["Bestätigungsnummer",32,"Acknowledgment Number"]],[["Off",4,"Data Offset"],["Res",4,"reserviert"],["Flags",8,"CWR ECE URG ACK PSH RST SYN FIN"],["Fenstergröße",16,"Window"]],[["Prüfsumme",16,"Checksum"],["Urgent-Pointer",16,"Urgent Pointer"]]]},
+ {t:"table",head:["Feld","Bedeutung"],rows:[["Ports","Welches Programm sendet / empfängt"],["Sequenznummer","Nummer des ersten Bytes in diesem Segment → Reihenfolge herstellen"],["Bestätigungsnummer","„Bis hierhin alles erhalten, als Nächstes erwarte ich Byte Nr. …“"],["Flags","SYN = Verbindung aufbauen, ACK = Bestätigung gültig, FIN = Verbindung beenden, RST = abbrechen, PSH = sofort weitergeben"],["Fenstergröße","So viele Byte darf der Partner senden, bevor er auf eine Bestätigung warten muss (Flusskontrolle)"],["Prüfsumme","Prüft Header und Daten"]]},
+ {t:"h",text:"Drei-Wege-Handshake"},
+ {t:"seq",a:"Client",b:"Server",msgs:[["→","SYN","seq = 100"],["←","SYN, ACK","seq = 300, ack = 101"],["→","ACK","seq = 101, ack = 301"],["⇄","Daten","Verbindung steht"]]},
+ {t:"h",text:"Verbindungsabbau"},
+ {t:"seq",a:"Client",b:"Server",msgs:[["→","FIN","„Ich bin fertig“"],["←","ACK","bestätigt"],["←","FIN","„Ich auch“"],["→","ACK","Verbindung geschlossen"]]},
+ {t:"h",text:"Der UDP-Header"},
+ {t:"bits",w:32,cap:"UDP-Header (8 Byte)",rows:[[["Quell-Port",16,""],["Ziel-Port",16,""]],[["Länge",16,""],["Prüfsumme",16,""]]]},
+ {t:"p",text:"Kein Handshake, keine Bestätigung, keine Reihenfolge. Was verloren geht, ist weg. Genau richtig, wo Geschwindigkeit wichtiger ist als Vollständigkeit (Telefonie, Streaming) oder wo eine Antwort ohnehin kurz ist (DNS)."},
+ {t:"h",text:"Portbereiche"},
+ {t:"table",head:["Bereich","Name","Beispiel"],rows:[["0–1023","Well-known Ports","80 HTTP, 443 HTTPS, 22 SSH"],["1024–49.151","Registered Ports","3389 RDP, 3306 MySQL"],["49.152–65.535","Dynamische / private Ports","vom Client zufällig gewählt (Quell-Port)"]]},
+ {t:"h",text:"Wichtige Ports"},
+ {t:"table",head:["Port","Protokoll","Dienst","Hinweis"],rows:[["20/21","TCP","FTP","unverschlüsselt"],["22","TCP","SSH, SFTP, SCP","verschlüsselt"],["23","TCP","Telnet","unverschlüsselt – nicht nutzen"],["25","TCP","SMTP","Mail zwischen Servern"],["53","UDP/TCP","DNS","Namensauflösung"],["67/68","UDP","DHCP","Server 67, Client 68"],["69","UDP","TFTP","z. B. Firmware, PXE"],["80","TCP","HTTP","unverschlüsselt"],["110","TCP","POP3","Mail abholen"],["123","UDP","NTP","Zeit"],["143","TCP","IMAP","Mail auf dem Server"],["161/162","UDP","SNMP","Netzwerk-Überwachung"],["389 / 636","TCP","LDAP / LDAPS","Verzeichnisdienst"],["443","TCP","HTTPS","TLS-verschlüsselt"],["445","TCP","SMB","Windows-Dateifreigaben"],["465 / 587","TCP","SMTPS / Submission","Mail senden, verschlüsselt"],["993 / 995","TCP","IMAPS / POP3S","verschlüsselt"],["3389","TCP","RDP","Remote Desktop"]]},
+ {t:"vs",cols:[{h:"IMAP",items:["Mails bleiben auf dem Server","Alle Geräte sehen denselben Stand","Ordner werden synchronisiert"]},{h:"POP3",items:["Mails werden heruntergeladen","meist danach vom Server gelöscht","nur für ein einzelnes Gerät sinnvoll"]}]}]},
+
+{id:"dienste",g:"netz",ic:"🧭",t:"ARP, ICMP, DHCP, DNS",s:"Die Helfer im Hintergrund – mit Ablaufdiagrammen",b:[
+ {t:"h",text:"ARP – von der IP zur MAC"},
+ {t:"p",text:"Im lokalen Netz werden Frames an MAC-Adressen geschickt. Kennt ein PC nur die IP des Ziels (oder des Gateways), fragt er per ARP nach der passenden MAC."},
+ {t:"seq",a:"PC 192.168.1.10",b:"alle im LAN",msgs:[["→","ARP Request (Broadcast)","„Wer hat 192.168.1.1? Sag es 192.168.1.10“"],["←","ARP Reply (Unicast)","„192.168.1.1 ist bei AA:BB:CC:11:22:33“"]]},
+ {t:"p",text:"Die Antwort landet im ARP-Cache (anzeigen mit arp -a). Für Ziele in anderen Netzen fragt der PC nach der MAC seines Standard-Gateways, nicht nach der des Ziels. Gefahr: ARP-Spoofing – ein Angreifer antwortet mit falscher MAC und leitet Verkehr über sich um."},
+ {t:"h",text:"ICMP – Melde- und Testprotokoll"},
+ {t:"table",head:["Typ","Name","Wann?"],rows:[["8","Echo Request","ping fragt an"],["0","Echo Reply","Antwort auf ping"],["3","Destination Unreachable","Ziel / Port nicht erreichbar"],["11","Time Exceeded","TTL abgelaufen – das nutzt tracert"],["5","Redirect","Router empfiehlt einen besseren Weg"]]},
+ {t:"p",text:"tracert/traceroute schickt Pakete mit TTL 1, 2, 3 … Jeder Router auf dem Weg verwirft das Paket, bei dem die TTL 0 wird, und meldet sich mit „Time Exceeded“ – so sieht man jede Station."},
+ {t:"h",text:"DHCP – Adressen automatisch verteilen"},
+ {t:"seq",a:"Client",b:"DHCP-Server",msgs:[["→","DHCP Discover (Broadcast)","„Gibt es hier einen DHCP-Server?“"],["←","DHCP Offer","„Du kannst 192.168.1.50 haben“"],["→","DHCP Request (Broadcast)","„Ich nehme 192.168.1.50“"],["←","DHCP Ack","„Bestätigt – für 24 Stunden (Lease)“"]]},
+ {t:"tip",text:"Merkwort DORA: Discover, Offer, Request, Acknowledge. Ports: Server UDP 67, Client UDP 68."},
+ {t:"def",items:[["Was verteilt DHCP?","IP-Adresse, Subnetzmaske, Standard-Gateway, DNS-Server, Lease-Dauer, ggf. NTP-Server, Domäne."],["Lease","Leihzeit. Nach der Hälfte der Zeit versucht der Client zu verlängern."],["Reservierung","Ein Gerät bekommt anhand seiner MAC immer dieselbe IP (z. B. Drucker)."],["DHCP-Relay","Router leitet DHCP-Broadcasts an einen Server in einem anderen Netz weiter (ip helper)."],["Kein DHCP erreicht","Windows vergibt sich eine APIPA-Adresse 169.254.x.x."]]},
+ {t:"h",text:"DNS – vom Namen zur IP"},
+ {t:"steps",items:[["Cache","Der PC schaut im eigenen DNS-Cache und in der hosts-Datei nach."],["Resolver","Sonst fragt er seinen DNS-Server (z. B. Router oder Provider) – rekursive Anfrage: „Finde es für mich heraus.“"],["Root-Server","Der Resolver fragt einen Root-Server: „Wer ist für .de zuständig?“"],["TLD-Server","Der .de-Server nennt den zuständigen Server für beispiel.de."],["Autoritativer Server","Er kennt die Antwort: www.beispiel.de = 203.0.113.80."],["Antwort","Der Resolver gibt die IP zurück und speichert sie für die Dauer der TTL."]]},
+ {t:"table",head:["Eintrag","Bedeutung"],rows:[["A","Name → IPv4-Adresse"],["AAAA","Name → IPv6-Adresse"],["CNAME","Alias auf einen anderen Namen"],["MX","Mailserver der Domäne (mit Priorität)"],["NS","zuständiger DNS-Server"],["PTR","Rückwärtsauflösung: IP → Name"],["TXT","Text, z. B. SPF gegen gefälschte Absender"],["SOA","Start of Authority: Verwaltungsdaten der Zone"]]},
+ {t:"p",text:"DNS nutzt Port 53, meist UDP; für große Antworten und Zonentransfers TCP. Testen mit nslookup oder dig."}]},
+
+{id:"routing",g:"netz",ic:"🛣️",t:"Routing",s:"Routingtabelle, Gateway, statisch und dynamisch",b:[
+ {t:"h",text:"Was macht ein Router?"},
+ {t:"p",text:"Ein Router verbindet verschiedene Netze. Für jedes ankommende Paket schaut er in seine Routingtabelle, an welche Schnittstelle bzw. welchen nächsten Router (Next Hop) er es weitergeben muss. Dabei zieht er die TTL um 1 ab."},
+ {t:"h",text:"Die Routingtabelle"},
+ {t:"table",head:["Ziel","Maske","Next Hop","Schnittstelle","Metrik"],rows:[["192.168.1.0","/24","direkt verbunden","eth0","0"],["10.20.0.0","/16","192.168.1.254","eth0","1"],["10.20.5.0","/24","192.168.1.253","eth0","1"],["0.0.0.0","/0","203.0.113.1","wan0","10"]]},
+ {t:"steps",items:[["Ziel-IP lesen","Paket an 10.20.5.7"],["Passende Einträge suchen","10.20.0.0/16 passt, 10.20.5.0/24 passt auch"],["Längster Präfix gewinnt","/24 ist genauer als /16 → Weg über 192.168.1.253 (Longest Prefix Match)"],["Nichts passt?","Dann gilt die Standardroute 0.0.0.0/0 – meist Richtung Internet"]]},
+ {t:"h",text:"Standard-Gateway"},
+ {t:"p",text:"Ein PC entscheidet mit seiner Subnetzmaske: Liegt das Ziel im eigenen Netz, sendet er direkt (per ARP an die Ziel-MAC). Sonst sendet er an sein Standard-Gateway – den Router seines Netzes. Das Gateway muss deshalb immer im selben Subnetz liegen wie der PC."},
+ {t:"h",text:"Statisch oder dynamisch?"},
+ {t:"vs",cols:[{h:"Statisches Routing",items:["Admin trägt Routen von Hand ein","Übersichtlich, sicher, keine Last","Reagiert nicht auf Ausfälle","Für kleine Netze"]},{h:"Dynamisches Routing",items:["Router tauschen Routen selbst aus","Passt sich bei Ausfällen an","Mehr Aufwand und Netzlast","Für große Netze"]}]},
+ {t:"table",head:["Protokoll","Art","Merkmal"],rows:[["RIP","Distanzvektor","Metrik = Anzahl Router (Hops), max. 15 – veraltet"],["OSPF","Link-State","Jeder Router kennt die ganze Topologie, Metrik = Kosten (Bandbreite)"],["BGP","Pfadvektor","Routing zwischen Providern im Internet (zwischen autonomen Systemen)"]]},
+ {t:"tip",text:"Prüfungsklassiker: PC kommt nicht ins Internet, aber ins lokale Netz → Gateway falsch oder fehlt. PC erreicht IPs, aber keine Namen → DNS-Server falsch."}]},
+
+{id:"vlan",g:"netz",ic:"🧩",t:"VLAN & Switching",s:"802.1Q-Tag, Access und Trunk, Inter-VLAN-Routing, STP",b:[
+ {t:"h",text:"Was ist ein VLAN?"},
+ {t:"p",text:"Ein VLAN (Virtual LAN) teilt einen physischen Switch in mehrere logische Netze. Geräte in VLAN 10 sehen Geräte in VLAN 20 nicht – als hingen sie an verschiedenen Switches. Jedes VLAN ist eine eigene Broadcastdomäne und meist ein eigenes IP-Subnetz."},
+ {t:"grid",items:[["🛡️","Sicherheit","Gäste, Verwaltung, Produktion, Telefone getrennt."],["📉","Weniger Broadcasts","Broadcasts bleiben im eigenen VLAN."],["🔀","Flexibel","Zuordnung per Konfiguration statt Umstecken."],["📞","Priorität","Sprach-VLAN für VoIP mit QoS."]]},
+ {t:"h",text:"Das 802.1Q-Tag"},
+ {t:"p",text:"Auf Verbindungen, die mehrere VLANs transportieren, fügt der Switch zwischen Quell-MAC und Typ ein 4-Byte-Tag in den Ethernet-Frame ein."},
+ {t:"bits",w:32,legend:true,cap:"802.1Q-Tag (4 Byte)",rows:[[["TPID = 0x8100",16,"Kennung „hier kommt ein VLAN-Tag“"],["PCP",3,"Priorität 0–7"],["DEI",1,"darf verworfen werden"],["VLAN-ID",12,"Nummer des VLANs"]]]},
+ {t:"formula",f:"12 Bit VLAN-ID → 2¹² = 4096 Werte, nutzbar 1–4094",ex:"0 und 4095 sind reserviert. VLAN 1 ist meist das Standard-VLAN."},
+ {t:"h",text:"Access-Port und Trunk-Port"},
+ {t:"vs",cols:[{h:"Access-Port (untagged)",items:["Gehört zu genau einem VLAN","Endgeräte (PC, Drucker) – sie wissen nichts vom VLAN","Switch entfernt das Tag vor dem Senden"]},{h:"Trunk-Port (tagged)",items:["Transportiert mehrere VLANs","Zwischen Switches, zu Routern, Servern, Access Points","Jeder Frame trägt sein 802.1Q-Tag"]}]},
+ {t:"h",text:"Inter-VLAN-Routing"},
+ {t:"p",text:"Damit VLANs miteinander reden können (z. B. Verwaltung zum Drucker-VLAN), braucht es Schicht 3: einen Router mit Trunk und Unterschnittstellen („Router on a Stick“) oder einen Layer-3-Switch. Dort kann man mit Regeln (ACLs) genau festlegen, wer wen erreichen darf."},
+ {t:"h",text:"Spanning Tree (STP)"},
+ {t:"p",text:"Redundante Leitungen zwischen Switches sind gut gegen Ausfälle – erzeugen aber Schleifen, in denen Broadcasts endlos kreisen (Broadcast-Sturm). STP (802.1D, schneller: RSTP 802.1w) wählt einen Root-Switch und blockiert überzählige Wege. Fällt eine Leitung aus, wird ein blockierter Port freigegeben."},
+ {t:"h",text:"Weitere Switch-Funktionen"},
+ {t:"def",items:[["Port-Security","Nur bestimmte oder eine begrenzte Zahl MAC-Adressen pro Port."],["802.1X","Gerät/Nutzer muss sich am Port anmelden (über RADIUS), bevor er freigeschaltet wird."],["Link Aggregation (LACP)","Mehrere Leitungen bündeln für mehr Bandbreite und Ausfallsicherheit."],["PoE","Strom über das Netzwerkkabel, siehe Verkabelung."],["Managed / unmanaged","Nur managed Switches können VLANs, STP-Einstellungen, Monitoring."]]}]},
+
+{id:"wlan",g:"netz",ic:"📶",t:"WLAN",s:"Standards, Frequenzen, Kanäle, Sicherheit, Aufbau",b:[
+ {t:"h",text:"Standards"},
+ {t:"table",head:["Name","IEEE","Frequenz","max. brutto (theoretisch)"],rows:[["Wi-Fi 4","802.11n","2,4 + 5 GHz","600 Mbit/s"],["Wi-Fi 5","802.11ac","5 GHz","6,9 Gbit/s"],["Wi-Fi 6","802.11ax","2,4 + 5 GHz","9,6 Gbit/s"],["Wi-Fi 6E","802.11ax","+ 6 GHz","9,6 Gbit/s"],["Wi-Fi 7","802.11be","2,4 + 5 + 6 GHz","bis ~46 Gbit/s"]]},
+ {t:"p",text:"Die Bruttowerte erreicht man in der Praxis nie: WLAN ist ein geteiltes Medium (alle im Funkraum teilen sich die Bandbreite), dazu kommen Verwaltungsdaten, Abstand und Wände. Real bleibt oft die Hälfte oder weniger."},
+ {t:"h",text:"2,4 GHz oder 5/6 GHz?"},
+ {t:"vs",cols:[{h:"2,4 GHz",items:["Größere Reichweite, geht besser durch Wände","Nur 3 überlappungsfreie Kanäle: 1, 6, 11","Stark belegt (Nachbarn, Bluetooth, Mikrowelle)"]},{h:"5 GHz / 6 GHz",items:["Viel mehr Kanäle, weniger Störungen","Höhere Datenrate","Kürzere Reichweite; 5 GHz teils mit DFS (Radar-Erkennung)"]}]},
+ {t:"h",text:"Sicherheit"},
+ {t:"table",head:["Verfahren","Bewertung"],rows:[["Offen","keine Verschlüsselung – jeder kann mitlesen"],["WEP","gebrochen, in Minuten zu knacken – nie verwenden"],["WPA (TKIP)","veraltet, unsicher"],["WPA2 (AES-CCMP)","Standard, sicher mit starkem Passwort"],["WPA3 (SAE)","aktuell: schützt auch schwächere Passwörter besser gegen Offline-Raten"]]},
+ {t:"vs",cols:[{h:"Personal (PSK / SAE)",items:["Ein gemeinsames Passwort","Zu Hause, kleine Büros","Passwort-Wechsel betrifft alle"]},{h:"Enterprise (802.1X / EAP)",items:["Anmeldung pro Person/Gerät über RADIUS","Einzelne Zugänge sperrbar","Mit Zertifikaten (EAP-TLS) oder Benutzername/Passwort (PEAP)"]}]},
+ {t:"h",text:"Aufbau"},
+ {t:"def",items:[["SSID","Netzname. Ausblenden bringt keine echte Sicherheit."],["Access Point","Verbindet WLAN-Geräte mit dem kabelgebundenen Netz (Schicht 2)."],["Infrastruktur- / Ad-hoc-Modus","Mit Access Point bzw. Geräte direkt untereinander."],["Roaming","Gerät wechselt zwischen Access Points mit derselben SSID."],["Mesh","Mehrere Knoten verbinden sich untereinander per Funk und bilden ein gemeinsames Netz."],["Gastnetz","Eigene SSID im eigenen VLAN, ohne Zugriff aufs Firmennetz."],["Ausleuchtung","Vor der Installation messen (Site Survey): Wo braucht es wie viele APs?"]]},
+ {t:"tip",text:"Für die Verbindung braucht man vom Admin: SSID, Verschlüsselungsart und Schlüssel bzw. Zugangsdaten (bei Enterprise ggf. ein Zertifikat)."}]},
+
+{id:"kabel",g:"netz",ic:"🧵",t:"Verkabelung & PoE",s:"Kupfer, Glasfaser, strukturierte Verkabelung, Strom übers Kabel",b:[
+ {t:"h",text:"Twisted-Pair-Kategorien"},
+ {t:"table",head:["Kategorie","Frequenz","Ethernet","max. Länge"],rows:[["Cat 5e","100 MHz","1 Gbit/s","100 m"],["Cat 6","250 MHz","1 Gbit/s (10 Gbit/s bis 55 m)","100 m"],["Cat 6A","500 MHz","10 Gbit/s","100 m"],["Cat 7 / 7A","600 / 1000 MHz","10 Gbit/s","100 m"],["Cat 8","2000 MHz","25/40 Gbit/s","30 m (Rechenzentrum)"]]},
+ {t:"h",text:"Schirmung lesen"},
+ {t:"p",text:"Die Bezeichnung hat die Form X/YTP: X = Gesamtschirm, Y = Schirm um jedes Adernpaar. U = ungeschirmt, F = Folie, S = Geflecht (Screen), SF = Geflecht + Folie."},
+ {t:"table",head:["Bezeichnung","Gesamtschirm","Paarschirm"],rows:[["U/UTP","keiner","keiner"],["F/UTP","Folie","keiner"],["U/FTP","keiner","Folie"],["S/FTP","Geflecht","Folie"],["SF/FTP","Geflecht + Folie","Folie"]]},
+ {t:"h",text:"Glasfaser (LWL)"},
+ {t:"vs",cols:[{h:"Multimode (OM3, OM4, OM5)",items:["Dickerer Kern (50 µm), günstigere Technik","Bis einige hundert Meter bei 10 Gbit/s","Innerhalb von Gebäuden"]},{h:"Singlemode (OS2)",items:["Sehr dünner Kern (9 µm), Laser","Viele Kilometer","Zwischen Gebäuden, Provider"]}]},
+ {t:"p",text:"Vorteile von LWL: unempfindlich gegen elektromagnetische Störungen, abhörsicherer, keine Potenzialprobleme zwischen Gebäuden, große Strecken. Typische Stecker: LC (klein, häufig), SC."},
+ {t:"h",text:"Strukturierte Verkabelung (EN 50173)"},
+ {t:"stack",items:[["Primärbereich","Geländeverkabelung zwischen Gebäuden – meist LWL"],["Sekundärbereich","Gebäude: vom Gebäudeverteiler zu den Etagenverteilern (Steigbereich) – LWL oder Kupfer"],["Tertiärbereich","Etage: vom Etagenverteiler zur Netzwerkdose – Kupfer, max. 90 m fest + 10 m Patchkabel = 100 m"]]},
+ {t:"h",text:"PoE – Strom über das Netzwerkkabel"},
+ {t:"table",head:["Standard","Name","Leistung am Switch","am Gerät (ca.)","Beispiel"],rows:[["802.3af","PoE","15,4 W","12,95 W","IP-Telefon, einfache Kamera"],["802.3at","PoE+","30 W","25,5 W","Access Point, PTZ-Kamera"],["802.3bt Typ 3","PoE++","60 W","51 W","starke Access Points"],["802.3bt Typ 4","PoE++","90 W","71 W","Displays, kleine Rechner"]]},
+ {t:"tip",text:"PoE-Budget: Die Summe aller angeschlossenen Geräte darf das Gesamtbudget des Switches nicht überschreiten. Beispiel: 8 Access Points à 25,5 W = 204 W → Switch mit mindestens 240 W Budget wählen."}]},
+
+{id:"befehle",g:"netz",ic:"⌨️",t:"Netzwerkbefehle & Fehlersuche",s:"Windows, Linux, systematisches Vorgehen",b:[
+ {t:"h",text:"Befehle"},
+ {t:"table",head:["Windows","Linux","Wofür"],rows:[["ipconfig /all","ip addr","IP, Maske, MAC, Gateway, DNS, DHCP anzeigen"],["ipconfig /release · /renew","dhclient -r · dhclient","IP vom DHCP neu holen"],["ipconfig /flushdns","resolvectl flush-caches","DNS-Cache leeren"],["ping","ping","Erreichbarkeit prüfen (ICMP)"],["tracert","traceroute","Weg über die Router anzeigen"],["pathping","mtr","Weg + Paketverlust je Station"],["nslookup","nslookup / dig","Namen auflösen (DNS)"],["arp -a","ip neigh","ARP-Tabelle (IP ↔ MAC)"],["route print","ip route","Routingtabelle"],["netstat -ano","ss -tulpn","offene Ports und Verbindungen"],["getmac","ip link","MAC-Adressen"],["Test-NetConnection host -Port 443","nc -zv host 443","Ist ein bestimmter Port erreichbar?"]]},
+ {t:"h",text:"Systematisch von unten nach oben (OSI)"},
+ {t:"flow",items:[["1. Physik","Kabel steckt? Link-LED an?"],["2. Eigene IP","ipconfig: 169.254.x.x → kein DHCP"],["3. Stack","ping 127.0.0.1"],["4. Gateway","ping Standard-Gateway"],["5. Internet","ping 8.8.8.8"],["6. DNS","ping www.beispiel.de / nslookup"],["7. Dienst","Port erreichbar? Firewall?"]]},
+ {t:"h",text:"Typische Fehlerbilder"},
+ {t:"table",head:["Symptom","Wahrscheinliche Ursache"],rows:[["IP 169.254.x.x","DHCP-Server nicht erreichbar (Kabel, VLAN, Server aus)"],["Lokales Netz geht, Internet nicht","Gateway falsch/fehlt, Router-Problem"],["ping 8.8.8.8 geht, Namen nicht","DNS-Server falsch oder nicht erreichbar"],["Nur eine Webseite geht nicht","Problem beim Ziel, DNS-Cache, Proxy"],["IP-Konflikt-Meldung","Statische IP liegt im DHCP-Bereich oder doppelt vergeben"],["Sehr langsam","Duplex-Fehlanpassung, WLAN-Störung, Schleife/Broadcast-Sturm"]]},
+ {t:"h",text:"Linux-Dateirechte"},
+ {t:"bits",w:9,vals:true,cap:"chmod 754 = rwx r-x r--",rows:[[["rwx",3,"Besitzer: 4+2+1 = 7"],["r-x",3,"Gruppe: 4+0+1 = 5"],["r--",3,"Andere: 4+0+0 = 4"]]]},
+ {t:"tip",text:"Im Ticket immer dokumentieren: Symptom, Prüfschritte mit Ergebnis, Ursache, Lösung, Uhrzeit."}]},
+
+{id:"cloud",g:"netz",ic:"☁️",t:"Cloud & Virtualisierung",s:"Servicemodelle, Bereitstellung, Hypervisor, Container",b:[
+ {t:"h",text:"Servicemodelle: Wer kümmert sich um was?"},
+ {t:"table",head:["Ebene","On-Premises","IaaS","PaaS","SaaS"],rows:[["Anwendung","Kunde","Kunde","Kunde","Anbieter"],["Daten","Kunde","Kunde","Kunde","Kunde (Inhalt)"],["Laufzeit, Middleware","Kunde","Kunde","Anbieter","Anbieter"],["Betriebssystem","Kunde","Kunde","Anbieter","Anbieter"],["Virtualisierung, Server, Speicher, Netz","Kunde","Anbieter","Anbieter","Anbieter"]]},
+ {t:"grid",items:[["🏗️","IaaS","Virtuelle Server, Speicher, Netz zur Miete (z. B. VM in Azure, AWS EC2)."],["🧰","PaaS","Plattform zum Entwickeln und Betreiben eigener Apps (z. B. App-Hosting, Datenbank-Dienst)."],["📦","SaaS","Fertige Software im Browser (z. B. Microsoft 365, Ticketsystem online)."]]},
+ {t:"h",text:"Bereitstellungsmodelle"},
+ {t:"def",items:[["Public Cloud","Anbieter betreibt, viele Kunden teilen sich die Hardware."],["Private Cloud","Nur für eine Organisation, im eigenen oder fremden Rechenzentrum."],["Hybrid Cloud","Mischung, z. B. sensible Daten im Haus, Rest in der Public Cloud."],["Community Cloud","Mehrere Organisationen mit gleichen Anforderungen (z. B. Behörden)."]]},
+ {t:"vs",cols:[{h:"Cloud",items:["+ Keine Anschaffung, schnell skalierbar","+ Wartung und Updates durch den Anbieter","− Abhängig von Internet und Anbieter (Lock-in)","− Datenschutz prüfen: Serverstandort, AV-Vertrag (DSGVO)"]},{h:"On-Premises",items:["+ Volle Kontrolle, Daten im Haus","+ Läuft auch ohne Internet","− Hohe Anschaffungs- und Personalkosten","− Selbst für Updates, Backup, Ausfallsicherheit sorgen"]}]},
+ {t:"h",text:"Virtualisierung"},
+ {t:"vs",cols:[{h:"Hypervisor Typ 1 (bare metal)",items:["Läuft direkt auf der Hardware","Server, Rechenzentrum","VMware ESXi, Microsoft Hyper-V, Proxmox"]},{h:"Hypervisor Typ 2 (hosted)",items:["Läuft als Programm auf einem Betriebssystem","Testen, Schulung, Entwicklung","VirtualBox, VMware Workstation"]}]},
+ {t:"grid",items:[["♻️","Vorteile","Bessere Auslastung der Hardware, weniger Strom und Platz, Snapshots, schnelle Bereitstellung, Live-Migration."],["⚠️","Nachteile","Fällt der Host aus, fallen alle VMs aus (→ Cluster), Lizenzkosten, Know-how nötig."],["🐳","Container","Teilen sich den Kernel des Hosts, viel schlanker als VMs, starten in Sekunden (Docker, Kubernetes)."],["🪟","VDI / Thin Client","Desktop läuft als VM im Rechenzentrum, am Platz nur ein schlankes Gerät."]]}]},
+
 /* ---------- WIRTSCHAFT & RECHT ---------- */
 {id:"kalk",g:"wirt",ic:"🧾",t:"Kalkulation & Kosten",s:"Bezugspreis, Skonto, Rabatt, Stundensatz",b:[
  {t:"stack",items:[["Listeneinkaufspreis","Preis laut Angebot"],["− Liefererrabatt","Nachlass, z. B. Mengenrabatt"],["= Zieleinkaufspreis",""],["− Liefererskonto","Nachlass für schnelle Zahlung"],["= Bareinkaufspreis",""],["+ Bezugskosten","Versand, Verpackung, Zoll"],["= Bezugspreis (Einstandspreis)","Das ist der Vergleichswert"]]},
@@ -7344,17 +7561,17 @@ const PRUEF=[
  {p:24,t:"Datenbank für Medikamente",th:["Primär- und Fremdschlüssel, Tabellen verknüpfen","Algorithmus erklären, Schreibtischtest","Fehler im Pseudocode finden und korrigieren"],z:["db","prog"]}]},
 {id:"f25",t:"Frühjahr 2025",typ:"AP1",szen:"Anwaltskanzlei modernisiert ihre IT",a:[
  {p:25,t:"Multifunktionsgeräte",th:["Entscheidungsmatrix (Nutzwertanalyse) ausfüllen","Kauf abwickeln","Einrichtung und LAN-Einbindung","Englischer Herstellertext: Sicherheitsmaßnahmen","Warum nicht alle Nutzer Adminrechte bekommen"],z:["nwa","vertrag","sich","ipv4"]},
- {p:20,t:"Verschlüsselte Kommunikation",th:["Rechtliche Grundlage der Schweigepflicht","Asymmetrische Verschlüsselung Schritt für Schritt","Schutzziel Vertraulichkeit","Symmetrisch vs. asymmetrisch","Hashwert eines Downloads prüfen","IMAP vs. POP3"],z:["krypto","dsgvo","ports"]},
+ {p:20,t:"Verschlüsselte Kommunikation",th:["Rechtliche Grundlage der Schweigepflicht","Asymmetrische Verschlüsselung Schritt für Schritt","Schutzziel Vertraulichkeit","Symmetrisch vs. asymmetrisch","Hashwert eines Downloads prüfen","IMAP vs. POP3"],z:["krypto","dsgvo","tcpudp"]},
  {p:30,t:"Website der Kanzlei",th:["Netzplan: FAZ, FEZ, SAZ, SEZ, GP, FP, kritischer Pfad","Dynamische vs. statische Website","Funktion für Seitenaufrufe auswerten (Schreibtischtest)"],z:["netzplan","prog"]},
- {p:25,t:"KI in der Kanzlei",th:["Ablauf einer Terminanfrage","Bedenken gegen KI","KI-Chatbot: Chancen und Risiken","Sichere Verbindung zum Cloud-Server (Ports)","Redundanzen in Daten und ihre Probleme"],z:["ki","ports","cloud","db"]}]},
+ {p:25,t:"KI in der Kanzlei",th:["Ablauf einer Terminanfrage","Bedenken gegen KI","KI-Chatbot: Chancen und Risiken","Sichere Verbindung zum Cloud-Server (Ports)","Redundanzen in Daten und ihre Probleme"],z:["ki","tcpudp","cloud","db"]}]},
 {id:"h24",t:"Herbst 2024",typ:"AP1",szen:"Firma für Schließsysteme (Identify OHG)",a:[
- {p:25,t:"Besprechungsraum absichern",th:["Zutrittskontrolle, BSI-Grundschutz","Sicherheitsrisiken in Alltagssituationen","APIPA-Adresse 169.254.x.x erkennen","IP-Konfiguration nach Vorgabe","Netz trennen (VLAN/Gastnetz), MAC-Adresse ermitteln"],z:["sich","ipv4","befehle","osi"]},
+ {p:25,t:"Besprechungsraum absichern",th:["Zutrittskontrolle, BSI-Grundschutz","Sicherheitsrisiken in Alltagssituationen","APIPA-Adresse 169.254.x.x erkennen","IP-Konfiguration nach Vorgabe","Netz trennen (VLAN/Gastnetz), MAC-Adresse ermitteln"],z:["sich","ipv4","befehle","osi","subnet","vlan","ethernet"]},
  {p:25,t:"Software für Schließsysteme",th:["Eigenentwicklung vs. Fremdvergabe","Programmiersprache wählen","Compiler vs. Interpreter","UML-Anwendungsfalldiagramm","Methode mit Parametern und Rückgabewert","Kostenübersicht für eine Schule"],z:["prog","oop","kalk"]},
  {p:24,t:"Computer beschaffen",th:["Angebot über 10 Computer prüfen","RAM-Kompatibilität (DDR-Generation, Bauform)","HDD durch SSD ersetzen","Phishing: Gefahren, Anzeichen, Schutz"],z:["hw","kalk","sich"]},
  {p:26,t:"Produktion dokumentieren",th:["Lasten- und Pflichtenheft","Datenmodell redundanzfrei erweitern, Kardinalitäten","Leasingende: Optionen","Alte Maschine weiter nutzen: Argumente"],z:["pm","db","vertrag"]}]},
 {id:"f24",t:"Frühjahr 2024",typ:"AP1",szen:"Fünf CAD-Arbeitsplätze einrichten (KustoFlex GmbH)",a:[
  {p:26,t:"Systeme auswählen",th:["Nutzwertanalyse vervollständigen und Rangfolge","Nur On-Premises: Auswirkung","Laufende Kosten pro Monat (Abschreibung über Nutzungsdauer)","Wann ist der Kaufvertrag zustande gekommen?","Kaufvertragsstörungen und Rechte des Käufers"],z:["nwa","kalk","vertrag","cloud"]},
- {p:24,t:"Netzwerk prüfen",th:["Link-LED an der Netzwerkbuchse","ipconfig /all auswerten (DHCP, DNS, Gateway)","IPv6 Link-Local-Adresse analysieren","ARP erklären","Erreichbarkeit prüfen (ping)"],z:["befehle","ipv4","ipv6","osi"]},
+ {p:24,t:"Netzwerk prüfen",th:["Link-LED an der Netzwerkbuchse","ipconfig /all auswerten (DHCP, DNS, Gateway)","IPv6 Link-Local-Adresse analysieren","ARP erklären","Erreichbarkeit prüfen (ping)"],z:["befehle","ipv4","ipv6","osi","dienste","ethernet"]},
  {p:24,t:"Dateiformat und Netzteil",th:["Infos zu unbekanntem Dateiformat beschaffen","ASCII- vs. Binärdatei","Speicherbedarf von 3D-Punkten in KiB","RGB mit 8 Bit pro Kanal: Anzahl Farben, Mehrbedarf in %","Netzteil mit Puffer wählen","Stromkosten im Jahr"],z:["zahl","rech","energie"]},
  {p:26,t:"Mobiles Arbeiten",th:["Sichtschutz und Verhalten unterwegs","Mobilfunk-Alternativen","VPN","Backup auf externe Festplatte","Malware-Arten und Schutz","Übertragungsdauer berechnen"],z:["sich","krypto","rech","wlan"]}]},
 {id:"h23",t:"Herbst 2023",typ:"AP1",szen:"Softwarefirma baut 24/7-Service auf (OptiSoft-XXL GmbH)",a:[
@@ -7370,7 +7587,7 @@ const PRUEF=[
 {id:"h22",t:"Herbst 2022",typ:"AP1",szen:"Kartonhersteller digitalisiert die Produktion (Package AG)",a:[
  {p:23,t:"Projekt und Markt",th:["Marktformen (Oligopol, Polypol)","Projektphasen mit Inhalten","Stakeholder und ihr Einfluss","Externer Berater: Vor- und Nachteile","Effektiver Stundensatz"],z:["markt","pm","kalk"]},
  {p:25,t:"Scans speichern",th:["Scans pro Tag berechnen","Datenvolumen in MiB und TiB","RAID 5 Nettokapazität, JBOD","JBOD vs. RAID 0","NAS vs. SAN","QR-Code vs. RFID"],z:["rech","raid","zahl"]},
- {p:28,t:"IPv6 für IoT",th:["Vorteile von IPv6","Anzahl Subnetze aus einem Präfix","IPv6-Adressen vergeben","Loopback und Gateway prüfen","Automatisch erzeugte Link-Local-Adresse","Angebote mit Bezugspreis bewerten"],z:["ipv6","befehle","nwa","kalk"]},
+ {p:28,t:"IPv6 für IoT",th:["Vorteile von IPv6","Anzahl Subnetze aus einem Präfix","IPv6-Adressen vergeben","Loopback und Gateway prüfen","Automatisch erzeugte Link-Local-Adresse","Angebote mit Bezugspreis bewerten"],z:["ipv6","befehle","nwa","kalk","subnet"]},
  {p:24,t:"Datenbank und Steuerung",th:["SQL: SELECT mit WHERE, COUNT, SUM","API zur Maschinensteuerung","Struktogramm ergänzen","ERM vervollständigen"],z:["db","prog"]}]},
 {id:"f22",t:"Frühjahr 2022",typ:"AP1",szen:"Systemhaus gewinnt einen Kunden (AllRound AG)",a:[
  {p:25,t:"Kundengespräch vorbereiten",th:["Präsentationsfolie mit Kernbotschaften","Leistungsangebote erklären","Infos für ein Angebot"],z:["markt","support"]},
@@ -7389,7 +7606,7 @@ const PRUEF=[
  {p:null,t:"Wirtschafts- und Sozialkunde",th:["Wirtschaftssektoren","Ausbildungsvertrag, Urlaub","JAV, Entgeltabrechnung","Erste Hilfe, Brandschutz, Umwelt"],z:["wiso"]}]},
 {id:"h20",t:"Herbst 2020",typ:"ZP",szen:"Zwischenprüfung (alte Ordnung) – Ankreuz- und Zuordnungsaufgaben",a:[
  {p:null,t:"Betrieb und Markt",th:["Produktionsfaktoren, kostenorientierte Preise","Organigramm, Petri-Netz","Marketing-Maßnahmen, Auftragsabwicklung","Netzplan, Protokoll, Diagramme","Ergonomie, Abfall"],z:["markt","kalk","netzplan","ergo"]},
- {p:null,t:"IT-Systeme",th:["Revisionssicheres Backup","Energie-Einsparung berechnen","CPU-Bestandteile, Partitionierung","Linux-Dateirechte","Speicherbedarf einer Tabelle","Wasserfallmodell, Tests, Testdokumentation","Twisted Pair, USB-Datenrate"],z:["energie","hw","befehle","rech","test","wlan","schnitt"]},
+ {p:null,t:"IT-Systeme",th:["Revisionssicheres Backup","Energie-Einsparung berechnen","CPU-Bestandteile, Partitionierung","Linux-Dateirechte","Speicherbedarf einer Tabelle","Wasserfallmodell, Tests, Testdokumentation","Twisted Pair, USB-Datenrate"],z:["energie","hw","befehle","rech","test","kabel","schnitt"]},
  {p:null,t:"Softwareentwicklung",th:["Anforderungen an eine Raumverwaltung","Web, Desktop oder App","OOP-Vorteile","Struktogramm mit Schleife","Methodensignatur"],z:["prog","oop"]},
  {p:null,t:"Wirtschafts- und Sozialkunde",th:["Gesellschaftsformen (GmbH)","Berufsbildungsgesetz","JAV-Wahl","Arbeitsstättenverordnung, Brandschutz, Umwelt"],z:["wiso"]}]}
 ];
@@ -7399,7 +7616,24 @@ let ztSel=null, ztGrp=null;
 const ZT_CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
 const ztRead=()=>{ try{ return JSON.parse(store.get("zt_read")||"{}"); }catch(e){ return {}; } };
 const ztExams=id=>PRUEF.filter(p=>p.a.some(a=>a.z.includes(id)));
+const ztTx=t=>esc(t).replace(/`([^`]+)`/g,"<code>$1</code>");
+function ztBits(b){
+  const w=b.w, lab=b.rowLabels;
+  const ruler=w===32?`<div class="zt-bitrow ruler" style="--w:${w}">${lab?'<span class="zt-rl"></span>':""}${[0,8,16,24].map(n=>`<span style="grid-column:span 8">${n}</span>`).join("")}</div>`:"";
+  const rows=b.rows.map((r,ri)=>`<div class="zt-bitrow" style="--w:${w}">${lab?`<span class="zt-rl">${esc(lab[ri]||"")}</span>`:""}${r.map(f=>`<span class="zt-bf${f[1]/w<=3/32&&!(b.vals&&f[2])?(f[1]/w<=1/32?" nar one":" nar"):""}" style="grid-column:span ${f[1]}" title="${esc(f[2]||f[0])}"><b>${esc(f[0])}</b><small>${b.vals&&f[2]?esc(f[2]):f[1]+" Bit"}</small></span>`).join("")}</div>`).join("");
+  const marks=b.marks?`<div class="zt-bitrow marks" style="--w:${w}">${b.marks.map(m=>`<span style="grid-column:${m[0]+1} / span ${m[1]}">${esc(m[2])}</span>`).join("")}</div>`:"";
+  const legend=b.legend?`<dl class="zt-leg">${b.rows.flat().filter(f=>f[2]).map(f=>`<dt>${esc(f[0])}</dt><dd>${esc(f[2])}</dd>`).join("")}</dl>`:"";
+  return `<figure class="zt-bits${lab?" has-rl":""}">${ruler}${rows}${marks}${b.cap?`<figcaption>${esc(b.cap)}</figcaption>`:""}${legend}</figure>`;
+}
 function ztBlock(b){
+  if(b.t==="h") return `<h3 class="zt-h">${esc(b.text)}</h3>`;
+  if(b.t==="p") return `<p class="zt-p">${ztTx(b.text)}</p>`;
+  if(b.t==="bits") return ztBits(b);
+  if(b.t==="frame") return `<figure class="zt-frame"><div class="zt-fr">${b.fields.map(f=>`<span class="zt-fc"><b>${esc(f[0])}</b><small>${esc(f[1])} B</small></span>`).join("")}</div>${b.cap?`<figcaption>${esc(b.cap)}</figcaption>`:""}<dl class="zt-leg">${b.fields.map(f=>`<dt>${esc(f[0])}</dt><dd>${esc(f[2])}</dd>`).join("")}</dl></figure>`;
+  if(b.t==="seq") return `<div class="zt-seq"><div class="zt-sq-h"><b>${esc(b.a)}</b><span></span><b>${esc(b.b)}</b></div>${b.msgs.map(m=>`<div class="zt-sq-r ${m[0]==="→"?"r":m[0]==="←"?"l":"both"}"><span class="zt-sq-lane"></span><div class="zt-sq-msg"><b>${esc(m[1])}</b><span class="zt-sq-arrow" aria-hidden="true"></span><small>${esc(m[2]||"")}</small></div><span class="zt-sq-lane"></span></div>`).join("")}</div>`;
+  if(b.t==="steps") return `<ol class="zt-steps">${b.items.map(it=>`<li><b>${esc(it[0])}</b><span>${ztTx(it[1])}</span></li>`).join("")}</ol>`;
+  if(b.t==="calc") return `<div class="zt-calc">${b.title?`<b class="zt-calc-t">${esc(b.title)}</b>`:""}<dl>${b.lines.map(l=>`<dt>${esc(l[0])}</dt><dd>${esc(l[1])}</dd>`).join("")}</dl></div>`;
+  if(b.t==="def") return `<dl class="zt-def">${b.items.map(it=>`<dt>${esc(it[0])}</dt><dd>${ztTx(it[1])}</dd>`).join("")}</dl>`;
   if(b.t==="stack") return `<div class="zt-stack">${b.items.map((it,k)=>`<div class="zt-layer" style="--k:${k}"><b>${esc(it[0])}</b>${it[1]?`<span>${esc(it[1])}</span>`:""}</div>`).join("")}</div>`;
   if(b.t==="flow") return `<div class="zt-flow">${b.items.map(it=>`<div class="zt-step"><b>${esc(it[0])}</b><span>${esc(it[1])}</span></div>`).join('<div class="zt-arrow" aria-hidden="true">➜</div>')}</div>`;
   if(b.t==="formula") return `<div class="zt-formula"><div class="zt-f">${esc(b.f)}</div>${b.ex?`<div class="zt-ex"><span>Beispiel</span> ${esc(b.ex)}</div>`:""}</div>`;
@@ -7413,7 +7647,7 @@ function ztBlock(b){
 function ztHome(){
   ztSel=null; ztGrp=null; const r=ztRead(), n=ZETTEL.filter(z=>r[z.id]).length;
   $("#zt").innerHTML=`<div class="hubscreen" style="--area:var(--c-wissen)">
-    <div class="hub-head"><h2 class="title">Lernzettel AP1</h2><p>${ZETTEL.length} Themen als Grafik, sortiert nach Bereichen${n?` · ${n} angesehen`:""}.</p><span class="illu" data-illu="wissen"></span></div>
+    <div class="hub-head"><h2 class="title">AP1-Atlas</h2><p>${ZETTEL.length} Themen zum Nachschlagen – mit Diagrammen, Rechenwegen und Prüfungstipps${n?` · ${n} angesehen`:""}.</p><span class="illu" data-illu="wissen"></span></div>
     <button class="hrow zt-pruefrow" data-go="pruef"><span class="ic" style="font-size:20px">📝</span><span class="tx"><b>Prüfungen 2020–2025</b><small>Was in welcher Prüfung drankam und welche Themen am häufigsten sind</small></span>${ZT_CHEV}</button>
     ${ZT_GROUPS.map(g=>`<h3 class="zt-gh" style="--zc:${g.c}">${esc(g.t)}</h3><div class="zt-tiles">${ZETTEL.filter(z=>z.g===g.id).map(z=>`<button class="zt-tile${r[z.id]?" seen":""}" data-zt="${z.id}" style="--zc:${g.c}"><span class="zt-ti">${z.ic}</span><b>${esc(z.t)}</b><small>${esc(z.s)}</small></button>`).join("")}</div>`).join("")}
     <p class="hint">Zusammengefasst in eigenen Worten aus Lernzetteln, Lernmaterial und den IHK-Prüfungen 2020–2025. Keine Gewähr – im Zweifel die offiziellen Unterlagen nutzen.</p></div>`;
@@ -7425,14 +7659,15 @@ function ztOpen(id){
   const g=ZT_GROUPS.find(x=>x.id===z.g), all=ZETTEL, i=all.indexOf(z), prev=all[i-1], next=all[i+1];
   ztSel=id; const r=ztRead(); if(!r[id]){ r[id]=1; store.set("zt_read",JSON.stringify(r)); }
   const ex=ztExams(id);
-  $("#zt").innerHTML=`<button class="btn ghost" id="zt-back" style="align-self:flex-start;padding:8px 12px">‹ Alle Lernzettel</button>
+  $("#zt").innerHTML=`<button class="btn ghost" id="zt-back" style="align-self:flex-start;padding:8px 12px">‹ Atlas</button>
     <article class="zt-poster" style="--zc:${g.c}">
       <header class="zt-head"><span class="zt-hi">${z.ic}</span><div><small>${esc(g.t)}</small><h2>${esc(z.t)}</h2><p>${esc(z.s)}</p></div></header>
-      <div class="zt-body">${z.b.map(ztBlock).join("")}</div>
+      <nav class="kh-toc zt-toc" id="zt-toc" aria-label="Inhalt"></nav><div class="zt-body">${z.b.map(ztBlock).join("")}</div>
       ${ex.length?`<footer class="zt-foot"><small>Kam dran in</small><div class="zt-chips">${ex.map(p=>`<button class="zt-chip" data-pr="${p.id}">${p.typ==="ZP"?"ZP ":""}${esc(p.t)}</button>`).join("")}</div></footer>`:""}
     </article>
-    <div class="grid2">${prev?`<button class="btn ghost" data-zt="${prev.id}">‹ ${esc(prev.t)}</button>`:"<span></span>"}${next?`<button class="btn primary" data-zt="${next.id}">${esc(next.t)} ›</button>`:`<button class="btn primary" id="zt-end">Zur Übersicht</button>`}</div>`;
+    <div class="grid2 zt-nav">${prev?`<button class="btn ghost" data-zt="${prev.id}">‹ ${esc(prev.t)}</button>`:"<span></span>"}${next?`<button class="btn primary" data-zt="${next.id}">${esc(next.t)} ›</button>`:`<button class="btn primary" id="zt-end">Zur Übersicht</button>`}</div>`;
   $("#zt-back").onclick=ztHome; const e=$("#zt-end"); if(e) e.onclick=ztHome;
+  { const hs=$$("#zt .zt-h"), toc=$("#zt-toc"); if(hs.length>=3){ hs.forEach((h,k)=>h.id="zt-h"+k); toc.innerHTML=`<small class="count">Inhalt</small><div class="kh-toc-l">${hs.map((h,k)=>`<button type="button" data-to="zt-h${k}">${esc(h.textContent)}</button>`).join("")}</div>`; $$("#zt-toc [data-to]").forEach(b=>b.onclick=()=>{ const t=document.getElementById(b.dataset.to); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); }); } else toc.remove(); }
   $$("#zt [data-zt]").forEach(b=>b.onclick=()=>ztOpen(b.dataset.zt));
   $$("#zt [data-pr]").forEach(b=>b.onclick=()=>{ prOpenId=b.dataset.pr; go("pruef"); });
   window.scrollTo({top:0});
