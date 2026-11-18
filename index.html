@@ -918,6 +918,9 @@ body.mp-on .stage{padding-bottom:calc(var(--tabbar-h) + 80px)}
 /* Lernzettel AP1 */
 .zt-pruefrow{margin:4px 0 6px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2)}
 #zt .sec-h,#pr .sec-h{margin:16px 2px 4px}
+.zt-gh{display:flex;align-items:center;gap:10px;margin:26px 2px 12px;font:700 20px/1.2 var(--display,inherit);color:var(--ink)}
+.zt-gh::before{content:"";width:14px;height:14px;border-radius:5px;background:var(--zc);flex:none}
+.zt-gh::after{content:"";flex:1;height:2px;border-radius:2px;background:color-mix(in srgb,var(--zc) 45%,transparent)}
 .zt-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .zt-tile{font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-top:4px solid var(--zc);min-height:112px;position:relative}
 .zt-tile b{font-size:14px;line-height:1.25}.zt-tile small{color:var(--muted,#888);font-size:12px;line-height:1.3}
@@ -1777,7 +1780,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.4.1"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.4.2"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -5119,7 +5122,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.4.1";
+const APK_URL="dasLabor23.apk", APK_VER="5.4.2";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
@@ -7372,7 +7375,7 @@ function ztHome(){
   $("#zt").innerHTML=`<div class="hubscreen" style="--area:var(--c-wissen)">
     <div class="hub-head"><h2 class="title">Lernzettel AP1</h2><p>${ZETTEL.length} Themen als Grafik, sortiert nach Bereichen${n?` · ${n} angesehen`:""}.</p><span class="illu" data-illu="wissen"></span></div>
     <button class="hrow zt-pruefrow" data-go="pruef"><span class="ic" style="font-size:20px">📝</span><span class="tx"><b>Prüfungen 2020–2025</b><small>Was in welcher Prüfung drankam und welche Themen am häufigsten sind</small></span>${ZT_CHEV}</button>
-    ${ZT_GROUPS.map(g=>`<div class="sec-h">${esc(g.t)}</div><div class="zt-tiles">${ZETTEL.filter(z=>z.g===g.id).map(z=>`<button class="zt-tile${r[z.id]?" seen":""}" data-zt="${z.id}" style="--zc:${g.c}"><span class="zt-ti">${z.ic}</span><b>${esc(z.t)}</b><small>${esc(z.s)}</small></button>`).join("")}</div>`).join("")}
+    ${ZT_GROUPS.map(g=>`<h3 class="zt-gh" style="--zc:${g.c}">${esc(g.t)}</h3><div class="zt-tiles">${ZETTEL.filter(z=>z.g===g.id).map(z=>`<button class="zt-tile${r[z.id]?" seen":""}" data-zt="${z.id}" style="--zc:${g.c}"><span class="zt-ti">${z.ic}</span><b>${esc(z.t)}</b><small>${esc(z.s)}</small></button>`).join("")}</div>`).join("")}
     <p class="hint">Zusammengefasst in eigenen Worten aus Lernzetteln, Lernmaterial und den IHK-Prüfungen 2020–2025. Keine Gewähr – im Zweifel die offiziellen Unterlagen nutzen.</p></div>`;
   $$("#zt [data-zt]").forEach(b=>b.onclick=()=>ztOpen(b.dataset.zt));
   $$("#zt [data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
