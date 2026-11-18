@@ -1812,7 +1812,7 @@ const TAB_OF={home:"home",karten:"karten",bibliothek:"wissen",spiele:"spiele",fo
 const AREA_OF={home:"heute",lektion:"heute",karten:"karten",lernen:"karten",neu:"karten",verwalten:"karten",bibliothek:"wissen",wissen:"wissen",podcast:"wissen",unterricht:"wissen",druck:"wissen",zettel:"wissen",pruef:"wissen",sprachen:"wissen",vokabeln:"wissen",ports:"wissen",fortschritt:"fort",statistik:"fort"};
 /* ---------- Anonyme Nutzungsstatistik (GoatCounter, ohne Cookies) ---------- */
 const GC_URL="https://dercava.goatcounter.com/count";
-const APP_VER="5.6.0"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
+const APP_VER="5.6.1"; /* bei jedem Update zusammen mit WHATS_NEW[0].v erhöhen */
 const GC_AREAS={unterricht:"Feierabendfunk",leiter:"100-Punkte-Leiter",fangen:"Paket-Fänger",sprachen:"Programmiersprachen",lernen:"Karteikarten lernen",neu:"Neue Karte",verwalten:"Karten verwalten",wissen:"Wissen",podcast:"Podcast",druck:"3D-Druck",algo:"Algo-Knacker",falln:"Fall N.",zettel:"Lernzettel",pruef:"Prüfungen",challenge:"Challenge",match:"Match-Survival",blitz:"Richtig/Falsch",vokabeln:"Abkürzungs-Labor",ports:"Port-Labor",terminal:"Terminal",sql:"SQL-Detektiv",erd:"ERD-Architekt",subnetz:"Subnetz-Profi",statistik:"Statistik",nacht:"Nachtschicht im Labor 23",patch:"Patchfeld-Blitz",rallye:"Frame-Rallye",sturm:"Broadcast-Sturm",netz:"Netz-Labor",aussen:"Außenstelle Nord"};
 const gcSeen=new Set();
 let gcDone=false;
@@ -2215,15 +2215,12 @@ setTimeout(gcCount,1500); window.addEventListener("online",()=>gcCount());
    Beim ersten Öffnen nach einem Update einmal als Sheet, danach nur noch über
    die Versionszeile unter Optionen. */
 const WHATS_NEW=[
-  {v:"5.6.0",t:"Neues Spiel: Fall N.",l:[
-    "Unter Spiele → Praxis-Labore: ein Terminal-Krimi in 5 Kapiteln. Du jagst einen Angreifer durch Logs, Netzwerk-Scans, Mitschnitte und ein Passwort-Audit und stoppst am Ende einen Ransomware-Angriff",
-    "Ein Erklär-Panel sagt bei jedem Befehl: Was passiert? Warum ist das wichtig? Wie funktioniert das?"]},
-  {v:"5.5.0",t:"Neues Spiel: Algo-Knacker",l:[
-    "Unter Spiele → Praxis-Labore: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen",
-    "Nach jeder Lösung läuft der Schreibtischtest Schritt für Schritt mit Wertetabelle"]},
-  {v:"5.4.0",t:"AP1-Lernzettel & Prüfungen",l:[
-    "Unter Wissen: 33 Lernzettel als Grafik – von Subnetting über Netzplan bis Datenschutz, mit Formeln, Beispielen und Prüfungstipps",
-    "Neu: „Prüfungen 2020–2025“ – welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird"]},
+  {v:"5.6.1",t:"Das Update vom 18. November",l:[
+    "• Wissen → Lernzettel als Grafik: 33 AP1-Themen von Subnetting über Netzplan bis Datenschutz – mit Formeln, Rechenbeispielen und Prüfungstipps",
+    "• Wissen → Prüfungen 2020–2025: welche Themen in welcher Prüfung drankamen und was am häufigsten gefragt wird",
+    "• Spiele → Algo-Knacker: 16 Pseudocode-Level wie in der AP1 – Ausgabe vorhersagen, Lücken füllen, Fehler finden, Zeilen ordnen, danach der Schreibtischtest Schritt für Schritt",
+    "• Spiele → Fall N.: ein Terminal-Krimi in 5 Kapiteln – Logs, nmap, Mitschnitt, Passwort-Audit und ein Ransomware-Angriff, mit Erklär-Panel zu jedem Befehl",
+    "• Kleinigkeiten: größere Bereichsüberschriften bei den Lernzetteln"]},
   {v:"5.3.3",t:"Feedback & Optionen",l:[
     "Der Reiter „Fortschritt“ heißt jetzt „Optionen“",
     "Neu dort: „Feedback geben“ – Ideen, Fehler, Lob oder Fragen direkt aus der App schicken, anonym oder mit Nickname"]},
@@ -5163,7 +5160,7 @@ function bkHint(){
   const off=+store.get("inst_off","0")||0, snoozed=Date.now()-off<14*DAY;   /* ausgeblendet: 14 Tage Ruhe */
   card.hidden=!(canInstall()&&(instPrompt||isIOS())&&!snoozed); if(row) row.hidden=!isWeb();
 }
-const APK_URL="dasLabor23.apk", APK_VER="5.6.0";
+const APK_URL="dasLabor23.apk", APK_VER="5.6.1";
 const isAndroid=()=>/Android/i.test(navigator.userAgent);
 function installApp(){
   const apk=`<button class="hrow" id="ia-apk"><span class="ic" style="font-size:20px">🤖</span><span class="tx"><b>Android-App herunterladen</b><small>APK, Version ${APK_VER} · danach öffnen und „Installieren“ tippen</small></span></button>`;
