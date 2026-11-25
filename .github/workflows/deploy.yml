@@ -1,0 +1,52 @@
+# Veröffentlicht dasLabor23 auf GitHub Pages.
+# Die eigentlichen Dateien liegen im PRIVATEN Repo dercava/daslabor-quelle.
+# Dieser Ablauf holt sie mit dem Token QUELLE_TOKEN (nur Leserechte) ab
+# und gibt sie direkt an Pages weiter – in DIESES Repo wird nichts kopiert.
+name: Seite veröffentlichen
+
+on:
+  push:
+    branches: [main]       # Auslöser: Änderung an trigger.txt
+  workflow_dispatch:       # oder per Knopf "Run workflow"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: App-Dateien aus dem privaten Repo holen
+        uses: actions/checkout@v4
+        with:
+          repository: dercava/daslabor-quelle
+          token: ${{ secrets.QUELLE_TOKEN }}
+          fetch-depth: 1
+          path: site
+
+      - name: Nur die App behalten
+        run: |
+          cd site
+          rm -rf .git .github tools test.md README.md
+          touch .nojekyll
+          du -sh .
+
+      - uses: actions/configure-pages@v5
+
+      - name: Für Pages verpacken
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Auf Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
